@@ -7,9 +7,9 @@ const Header = () => {
       tg.close();
     };
     return (
-        <div className={'header'}>
+        <div className='header'>
             <button onClick={onClose}>Close</button>
-            <span className={'username'}>{tg.initDataUnsef?.user?.username }</span>
+            <span className='username'>{tg.initDataUnsef?.user?.username }</span>
         </div>
     );
 }
