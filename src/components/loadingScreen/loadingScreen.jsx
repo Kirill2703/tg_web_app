@@ -5,14 +5,14 @@ import { useSelector } from "react-redux"; // Импортируем useSelector
 
 const LoadingScreen = () => {
   // Получаем имя пользователя из состояния
-  const userName = useSelector((state) => state.user.name);
+  const username = useSelector((state) => state.user.username);
 
   return (
     <div className="loading-screen">
       <div>
         <img src="/loading-screen.jpg" alt="Loading" />
         <h2 className="text-loading-screen">
-          Загрузка{userName && `, ${userName}`}...{" "}
+          Загрузка{username && `, ${username}`}...{" "}
           {/* Добавляем имя пользователя */}
         </h2>
       </div>

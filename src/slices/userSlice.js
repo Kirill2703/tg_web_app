@@ -6,7 +6,7 @@ const userSlice = createSlice({
   name: "user",
   initialState: {
     currentUser: null,
-    name: "",
+    username: "",
     loading: false,
     error: null,
   },
@@ -21,6 +21,7 @@ const userSlice = createSlice({
       .addCase(createUser.fulfilled, (state, action) => {
         state.loading = false;
         state.currentUser = action.payload;
+        state.username = action.payload.username;
       })
       .addCase(createUser.rejected, (state, action) => {
         state.loading = false;
@@ -33,7 +34,7 @@ const userSlice = createSlice({
       })
       .addCase(fetchUserNameByTelegramId.fulfilled, (state, action) => {
         state.loading = false;
-        state.name = action.payload;
+        state.username = action.payload.username;
       })
       .addCase(fetchUserNameByTelegramId.rejected, (state, action) => {
         state.loading = false;

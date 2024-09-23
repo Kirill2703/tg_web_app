@@ -5,13 +5,13 @@ const API_URL = "/api/users"; // URL вашего API
 // Асинхронное действие для создания пользователя
 export const createUser = createAsyncThunk(
   "user/createUser",
-  async ({ name, telegramId }) => {
+  async ({ username, telegramId }) => {
     const response = await fetch(`${API_URL}/create`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ name, telegramId }),
+      body: JSON.stringify({ username, telegramId }),
     });
 
     if (!response.ok) {
@@ -33,6 +33,6 @@ export const fetchUserNameByTelegramId = createAsyncThunk(
     }
 
     const data = await response.json();
-    return data.name; // Возвращаем имя пользователя
+    return data.username; // Возвращаем имя пользователя
   }
 );

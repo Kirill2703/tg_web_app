@@ -58,7 +58,7 @@ body{
   left: 40%;
   bottom: 10%;
   z-index: 1000;
-  color: aliceblue;
+  color: blue;
   font-family: var(--font-secondary);
   font-weight: 400;
   font-size: var(--font-size-heading);
