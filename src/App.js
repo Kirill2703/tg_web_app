@@ -11,9 +11,9 @@ function App() {
     // Симуляция загрузки, замените это на ваши реальные данные
     setTimeout(() => {
       setLoading(false);
-      tg.ready(); // Подготовьте Telegram Web App
       tg.expand();
-    }, 2000); // 2 секунды
+      tg.ready(); // Подготовьте Telegram Web App
+    }, 4000); // 2 секунды
   }, [tg]);
 
   if (loading) {
