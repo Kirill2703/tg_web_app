@@ -43,7 +43,7 @@ body{
   height: 100vh; 
   margin-bottom: 20px;
   position: relative;
-  object-fit: cover;
+
 }
 .text-loading-screen{
   position: absolute;

@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
-import './App.css';
-import Header from './components/header/header';
-import LoadingScreen from './components/loadingScreen/loadingScreen';
+import { useEffect, useState } from "react";
+import "./App.css";
+import Header from "./components/header/header";
+import LoadingScreen from "./components/loadingScreen/loadingScreen";
 const tg = window.Telegram.WebApp;
 
 function App() {
@@ -12,6 +12,7 @@ function App() {
     setTimeout(() => {
       setLoading(false);
       tg.ready(); // Подготовьте Telegram Web App
+      tg.expand();
     }, 2000); // 2 секунды
   }, [tg]);
 
