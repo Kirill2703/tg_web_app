@@ -1,20 +1,20 @@
-// src/components/LoadingScreen.js
-
 import React from "react";
-import { useSelector } from "react-redux"; // Импортируем useSelector
+import { useSelector } from "react-redux";
 
 const LoadingScreen = () => {
-  // Получаем имя пользователя из состояния
-  const username = useSelector((state) => state.user.username);
+  const username = useSelector((state) => state.user.username); // Изменили на username
+  const loading = useSelector((state) => state.user.loading);
 
   return (
     <div className="loading-screen">
       <div>
         <img src="/loading-screen.jpg" alt="Loading" />
-        <h2 className="text-loading-screen">
-          Загрузка{username && `, ${username}`}...{" "}
-          {/* Добавляем имя пользователя */}
-        </h2>
+        <h2 className="text-loading-screen">Загрузка...</h2>
+        {loading ? (
+          <p>Пожалуйста, подождите...</p>
+        ) : (
+          <p>Добро пожаловать, {username}!</p> // Выводим имя пользователя
+        )}
       </div>
     </div>
   );

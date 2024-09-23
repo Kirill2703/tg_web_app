@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createUser, fetchUserNameByTelegramId } from "../thunks/userThunk"; 
+import { createUser, fetchUserNameByChatId } from "../thunks/userThunk"; 
 
 // Создание среза
 const userSlice = createSlice({
@@ -28,15 +28,16 @@ const userSlice = createSlice({
         state.error = action.error.message;
       })
       // Обработка получения имени пользователя
-      .addCase(fetchUserNameByTelegramId.pending, (state) => {
+      .addCase(fetchUserNameByChatId.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchUserNameByTelegramId.fulfilled, (state, action) => {
+      .addCase(fetchUserNameByChatId.fulfilled, (state, action) => {
         state.loading = false;
-        state.username = action.payload.username;
+        state.username = action.payload;
+        console.log("Имя пользователя обновлено: ", action.payload);
       })
-      .addCase(fetchUserNameByTelegramId.rejected, (state, action) => {
+      .addCase(fetchUserNameByChatId.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });

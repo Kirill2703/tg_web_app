@@ -1,16 +1,19 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux"; // Импортируем useSelector
+import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
 import Header from "./components/header/header";
 import LoadingScreen from "./components/loadingScreen/loadingScreen";
 import UserLoader from "./components/userLoader/userLoader";
+import { fetchUserNameByChatId } from "./thunks/userThunk"; // Импортируем thunk для загрузки пользователя
 
 const tg = window.Telegram.WebApp;
 
 function App() {
-  const [loading, setLoading] = useState(true);
-  const telegramId = tg.initDataUnsafe?.user?.id; // Получаем Telegram ID из WebApp
-  const userName = useSelector((state) => state.user.name); // Получаем имя пользователя из Redux
+  const [loading, setLoading] = useState(true); // Состояние загрузки
+  const dispatch = useDispatch();
+  const userName = useSelector((state) => state.user.username); // Получаем имя пользователя из Redux
+  
+  const chatId = tg?.initDataUnsafe?.user?.id;
 
   useEffect(() => {
     // Сразу расширяем приложение на весь экран
@@ -21,18 +24,15 @@ function App() {
 
     // Симуляция загрузки данных
     setTimeout(() => {
-      setLoading(false);
+      if (chatId) {
+        dispatch(fetchUserNameByChatId(chatId)); // Загружаем имя пользователя по chatId
+      }
+      setLoading(false); // После загрузки устанавливаем состояние загрузки в false
     }, 2000); // Условная задержка 2 секунды
-  }, []);
+  }, [dispatch, chatId]);
 
   if (loading) {
-    return (
-      <>
-        <LoadingScreen />
-        {telegramId && <UserLoader telegramId={telegramId} />}{" "}
-        {/* Загружаем имя пользователя */}
-      </>
-    ); // Показываем компонент загрузки
+    return <LoadingScreen />; // Показываем компонент загрузки
   }
 
   return (
