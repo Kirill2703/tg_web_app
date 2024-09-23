@@ -8,13 +8,14 @@ function App() {
   const [loading, setLoading] = useState(true); // Добавьте состояние loading
 
   useEffect(() => {
-    // Симуляция загрузки, замените это на ваши реальные данные
+    tg.ready(); // Инициализация Telegram Web App
+
+    // После полной загрузки приложения - вызываем expand()
     setTimeout(() => {
+      tg.expand(); // Расширяем окно на весь экран
       setLoading(false);
-      tg.expand();
-      tg.ready(); // Подготовьте Telegram Web App
-    }, 4000); // 2 секунды
-  }, [tg]);
+    }, 2000); // Условная задержка для симуляции загрузки данных
+  }, []);
 
   if (loading) {
     return <LoadingScreen />; // Показываем компонент загрузки
