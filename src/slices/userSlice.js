@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createUser, fetchUserNameByTelegramId } from "../thunks/userThunk"; // Импортируем thunks
+import { createUser, fetchUserNameByTelegramId } from "../thunks/userThunk"; 
 
 // Создание среза
 const userSlice = createSlice({
