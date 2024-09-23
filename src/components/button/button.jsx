@@ -1,7 +1,15 @@
-import React from 'react';
+// src/components/Button.js
 
-const Button = (props) => {
-    return <button {...props} className="button"></button>;
-}
+import React from "react";
+
+const Button = ({ userName, ...props }) => {
+  return (
+    <div>
+      <button {...props} className="button"></button>
+      {userName && <p className="user-name">{userName}</p>}{" "}
+      {/* Отображаем имя пользователя */}
+    </div>
+  );
+};
 
 export default Button;
