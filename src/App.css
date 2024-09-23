@@ -1,3 +1,10 @@
+:root {
+  --font-primary: 'Montserrat', sans-serif;
+  --font-secondary: 'Poppins', sans-serif;
+  --font-size-main: 16px;
+  --font-size-heading: 24px;
+}
+
 *{
   margin: 0;
   padding: 0;
@@ -43,6 +50,7 @@ body{
   height: 100vh; 
   margin-bottom: 20px;
   position: relative;
+  object-fit: scale-down;
 
 }
 .text-loading-screen{
@@ -51,4 +59,7 @@ body{
   bottom: 10%;
   z-index: 1000;
   color: aliceblue;
+  font-family: var(--font-secondary);
+  font-weight: 400;
+  font-size: var(--font-size-heading);
 }
