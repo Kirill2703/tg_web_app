@@ -15,8 +15,11 @@ const Main = () => {
   const chatId = tg.initDataUnsafe?.user?.id;
 
   useEffect(() => {
+    console.log("Chat ID:", chatId);
     const timer = setTimeout(() => {
-      dispatch(fetchAllUsers());
+      if (chatId) {
+        dispatch(fetchUserByChatId(chatId)); // Получаем пользователя по chatId
+      }
       setIsLoading(false);
     }, 2000);
 
