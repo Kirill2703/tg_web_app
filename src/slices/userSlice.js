@@ -40,7 +40,7 @@ const userSlice = createSlice({
       .addCase(fetchUserNameByChatId.fulfilled, (state, action) => {
         state.loading = false;
         state.username = action.payload;
-        state.username = action.payload.username;
+        state.
         console.log("Имя пользователя обновлено: ", action.payload);
       })
       .addCase(fetchUserNameByChatId.rejected, (state, action) => {
