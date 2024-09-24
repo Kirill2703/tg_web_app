@@ -39,6 +39,7 @@ const userSlice = createSlice({
       })
       .addCase(fetchUserNameByChatId.fulfilled, (state, action) => {
         state.loading = false;
+        state.username = action.payload.username;
         const foundUser = state.user.find(
           (user) => user.chatId === action.payload.chatId
         );
