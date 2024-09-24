@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-const API_URL = "/api/users"; // URL вашего API
+const API_URL = "/api/user"; // URL вашего API
 
 // Асинхронное действие для создания пользователя
 export const createUser = createAsyncThunk(
@@ -23,10 +23,25 @@ export const createUser = createAsyncThunk(
   }
 );
 
+export const fetchAllUsers = createAsyncThunk(
+  "user/fetchAllUsers",
+  async () => {
+    const response = await fetch(API_URL);
+    if (!response.ok) {
+      console.error("Ошибка при получении пользователей:", response.statusText); // Логируем ошибку
+      throw new Error("Не удалось загрузить пользователей");
+    }
+
+    const data = await response.json();
+    console.log("Полученные пользователи:", data); // Логируем полученные данные
+    return data; // Возвращаем массив пользователей
+  }
+);
+
 // Асинхронное действие для получения имени пользователя по telegramId
 export const fetchUserNameByChatId = createAsyncThunk(
   "user/fetchUserNameByChatId",
-  async (telegramId) => {
+  async (chatId) => {
     const response = await fetch(`${API_URL}/${chatId}`); // Здесь API_URL должен быть "/api/user"
     if (!response.ok) {
       console.error("Ошибка при получении имени пользователя: ", response);

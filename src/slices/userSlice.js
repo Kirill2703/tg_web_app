@@ -1,5 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createUser, fetchUserNameByChatId } from "../thunks/userThunk"; 
+import {
+  createUser,
+  fetchUserNameByChatId,
+  fetchAllUsers,
+} from "../thunks/userThunk";
 
 // Создание среза
 const userSlice = createSlice({
@@ -7,6 +11,7 @@ const userSlice = createSlice({
   initialState: {
     currentUser: null,
     username: "",
+    users: [],
     loading: false,
     error: null,
   },
@@ -38,6 +43,18 @@ const userSlice = createSlice({
         console.log("Имя пользователя обновлено: ", action.payload);
       })
       .addCase(fetchUserNameByChatId.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(fetchAllUsers.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchAllUsers.fulfilled, (state, action) => {
+        state.loading = false;
+        state.users = action.payload; // Сохраняем полученных пользователей
+      })
+      .addCase(fetchAllUsers.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });
