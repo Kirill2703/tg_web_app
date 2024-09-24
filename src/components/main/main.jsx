@@ -6,10 +6,9 @@ import LoadingScreen from "../loadingScreen/loadingScreen";
 
 const Main = () => {
   const dispatch = useDispatch();
-//   const userName = useSelector((state) => state.user.username); // Получаем имя пользователя из Redux
-  const currentUser = useSelector((state) => state.user.user); // Получаем список пользователей
+  const currentUser = useSelector((state) => state.user.currentUser); // Получаем список пользователей
   const loading = useSelector((state) => state.user.loading); // Получаем состояние загрузки
-//   const [isLoading, setIsLoading] = useState(true);
+  //   const [isLoading, setIsLoading] = useState(true);
 
   const tg = window.Telegram.WebApp;
   const chatId = tg.initDataUnsafe?.user?.id;
@@ -20,15 +19,15 @@ const Main = () => {
       if (chatId) {
         dispatch(fetchUserNameByChatId(chatId)); // Получаем пользователя по chatId
       }
-    //   setIsLoading(false);
+      //   setIsLoading(false);
     }, [dispatch, chatId]);
 
     return () => clearTimeout(timer);
   }, [dispatch]);
 
-//   if (isLoading || loading) {
-//     return <LoadingScreen />;
-//   }
+  //   if (isLoading || loading) {
+  //     return <LoadingScreen />;
+  //   }
 
   return (
     <div>
@@ -37,7 +36,7 @@ const Main = () => {
         <>
           <h2>Добро пожаловать, {currentUser.username}!</h2>
           <h3>Информация о пользователе:</h3>
-          <p>Chat ID: {currentUser.chatId || chatId}</p>
+          <p>Chat ID: {currentUser.chatId}</p>
           {/* Вы можете добавить больше информации о пользователе */}
         </>
       ) : (

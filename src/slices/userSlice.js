@@ -39,14 +39,8 @@ const userSlice = createSlice({
       })
       .addCase(fetchUserNameByChatId.fulfilled, (state, action) => {
         state.loading = false;
-        state.username = action.payload.username;
-        const foundUser = state.user.find(
-          (user) => user.chatId === action.payload.chatId
-        );
-        if (foundUser) {
-          state.user = [...state.user, foundUser]; // Сохраняем найденного пользователя в массив
-        }
-        console.log("Имя пользователя обновлено: ", action.payload);
+        state.currentUser = action.payload.user;
+        console.log("Имя пользователя обновлено: ", action.payload.user);
       })
       .addCase(fetchUserNameByChatId.rejected, (state, action) => {
         state.loading = false;
