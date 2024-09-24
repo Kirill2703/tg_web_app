@@ -36,8 +36,8 @@ const Main = () => {
       {currentUser ? (
         <>
           <h2>Добро пожаловать, {currentUser.username}!</h2>
-                  <h3>Информация о пользователе:</h3>
-          <p>Chat ID: {currentUser.chatId}</p>
+          <h3>Информация о пользователе:</h3>
+          <p>Chat ID: {currentUser.chatId || chatId}</p>
           {/* Вы можете добавить больше информации о пользователе */}
         </>
       ) : (
