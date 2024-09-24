@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 const LoadingScreen = () => {
-  const username = useSelector((state) => state.user.username); // Изменили на username
+  const username = useSelector((state) => state.user.username); 
   const loading = useSelector((state) => state.user.loading);
 
   return (

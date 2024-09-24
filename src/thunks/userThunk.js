@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-const API_URL = "/api/user"; // URL вашего API
+const API_URL = "http://localhost:4000/api/user"; // URL вашего API
 
 // Асинхронное действие для создания пользователя
 export const createUser = createAsyncThunk(

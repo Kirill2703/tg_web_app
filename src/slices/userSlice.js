@@ -11,7 +11,7 @@ const userSlice = createSlice({
   initialState: {
     currentUser: null,
     username: "",
-    users: [],
+    user: [],
     loading: false,
     error: null,
   },
@@ -52,7 +52,7 @@ const userSlice = createSlice({
       })
       .addCase(fetchAllUsers.fulfilled, (state, action) => {
         state.loading = false;
-        state.users = action.payload; // Сохраняем полученных пользователей
+        state.user = action.payload; // Сохраняем полученных пользователей
       })
       .addCase(fetchAllUsers.rejected, (state, action) => {
         state.loading = false;
