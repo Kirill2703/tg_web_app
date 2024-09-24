@@ -1,9 +1,17 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllUsers } from "../../thunks/userThunk";
 
 const LoadingScreen = () => {
-  const username = useSelector((state) => state.user.username); 
+  const username = useSelector((state) => state.user.username);
   const loading = useSelector((state) => state.user.loading);
+  // const users = useSelector((state) => state.user.user || []); // Получаем список пользователей
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // Загрузка всех пользователей
+    dispatch(fetchAllUsers());
+  }, []);
 
   return (
     <div className="loading-screen">
