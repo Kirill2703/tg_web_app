@@ -3,6 +3,7 @@ import { fetchAllUsers, fetchUserNameByChatId } from "../../thunks/userThunk";
 import { useDispatch, useSelector } from "react-redux";
 import Header from "../header/header";
 import LoadingScreen from "../loadingScreen/loadingScreen";
+import  "../../App.css"
 
 const Main = () => {
   const dispatch = useDispatch();
@@ -19,13 +20,13 @@ const Main = () => {
     // Имитация задержки загрузки на 2 секунды
     const loadingTimer = setTimeout(() => {
       setIsLoading(false); // Убираем экран загрузки
-    }, 2000);
+    }, 100000);
 
     // Имитация получения данных с задержкой
     if (chatId) {
       const fetchUserTimer = setTimeout(() => {
         dispatch(fetchUserNameByChatId(chatId)); // Получаем пользователя по chatId
-      }, 1000); // Запрос через 1 секунду
+      }, 110000); // Запрос через 1 секунду
 
       return () => clearTimeout(fetchUserTimer); // Очистка таймера запроса
     }
@@ -44,7 +45,6 @@ const Main = () => {
         <>
           <h2>{currentUser.username}</h2>
           <h3>Твои очки: {currentUser.points }</h3>
-          <p>Chat ID: {currentUser.chatId}</p>
         </>
       ) : (
         <h2>Пользователь не найден.</h2>
