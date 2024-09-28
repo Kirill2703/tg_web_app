@@ -44,7 +44,7 @@ body{
 }
 
 .loading-screen img {
-  width: 90%;
+  width: 100%;
   height: auto; 
   /* margin-bottom: 20px; */
   position: relative;
