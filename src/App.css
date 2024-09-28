@@ -52,7 +52,7 @@ body{
 .text-loading-screen{
   position: absolute;
   left: 28%;
-  bottom: 35%;
+  bottom: 20%;
   z-index: 1000;
   color: whitesmoke;
   opacity: 0.3;
@@ -70,5 +70,5 @@ body{
   opacity: 0.8;
   left: 10%;
   right: 10%;
-  bottom: 25%;
+  bottom: 10%;
 }
