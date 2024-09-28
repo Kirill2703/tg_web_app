@@ -8,36 +8,43 @@ const Main = () => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.user.currentUser); // Получаем список пользователей
   const loading = useSelector((state) => state.user.loading); // Получаем состояние загрузки
-  //   const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
 
   const tg = window.Telegram.WebApp;
   const chatId = tg.initDataUnsafe?.user?.id;
 
   useEffect(() => {
     console.log("Chat ID:", chatId);
-    const timer = setTimeout(() => {
-      if (chatId) {
+
+    // Имитация задержки загрузки на 2 секунды
+    const loadingTimer = setTimeout(() => {
+      setIsLoading(false); // Убираем экран загрузки
+    }, 2000);
+
+    // Имитация получения данных с задержкой
+    if (chatId) {
+      const fetchUserTimer = setTimeout(() => {
         dispatch(fetchUserNameByChatId(chatId)); // Получаем пользователя по chatId
-      }
-      //   setIsLoading(false);
-    }, [dispatch, chatId]);
+      }, 1000); // Запрос через 1 секунду
 
-    return () => clearTimeout(timer);
-  }, [dispatch]);
+      return () => clearTimeout(fetchUserTimer); // Очистка таймера запроса
+    }
 
-  //   if (isLoading || loading) {
-  //     return <LoadingScreen />;
-  //   }
+    return () => clearTimeout(loadingTimer); // Очистка таймера загрузки
+  }, [dispatch, chatId]);
+
+    if (isLoading) {
+      return <LoadingScreen />;
+    }
 
   return (
     <div>
       <Header />
       {currentUser ? (
         <>
-          <h2>Добро пожаловать, {currentUser.username}!</h2>
-          <h3>Информация о пользователе:</h3>
+          <h2>{currentUser.username}</h2>
+          <h3>Твои очки: {currentUser.points }</h3>
           <p>Chat ID: {currentUser.chatId}</p>
-          {/* Вы можете добавить больше информации о пользователе */}
         </>
       ) : (
         <h2>Пользователь не найден.</h2>
