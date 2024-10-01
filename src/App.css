@@ -34,11 +34,11 @@ body {
 
 .footer {
   background-color: #052278; /* #568628 */
-  height: 20px;
+  height: 40px;
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  padding: 0 10px;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
 }
@@ -86,7 +86,7 @@ body {
   color: whitesmoke;
   position: absolute;
   opacity: 0.8;
-  left: 10%;
+  left: 20%;
   right: 10%;
   /* display: flex;
   justify-content: center; */
