@@ -39,16 +39,18 @@ const Main = () => {
   }
 
   return (
-    <div>
+    <div className="main-container">
       <Header />
-      {currentUser ? (
-        <>
-          <h2>{currentUser.username}</h2>
-          <h3>Твои очки: {currentUser.points}</h3>
-        </>
-      ) : (
-        <h2>Пользователь не найден.</h2>
-      )}
+      <div className="content">
+        {currentUser ? (
+          <>
+            <h2>{currentUser.username}</h2>
+            <h3>Твои очки: {currentUser.points}</h3>
+          </>
+        ) : (
+          <h2>Пользователь не найден.</h2>
+        )}
+      </div>
       <Footer />
     </div>
   );
