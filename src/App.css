@@ -70,14 +70,16 @@ body {
 }
 .text-loading-screen {
   position: absolute;
-  left: 28%;
-  bottom: 20%;
+  left: 50%;
+  bottom: 50%;
   z-index: 1000;
   color: whitesmoke;
   opacity: 0.3;
   font-family: var(--font-primary);
   font-weight: 400;
   font-size: var(--font-size-heading);
+  padding-top: 20px;
+  transform: translate(-50%, 50%);
 }
 
 .loading-text-secondary {
@@ -87,11 +89,9 @@ body {
   color: whitesmoke;
   position: absolute;
   opacity: 0.8;
-  left: 20%;
-  right: 10%;
-  /* display: flex;
-  justify-content: center; */
-  bottom: 10%;
+  left: 50%;
+  bottom: 50%;
+  transform: translateX(-50%);
 }
 
 .nav-menu {
