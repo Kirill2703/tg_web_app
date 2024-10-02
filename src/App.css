@@ -38,7 +38,8 @@ body {
   width: 100%;
   display: flex;
   align-items: center;
-  padding: 0 10px;
+  justify-content: space-around;
+  padding: 0 4px;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
 }
@@ -99,11 +100,12 @@ body {
   color: var(--font-color-primary);
 }
 
-.border-nav-menu {
+/* .border-nav-menu {
   border-right: 1px solid whitesmoke;
   border-left: 1px solid whitesmoke;
   height: 80%;
   display: flex;
   align-items: center;
   padding: 0 4px;
-}
+} */
+

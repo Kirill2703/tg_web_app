@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-// import { fetchAllUsers, fetchUserNameByChatId } from "./thunks/userThunk"; // Подключаем thunks
-// import LoadingScreen from "./components/loadingScreen/loadingScreen";
-// import Header from "./components/header/header";
-// import { Outlet } from "react-router-dom";
 import Main from "./components/main/main";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import Header from "./components/header/header";
+import Prediction from "./components/prediction/prediction";
+import Quiz from "./components/quiz/quiz";
+import Layout from "./components/layout/layout";
 
 const tg = window.Telegram.WebApp;
 
@@ -14,9 +14,8 @@ function App() {
   // const users = useSelector((state) => state.user.user || []); // Получаем список пользователей
   // const loading = useSelector((state) => state.user.loading); // Получаем состояние загрузки
   useEffect(() => {
-
     tg.expand();
-  
+
     tg.ready();
 
     // // Загрузка всех пользователей
@@ -24,15 +23,23 @@ function App() {
   }, []);
 
   // if (loading) {
-  //   return <LoadingScreen />; 
+  //   return <LoadingScreen />;
   // }
 
   return (
-    <div>
-      <Main />
-    </div>
+    <Router>
+      <div>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Main />} />
+            <Route path="/prediction" element={<Prediction />} />
+            <Route path="/quiz" element={<Quiz />} />
+            <Route path="/table" element={<table />} />
+          </Route>
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
 export default App;
-

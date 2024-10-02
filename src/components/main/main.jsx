@@ -40,7 +40,6 @@ const Main = () => {
 
   return (
     <div className="main-container">
-      <Header />
       <div className="content">
         {currentUser ? (
           <>
@@ -51,7 +50,6 @@ const Main = () => {
           <h2>Пользователь не найден.</h2>
         )}
       </div>
-      <Footer />
     </div>
   );
 };

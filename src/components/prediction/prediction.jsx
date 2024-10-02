@@ -3,7 +3,7 @@ import React from 'react';
 const Prediction = () => {
     return (
         <div>
-            <p>Prediction</p>
+            <h1>Hello</h1>
         </div>
     );
 }
