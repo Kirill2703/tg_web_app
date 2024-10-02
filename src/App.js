@@ -5,6 +5,7 @@ import Header from "./components/header/header";
 import Prediction from "./components/prediction/prediction";
 import Quiz from "./components/quiz/quiz";
 import Layout from "./components/layout/layout";
+import Footer from "./components/footer/footer";
 
 const tg = window.Telegram.WebApp;
 
@@ -28,15 +29,19 @@ function App() {
 
   return (
     <Router>
-      <div>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Main />} />
-            <Route path="/prediction" element={<Prediction />} />
-            <Route path="/quiz" element={<Quiz />} />
-            <Route path="/table" element={<table />} />
-          </Route>
-        </Routes>
+      <div className="main-container">
+        <Header />
+        <div class="content">
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Main />} />
+              <Route path="/prediction" element={<Prediction />} />
+              <Route path="/quiz" element={<Quiz />} />
+              <Route path="/table" element={<table />} />
+            </Route>
+          </Routes>
+        </div>
+        <Footer />
       </div>
     </Router>
   );

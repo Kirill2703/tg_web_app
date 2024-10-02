@@ -39,9 +39,25 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding: 0 4px;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+}
+
+.icon-text-container {
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+}
+
+.icon {
+  font-size: 12px; 
+  margin-bottom: 4px; 
+}
+
+.link-nav-menu {
+  text-decoration: none;
+  font-size: 8px; 
+  color: var(--font-color-primary);
 }
 
 .button {
@@ -89,18 +105,8 @@ body {
   position: absolute;
   opacity: 0.8;
   left: 50%;
-  bottom: 50%;
+  bottom: 30%;
   transform: translateX(-50%);
 }
 
-
-
-/* .border-nav-menu {
-  border-right: 1px solid whitesmoke;
-  border-left: 1px solid whitesmoke;
-  height: 80%;
-  display: flex;
-  align-items: center;
-  padding: 0 4px;
-} */
 

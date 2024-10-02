@@ -39,8 +39,7 @@ const Main = () => {
   }
 
   return (
-    <div className="main-container">
-      <div className="content">
+    <div>
         {currentUser ? (
           <>
             <h2>{currentUser.username}</h2>
@@ -49,7 +48,6 @@ const Main = () => {
         ) : (
           <h2>Пользователь не найден.</h2>
         )}
-      </div>
     </div>
   );
 };
