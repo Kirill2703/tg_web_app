@@ -4,17 +4,17 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <div className="footer">
-      <div className="border-nav-menu">
-        <Link to="/prediction" className="btn-nav-menu">Прогнозы</Link>
+      <div className="nav-menu">
+        <Link to="/prediction" className="link-nav-menu">Прогнозы</Link>
       </div>
-      <div className="border-nav-menu">
-          <Link to="/quiz" className="nav-menu">Викторина</Link>
+      <div className="nav-menu">
+          <Link to="/quiz" className="link-nav-menu">Викторина</Link>
       </div>
-      <div className="border-nav-menu">
-        <Link to="/" className="nav-menu">Главный экран</Link>
+      <div className="nav-menu">
+        <Link to="/" className="link-nav-menu">Главный экран</Link>
       </div>
-      <div className="border-nav-menu">
-        <Link to="/table" className="nav-menu">Таблица</Link>
+      <div className="nav-menu">
+        <Link to="/table" className="link-nav-menu">Таблица</Link>
       </div>
     </div>
   );

@@ -78,7 +78,6 @@ body {
   font-family: var(--font-primary);
   font-weight: 400;
   font-size: var(--font-size-heading);
-  padding-top: 20px;
   transform: translate(-50%, 50%);
 }
 
@@ -94,11 +93,7 @@ body {
   transform: translateX(-50%);
 }
 
-.nav-menu {
-  font-family: var(--font-primary);
-  font-size: 6px;
-  color: var(--font-color-primary);
-}
+
 
 /* .border-nav-menu {
   border-right: 1px solid whitesmoke;
