@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Main from "./components/main/main";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Header from "./components/header/header";
@@ -10,10 +10,8 @@ import Footer from "./components/footer/footer";
 const tg = window.Telegram.WebApp;
 
 function App() {
-  // const dispatch = useDispatch();
-  // const userName = useSelector((state) => state.user.username); // Получаем имя пользователя из Redux
-  // const users = useSelector((state) => state.user.user || []); // Получаем список пользователей
-  // const loading = useSelector((state) => state.user.loading); // Получаем состояние загрузки
+  const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
     tg.expand();
 
@@ -30,18 +28,18 @@ function App() {
   return (
     <Router>
       <div className="main-container">
-        <Header />
+        {!isLoading && <Header />}
         <div class="content">
           <Routes>
             <Route path="/" element={<Layout />}>
-              <Route index element={<Main />} />
+              <Route index element={<Main setLoading={setIsLoading} />} />
               <Route path="/prediction" element={<Prediction />} />
               <Route path="/quiz" element={<Quiz />} />
               <Route path="/table" element={<table />} />
             </Route>
           </Routes>
         </div>
-        <Footer />
+        {!isLoading && <Footer />}
       </div>
     </Router>
   );

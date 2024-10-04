@@ -6,7 +6,7 @@ import LoadingScreen from "../loadingScreen/loadingScreen";
 import "../../App.css";
 import Footer from "../footer/footer";
 
-const Main = () => {
+const Main = ({setLoading}) => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.user.currentUser); // Получаем список пользователей
   const [isLoading, setIsLoading] = useState(true);
@@ -15,11 +15,12 @@ const Main = () => {
   const chatId = tg.initDataUnsafe?.user?.id;
 
   useEffect(() => {
-    console.log("Chat ID:", chatId);
+    setLoading(true);
 
     // Имитация задержки загрузки на 2 секунды
     const loadingTimer = setTimeout(() => {
       setIsLoading(false); // Убираем экран загрузки
+      setLoading(false);
     }, 2000);
 
     // Имитация получения данных с задержкой
