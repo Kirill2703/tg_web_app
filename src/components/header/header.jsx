@@ -26,10 +26,8 @@ const Header = () => {
       </button> */}
       {currentUser ? (
         <>
-          <div className="header-info">
-            <div>Твои очки: {currentUser.points}</div>
-            <div>{currentUser.username}</div>
-          </div>
+          <div>Твои очки: {currentUser.points}</div>
+          <div>{currentUser.username}</div>
         </>
       ) : (
         <p
