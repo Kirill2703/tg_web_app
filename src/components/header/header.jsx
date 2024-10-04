@@ -1,50 +1,44 @@
-import React from 'react';
-import { FaBullseye, FaHome, FaRegLightbulb, FaTrophy } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
-const Header = () => {
-    const tg = window.Telegram.WebApp;
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchUserNameByChatId } from "../../thunks/userThunk";
+import { IoExitOutline } from "react-icons/io5";
 
-    const onClose = () => {
-      tg.close();
-    };
-    return (
-        <div className='header'>
-            {/* <button onClick={onClose} className='button'>Close</button>
-            <span className='username'>{tg.initDataUnsef?.user?.username }</span> */}
-            <div className="nav-menu">
-        <Link to="/prediction" className="link-nav-menu">
-          <div className="icon-text-container">
-            <FaBullseye className="icon" />
-            <span>Прогнозы</span>
+const Header = () => {
+  const currentUser = useSelector((state) => state.user.currentUser);
+  const dispatch = useDispatch();
+
+  const tg = window.Telegram.WebApp;
+  const chatId = tg.initDataUnsafe?.user?.id;
+
+  useEffect(() => {
+    if (chatId) {
+      dispatch(fetchUserNameByChatId);
+    }
+  }, []);
+
+  const onClose = () => {
+    tg.close();
+  };
+  return (
+    <div className="header">
+      {/* <button onClick={onClose} className="button">
+        Close
+      </button> */}
+      {currentUser ? (
+        <>
+          <div className="header-info">
+            <h3>Твои очки: {currentUser.points}</h3>
+            <h2>{currentUser.username}</h2>
           </div>
-        </Link>
-      </div>
-      <div className="nav-menu">
-        <Link to="/quiz" className="link-nav-menu">
-          <div className="icon-text-container">
-            <FaRegLightbulb className="icon" />
-            <span>Викторина</span>
-          </div>
-        </Link>
-      </div>
-      <div className="nav-menu">
-        <Link to="/" className="link-nav-menu">
-          <div className="icon-text-container">
-            <FaHome className="icon" />
-            <span>Дом</span>
-          </div>
-        </Link>
-      </div>
-      <div className="nav-menu">
-        <Link to="/table" className="link-nav-menu">
-          <div className="icon-text-container">
-            <FaTrophy className="icon" />
-            <span>Таблица</span>
-          </div>
-        </Link>
-      </div>
-        </div>
-    );
-}
+        </>
+      ) : (
+                  <h2 style={{ color: "whitesmoke", fontSize: "16px"}}>Пользователь не найден</h2>
+      )}
+      <button onClick={onClose} className="button">
+        <IoExitOutline />
+      </button>
+    </div>
+  );
+};
 
 export default Header;

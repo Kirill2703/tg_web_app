@@ -40,14 +40,7 @@ const Main = () => {
 
   return (
     <div>
-        {currentUser ? (
-          <>
-            <h2>{currentUser.username}</h2>
-            <h3>Твои очки: {currentUser.points}</h3>
-          </>
-        ) : (
-          <h2>Пользователь не найден.</h2>
-        )}
+        
     </div>
   );
 };
