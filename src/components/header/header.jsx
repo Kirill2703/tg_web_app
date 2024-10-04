@@ -27,8 +27,8 @@ const Header = () => {
       {currentUser ? (
         <>
           <div className="header-info">
-            <p>Твои очки: {currentUser.points}</p>
-            <p>{currentUser.username}</p>
+            <div>Твои очки: {currentUser.points}</div>
+            <div>{currentUser.username}</div>
           </div>
         </>
       ) : (
