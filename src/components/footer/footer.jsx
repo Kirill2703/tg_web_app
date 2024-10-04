@@ -17,7 +17,7 @@ const Footer = () => {
       <div className="nav-menu">
         <Link to="/quiz" className="link-nav-menu">
           <div className="icon-text-container">
-            <FaTrophy className="icon" />
+            <FaRegLightbulb className="icon" />
             <span>Викторина</span>
           </div>
         </Link>
@@ -33,7 +33,7 @@ const Footer = () => {
       <div className="nav-menu">
         <Link to="/table" className="link-nav-menu">
           <div className="icon-text-container">
-            <FaRegLightbulb className="icon" />
+            <FaTrophy className="icon" />
             <span>Таблица</span>
           </div>
         </Link>
