@@ -1,24 +1,31 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { fetchAllPredictions } from "../thunks/predictionThunk";
 
-const predictionSlice = createSlice({
-  name: "prediction",
-  initialState: {
-    predictions: [],
-    loading: false,
-  },
-  reducers: {
-    setPredictions: (state, action) => {
-      state.predictions = action.payload;
-    },
-    addPrediction: (state, action) => {
-      state.predictions.push(action.payload);
-    },
-    setLoading: (state, action) => {
-      state.loading = action.payload;
-    },
+const initialState = {
+  predictions: [],
+  loading: false,
+  error: null,
+};
+
+const predictionsSlice = createSlice({
+  name: "predictions",
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchAllPredictions.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchAllPredictions.fulfilled, (state, action) => {
+        state.loading = false;
+        state.predictions = action.payload;
+      })
+      .addCase(fetchAllPredictions.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      });
   },
 });
 
-export const { setPredictions, addPrediction, setLoading } =
-  predictionSlice.actions;
-export default predictionSlice.reducer;
+export default predictionsSlice.reducer;
