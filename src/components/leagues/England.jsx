@@ -10,13 +10,10 @@ const England = () => {
   const { predictions, loading, error } = useSelector(
     (state) => state.predictions
   );
-  const userName = useSelector((state) => state.user.username);
-  const userPoints = useSelector((state) => state.user.points); // Предполагаем, что у вас есть очки в состоянии пользователя
+  const currentUser = useSelector((state) => state.user.currentUser);
 
   const [selectedPrediction, setSelectedPrediction] = useState(null);
-  const [showTeamModal, setShowTeamModal] = useState(false);
-  const [showBetModal, setShowBetModal] = useState(false);
-  const [betPoints, setBetPoints] = useState(0);
+  const [showModal, setShowModal] = useState(false);
 
   const tg = window.Telegram.WebApp;
   const chatId = tg.initDataUnsafe?.user?.id;
@@ -31,6 +28,7 @@ const England = () => {
     dispatch(fetchAllPredictions());
   }, [dispatch]);
 
+  // Проверка на загрузку и ошибки
   if (loading) {
     return <LoadingScreen />;
   }
@@ -46,26 +44,30 @@ const England = () => {
 
   const handleTeamClick = (prediction, team) => {
     setSelectedPrediction({ ...prediction, selectedTeam: team });
-    setShowTeamModal(true);
+    setShowModal(true);
   };
 
   const handleSubmitPrediction = () => {
     if (!userName) {
       console.error("Имя пользователя пустое. Проверьте, загружены ли данные.");
-      return;
+      return; // Прекращаем выполнение, если имя пользователя пустое
     }
 
+    console.log("Отправка данных:", {
+      userName: currentUser.username,
+      predictionId: selectedPrediction._id,
+      selectedTeam: selectedPrediction.selectedTeam,
+    });
 
     dispatch(
       createUserPrediction({
-        username: userName,
+        userName: currentUser.username,
         predictionId: selectedPrediction._id,
         selectedTeam: selectedPrediction.selectedTeam,
       })
     );
 
-    setShowBetModal(false);
-    setShowTeamModal(false);
+    setShowModal(false); // Закрыть окно после отправки прогноза
   };
 
   return (
@@ -85,30 +87,13 @@ const England = () => {
         ))}
       </ul>
 
-      {showTeamModal && (
+      {showModal && (
         <div className="modal">
           <p>
             Вы уверены, что хотите выбрать {selectedPrediction.selectedTeam}?
           </p>
-          <input
-            type="number"
-            value={betPoints}
-            onChange={(e) => setBetPoints(Number(e.target.value))}
-          />
-          <button onClick={() => setShowBetModal(true)}>
-            Подтвердить ставку
-          </button>
-          <button onClick={() => setShowTeamModal(false)}>Отмена</button>
-        </div>
-      )}
-
-      {showBetModal && (
-        <div className="modal">
-          <p>
-            {selectedPrediction.selectedTeam}.
-          </p>
-          <button onClick={handleSubmitPrediction}>Сделать ставку</button>
-          <button onClick={() => setShowBetModal(false)}>Отмена</button>
+          <button onClick={handleSubmitPrediction}>Да</button>
+          <button onClick={() => setShowModal(false)}>Нет</button>
         </div>
       )}
     </div>
