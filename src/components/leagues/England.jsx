@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAllPredictions } from "../../thunks/predictionThunk";
+
 import LoadingScreen from "../loadingScreen/loadingScreen";
 import { createUserPrediction } from "../../thunks/userPredictionThunk";
 
@@ -40,10 +40,16 @@ const England = () => {
   };
 
   const handleSubmitPrediction = () => {
+    console.log("Отправка данных:", {
+      userId,
+      prediction: selectedPrediction._id,
+      selectedTeam: selectedPrediction.selectedTeam,
+    });
+
     dispatch(
       createUserPrediction({
         userId,
-        predictionId: selectedPrediction._id,
+        predictionId: selectedPrediction._id, // Убедитесь, что используется правильный ключ
         selectedTeam: selectedPrediction.selectedTeam,
       })
     );
