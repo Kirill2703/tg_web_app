@@ -16,6 +16,7 @@ const England = () => {
   const [selectedPrediction, setSelectedPrediction] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
+  const tg = window.Telegram.WebApp;
   const chatId = tg.initDataUnsafe?.user?.id;
 
   useEffect(() => {
