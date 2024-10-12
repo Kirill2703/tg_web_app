@@ -15,18 +15,7 @@ const userPredictionSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      // .addCase(fetchAllUserPredictions.pending, (state) => {
-      //   state.loading = true;
-      //   state.error = null;
-      // })
-      // .addCase(fetchAllUserPredictions.fulfilled, (state, action) => {
-      //   state.loading = false;
-      //   state.predictions = action.payload;
-      // })
-      // .addCase(fetchAllUserPredictions.rejected, (state, action) => {
-      //   state.loading = false;
-      //   state.error = action.payload;
-      // })
+     
       .addCase(createUserPrediction.pending, (state) => {
         state.loading = true;
         state.error = null;
