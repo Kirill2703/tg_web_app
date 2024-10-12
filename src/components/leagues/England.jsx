@@ -11,7 +11,7 @@ const England = () => {
   const { predictions, loading, error } = useSelector(
     (state) => state.predictions
   );
-  const userId = useSelector((state) => state.user.id);
+  const userName = useSelector((state) => state.user.username);
 
   const [selectedPrediction, setSelectedPrediction] = useState(null);
   const [showModal, setShowModal] = useState(false);
@@ -46,14 +46,14 @@ const England = () => {
 
   const handleSubmitPrediction = () => {
     console.log("Отправка данных:", {
-      userId,
+      userName,
       prediction: selectedPrediction._id,
       selectedTeam: selectedPrediction.selectedTeam,
     });
 
     dispatch(
       createUserPrediction({
-        userId,
+        userName,
         predictionId: selectedPrediction._id, // Убедитесь, что используется правильный ключ
         selectedTeam: selectedPrediction.selectedTeam,
       })

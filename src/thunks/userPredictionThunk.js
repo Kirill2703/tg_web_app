@@ -20,7 +20,7 @@ export const fetchAllUserPredictions = createAsyncThunk(
 );
 export const createUserPrediction = createAsyncThunk(
   "user-prediction/createPrediction",
-  async ({ userId, predictionId, selectedTeam }, thunkAPI) => {
+  async ({ username, predictionId, selectedTeam }, thunkAPI) => {
     try {
       const response = await fetch(`${API_URL}/create`, {
         method: "POST",
@@ -28,7 +28,7 @@ export const createUserPrediction = createAsyncThunk(
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          userId,
+          username,
           predictionId,
           selectedTeam,
         }),
