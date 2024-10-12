@@ -8,7 +8,7 @@ const initialState = {
 };
 
 const predictionsSlice = createSlice({
-  name: "predictions",
+  name: "prediction",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
