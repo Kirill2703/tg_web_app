@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
-  fetchAllUserPredictions,
   createUserPrediction,
 } from "../thunks/userPredictionThunk";
 

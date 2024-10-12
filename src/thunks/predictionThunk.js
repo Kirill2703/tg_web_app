@@ -3,7 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 const API_URL = "http://localhost:4000/api/prediction";
 
-export const fetchAllPredictions = createAsyncThunk(
+const fetchAllPredictions = createAsyncThunk(
   "prediction/fetchAll", // Имя экшена
   async (_, thunkAPI) => {
     try {
@@ -18,3 +18,5 @@ export const fetchAllPredictions = createAsyncThunk(
     }
   }
 );
+
+export default fetchAllPredictions;

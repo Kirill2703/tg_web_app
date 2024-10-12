@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
 import LoadingScreen from "../loadingScreen/loadingScreen";
 import { createUserPrediction } from "../../thunks/userPredictionThunk";
+import fetchAllPredictions from "../../thunks/predictionThunk";
+
 
 const England = () => {
   const dispatch = useDispatch();
@@ -16,9 +17,13 @@ const England = () => {
   const [showModal, setShowModal] = useState(false);
 
   // Загружаем предсказания при монтировании компонента
-  useEffect(() => {
-    dispatch(fetchAllPredictions());
-  }, [dispatch]);
+ useEffect(() => {
+   try {
+     dispatch(fetchAllPredictions());
+   } catch (error) {
+     console.error("Ошибка при загрузке предсказаний:", error);
+   }
+ }, [dispatch]);
 
   // Проверка на загрузку и ошибки
   if (loading) {

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchAllPredictions } from "../thunks/predictionThunk";
+import fetchAllPredictions from "../thunks/predictionThunk";
 
 const initialState = {
   predictions: [],
@@ -8,7 +8,7 @@ const initialState = {
 };
 
 const predictionsSlice = createSlice({
-  name: "prediction",
+  name: "predictions",
   initialState,
   reducers: {},
   extraReducers: (builder) => {

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAllPredictions } from "../../thunks/predictionThunk";
+import  fetchAllPredictions  from "../../thunks/predictionThunk";
 import LoadingScreen from "../loadingScreen/loadingScreen";
 
 const France = () => {
