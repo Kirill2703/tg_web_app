@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import LoadingScreen from "../loadingScreen/loadingScreen";
 import { createUserPrediction } from "../../thunks/userPredictionThunk";
 import fetchAllPredictions from "../../thunks/predictionThunk";
+import { fetchUserNameByChatId } from "../../thunks/userThunk";
 
 
 const England = () => {
