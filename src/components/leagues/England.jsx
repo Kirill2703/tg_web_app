@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllPredictions } from "../../thunks/predictionThunk";
 import LoadingScreen from "../loadingScreen/loadingScreen";
-import { fetchAllUserPredictions } from "../../thunks/userPredictionThunk";
+import { createUserPrediction } from "../../thunks/userPredictionThunk";
 
 const England = () => {
   const dispatch = useDispatch();
   // Получаем данные из state
-  const { predictions, loading, error } = useSelector((state) => state.predictions);
+  const { predictions, loading, error } = useSelector(
+    (state) => state.predictions
+  );
   const userId = useSelector((state) => state.user.id);
 
   const [selectedPrediction, setSelectedPrediction] = useState(null);
@@ -39,9 +41,9 @@ const England = () => {
 
   const handleSubmitPrediction = () => {
     dispatch(
-      fetchAllUserPredictions({
+      createUserPrediction({
         userId,
-        prediction: selectedPrediction._id,
+        predictionId: selectedPrediction._id,
         selectedTeam: selectedPrediction.selectedTeam,
       })
     );
