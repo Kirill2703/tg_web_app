@@ -10,29 +10,28 @@ const England = () => {
   const { predictions, loading, error } = useSelector(
     (state) => state.predictions
   );
-  const userName = useSelector((state) => state.user.username);
+  const currentUser = useSelector((state) => state.user.currentUser);
 
   const [selectedPrediction, setSelectedPrediction] = useState(null);
   const [showModal, setShowModal] = useState(false);
-  const [points, setPoints] = useState(0); // Новое состояние для очков
 
   const tg = window.Telegram.WebApp;
   const chatId = tg.initDataUnsafe?.user?.id;
 
-  useEffect(() => {
-    if (chatId) {
-      dispatch(fetchUserNameByChatId(chatId));
-    }
-  }, [dispatch, chatId]);
+ useEffect(() => {
+   if (chatId) {
+     console.log("Chat ID:", chatId); // Логируем chatId
+     dispatch(fetchUserNameByChatId(chatId)); // Получаем пользователя по chatId
+   } else {
+     console.error("Chat ID is empty");
+   }
+ }, [dispatch, chatId]);
 
   useEffect(() => {
-    try {
-      dispatch(fetchAllPredictions());
-    } catch (error) {
-      console.error("Ошибка при загрузке предсказаний:", error);
-    }
+    dispatch(fetchAllPredictions());
   }, [dispatch]);
 
+  // Проверка на загрузку и ошибки
   if (loading) {
     return <LoadingScreen />;
   }
@@ -41,6 +40,7 @@ const England = () => {
     return <div>Ошибка: {error}</div>;
   }
 
+  // Фильтруем предсказания по стране "England"
   const englandPredictions = predictions.filter(
     (predict) => predict.country === "England"
   );
@@ -51,38 +51,37 @@ const England = () => {
   };
 
   const handleSubmitPrediction = () => {
-    if (!userName) {
+    if (!currentUser) {
       console.error("Имя пользователя пустое. Проверьте, загружены ли данные.");
-      return;
+      return; // Прекращаем выполнение, если имя пользователя пустое
     }
 
     console.log("Отправка данных:", {
-      userName,
+      username: currentUser.username,
       predictionId: selectedPrediction._id,
       selectedTeam: selectedPrediction.selectedTeam,
-      points, // Добавляем количество очков в лог
     });
 
     dispatch(
       createUserPrediction({
-        username: userName,
+        username: currentUser.username,
         predictionId: selectedPrediction._id,
         selectedTeam: selectedPrediction.selectedTeam,
-        points, // Передаем количество очков в экшене
       })
     );
-    setShowModal(false);
+
+    setShowModal(false); // Закрыть окно после отправки прогноза
   };
 
   return (
     <div>
-      <h1>England Matches</h1>
+      <h1>Матчи Англии</h1>
       <ul>
         {englandPredictions.map((prediction) => (
           <li key={prediction._id}>
             <span onClick={() => handleTeamClick(prediction, prediction.team1)}>
               {prediction.team1}
-            </span>{" "}
+            </span>
             vs
             <span onClick={() => handleTeamClick(prediction, prediction.team2)}>
               {prediction.team2}
@@ -96,15 +95,6 @@ const England = () => {
           <p>
             Вы уверены, что хотите выбрать {selectedPrediction.selectedTeam}?
           </p>
-          <label>
-            Введите количество очков:
-            <input
-              type="number"
-              value={points}
-              onChange={(e) => setPoints(e.target.value)} // Обновляем состояние очков
-              min="0"
-            />
-          </label>
           <button onClick={handleSubmitPrediction}>Да</button>
           <button onClick={() => setShowModal(false)}>Нет</button>
         </div>
