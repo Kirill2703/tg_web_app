@@ -50,6 +50,6 @@ export const fetchUserNameByChatId = createAsyncThunk(
 
     const data = await response.json();
     console.log("Полученные данные: ", data); // Логируем полученные данные
-    return data; // Здесь нужно возвращать поле username
+    return data // Здесь нужно возвращать поле username
   }
 );

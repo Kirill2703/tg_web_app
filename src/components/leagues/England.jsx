@@ -18,11 +18,14 @@ const England = () => {
   const tg = window.Telegram.WebApp;
   const chatId = tg.initDataUnsafe?.user?.id;
 
-  useEffect(() => {
-    if (chatId) {
-      dispatch(fetchUserNameByChatId(chatId)); // Получаем пользователя по chatId
-    }
-  }, [dispatch, chatId]);
+ useEffect(() => {
+   if (chatId) {
+     console.log("Chat ID:", chatId); // Логируем chatId
+     dispatch(fetchUserNameByChatId(chatId)); // Получаем пользователя по chatId
+   } else {
+     console.error("Chat ID is empty");
+   }
+ }, [dispatch, chatId]);
 
   useEffect(() => {
     dispatch(fetchAllPredictions());
