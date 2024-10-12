@@ -48,7 +48,7 @@ const England = () => {
   };
 
   const handleSubmitPrediction = () => {
-    if (!userName) {
+    if (!currentUser) {
       console.error("Имя пользователя пустое. Проверьте, загружены ли данные.");
       return; // Прекращаем выполнение, если имя пользователя пустое
     }
