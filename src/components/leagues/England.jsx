@@ -16,6 +16,14 @@ const England = () => {
   const [selectedPrediction, setSelectedPrediction] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
+  const chatId = tg.initDataUnsafe?.user?.id;
+
+  useEffect(() => {
+    if (chatId) {
+      dispatch(fetchUserNameByChatId(chatId)); // Вызов функции с chatId
+    }
+  }, [dispatch, chatId]);
+
   // Загружаем предсказания при монтировании компонента
  useEffect(() => {
    try {
