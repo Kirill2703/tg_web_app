@@ -44,22 +44,27 @@ const England = () => {
     setShowModal(true);
   };
 
-  const handleSubmitPrediction = () => {
-    console.log("Отправка данных:", {
-      userName,
-      prediction: selectedPrediction._id,
-      selectedTeam: selectedPrediction.selectedTeam,
-    });
+ const handleSubmitPrediction = () => {
+   if (!userName) {
+     console.error("Имя пользователя пустое. Проверьте, загружены ли данные.");
+     return; // Прекращаем выполнение, если имя пользователя пустое
+   }
 
-    dispatch(
-      createUserPrediction({
-        userName,
-        predictionId: selectedPrediction._id, // Убедитесь, что используется правильный ключ
-        selectedTeam: selectedPrediction.selectedTeam,
-      })
-    );
-    setShowModal(false); // Закрыть окно после отправки прогноза
-  };
+   console.log("Отправка данных:", {
+     userName,
+     predictionId: selectedPrediction._id,
+     selectedTeam: selectedPrediction.selectedTeam,
+   });
+
+   dispatch(
+     createUserPrediction({
+       username: userName,
+       predictionId: selectedPrediction._id,
+       selectedTeam: selectedPrediction.selectedTeam,
+     })
+   );
+   setShowModal(false); // Закрыть окно после отправки прогноза
+ };
 
   return (
     <div>
