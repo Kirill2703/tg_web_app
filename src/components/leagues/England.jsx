@@ -54,14 +54,14 @@ const England = () => {
     }
 
     console.log("Отправка данных:", {
-      userName: currentUser.username,
+      username: currentUser.username,
       predictionId: selectedPrediction._id,
       selectedTeam: selectedPrediction.selectedTeam,
     });
 
     dispatch(
       createUserPrediction({
-        userName: currentUser.username,
+        username: currentUser.username,
         predictionId: selectedPrediction._id,
         selectedTeam: selectedPrediction.selectedTeam,
       })
