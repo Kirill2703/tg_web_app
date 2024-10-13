@@ -5,7 +5,6 @@ import {
   fetchAllUsers,
 } from "../thunks/userThunk";
 
-// Создание среза
 const userSlice = createSlice({
   name: "user",
   initialState: {
@@ -18,12 +17,11 @@ const userSlice = createSlice({
   reducers: {
     updateUserPoints: (state, action) => {
       if (state.currentUser) {
-        state.currentUser.points = action.payload; 
+        state.currentUser.points = action.payload;
       }
     },
   },
   extraReducers: (builder) => {
-    // Обработка создания пользователя
     builder
       .addCase(createUser.pending, (state) => {
         state.loading = true;
@@ -38,7 +36,6 @@ const userSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       })
-      // Обработка получения имени пользователя
       .addCase(fetchUserNameByChatId.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -58,7 +55,7 @@ const userSlice = createSlice({
       })
       .addCase(fetchAllUsers.fulfilled, (state, action) => {
         state.loading = false;
-        state.user = action.payload; // Сохраняем полученных пользователей
+        state.user = action.payload;
       })
       .addCase(fetchAllUsers.rejected, (state, action) => {
         state.loading = false;
@@ -67,6 +64,5 @@ const userSlice = createSlice({
   },
 });
 
-// Экспортируем редюсер
 export const { updateUserPoints } = userSlice.actions;
 export default userSlice.reducer;

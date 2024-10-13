@@ -38,19 +38,18 @@ export const fetchAllUsers = createAsyncThunk(
   }
 );
 
-// Асинхронное действие для получения имени пользователя по telegramId
 export const fetchUserNameByChatId = createAsyncThunk(
   "user/fetchUserNameByChatId",
   async (chatId) => {
-    const response = await fetch(`${API_URL}/${chatId}`); // Здесь API_URL должен быть "/api/user"
+    const response = await fetch(`${API_URL}/${chatId}`);
     if (!response.ok) {
       console.error("Ошибка при получении имени пользователя: ", response);
       throw new Error("Пользователь не найден");
     }
 
     const data = await response.json();
-    console.log("Полученные данные: ", data); // Логируем полученные данные
-    return data // Здесь нужно возвращать поле username
+    console.log("Полученные данные: ", data);
+    return data; // Здесь должно быть return { user: data }
   }
 );
 

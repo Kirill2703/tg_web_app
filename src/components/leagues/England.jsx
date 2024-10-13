@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LoadingScreen from "../loadingScreen/loadingScreen";
-import { createUserPrediction } from "../../thunks/userPredictionThunk"; // Убедитесь, что вы правильно импортируете
+import { createUserPrediction } from "../../thunks/userPredictionThunk";
 import fetchAllPredictions from "../../thunks/predictionThunk";
 import { fetchUserNameByChatId } from "../../thunks/userThunk";
-import { updateUserPoints } from "../../slices/userSlice"; // Импортируем из userSlice
+import { updateUserPoints } from "../../slices/userSlice";
 
 const England = () => {
   const dispatch = useDispatch();
@@ -53,15 +53,15 @@ const England = () => {
   };
 
   const handleSubmitPrediction = async () => {
-    console.log("Текущий пользователь:", currentUser); // Лог текущего пользователя
-    // Проверка на наличие currentUser и betPoints
+    // Проверка на наличие currentUser
     if (!currentUser) {
       console.error("Пользователь не загружен. Проверьте данные.");
-      return; // Прекращаем выполнение, если пользователь не загружен
+      return;
     }
+    // Проверка на количество очков
     if (betPoints <= 0) {
       console.error("Количество очков должно быть больше 0.");
-      return; // Прекращаем выполнение, если очки меньше или равны 0
+      return;
     }
 
     const response = await dispatch(
@@ -73,6 +73,7 @@ const England = () => {
       })
     );
 
+    // Проверка на успешное создание прогноза
     if (createUserPrediction.fulfilled.match(response)) {
       console.log(
         "Обновленные очки пользователя:",
@@ -83,7 +84,7 @@ const England = () => {
       console.error("Ошибка при создании прогноза:", response.error.message);
     }
 
-    setShowModal(false); // Закрыть окно после отправки прогноза
+    setShowModal(false);
   };
 
   return (
