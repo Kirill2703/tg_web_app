@@ -18,7 +18,12 @@ const userSlice = createSlice({
   reducers: {
     updateUserPoints: (state, action) => {
       if (state.currentUser) {
-        state.currentUser.points = action.payload; 
+        console.log("Обновляем очки пользователя:", action.payload);
+        state.currentUser.points = action.payload;
+      } else {
+        console.warn(
+          "Не удалось обновить очки: текущий пользователь не найден"
+        );
       }
     },
   },
@@ -26,41 +31,58 @@ const userSlice = createSlice({
     // Обработка создания пользователя
     builder
       .addCase(createUser.pending, (state) => {
+        console.log("Создание пользователя: загрузка...");
         state.loading = true;
         state.error = null;
       })
       .addCase(createUser.fulfilled, (state, action) => {
+        console.log("Создан пользователь:", action.payload);
         state.loading = false;
         state.currentUser = action.payload;
         state.username = action.payload.username;
       })
       .addCase(createUser.rejected, (state, action) => {
+        console.error(
+          "Ошибка при создании пользователя:",
+          action.error.message
+        );
         state.loading = false;
         state.error = action.error.message;
       })
       // Обработка получения имени пользователя
       .addCase(fetchUserNameByChatId.pending, (state) => {
+        console.log("Запрос имени пользователя: загрузка...");
         state.loading = true;
         state.error = null;
       })
       .addCase(fetchUserNameByChatId.fulfilled, (state, action) => {
+        console.log("Имя пользователя обновлено:", action.payload.user);
         state.loading = false;
         state.currentUser = action.payload.user;
-        console.log("Имя пользователя обновлено: ", action.payload.user);
       })
       .addCase(fetchUserNameByChatId.rejected, (state, action) => {
+        console.error(
+          "Ошибка при получении имени пользователя:",
+          action.error.message
+        );
         state.loading = false;
         state.error = action.error.message;
       })
       .addCase(fetchAllUsers.pending, (state) => {
+        console.log("Загрузка всех пользователей: загрузка...");
         state.loading = true;
         state.error = null;
       })
       .addCase(fetchAllUsers.fulfilled, (state, action) => {
+        console.log("Полученные пользователи:", action.payload);
         state.loading = false;
-        state.user = action.payload; // Сохраняем полученных пользователей
+        state.user = action.payload;
       })
       .addCase(fetchAllUsers.rejected, (state, action) => {
+        console.error(
+          "Ошибка при получении пользователей:",
+          action.error.message
+        );
         state.loading = false;
         state.error = action.error.message;
       });
