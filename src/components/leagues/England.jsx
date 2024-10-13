@@ -51,12 +51,16 @@ const England = () => {
     setShowModal(true);
   };
 
-  const handleSubmitPrediction = () => {
+  const handleSubmitPrediction = async () => {
     if (!currentUser || betPoints <= 0) {
-      console.error("Имя пользователя пустое. Проверьте, загружены ли данные.");
-      return; // Прекращаем выполнение, если имя пользователя пустое
+      console.error(
+        "Имя пользователя пустое или некорректное количество очков."
+      );
+      return;
     }
-    dispatch(
+
+    // Делаем асинхронный вызов к thunk
+    const resultAction = await dispatch(
       createUserPrediction({
         username: currentUser.username,
         predictionId: selectedPrediction._id,
@@ -65,13 +69,16 @@ const England = () => {
       })
     );
 
-    if (response.payload.updatedUser) {
-      console.log(
-        "Обновленные очки пользователя:",
-        response.payload.updatedUser.points
+    // Проверяем, успешно ли прошел вызов и есть ли полезная нагрузка в результате
+    if (createUserPrediction.fulfilled.match(resultAction)) {
+      const updatedUser = resultAction.payload.updatedUser; // Здесь предполагается, что вы обновляете пользователя на сервере
+      console.log("Обновленные очки пользователя:", updatedUser.points);
+      dispatch(updateUserPoints(updatedUser.points)); // Обновляем очки на фронтенде
+    } else {
+      console.error(
+        "Ошибка при создании прогноза:",
+        resultAction.error.message
       );
-      // Обновляем состояние пользователя
-      dispatch(updateUserPoints(response.payload.updatedUser.points)); // Добавьте экшен для обновления очков на фронтенде
     }
 
     setShowModal(false); // Закрыть окно после отправки прогноза
