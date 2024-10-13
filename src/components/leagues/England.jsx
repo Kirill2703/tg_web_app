@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import LoadingScreen from "../loadingScreen/loadingScreen";
 import { createUserPrediction } from "../../thunks/userPredictionThunk";
 import fetchAllPredictions from "../../thunks/predictionThunk";
-import { fetchUserNameByChatId } from "../../thunks/userThunk";
+import { fetchUpdatedUserPoints, fetchUserNameByChatId } from "../../thunks/userThunk";
 
 const England = () => {
   const dispatch = useDispatch();
@@ -88,6 +88,31 @@ const England = () => {
 
     setShowModal(false); // Закрыть окно после отправки прогноза
   };
+
+  useEffect(() => {
+    const updateUserPoints = async () => {
+      if (currentUser) {
+        const resultAction = await dispatch(
+          updateUserPoints(currentUser.username)
+        );
+        if (fetchUpdatedUserPoints.fulfilled.match(resultAction)) {
+          console.log(
+            "Очки пользователя обновлены:",
+            resultAction.payload.points
+          );
+          // Здесь вы можете обновить состояние приложения, если это необходимо
+        } else {
+          console.error(
+            "Ошибка при обновлении очков:",
+            resultAction.error.message
+          );
+        }
+      }
+    };
+
+    // Этот эффект вызывается, когда нужно обновить очки пользователя
+    updateUserPoints();
+  }, [currentUser]);
 
   return (
     <div>

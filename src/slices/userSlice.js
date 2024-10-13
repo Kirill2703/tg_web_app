@@ -3,6 +3,7 @@ import {
   createUser,
   fetchUserNameByChatId,
   fetchAllUsers,
+  fetchUpdatedUserPoints,
 } from "../thunks/userThunk";
 
 // Создание среза
@@ -61,6 +62,19 @@ const userSlice = createSlice({
         state.user = action.payload; // Сохраняем полученных пользователей
       })
       .addCase(fetchAllUsers.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(fetchUpdatedUserPoints.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchUpdatedUserPoints.fulfilled, (state, action) => {
+        state.loading = false;
+        state.currentUser = action.payload; // Обновляем текущего пользователя с новыми данными
+        console.log("Очки пользователя обновлены: ", action.payload.points);
+      })
+      .addCase(fetchUpdatedUserPoints.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });
