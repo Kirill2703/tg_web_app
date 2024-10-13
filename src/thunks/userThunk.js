@@ -40,16 +40,17 @@ export const fetchAllUsers = createAsyncThunk(
 
 export const fetchUserNameByChatId = createAsyncThunk(
   "user/fetchUserNameByChatId",
-  async (chatId) => {
+  async (chatId, { rejectWithValue }) => {
     const response = await fetch(`${API_URL}/${chatId}`);
     if (!response.ok) {
       console.error("Ошибка при получении имени пользователя: ", response);
-      throw new Error("Пользователь не найден");
+      return rejectWithValue("Пользователь не найден");
     }
 
     const data = await response.json();
-    console.log("Полученные данные: ", data);
-    return data; // Здесь должно быть return { user: data }
+    console.log("Полученные данные пользователя: ", data);
+    return data;
   }
 );
+
 

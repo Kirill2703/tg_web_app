@@ -21,59 +21,79 @@ const England = () => {
   const chatId = tg.initDataUnsafe?.user?.id;
 
   useEffect(() => {
+    console.log("Запускаем useEffect для загрузки пользователя");
     if (chatId) {
       console.log("Chat ID:", chatId);
-      dispatch(fetchUserNameByChatId(chatId));
+      dispatch(fetchUserNameByChatId(chatId))
+        .then((result) => {
+          console.log("Результат загрузки пользователя:", result);
+        })
+        .catch((err) => {
+          console.error("Ошибка при загрузке пользователя:", err);
+        });
     } else {
       console.error("Chat ID is empty");
     }
   }, [dispatch, chatId]);
 
   useEffect(() => {
-    dispatch(fetchAllPredictions());
+    console.log("Запускаем useEffect для загрузки предсказаний");
+    dispatch(fetchAllPredictions())
+      .then((result) => {
+        console.log("Результат загрузки предсказаний:", result);
+      })
+      .catch((err) => {
+        console.error("Ошибка при загрузке предсказаний:", err);
+      });
   }, [dispatch]);
 
-  // Проверка загрузки и ошибки
   if (loading) {
+    console.log("Загрузка...");
     return <LoadingScreen />;
   }
 
   if (error) {
+    console.error("Ошибка:", error);
     return <div>Ошибка: {error}</div>;
   }
 
-  // Фильтрация предсказаний по стране "England"
   const englandPredictions = predictions.filter(
     (predict) => predict.country === "England"
   );
 
   const handleTeamClick = (prediction, team) => {
+    console.log("Команда выбрана:", team);
     setSelectedPrediction({ ...prediction, selectedTeam: team });
     setShowModal(true);
   };
 
   const handleSubmitPrediction = async () => {
-    // Проверка на наличие currentUser
+    console.log("Текущий пользователь:", currentUser);
     if (!currentUser) {
       console.error("Пользователь не загружен. Проверьте данные.");
       return;
     }
-    // Проверка на количество очков
     if (betPoints <= 0) {
       console.error("Количество очков должно быть больше 0.");
       return;
     }
 
+    console.log("Отправка прогноза с данными:", {
+      username: currentUser.username,
+      predictionId: selectedPrediction?._id,
+      selectedTeam: selectedPrediction?.selectedTeam,
+      betPoints,
+    });
+
     const response = await dispatch(
       createUserPrediction({
         username: currentUser.username,
-        predictionId: selectedPrediction._id,
-        selectedTeam: selectedPrediction.selectedTeam,
+        predictionId: selectedPrediction?._id,
+        selectedTeam: selectedPrediction?.selectedTeam,
         betPoints,
       })
     );
 
-    // Проверка на успешное создание прогноза
     if (createUserPrediction.fulfilled.match(response)) {
       console.log(
         "Обновленные очки пользователя:",
@@ -113,7 +133,10 @@ const England = () => {
           <input
             type="number"
             value={betPoints}
-            onChange={(e) => setBetPoints(Number(e.target.value))}
+            onChange={(e) => {
+              console.log("Количество очков изменено:", e.target.value);
+              setBetPoints(Number(e.target.value));
+            }}
             placeholder="Введите количество очков"
           />
           <button onClick={handleSubmitPrediction}>Да</button>
