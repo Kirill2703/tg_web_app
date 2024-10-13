@@ -68,4 +68,5 @@ const userSlice = createSlice({
 });
 
 // Экспортируем редюсер
+export const { updateUserPoints } = userSlice.actions;
 export default userSlice.reducer;
