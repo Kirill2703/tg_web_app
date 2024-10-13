@@ -19,20 +19,19 @@ const England = () => {
   const tg = window.Telegram.WebApp;
   const chatId = tg.initDataUnsafe?.user?.id;
 
- useEffect(() => {
-   if (chatId) {
-     console.log("Chat ID:", chatId); // Логируем chatId
-     dispatch(fetchUserNameByChatId(chatId)); // Получаем пользователя по chatId
-   } else {
-     console.error("Chat ID is empty");
-   }
- }, [dispatch, chatId]);
+  useEffect(() => {
+    if (chatId) {
+      console.log("Chat ID:", chatId);
+      dispatch(fetchUserNameByChatId(chatId));
+    } else {
+      console.error("Chat ID is empty");
+    }
+  }, [dispatch, chatId]);
 
   useEffect(() => {
     dispatch(fetchAllPredictions());
   }, [dispatch]);
 
-  // Проверка на загрузку и ошибки
   if (loading) {
     return <LoadingScreen />;
   }
@@ -41,7 +40,6 @@ const England = () => {
     return <div>Ошибка: {error}</div>;
   }
 
-  // Фильтруем предсказания по стране "England"
   const englandPredictions = predictions.filter(
     (predict) => predict.country === "England"
   );
@@ -52,8 +50,13 @@ const England = () => {
   };
 
   const handleSubmitPrediction = async () => {
-    if (!currentUser || betPoints <= 0) {
-      console.error("Имя пользователя пустое. Проверьте, загружены ли данные.");
+    if (!currentUser) {
+      console.error("Пользователь не загружен. Проверьте данные.");
+      return;
+    }
+
+    if (betPoints <= 0) {
+      console.error("Количество очков должно быть больше 0.");
       return;
     }
 
@@ -66,14 +69,12 @@ const England = () => {
       })
     );
 
-    console.log("Response from createUserPrediction:", response); // Добавляем логирование ответа
-
     if (createUserPrediction.fulfilled.match(response)) {
       console.log(
         "Обновленные очки пользователя:",
-        response.payload.currentUser.points
+        response.payload.updatedUser.points
       );
-      dispatch(updateUserPoints(response.payload.currentUser.points));
+      dispatch(updateUserPoints(response.payload.updatedUser.points));
     } else {
       console.error("Ошибка при создании прогноза:", response.error);
     }
