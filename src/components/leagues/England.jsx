@@ -33,6 +33,7 @@ const England = () => {
     dispatch(fetchAllPredictions());
   }, [dispatch]);
 
+  // Проверка загрузки и ошибки
   if (loading) {
     return <LoadingScreen />;
   }
@@ -41,6 +42,7 @@ const England = () => {
     return <div>Ошибка: {error}</div>;
   }
 
+  // Фильтрация предсказаний по стране "England"
   const englandPredictions = predictions.filter(
     (predict) => predict.country === "England"
   );
@@ -51,6 +53,7 @@ const England = () => {
   };
 
   const handleSubmitPrediction = async () => {
+    console.log("Текущий пользователь:", currentUser); // Лог текущего пользователя
     // Проверка на наличие currentUser и betPoints
     if (!currentUser) {
       console.error("Пользователь не загружен. Проверьте данные.");
@@ -80,7 +83,7 @@ const England = () => {
       console.error("Ошибка при создании прогноза:", response.error.message);
     }
 
-    setShowModal(false);
+    setShowModal(false); // Закрыть окно после отправки прогноза
   };
 
   return (
