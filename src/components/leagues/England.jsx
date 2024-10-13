@@ -7,11 +7,12 @@ import { fetchUserNameByChatId } from "../../thunks/userThunk";
 
 
 const England = () => {
+  const currentUser = useSelector((state) => state.user.currentUser);
   const dispatch = useDispatch();
   const { predictions, loading, error } = useSelector(
     (state) => state.predictions
   );
-  const currentUser = useSelector((state) => state.user.currentUser);
+  
 
   const [selectedPrediction, setSelectedPrediction] = useState(null);
   const [betPoints, setBetPoints] = useState(0);
@@ -67,47 +68,48 @@ const England = () => {
     setShowModal(true);
   };
 
-  const handleSubmitPrediction = async () => {
-    if (!currentUser || !selectedPrediction || betPoints <= 0) {
-      console.error(
-        "Имя пользователя пустое или некорректное количество очков."
-      );
-      return;
-    }
+  // const handleSubmitPrediction = async () => {
+  //   if (!currentUser || !selectedPrediction || betPoints <= 0) {
+  //     console.error(
+  //       "Имя пользователя пустое или некорректное количество очков."
+  //     );
+  //     return;
+  //   }
 
-    // Делаем асинхронный вызов к thunk
-    const resultAction = await dispatch(
-      createUserPrediction({
-        username: currentUser.username,
-        predictionId: selectedPrediction._id,
-        selectedTeam: selectedPrediction.selectedTeam,
-        betPoints,
-      })
-    );
+  //   // Делаем асинхронный вызов к thunk
+  //   const resultAction = await dispatch(
+  //     createUserPrediction({
+  //       username: currentUser.username,
+  //       predictionId: selectedPrediction._id,
+  //       selectedTeam: selectedPrediction.selectedTeam,
+  //       betPoints,
+  //     })
+  //   );
 
-    // Проверяем, успешно ли прошел вызов и есть ли полезная нагрузка в результате
-    if (createUserPrediction.fulfilled.match(resultAction)) {
-      const { updatedUser } = resultAction.payload; // Изменено на деструктуризацию
-      if (updatedUser) {
-        console.log("Обновленные очки пользователя:", updatedUser.points);
-        // Обновите состояние приложения или сделайте что-то еще с updatedUser
-        dispatch(fetchUserNameByChatId(currentUser.chatId)); // Обновите пользователя, если нужно
-      } else {
-        console.error("Обновленные данные пользователя не найдены");
-      }
-    } else {
-      console.error(
-        "Ошибка при создании прогноза:",
-        resultAction.error.message
-      );
-    }
+  //   // Проверяем, успешно ли прошел вызов и есть ли полезная нагрузка в результате
+  //   if (createUserPrediction.fulfilled.match(resultAction)) {
+  //     const { updatedUser } = resultAction.payload; // Изменено на деструктуризацию
+  //     if (updatedUser) {
+  //       console.log("Обновленные очки пользователя:", updatedUser.points);
+  //       // Обновите состояние приложения или сделайте что-то еще с updatedUser
+  //       dispatch(fetchUserNameByChatId(currentUser.chatId)); // Обновите пользователя, если нужно
+  //     } else {
+  //       console.error("Обновленные данные пользователя не найдены");
+  //     }
+  //   } else {
+  //     console.error(
+  //       "Ошибка при создании прогноза:",
+  //       resultAction.error.message
+  //     );
+  //   }
 
-    setShowModal(false); // Закрыть окно после отправки прогноза
-  };
+  //   setShowModal(false); // Закрыть окно после отправки прогноза
+  // };
 
   return (
     <div>
       <h1>Матчи Англии</h1>
+      {currentUser.username}
       <ul>
         {englandPredictions.map((prediction) => (
           <li key={prediction._id}>
