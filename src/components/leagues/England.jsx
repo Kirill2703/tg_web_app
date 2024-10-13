@@ -91,29 +91,31 @@ const England = () => {
 
   useEffect(() => {
     const updateUserPoints = async () => {
-      if (currentUser) {
+      if (currentUser && currentUser.username) {
+        // Проверяем, существует ли имя пользователя
         const resultAction = await dispatch(
-          fetchUpdatedUserPoints(currentUser.username)
+          fetchUpdatedUserPoints(currentUser.username) // Убедитесь, что это вызывает правильное имя пользователя
         );
         if (fetchUpdatedUserPoints.fulfilled.match(resultAction)) {
           console.log(
             "Очки пользователя обновлены:",
             resultAction.payload.points
           );
-          // Здесь вы можете обновить состояние приложения, если это необходимо
         } else {
           console.error(
             "Ошибка при обновлении очков:",
             resultAction.error.message
           );
         }
+      } else {
+        console.warn(
+          "currentUser не определён или не имеет имени пользователя"
+        );
       }
     };
 
-    // Этот эффект вызывается, когда нужно обновить очки пользователя
     updateUserPoints();
   }, [currentUser]);
-
   return (
     <div>
       <h1>Матчи Англии</h1>
