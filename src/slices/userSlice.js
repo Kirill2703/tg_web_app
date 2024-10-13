@@ -9,7 +9,7 @@ import {
 const userSlice = createSlice({
   name: "user",
   initialState: {
-    currentUser: null,
+    currentUser: "",
     username: "",
     user: [],
     loading: false,
