@@ -80,11 +80,11 @@ const England = () => {
       return;
     }
 
-    // Делаем асинхронный вызов к thunk
+    // Передаем все данные в thunk напрямую
     const resultAction = await dispatch(
       createUserPrediction({
-        username: currentUser.username,
-        predictionId: selectedPrediction._id,
+        username: currentUser.username, // Здесь передаем напрямую
+        predictionId: selectedPrediction._id, // Здесь передаем напрямую
         selectedTeam: selectedPrediction.selectedTeam,
         betPoints,
       })
@@ -95,8 +95,7 @@ const England = () => {
       const { updatedUser } = resultAction.payload; // Изменено на деструктуризацию
       if (updatedUser) {
         console.log("Обновленные очки пользователя:", updatedUser.points);
-        // Обновите состояние приложения или сделайте что-то еще с updatedUser
-        dispatch(fetchUserNameByChatId(currentUser.chatId)); // Обновите пользователя, если нужно
+        dispatch(fetchUserNameByChatId(currentUser.chatId)); // Обновляем пользователя, если нужно
       } else {
         console.error("Обновленные данные пользователя не найдены");
       }

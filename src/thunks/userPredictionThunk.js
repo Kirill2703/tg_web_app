@@ -20,10 +20,11 @@ export const fetchAllUserPredictions = createAsyncThunk(
 export const createUserPrediction = createAsyncThunk(
   "user-prediction/createPrediction",
   async ({ username, predictionId, selectedTeam, betPoints }, thunkAPI) => {
+    // Используем полученные аргументы
     console.log("Данные прогноза:", {
-      username: currentUser.username,
-      predictionId: selectedPrediction._id,
-      selectedTeam: selectedPrediction.selectedTeam,
+      username,
+      predictionId,
+      selectedTeam,
       betPoints,
     });
     try {
