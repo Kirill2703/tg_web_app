@@ -11,6 +11,9 @@ const England = () => {
     (state) => state.predictions
   );
   const currentUser = useSelector((state) => state.user.currentUser);
+  useEffect(() => {
+    console.log("Текущий пользователь:", currentUser); // Лог текущего пользователя
+  }, [currentUser]);
 
   const [selectedPrediction, setSelectedPrediction] = useState(null);
   const [betPoints, setBetPoints] = useState(0);
@@ -19,19 +22,20 @@ const England = () => {
   const tg = window.Telegram.WebApp;
   const chatId = tg.initDataUnsafe?.user?.id;
 
-  useEffect(() => {
-    if (chatId) {
-      console.log("Chat ID:", chatId);
-      dispatch(fetchUserNameByChatId(chatId));
-    } else {
-      console.error("Chat ID is empty");
-    }
-  }, [dispatch, chatId]);
+ useEffect(() => {
+   if (chatId) {
+     console.log("Chat ID:", chatId); // Логируем chatId
+     dispatch(fetchUserNameByChatId(chatId)); // Получаем пользователя по chatId
+   } else {
+     console.error("Chat ID is empty");
+   }
+ }, [dispatch, chatId]);
 
   useEffect(() => {
     dispatch(fetchAllPredictions());
   }, [dispatch]);
 
+  // Проверка на загрузку и ошибки
   if (loading) {
     return <LoadingScreen />;
   }
@@ -40,6 +44,7 @@ const England = () => {
     return <div>Ошибка: {error}</div>;
   }
 
+  // Фильтруем предсказания по стране "England"
   const englandPredictions = predictions.filter(
     (predict) => predict.country === "England"
   );
@@ -52,12 +57,12 @@ const England = () => {
   const handleSubmitPrediction = async () => {
     if (!currentUser) {
       console.error("Пользователь не загружен. Проверьте данные.");
-      return;
+      return; // Прекращаем выполнение, если пользователь не загружен
     }
 
     if (betPoints <= 0) {
       console.error("Количество очков должно быть больше 0.");
-      return;
+      return; // Прекращаем выполнение, если очки меньше или равны 0
     }
 
     const response = await dispatch(
@@ -76,10 +81,10 @@ const England = () => {
       );
       dispatch(updateUserPoints(response.payload.updatedUser.points));
     } else {
-      console.error("Ошибка при создании прогноза:", response.error);
+      console.error("Ошибка при создании прогноза:", response.error.message);
     }
 
-    setShowModal(false);
+    setShowModal(false); // Закрыть окно после отправки прогноза
   };
 
   return (
