@@ -11,9 +11,6 @@ const England = () => {
     (state) => state.predictions
   );
   const currentUser = useSelector((state) => state.user.currentUser);
-  useEffect(() => {
-    console.log("Текущий пользователь:", currentUser); // Лог текущего пользователя
-  }, [currentUser]);
 
   const [selectedPrediction, setSelectedPrediction] = useState(null);
   const [betPoints, setBetPoints] = useState(0);
@@ -54,20 +51,12 @@ const England = () => {
     setShowModal(true);
   };
 
-  const handleSubmitPrediction = async () => {
-    if (!currentUser || !currentUser.username) {
-      console.error(
-        "Пользователь не загружен или username отсутствует. Проверьте данные."
-      );
-      return;
+  const handleSubmitPrediction = () => {
+    if (!currentUser || betPoints <= 0) {
+      console.error("Имя пользователя пустое. Проверьте, загружены ли данные.");
+      return; // Прекращаем выполнение, если имя пользователя пустое
     }
-
-    if (betPoints <= 0) {
-      console.error("Количество очков должно быть больше 0.");
-      return;
-    }
-
-    const response = await dispatch(
+    dispatch(
       createUserPrediction({
         username: currentUser.username,
         predictionId: selectedPrediction._id,
@@ -76,28 +65,17 @@ const England = () => {
       })
     );
 
-    if (createUserPrediction.fulfilled.match(response)) {
-      console.log("Ответ от API:", response.payload); // Логируем полный ответ от API
+    if (response.payload.updatedUser) {
       console.log(
         "Обновленные очки пользователя:",
         response.payload.updatedUser.points
       );
-      dispatch(updateUserPoints(response.payload.updatedUser.points));
-
-      // Проверка состояния после обновления
-      const updatedUser = useSelector((state) => state.user.currentUser);
-      console.log("Текущий пользователь после обновления:", updatedUser); // Проверка обновленного пользователя
-    } else {
-      if (response.error) {
-        console.error("Ошибка при создании прогноза:", response.error.message);
-      } else {
-        console.error("Неизвестная ошибка при создании прогноза");
-      }
+      // Обновляем состояние пользователя
+      dispatch(updateUserPoints(response.payload.updatedUser.points)); // Добавьте экшен для обновления очков на фронтенде
     }
 
     setShowModal(false); // Закрыть окно после отправки прогноза
   };
-
 
   return (
     <div>
