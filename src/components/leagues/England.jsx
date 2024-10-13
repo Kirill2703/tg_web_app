@@ -93,7 +93,7 @@ const England = () => {
     const updateUserPoints = async () => {
       if (currentUser) {
         const resultAction = await dispatch(
-          updateUserPoints(currentUser.username)
+          fetchUpdatedUserPoints(currentUser.username)
         );
         if (fetchUpdatedUserPoints.fulfilled.match(resultAction)) {
           console.log(
