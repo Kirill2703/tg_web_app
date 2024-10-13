@@ -71,9 +71,9 @@ const England = () => {
     if (createUserPrediction.fulfilled.match(response)) {
       console.log(
         "Обновленные очки пользователя:",
-        response.payload.updatedUser.points
+        response.payload.currentUser.points
       );
-      dispatch(updateUserPoints(response.payload.updatedUser.points));
+      dispatch(updateUserPoints(response.payload.currentUser.points));
     } else {
       console.error("Ошибка при создании прогноза:", response.error);
     }
