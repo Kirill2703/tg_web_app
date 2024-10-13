@@ -4,7 +4,7 @@ import LoadingScreen from "../loadingScreen/loadingScreen";
 import { createUserPrediction } from "../../thunks/userPredictionThunk";
 import fetchAllPredictions from "../../thunks/predictionThunk";
 import { fetchUserNameByChatId } from "../../thunks/userThunk";
-import { updateUserPoints } from "../../slices/userSlice";
+
 
 const England = () => {
   const dispatch = useDispatch();
@@ -68,43 +68,41 @@ const England = () => {
   };
 
   const handleSubmitPrediction = async () => {
-    console.log("Текущий пользователь:", currentUser);
-    if (!currentUser) {
-      console.error("Пользователь не загружен. Проверьте данные.");
-      return;
-    }
-    if (betPoints <= 0) {
-      console.error("Количество очков должно быть больше 0.");
+    if (!currentUser || !selectedPrediction || betPoints <= 0) {
+      console.error(
+        "Имя пользователя пустое или некорректное количество очков."
+      );
       return;
     }
 
-    console.log("Отправка прогноза с данными:", {
-      username: currentUser.username,
-      predictionId: selectedPrediction?._id,
-      selectedTeam: selectedPrediction?.selectedTeam,
-      betPoints,
-    });
-
-    const response = await dispatch(
+    // Делаем асинхронный вызов к thunk
+    const resultAction = await dispatch(
       createUserPrediction({
         username: currentUser.username,
-        predictionId: selectedPrediction?._id,
-        selectedTeam: selectedPrediction?.selectedTeam,
+        predictionId: selectedPrediction._id,
+        selectedTeam: selectedPrediction.selectedTeam,
         betPoints,
       })
     );
 
-    if (createUserPrediction.fulfilled.match(response)) {
-      console.log(
-        "Обновленные очки пользователя:",
-        response.payload.updatedUser.points
-      );
-      dispatch(updateUserPoints(response.payload.updatedUser.points));
+    // Проверяем, успешно ли прошел вызов и есть ли полезная нагрузка в результате
+    if (createUserPrediction.fulfilled.match(resultAction)) {
+      const { updatedUser } = resultAction.payload; // Изменено на деструктуризацию
+      if (updatedUser) {
+        console.log("Обновленные очки пользователя:", updatedUser.points);
+        // Обновите состояние приложения или сделайте что-то еще с updatedUser
+        dispatch(fetchUserNameByChatId(currentUser.chatId)); // Обновите пользователя, если нужно
+      } else {
+        console.error("Обновленные данные пользователя не найдены");
+      }
     } else {
-      console.error("Ошибка при создании прогноза:", response.error.message);
+      console.error(
+        "Ошибка при создании прогноза:",
+        resultAction.error.message
+      );
     }
 
-    setShowModal(false);
+    setShowModal(false); // Закрыть окно после отправки прогноза
   };
 
   return (

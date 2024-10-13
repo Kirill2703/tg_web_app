@@ -53,4 +53,23 @@ export const fetchUserNameByChatId = createAsyncThunk(
   }
 );
 
+export const updateUserPoints = createAsyncThunk(
+  "user/updateUserPoints",
+  async ({ userId, points }) => {
+    const response = await fetch(`${API_URL}/${userId}/updatePoints`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ points }),
+    });
+
+    if (!response.ok) {
+      throw new Error("Ошибка при обновлении очков");
+    }
+
+    const data = await response.json();
+    return data; // Возвращаем обновленные данные о пользователе
+  }
+);
 
