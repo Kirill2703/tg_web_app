@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LoadingScreen from "../loadingScreen/loadingScreen";
-import { createUserPrediction } from "../../thunks/userPredictionThunk"; // Не забудьте импортировать createUserPrediction
+import { createUserPrediction } from "../../thunks/userPredictionThunk"; // Убедитесь, что вы правильно импортируете
 import fetchAllPredictions from "../../thunks/predictionThunk";
 import { fetchUserNameByChatId } from "../../thunks/userThunk";
 import { updateUserPoints } from "../../slices/userSlice"; // Импортируем из userSlice
@@ -51,11 +51,14 @@ const England = () => {
   };
 
   const handleSubmitPrediction = async () => {
-    if (!currentUser || betPoints <= 0) {
-      console.error(
-        "Имя пользователя пустое или количество очков меньше 1. Проверьте, загружены ли данные."
-      );
-      return;
+    // Проверка на наличие currentUser и betPoints
+    if (!currentUser) {
+      console.error("Пользователь не загружен. Проверьте данные.");
+      return; // Прекращаем выполнение, если пользователь не загружен
+    }
+    if (betPoints <= 0) {
+      console.error("Количество очков должно быть больше 0.");
+      return; // Прекращаем выполнение, если очки меньше или равны 0
     }
 
     const response = await dispatch(
@@ -72,8 +75,7 @@ const England = () => {
         "Обновленные очки пользователя:",
         response.payload.updatedUser.points
       );
-      // Обновляем состояние пользователя
-      dispatch(updateUserPoints(response.payload.updatedUser.points)); // Теперь правильно импортируем
+      dispatch(updateUserPoints(response.payload.updatedUser.points));
     } else {
       console.error("Ошибка при создании прогноза:", response.error.message);
     }
