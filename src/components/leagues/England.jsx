@@ -56,9 +56,6 @@ const England = () => {
       console.error("Имя пользователя пустое. Проверьте, загружены ли данные.");
       return; // Прекращаем выполнение, если имя пользователя пустое
     }
-
-    
-
     dispatch(
       createUserPrediction({
         username: currentUser.username,
@@ -67,6 +64,15 @@ const England = () => {
         betPoints,
       })
     );
+
+    if (response.payload.updatedUser) {
+      console.log(
+        "Обновленные очки пользователя:",
+        response.payload.updatedUser.points
+      );
+      // Обновляем состояние пользователя
+      dispatch(updateUserPoints(response.payload.updatedUser.points)); // Добавьте экшен для обновления очков на фронтенде
+    }
 
     setShowModal(false); // Закрыть окно после отправки прогноза
   };

@@ -15,7 +15,13 @@ const userSlice = createSlice({
     loading: false,
     error: null,
   },
-  reducers: {},
+  reducers: {
+    updateUserPoints: (state, action) => {
+      if (state.currentUser) {
+        state.currentUser.points = action.payload; // Обновляем очки пользователя
+      }
+    },
+  },
   extraReducers: (builder) => {
     // Обработка создания пользователя
     builder
