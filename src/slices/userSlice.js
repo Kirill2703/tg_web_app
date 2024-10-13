@@ -18,7 +18,7 @@ const userSlice = createSlice({
   reducers: {
     updateUserPoints: (state, action) => {
       if (state.currentUser) {
-        state.currentUser.points = action.payload; // Обновляем очки пользователя
+        state.currentUser.points = action.payload; 
       }
     },
   },

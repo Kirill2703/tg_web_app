@@ -52,7 +52,7 @@ const England = () => {
   };
 
   const handleSubmitPrediction = async () => {
-    if (!currentUser || betPoints <= 0) {
+    if (!currentUser || !selectedPrediction || betPoints <= 0) {
       console.error(
         "Имя пользователя пустое или некорректное количество очков."
       );
@@ -71,9 +71,14 @@ const England = () => {
 
     // Проверяем, успешно ли прошел вызов и есть ли полезная нагрузка в результате
     if (createUserPrediction.fulfilled.match(resultAction)) {
-      const updatedUser = resultAction.payload.updatedUser; // Здесь предполагается, что вы обновляете пользователя на сервере
-      console.log("Обновленные очки пользователя:", updatedUser.points);
-      dispatch(updateUserPoints(updatedUser.points)); // Обновляем очки на фронтенде
+      const { updatedUser } = resultAction.payload; // Изменено на деструктуризацию
+      if (updatedUser) {
+        console.log("Обновленные очки пользователя:", updatedUser.points);
+        // Обновите состояние приложения или сделайте что-то еще с updatedUser
+        dispatch(fetchUserNameByChatId(currentUser.chatId)); // Обновите пользователя, если нужно
+      } else {
+        console.error("Обновленные данные пользователя не найдены");
+      }
     } else {
       console.error(
         "Ошибка при создании прогноза:",
