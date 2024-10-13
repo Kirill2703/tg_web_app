@@ -5,14 +5,12 @@ import { createUserPrediction } from "../../thunks/userPredictionThunk";
 import fetchAllPredictions from "../../thunks/predictionThunk";
 import { fetchUserNameByChatId } from "../../thunks/userThunk";
 
-
 const England = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
   const dispatch = useDispatch();
   const { predictions, loading, error } = useSelector(
     (state) => state.predictions
   );
-  
 
   const [selectedPrediction, setSelectedPrediction] = useState(null);
   const [betPoints, setBetPoints] = useState(0);
@@ -69,7 +67,13 @@ const England = () => {
   };
 
   const handleSubmitPrediction = async () => {
-    if (!currentUser || !selectedPrediction || betPoints <= 0) {
+    // Проверка на наличие currentUser и его свойств
+    if (
+      !currentUser ||
+      !currentUser.username ||
+      !selectedPrediction ||
+      betPoints <= 0
+    ) {
       console.error(
         "Имя пользователя пустое или некорректное количество очков."
       );
@@ -109,7 +113,12 @@ const England = () => {
   return (
     <div>
       <h1>Матчи Англии</h1>
-      {currentUser.username}
+      {/* Добавлена проверка на наличие currentUser перед доступом к username */}
+      {currentUser ? (
+        <div>Текущий пользователь: {currentUser.username}</div>
+      ) : (
+        <div>Пользователь не загружен.</div>
+      )}
       <ul>
         {englandPredictions.map((prediction) => (
           <li key={prediction._id}>
