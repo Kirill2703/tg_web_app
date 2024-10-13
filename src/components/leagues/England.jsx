@@ -13,6 +13,7 @@ const England = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
 
   const [selectedPrediction, setSelectedPrediction] = useState(null);
+  const [betPoints, setBetPoints] = useState(0);
   const [showModal, setShowModal] = useState(false);
 
   const tg = window.Telegram.WebApp;
@@ -51,22 +52,19 @@ const England = () => {
   };
 
   const handleSubmitPrediction = () => {
-    if (!currentUser) {
+    if (!currentUser || betPoints <= 0) {
       console.error("Имя пользователя пустое. Проверьте, загружены ли данные.");
       return; // Прекращаем выполнение, если имя пользователя пустое
     }
 
-    console.log("Отправка данных:", {
-      username: currentUser.username,
-      predictionId: selectedPrediction._id,
-      selectedTeam: selectedPrediction.selectedTeam,
-    });
+    
 
     dispatch(
       createUserPrediction({
         username: currentUser.username,
         predictionId: selectedPrediction._id,
         selectedTeam: selectedPrediction.selectedTeam,
+        betPoints,
       })
     );
 
@@ -93,8 +91,15 @@ const England = () => {
       {showModal && (
         <div className="modal">
           <p>
-            Вы уверены, что хотите выбрать {selectedPrediction.selectedTeam}?
+            Вы уверены, что хотите выбрать {selectedPrediction.selectedTeam} и
+            поставить {betPoints} очков?
           </p>
+          <input
+            type="number"
+            value={betPoints}
+            onChange={(e) => setBetPoints(Number(e.target.value))}
+            placeholder="Введите количество очков"
+          />
           <button onClick={handleSubmitPrediction}>Да</button>
           <button onClick={() => setShowModal(false)}>Нет</button>
         </div>
