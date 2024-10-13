@@ -54,16 +54,3 @@ export const fetchUserNameByChatId = createAsyncThunk(
   }
 );
 
-export const fetchUpdatedUserPoints = createAsyncThunk(
-  "user/fetchUpdatedUserPoints",
-  async (username) => {
-    const response = await fetch(`${API_URL}/${username}`); // Предполагается, что у вас есть такой эндпоинт
-
-    if (!response.ok) {
-      throw new Error("Не удалось обновить очки пользователя");
-    }
-
-    const data = await response.json();
-    return data; // Возвращаем обновленного пользователя
-  }
-);

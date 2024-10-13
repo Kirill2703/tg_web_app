@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import LoadingScreen from "../loadingScreen/loadingScreen";
 import { createUserPrediction } from "../../thunks/userPredictionThunk";
 import fetchAllPredictions from "../../thunks/predictionThunk";
-import { fetchUpdatedUserPoints, fetchUserNameByChatId } from "../../thunks/userThunk";
+import { fetchUserNameByChatId } from "../../thunks/userThunk";
 
 const England = () => {
   const dispatch = useDispatch();
@@ -51,16 +51,12 @@ const England = () => {
     setShowModal(true);
   };
 
-  const handleSubmitPrediction = async () => {
-    if (!currentUser || !selectedPrediction || betPoints <= 0) {
-      console.error(
-        "Имя пользователя пустое или некорректное количество очков."
-      );
-      return;
+  const handleSubmitPrediction = () => {
+    if (!currentUser || betPoints <= 0) {
+      console.error("Имя пользователя пустое. Проверьте, загружены ли данные.");
+      return; // Прекращаем выполнение, если имя пользователя пустое
     }
-
-    // Делаем асинхронный вызов к thunk
-    const resultAction = await dispatch(
+    dispatch(
       createUserPrediction({
         username: currentUser.username,
         predictionId: selectedPrediction._id,
@@ -69,53 +65,18 @@ const England = () => {
       })
     );
 
-    // Проверяем, успешно ли прошел вызов и есть ли полезная нагрузка в результате
-    if (createUserPrediction.fulfilled.match(resultAction)) {
-      const { updatedUser } = resultAction.payload; // Изменено на деструктуризацию
-      if (updatedUser) {
-        console.log("Обновленные очки пользователя:", updatedUser.points);
-        // Обновите состояние приложения или сделайте что-то еще с updatedUser
-        dispatch(fetchUserNameByChatId(currentUser.chatId)); // Обновите пользователя, если нужно
-      } else {
-        console.error("Обновленные данные пользователя не найдены");
-      }
-    } else {
-      console.error(
-        "Ошибка при создании прогноза:",
-        resultAction.error.message
+    if (response.payload.updatedUser) {
+      console.log(
+        "Обновленные очки пользователя:",
+        response.payload.updatedUser.points
       );
+      // Обновляем состояние пользователя
+      dispatch(updateUserPoints(response.payload.updatedUser.points)); // Добавьте экшен для обновления очков на фронтенде
     }
 
     setShowModal(false); // Закрыть окно после отправки прогноза
   };
 
-  useEffect(() => {
-    const updateUserPoints = async () => {
-      if (currentUser && currentUser.username) {
-        // Проверяем, существует ли имя пользователя
-        const resultAction = await dispatch(
-          fetchUpdatedUserPoints(currentUser.username) // Убедитесь, что это вызывает правильное имя пользователя
-        );
-        if (fetchUpdatedUserPoints.fulfilled.match(resultAction)) {
-          console.log(
-            "Очки пользователя обновлены:",
-            resultAction.payload.points
-          );
-        } else {
-          console.error(
-            "Ошибка при обновлении очков:",
-            resultAction.error.message
-          );
-        }
-      } else {
-        console.warn(
-          "currentUser не определён или не имеет имени пользователя"
-        );
-      }
-    };
-
-    updateUserPoints();
-  }, [currentUser]);
   return (
     <div>
       <h1>Матчи Англии</h1>
