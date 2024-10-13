@@ -56,6 +56,7 @@ const England = () => {
       console.error("Имя пользователя пустое. Проверьте, загружены ли данные.");
       return; // Прекращаем выполнение, если имя пользователя пустое
     }
+
     dispatch(
       createUserPrediction({
         username: currentUser.username,
@@ -64,15 +65,6 @@ const England = () => {
         betPoints,
       })
     );
-
-    if (response.payload.updatedUser) {
-      console.log(
-        "Обновленные очки пользователя:",
-        response.payload.updatedUser.points
-      );
-      // Обновляем состояние пользователя
-      dispatch(updateUserPoints(response.payload.updatedUser.points)); // Добавьте экшен для обновления очков на фронтенде
-    }
 
     setShowModal(false); // Закрыть окно после отправки прогноза
   };
@@ -97,15 +89,8 @@ const England = () => {
       {showModal && (
         <div className="modal">
           <p>
-            Вы уверены, что хотите выбрать {selectedPrediction.selectedTeam} и
-            поставить {betPoints} очков?
+            Вы уверены, что хотите выбрать {selectedPrediction.selectedTeam}?
           </p>
-          <input
-            type="number"
-            value={betPoints}
-            onChange={(e) => setBetPoints(Number(e.target.value))}
-            placeholder="Введите количество очков"
-          />
           <button onClick={handleSubmitPrediction}>Да</button>
           <button onClick={() => setShowModal(false)}>Нет</button>
         </div>
