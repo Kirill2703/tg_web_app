@@ -51,36 +51,35 @@ const England = () => {
     setShowModal(true);
   };
 
- const handleSubmitPrediction = async () => {
-   if (!currentUser || betPoints <= 0) {
-     console.error("Имя пользователя пустое. Проверьте, загружены ли данные.");
-     return; // Прекращаем выполнение, если имя пользователя пустое
-   }
+  const handleSubmitPrediction = async () => {
+    if (!currentUser || betPoints <= 0) {
+      console.error("Имя пользователя пустое. Проверьте, загружены ли данные.");
+      return;
+    }
 
-   // Выполняем асинхронный вызов для создания прогноза
-   const response = await dispatch(
-     createUserPrediction({
-       username: currentUser.username,
-       predictionId: selectedPrediction._id,
-       selectedTeam: selectedPrediction.selectedTeam,
-       betPoints,
-     })
-   );
+    const response = await dispatch(
+      createUserPrediction({
+        username: currentUser.username,
+        predictionId: selectedPrediction._id,
+        selectedTeam: selectedPrediction.selectedTeam,
+        betPoints,
+      })
+    );
 
-   // Проверяем, успешно ли выполнен вызов
-   if (createUserPrediction.fulfilled.match(response)) {
-     console.log(
-       "Обновленные очки пользователя:",
-       response.payload.updatedUser.points
-     );
-     // Обновляем состояние пользователя
-     dispatch(updateUserPoints(response.payload.updatedUser.points)); // Добавьте экшен для обновления очков на фронтенде
-   } else {
-     console.error("Ошибка при создании прогноза:", response.error.message);
-   }
+    console.log("Response from createUserPrediction:", response); // Добавляем логирование ответа
 
-   setShowModal(false); // Закрыть окно после отправки прогноза
- };
+    if (createUserPrediction.fulfilled.match(response)) {
+      console.log(
+        "Обновленные очки пользователя:",
+        response.payload.updatedUser.points
+      );
+      dispatch(updateUserPoints(response.payload.updatedUser.points));
+    } else {
+      console.error("Ошибка при создании прогноза:", response.error);
+    }
+
+    setShowModal(false);
+  };
 
   return (
     <div>

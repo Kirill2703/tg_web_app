@@ -1,6 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-
 const API_URL = "http://localhost:4000/api/user-prediction";
 
 export const fetchAllUserPredictions = createAsyncThunk(
@@ -21,8 +20,14 @@ export const fetchAllUserPredictions = createAsyncThunk(
 export const createUserPrediction = createAsyncThunk(
   "user-prediction/createPrediction",
   async ({ username, predictionId, selectedTeam, betPoints }, thunkAPI) => {
+    console.log("Данные прогноза:", {
+      username: currentUser.username,
+      predictionId: selectedPrediction._id,
+      selectedTeam: selectedPrediction.selectedTeam,
+      betPoints,
+    });
     try {
-      const response = await fetch(`${API_URL}/create`, {
+      const response = await fetch(`${API_URL}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -31,7 +36,7 @@ export const createUserPrediction = createAsyncThunk(
           username,
           predictionId,
           selectedTeam,
-          betPoints
+          betPoints,
         }),
       });
 
