@@ -51,31 +51,36 @@ const England = () => {
     setShowModal(true);
   };
 
-  const handleSubmitPrediction = () => {
-    if (!currentUser || betPoints <= 0) {
-      console.error("Имя пользователя пустое. Проверьте, загружены ли данные.");
-      return; // Прекращаем выполнение, если имя пользователя пустое
-    }
-    dispatch(
-      createUserPrediction({
-        username: currentUser.username,
-        predictionId: selectedPrediction._id,
-        selectedTeam: selectedPrediction.selectedTeam,
-        betPoints,
-      })
-    );
+ const handleSubmitPrediction = async () => {
+   if (!currentUser || betPoints <= 0) {
+     console.error("Имя пользователя пустое. Проверьте, загружены ли данные.");
+     return; // Прекращаем выполнение, если имя пользователя пустое
+   }
 
-    if (response.payload.updatedUser) {
-      console.log(
-        "Обновленные очки пользователя:",
-        response.payload.updatedUser.points
-      );
-      // Обновляем состояние пользователя
-      dispatch(updateUserPoints(response.payload.updatedUser.points)); // Добавьте экшен для обновления очков на фронтенде
-    }
+   // Выполняем асинхронный вызов для создания прогноза
+   const response = await dispatch(
+     createUserPrediction({
+       username: currentUser.username,
+       predictionId: selectedPrediction._id,
+       selectedTeam: selectedPrediction.selectedTeam,
+       betPoints,
+     })
+   );
 
-    setShowModal(false); // Закрыть окно после отправки прогноза
-  };
+   // Проверяем, успешно ли выполнен вызов
+   if (createUserPrediction.fulfilled.match(response)) {
+     console.log(
+       "Обновленные очки пользователя:",
+       response.payload.updatedUser.points
+     );
+     // Обновляем состояние пользователя
+     dispatch(updateUserPoints(response.payload.updatedUser.points)); // Добавьте экшен для обновления очков на фронтенде
+   } else {
+     console.error("Ошибка при создании прогноза:", response.error.message);
+   }
+
+   setShowModal(false); // Закрыть окно после отправки прогноза
+ };
 
   return (
     <div>
