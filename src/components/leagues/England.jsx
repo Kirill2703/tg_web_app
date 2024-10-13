@@ -55,14 +55,16 @@ const England = () => {
   };
 
   const handleSubmitPrediction = async () => {
-    if (!currentUser) {
-      console.error("Пользователь не загружен. Проверьте данные.");
-      return; // Прекращаем выполнение, если пользователь не загружен
+    if (!currentUser || !currentUser.username) {
+      console.error(
+        "Пользователь не загружен или username отсутствует. Проверьте данные."
+      );
+      return;
     }
 
     if (betPoints <= 0) {
       console.error("Количество очков должно быть больше 0.");
-      return; // Прекращаем выполнение, если очки меньше или равны 0
+      return;
     }
 
     const response = await dispatch(
@@ -75,17 +77,27 @@ const England = () => {
     );
 
     if (createUserPrediction.fulfilled.match(response)) {
+      console.log("Ответ от API:", response.payload); // Логируем полный ответ от API
       console.log(
         "Обновленные очки пользователя:",
         response.payload.updatedUser.points
       );
       dispatch(updateUserPoints(response.payload.updatedUser.points));
+
+      // Проверка состояния после обновления
+      const updatedUser = useSelector((state) => state.user.currentUser);
+      console.log("Текущий пользователь после обновления:", updatedUser); // Проверка обновленного пользователя
     } else {
-      console.error("Ошибка при создании прогноза:", response.error.message);
+      if (response.error) {
+        console.error("Ошибка при создании прогноза:", response.error.message);
+      } else {
+        console.error("Неизвестная ошибка при создании прогноза");
+      }
     }
 
     setShowModal(false); // Закрыть окно после отправки прогноза
   };
+
 
   return (
     <div>
