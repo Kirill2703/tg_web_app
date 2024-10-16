@@ -48,7 +48,7 @@ function App() {
               <Route path="/prediction/spain" element={<Spain />} />
               <Route path="/prediction/italy" element={<Italy />} />
               <Route path="/prediction/france" element={<France />} />
-              <Route path="history" element={<History /> } />
+              <Route path="/history" element={<History /> } />
             </Route>
           </Routes>
         </div>
