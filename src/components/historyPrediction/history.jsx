@@ -11,15 +11,6 @@ const History = () => {
   const [error, setError] = useState(null);
   const [history, setHistory] = useState([]);
 
-  const tg = window.Telegram.WebApp;
-  const chatId = tg.initDataUnsafe?.user?.id;
-
-  useEffect(() => {
-    if (chatId) {
-      dispatch(fetchUserNameByChatId);
-    }
-  }, []);
-
   //   useEffect(() => {
   //     const fetchHistory = async () => {
   //       if (currentUser) {

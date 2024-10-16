@@ -5,6 +5,7 @@ import questionReducer from "../slices/questionsSlice";
 import quizReducer from "../slices/quizSlice";
 import predictionReducer from "../slices/predictionSlice";
 import userPredictionReducer from "../slices/userPredictionSlice"
+import historyReducer from"../slices/historyPredictionSlice"
 
 const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
     questions: questionReducer,
     quiz: quizReducer,
     predictions: predictionReducer,
+    history: historyReducer
   },
 });
 
