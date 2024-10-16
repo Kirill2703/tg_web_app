@@ -14,17 +14,21 @@ const History = () => {
     const fetchHistory = async () => {
       if (currentUser) {
         setLoading(true);
-          try {
-              const result = await dispatch(fetchUserHistory(currentUser.username))
-              if (fetchUserHistory.fulfilled.match(result)) {
-                setHistory(result.payload);
-              } else {
-                setError(result.error.message);
-              }
-          } catch (err) {
-              setError(err.message)
-          } 
+        try {
+          const result = await dispatch(fetchUserHistory(currentUser.username));
+          if (fetchUserHistory.fulfilled.match(result)) {
+            setHistory(result.payload);
+          } else {
+            setError(result.error.message);
+          }
+        } catch (err) {
+          setError(err.message);
+        } finally {
+          setLoading(false); // Убедитесь, что это всегда вызывается
         }
+      } else {
+        setLoading(false); // Если текущего пользователя нет, завершите загрузку
+      }
         
         fetchHistory()
     };
