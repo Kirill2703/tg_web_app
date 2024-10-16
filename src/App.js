@@ -12,6 +12,7 @@ import Germany from "./components/leagues/Germany";
 import Spain from "./components/leagues/Spain";
 import Italy from "./components/leagues/Italy";
 import France from "./components/leagues/France";
+import History from "./components/historyPrediction/history";
 
 const tg = window.Telegram.WebApp;
 
@@ -47,6 +48,7 @@ function App() {
               <Route path="/prediction/spain" element={<Spain />} />
               <Route path="/prediction/italy" element={<Italy />} />
               <Route path="/prediction/france" element={<France />} />
+              <Route path="history" element={<History /> } />
             </Route>
           </Routes>
         </div>

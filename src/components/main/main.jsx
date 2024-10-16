@@ -5,8 +5,9 @@ import Header from "../header/header";
 import LoadingScreen from "../loadingScreen/loadingScreen";
 import "../../App.css";
 import Footer from "../footer/footer";
+import History from "../historyPrediction/history";
 
-const Main = ({setLoading}) => {
+const Main = ({ setLoading }) => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.user.currentUser); // Получаем список пользователей
   const [isLoading, setIsLoading] = useState(true);
@@ -41,7 +42,9 @@ const Main = ({setLoading}) => {
 
   return (
     <div>
-        
+      <button>
+        <History />
+      </button>
     </div>
   );
 };
