@@ -7,36 +7,19 @@ import { fetchUserNameByChatId } from "../../thunks/userThunk";
 const History = () => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.user.currentUser);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [history, setHistory] = useState([]);
+  //   const [loading, setLoading] = useState(true);
+  //   const [error, setError] = useState(null);
+  //   const [history, setHistory] = useState([]);
+  const { history, loading, error } = useSelector((state) => state.history);
 
-  //   useEffect(() => {
-  //     const fetchHistory = async () => {
-  //       if (currentUser) {
-  //         setLoading(true);
-  //         try {
-  //           const result = await dispatch(fetchUserHistory(currentUser.username));
-  //           if (fetchUserHistory.fulfilled.match(result)) {
-  //             setHistory(result.payload);
-  //           } else {
-  //             setError(result.error.message);
-  //           }
-  //         } catch (err) {
-  //           setError(err.message);
-  //         } finally {
-  //           setLoading(false); // Убедитесь, что это всегда вызывается
-  //         }
-  //       } else {
-  //         setLoading(false); // Если текущего пользователя нет, завершите загрузку
-  //       }
+  useEffect(() => {
+    if (currentUser) {
+      dispatch(fetchUserHistory(currentUser.username));
+    }
+  }, [dispatch, currentUser]);
 
-  //         fetchHistory()
-  //     };
-  //   }, [dispatch, currentUser]);
-
-  // if (loading) return <LoadingScreen />
-  // if (error) return <div>ERROR</div>
+  if (loading) return <LoadingScreen />;
+  if (error) return <div>Ошибка: {error}</div>;
 
   return (
     <div>
