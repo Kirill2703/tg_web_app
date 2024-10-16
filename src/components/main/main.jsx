@@ -6,6 +6,7 @@ import LoadingScreen from "../loadingScreen/loadingScreen";
 import "../../App.css";
 import Footer from "../footer/footer";
 import History from "../historyPrediction/history";
+import { Link } from "react-router-dom";
 
 const Main = ({ setLoading }) => {
   const dispatch = useDispatch();
