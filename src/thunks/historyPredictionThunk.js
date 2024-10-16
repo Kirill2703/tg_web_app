@@ -3,7 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 const API_URL = "http://localhost:4000/api/user-prediction";
 
 export const fetchUserHistory = createAsyncThunk(
-  "user-prediction/fetchHistory",
+  "/fetchHistory",
   async (username, thunkAPI) => {
     try {
       const responce = await fetch(`${API_URL}/history/${username}`);
