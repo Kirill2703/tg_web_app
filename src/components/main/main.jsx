@@ -43,7 +43,7 @@ const Main = ({ setLoading }) => {
   return (
     <div>
       <button>
-        <History />
+        <Link to="/history">History</Link>
       </button>
     </div>
   );
