@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { fetchUserHistory } from "../thunks/historyPredictionThunk";
 
 const initialState = {
   history: [],
