@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-const API_URL = "http://localhost:4000/api";
+const API_URL = "http://localhost:4000/api/user-prediction";
 
 export const fetchAllUserPredictions = createAsyncThunk(
   "user-prediction/fetchAll", // Имя экшена
