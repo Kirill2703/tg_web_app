@@ -16,10 +16,10 @@ const History = () => {
         setLoading(true);
           try {
               const result = await dispatch(fetchUserHistory(currentUser.username))
-              if (fetchUserHistory.fullfilled.match(result)) {
-                  setHistory(result.payload)
+              if (fetchUserHistory.fulfilled.match(result)) {
+                setHistory(result.payload);
               } else {
-                  setError(result.error.message)
+                setError(result.error.message);
               }
           } catch (err) {
               setError(err.message)
