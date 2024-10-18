@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import  fetchAllPredictions  from "../../thunks/predictionThunk";
+import fetchAllPredictions from "../../thunks/predictionThunk";
 import LoadingScreen from "../loadingScreen/loadingScreen";
 import { fetchUserNameByChatId } from "../../thunks/userThunk";
 import { createUserPrediction } from "../../thunks/userPredictionThunk";
@@ -19,31 +19,13 @@ const France = () => {
   const chatId = tg.initDataUnsafe?.user?.id;
 
   useEffect(() => {
-    console.log("Запускаем useEffect для загрузки пользователя");
     if (chatId) {
-      console.log("Chat ID:", chatId);
-      dispatch(fetchUserNameByChatId(chatId))
-        .then((result) => {
-          console.log("Результат загрузки пользователя:", result);
-        })
-        .catch((err) => {
-          console.error("Ошибка при загрузке пользователя:", err);
-        });
-    } else {
-      console.error("Chat ID is empty");
+      dispatch(fetchUserNameByChatId(chatId));
     }
   }, [dispatch, chatId]);
 
-
   useEffect(() => {
-    console.log("Запускаем useEffect для загрузки предсказаний");
-    dispatch(fetchAllPredictions())
-      .then((result) => {
-        console.log("Результат загрузки предсказаний:", result);
-      })
-      .catch((err) => {
-        console.error("Ошибка при загрузке предсказаний:", err);
-      });
+    dispatch(fetchAllPredictions());
   }, [dispatch]);
 
   if (loading) {
@@ -59,52 +41,39 @@ const France = () => {
   );
 
   const handleTeamClick = (prediction, team) => {
-    console.log("Команда выбрана:", team);
     setSelectedPrediction({ ...prediction, selectedTeam: team });
     setShowModal(true);
   };
 
   const handleSubmitPrediction = async () => {
-    // Проверка на наличие currentUser и его свойств
     if (
       !currentUser ||
       !currentUser.username ||
       !selectedPrediction ||
       betPoints <= 0
     ) {
-      console.error(
-        "Имя пользователя пустое или некорректное количество очков."
-      );
       return;
     }
 
-    // Передаем все данные в thunk напрямую
+    
     const resultAction = await dispatch(
       createUserPrediction({
-        username: currentUser.username, // Здесь передаем напрямую
-        predictionId: selectedPrediction._id, // Здесь передаем напрямую
+        username: currentUser.username, 
+        predictionId: selectedPrediction._id, 
         selectedTeam: selectedPrediction.selectedTeam,
         betPoints,
       })
     );
 
-    // Проверяем, успешно ли прошел вызов и есть ли полезная нагрузка в результате
+    
     if (createUserPrediction.fulfilled.match(resultAction)) {
-      const { updatedUser } = resultAction.payload; // Изменено на деструктуризацию
+      const { updatedUser } = resultAction.payload; 
       if (updatedUser) {
-        console.log("Обновленные очки пользователя:", updatedUser.points);
-        dispatch(fetchUserNameByChatId(currentUser.chatId)); // Обновляем пользователя, если нужно
-      } else {
-        console.error("Обновленные данные пользователя не найдены");
+        
+        dispatch(fetchUserNameByChatId(currentUser.chatId)); 
       }
-    } else {
-      console.error(
-        "Ошибка при создании прогноза:",
-        resultAction.error.message
-      );
     }
-
-    setShowModal(false); // Закрыть окно после отправки прогноза
+    setShowModal(false); 
   };
   return (
     <div>
@@ -138,7 +107,6 @@ const France = () => {
             type="number"
             value={betPoints}
             onChange={(e) => {
-              console.log("Количество очков изменено:", e.target.value);
               setBetPoints(Number(e.target.value));
             }}
             placeholder="Введите количество очков"
