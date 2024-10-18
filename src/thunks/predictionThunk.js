@@ -19,13 +19,4 @@ const fetchAllPredictions = createAsyncThunk(
   }
 );
 
-// const updatePrediction = createAsyncThunk(
-//   "prediction/update",
-//   async (_, thunkAPI) => {
-//     try {
-      
-//     }
-//   }
-// )
-
 export default fetchAllPredictions;
