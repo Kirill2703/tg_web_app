@@ -164,6 +164,10 @@ body {
   background-color: #fff3cd; /* Коричневый */
   border: 2px solid #ffc107;
 }
+.history-item.pending {
+  background-color: #d3d3d3; /* Светло-серый цвет */
+  border: 2px solid #ffc107;
+}
 
 /* Дополнительный стиль для текста */
 .result-text {

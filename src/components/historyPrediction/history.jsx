@@ -21,7 +21,8 @@ const History = () => {
   const getOutcomeClass = (outcome) => {
     if (outcome === "Win") return "win";
     if (outcome === "Lose") return "lose";
-    return "draw";
+    if (outcome === "Draw") return "draw";
+    return "pending";
   };
 
   if (loading) return <LoadingScreen />;
@@ -43,8 +44,7 @@ const History = () => {
               <div>
                 <p>
                   {item.match} - Твой прогноз: {item.selectedTeam} | Результат:
-                  {""}
-                  {item.result}
+                  {item.result ? item.result : " матч ещё не закончен"}
                 </p>
                 <span className="result-text">{item.outcome}</span>
               </div>
