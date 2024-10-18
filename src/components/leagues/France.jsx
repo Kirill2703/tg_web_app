@@ -115,7 +115,7 @@ const France = () => {
         <div>Пользователь не загружен.</div>
       )}
       <ul>
-        {englandPredictions.map((prediction) => (
+        {francePredictions.map((prediction) => (
           <li key={prediction._id}>
             <span onClick={() => handleTeamClick(prediction, prediction.team1)}>
               {prediction.team1}
