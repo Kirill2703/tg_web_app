@@ -139,4 +139,35 @@ body {
   transform: translateX(-50%);
 }
 
+.history-item {
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Цвета в зависимости от исхода прогноза */
+.win {
+  background-color: #d4edda; /* Зеленый */
+  border: 2px solid #28a745;
+}
+
+.lose {
+  background-color: #f8d7da; /* Красный */
+  border: 2px solid #dc3545;
+}
+
+.draw {
+  background-color: #fff3cd; /* Коричневый */
+  border: 2px solid #ffc107;
+}
+
+/* Дополнительный стиль для текста */
+.result-text {
+  font-weight: bold;
+}
+
 

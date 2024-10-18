@@ -18,6 +18,12 @@ const History = () => {
     }
   }, [dispatch, currentUser]);
 
+  const getOutcomeClass = (outcome) => {
+    if (outcome === "Win") return "win";
+    if (outcome === "Lose") return "lose";
+    return "draw";
+  };
+
   if (loading) return <LoadingScreen />;
   if (error) return <div>Ошибка: {error}</div>;
 
@@ -30,11 +36,18 @@ const History = () => {
       ) : (
         <ul>
           {history.map((item) => (
-            <li key={item._id}>
-              <p>
-                {item.match} - Твой прогноз: {item.selectedTeam} | Результат:{" "}
-                {item.result}
-              </p>
+            <li
+              key={item._id}
+              className={`history-item ${getOutcomeClass(item.outcome)}`}
+            >
+              <div>
+                <p>
+                  {item.match} - Твой прогноз: {item.selectedTeam} | Результат:
+                  {"Ещё не закончен"}
+                  {item.result}
+                </p>
+                <span className="result-text">{item.outcome}</span>
+              </div>
             </li>
           ))}
         </ul>
