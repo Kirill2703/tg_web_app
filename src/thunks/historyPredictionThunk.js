@@ -8,7 +8,7 @@ export const fetchUserHistory = createAsyncThunk(
     try {
       const responce = await fetch(`${API_URL}/history/${username}`);
       if (!responce.ok) {
-        throw new Error("Ошибка при загрузке истории прогнозов");
+        throw new Error("Здесь пока ничего нет");
       }
       const data = await responce.json();
       return data;
