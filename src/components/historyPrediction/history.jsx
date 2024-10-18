@@ -43,7 +43,7 @@ const History = () => {
               <div>
                 <p>
                   {item.match} - Твой прогноз: {item.selectedTeam} | Результат:
-                  {"Ещё не закончен"}
+                  {""}
                   {item.result}
                 </p>
                 <span className="result-text">{item.outcome}</span>
