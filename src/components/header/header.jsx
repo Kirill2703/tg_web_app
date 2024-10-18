@@ -21,9 +21,6 @@ const Header = () => {
   };
   return (
     <div className="header">
-      {/* <button onClick={onClose} className="button">
-        Close
-      </button> */}
       {currentUser ? (
         <>
           <div>Твои очки: {currentUser.points}</div>

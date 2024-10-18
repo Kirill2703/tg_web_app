@@ -1,8 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-const API_URL = "http://localhost:4000/api/user"; // URL вашего API
+const API_URL = "http://localhost:4000/api/user";
 
-// Асинхронное действие для создания пользователя
 export const createUser = createAsyncThunk(
   "user/createUser",
   async ({ username, telegramId }) => {
@@ -19,7 +18,7 @@ export const createUser = createAsyncThunk(
     }
 
     const data = await response.json();
-    return data; // Возвращаем созданного пользователя
+    return data;
   }
 );
 
@@ -28,13 +27,11 @@ export const fetchAllUsers = createAsyncThunk(
   async () => {
     const response = await fetch(API_URL);
     if (!response.ok) {
-      console.error("Ошибка при получении пользователей:", response.statusText); // Логируем ошибку
       throw new Error("Не удалось загрузить пользователей");
     }
 
     const data = await response.json();
-    console.log("Полученные пользователи:", data); // Логируем полученные данные
-    return data; // Возвращаем массив пользователей
+    return data;
   }
 );
 
@@ -43,12 +40,10 @@ export const fetchUserNameByChatId = createAsyncThunk(
   async (chatId, { rejectWithValue }) => {
     const response = await fetch(`${API_URL}/${chatId}`);
     if (!response.ok) {
-      console.error("Ошибка при получении имени пользователя: ", response);
       return rejectWithValue("Пользователь не найден");
     }
 
     const data = await response.json();
-    console.log("Полученные данные пользователя: ", data);
     return data;
   }
 );
@@ -69,7 +64,6 @@ export const updateUserPoints = createAsyncThunk(
     }
 
     const data = await response.json();
-    return data; // Возвращаем обновленные данные о пользователе
+    return data;
   }
 );
-

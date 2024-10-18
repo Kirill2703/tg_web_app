@@ -23,14 +23,9 @@ function App() {
     tg.expand();
 
     tg.ready();
-
-    // // Загрузка всех пользователей
-    // dispatch(fetchAllUsers());
   }, []);
 
-  // if (loading) {
-  //   return <LoadingScreen />;
-  // }
+  
 
   return (
     <Router>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaBullseye, FaHome, FaMedal, FaRegLightbulb, FaTrophy } from "react-icons/fa";
+import { FaBullseye, FaHome, FaRegLightbulb, FaTrophy } from "react-icons/fa";
 
 
 const Footer = () => {

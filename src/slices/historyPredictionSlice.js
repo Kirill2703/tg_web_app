@@ -18,12 +18,12 @@ const historySlice = createSlice({
           })
           .addCase(fetchUserHistory.fulfilled, (state, action) => {
             state.loading = false;
-            state.history = action.payload; // Записываем историю
+            state.history = action.payload; 
             state.error = null;
           })
           .addCase(fetchUserHistory.rejected, (state, action) => {
             state.loading = false;
-            state.error = action.payload; // Сохраняем ошибку
+            state.error = action.payload; 
           });
     }
 })

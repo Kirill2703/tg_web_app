@@ -22,7 +22,7 @@ const userPredictionSlice = createSlice({
       })
       .addCase(createUserPrediction.fulfilled, (state, action) => {
         state.loading = false;
-        state.predictions.push(action.payload); // Добавляем новый прогноз
+        state.predictions.push(action.payload); 
       })
       .addCase(createUserPrediction.rejected, (state, action) => {
         state.loading = false;

@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { fetchAllUsers, fetchUserNameByChatId } from "../../thunks/userThunk";
 import { useDispatch, useSelector } from "react-redux";
-import Header from "../header/header";
 import LoadingScreen from "../loadingScreen/loadingScreen";
 import "../../App.css";
-import Footer from "../footer/footer";
-import History from "../historyPrediction/history";
 import { Link } from "react-router-dom";
 
 const Main = ({ setLoading }) => {
   const dispatch = useDispatch();
-  const currentUser = useSelector((state) => state.user.currentUser); // Получаем список пользователей
+  const currentUser = useSelector((state) => state.user.currentUser);
   const [isLoading, setIsLoading] = useState(true);
 
   const tg = window.Telegram.WebApp;
@@ -19,22 +16,20 @@ const Main = ({ setLoading }) => {
   useEffect(() => {
     setLoading(true);
 
-    // Имитация задержки загрузки на 2 секунды
     const loadingTimer = setTimeout(() => {
-      setIsLoading(false); // Убираем экран загрузки
+      setIsLoading(false);
       setLoading(false);
     }, 2000);
 
-    // Имитация получения данных с задержкой
     if (chatId) {
       const fetchUserTimer = setTimeout(() => {
-        dispatch(fetchUserNameByChatId(chatId)); // Получаем пользователя по chatId
-      }, 2000); // Запрос через 1 секунду
+        dispatch(fetchUserNameByChatId(chatId));
+      }, 2000);
 
-      return () => clearTimeout(fetchUserTimer); // Очистка таймера запроса
+      return () => clearTimeout(fetchUserTimer);
     }
 
-    return () => clearTimeout(loadingTimer); // Очистка таймера загрузки
+    return () => clearTimeout(loadingTimer);
   }, [dispatch, chatId]);
 
   if (isLoading) {

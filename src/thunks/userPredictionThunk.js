@@ -3,7 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 const API_URL = "http://localhost:4000/api/user-prediction";
 
 export const fetchAllUserPredictions = createAsyncThunk(
-  "user-prediction/fetchAll", // Имя экшена
+  "user-prediction/fetchAll",
   async (_, thunkAPI) => {
     try {
       const response = await fetch(`${API_URL}`);
@@ -11,7 +11,7 @@ export const fetchAllUserPredictions = createAsyncThunk(
         throw new Error("Ошибка при загрузке предсказаний");
       }
       const data = await response.json();
-      return data; // Возвращаем данные
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -20,13 +20,6 @@ export const fetchAllUserPredictions = createAsyncThunk(
 export const createUserPrediction = createAsyncThunk(
   "user-prediction/create",
   async ({ username, predictionId, selectedTeam, betPoints }, thunkAPI) => {
-    // Используем полученные аргументы
-    console.log("Данные прогноза:", {
-      username,
-      predictionId,
-      selectedTeam,
-      betPoints,
-    });
     try {
       const response = await fetch(`${API_URL}/create`, {
         method: "POST",
@@ -52,4 +45,3 @@ export const createUserPrediction = createAsyncThunk(
     }
   }
 );
-

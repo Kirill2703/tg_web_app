@@ -5,7 +5,7 @@ import {
   fetchAllUsers,
 } from "../thunks/userThunk";
 
-// Создание среза
+
 const userSlice = createSlice({
   name: "user",
   initialState: {
@@ -18,12 +18,11 @@ const userSlice = createSlice({
   reducers: {
     updateUserPoints: (state, action) => {
       if (state.currentUser) {
-        state.currentUser.points = action.payload; // Обновляем очки пользователя
+        state.currentUser.points = action.payload; 
       }
     },
   },
   extraReducers: (builder) => {
-    // Обработка создания пользователя
     builder
       .addCase(createUser.pending, (state) => {
         state.loading = true;
@@ -38,7 +37,6 @@ const userSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       })
-      // Обработка получения имени пользователя
       .addCase(fetchUserNameByChatId.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -46,7 +44,6 @@ const userSlice = createSlice({
       .addCase(fetchUserNameByChatId.fulfilled, (state, action) => {
         state.loading = false;
         state.currentUser = action.payload.user;
-        console.log("Имя пользователя обновлено: ", action.payload.user);
       })
       .addCase(fetchUserNameByChatId.rejected, (state, action) => {
         state.loading = false;
@@ -58,7 +55,7 @@ const userSlice = createSlice({
       })
       .addCase(fetchAllUsers.fulfilled, (state, action) => {
         state.loading = false;
-        state.user = action.payload; // Сохраняем полученных пользователей
+        state.user = action.payload; 
       })
       .addCase(fetchAllUsers.rejected, (state, action) => {
         state.loading = false;
@@ -67,5 +64,4 @@ const userSlice = createSlice({
   },
 });
 
-// Экспортируем редюсер
 export default userSlice.reducer;
