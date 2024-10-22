@@ -44,7 +44,6 @@ const Question = () => {
             style={{ cursor: "pointer" }}
           >
             {question.questionText}
-            {user.chatId}
           </li>
         ))}
       </ul>
