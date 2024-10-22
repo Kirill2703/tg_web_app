@@ -80,7 +80,7 @@ export const updateUserPoints = createAsyncThunk(
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ userId, correctAnswers, quizId }),
+          body: JSON.stringify({ chatId, correctAnswers, quizId }),
         });
 
         if (!response.ok) {
