@@ -32,11 +32,16 @@ const ModalOptions = ({ onClose, chatId }) => {
     setIsAnswered(newAnsweredStatus);
   };
 
-    const handleSubmit = () => {
-      console.log("Submitting answers...");
-      console.log("Chat ID:", chatId);
-      console.log("Correct Answers:", correctAnswers);
-      console.log("Quiz ID:", questions[0].quizId);
+  const handleSubmit = () => {
+    console.log("Submitting answers...");
+    console.log("Chat ID:", chatId);
+    console.log("Correct Answers:", correctAnswers);
+    console.log("Quiz ID:", questions[0].quizId);
+
+    if (!chatId) {
+      console.error("Chat ID is undefined!");
+      return; // Выход из функции, если chatId недоступен
+    }
     // Отправляем на сервер количество правильных ответов и ID пользователя
     dispatch(
       updateUserPointsQuiz({
