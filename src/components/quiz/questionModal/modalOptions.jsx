@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateUserPointsQuiz } from "../../../thunks/userThunk";
 
 const ModalOptions = ({ onClose, chatId }) => {
+  console.log("Chat ID in ModalOptions:", chatId);
   const questions = useSelector((state) => state.questions.questions);
   const dispatch = useDispatch();
 
