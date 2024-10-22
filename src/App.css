@@ -48,7 +48,7 @@ body {
   align-items: center;
 }
 
-.header-info p{
+.header-info p {
   color: var(--font-color-primary);
   font-family: var(--font-primary);
   font-weight: 400;
@@ -70,20 +70,19 @@ body {
 
 .icon-text-container {
   display: flex;
-  flex-direction: column; 
-  align-items: center; 
-  
+  flex-direction: column;
+  align-items: center;
 }
 
 .icon {
-  font-size: 14px; 
+  font-size: 14px;
   margin-bottom: 4px;
   color: var(--font-color-primary);
 }
 
 .link-nav-menu {
   text-decoration: none;
-  font-size: 12px; 
+  font-size: 12px;
   color: var(--font-color-primary);
 }
 
@@ -150,29 +149,73 @@ body {
 }
 
 .win {
-  background-color: #d4edda; 
+  background-color: #d4edda;
   border: 2px solid #28a745;
 }
 
 .lose {
-  background-color: #f8d7da; 
+  background-color: #f8d7da;
   border: 2px solid #dc3545;
 }
 
 .draw {
-  background-color: #fff3cd; 
+  background-color: #fff3cd;
   border: 2px solid #ffc107;
 }
 .history-item.pending {
-  background-color: #d3d3d3; 
+  background-color: #d3d3d3;
   border: 2px solid #ffc107;
 }
-
 
 .result-text {
   font-weight: bold;
 }
 
+.modal {
+  top: 0;
+  left: 20%;
 
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  z-index: 1000; /* Чтобы модальное окно было выше остальных элементов */
+  max-width: 200px;
 
+  width: 100%;
+}
 
+.modal h2 {
+  margin: 0 0 20px;
+}
+
+.modal ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.modal li {
+  margin-bottom: 10px;
+}
+
+.modal button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.modal button:hover {
+  opacity: 0.8;
+}
+
+.modal .close-button {
+  background-color: #f44336; /* Красный цвет для кнопки закрытия */
+  color: white;
+}
+
+.modal .submit-button {
+  background-color: #4caf50; /* Зеленый цвет для кнопки отправки */
+  color: white;
+}

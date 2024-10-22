@@ -56,10 +56,12 @@ const ModalOptions = ({ question, onClose, chatId }) => {
             : "Неправильный ответ!"}
         </div>
       )}
-      <button onClick={handleSubmit}>
+      <button className="submit-button" onClick={handleSubmit}>
         Завершить викторину и получить очки
       </button>
-      <button onClick={onClose}>Закрыть</button>
+      <button className="close-button" onClick={onClose}>
+        Закрыть
+      </button>
     </div>
   );
 };
