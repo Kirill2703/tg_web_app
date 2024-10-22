@@ -11,7 +11,7 @@ const Question = () => {
   const loading = useSelector((state) => state.questions.loading);
   const error = useSelector((state) => state.questions.error);
   const [selectedQuestion, setSelectedQuestion] = useState(null);
-   const chatId = useSelector((state) => state.user.chatId);
+  const currentUser = useSelector((state) => state.user.currentUser);
 
   useEffect(() => {
     dispatch(fetchAllQuestionsByQuizId(quizId));
@@ -43,6 +43,7 @@ const Question = () => {
             style={{ cursor: "pointer" }}
           >
             {question.questionText}
+            {currentUser.chatId}
           </li>
         ))}
       </ul>
