@@ -1,67 +1,99 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateUserPointsQuiz } from "../../../thunks/userThunk";
 
-const ModalOptions = ({ question, onClose, chatId }) => {
+const ModalOptions = ({ onClose, chatId }) => {
+  const questions = useSelector((state) => state.questions.questions);
   const dispatch = useDispatch();
-  const [selectedAnswer, setSelectedAnswer] = React.useState(null);
-  const [isAnswered, setIsAnswered] = React.useState(false);
+
+  const [selectedAnswers, setSelectedAnswers] = useState(
+    Array(questions.length).fill(null)
+  ); // Состояние для всех ответов
+  const [isAnswered, setIsAnswered] = useState(
+    Array(questions.length).fill(false)
+  ); // Состояние для отслеживания ответов
   const [correctAnswers, setCorrectAnswers] = useState(0);
 
-  const handleAnswerSelect = (answer) => {
-    setSelectedAnswer(answer);
-    setIsAnswered(true);
+  const handleAnswerSelect = (index, answer) => {
+    if (isAnswered[index]) return; // Если на вопрос уже ответили, не обрабатываем клик
 
-    if (answer === question.correctAnswer) {
+    const newAnswers = [...selectedAnswers];
+    newAnswers[index] = answer; // Устанавливаем ответ на определённый вопрос
+    setSelectedAnswers(newAnswers);
+
+    // Проверяем, правильный ли ответ
+    if (answer === questions[index].correctAnswer) {
       setCorrectAnswers((prev) => prev + 1); // Увеличиваем количество правильных ответов
     }
+
+    // Отметим вопрос как отвеченный
+    const newAnsweredStatus = [...isAnswered];
+    newAnsweredStatus[index] = true;
+    setIsAnswered(newAnsweredStatus);
   };
 
-  const handleSubmit = () => {
+    const handleSubmit = () => {
+      console.log("Submitting answers...");
+      console.log("Chat ID:", chatId);
+      console.log("Correct Answers:", correctAnswers);
+      console.log("Quiz ID:", questions[0].quizId);
     // Отправляем на сервер количество правильных ответов и ID пользователя
     dispatch(
-      updateUserPointsQuiz({ chatId, correctAnswers, quizId: question.quizId })
+      updateUserPointsQuiz({
+        chatId,
+        correctAnswers,
+        quizId: questions[0].quizId,
+      }) // Используем quizId первого вопроса
     );
     onClose();
   };
 
-  const isCorrectAnswer = selectedAnswer === question.correctAnswer;
+  // Убедитесь, что isAnswered является массивом
+  const allAnswered = isAnswered.every(Boolean); // Проверяем, ответили ли на все вопросы
+
   return (
     <div className="modal">
-      <h2>{question.questionText}</h2>
+      <h2>Вопросы викторины</h2>
       <ul>
-        {question.options.map((option, index) => (
+        {questions.map((question, index) => (
           <li key={index}>
-            <button
-              onClick={() => handleAnswerSelect(option)}
-              style={{
-                backgroundColor:
-                  selectedAnswer === option
-                    ? isCorrectAnswer
-                      ? "green"
-                      : "red"
-                    : "white",
-              }}
-              disabled={isAnswered} // Делаем кнопку неактивной после выбора
-            >
-              {option}
-            </button>
+            <h3>{question.questionText}</h3>
+            <ul>
+              {question.options.map((option, optionIndex) => (
+                <li key={optionIndex}>
+                  <button
+                    onClick={() => handleAnswerSelect(index, option)}
+                    style={{
+                      backgroundColor:
+                        selectedAnswers[index] === option
+                          ? option === question.correctAnswer
+                            ? "green"
+                            : "red"
+                          : "white",
+                    }}
+                    disabled={isAnswered[index]} // Делаем кнопку неактивной после выбора
+                  >
+                    {option}
+                  </button>
+                </li>
+              ))}
+            </ul>
+            {isAnswered[index] && (
+              <div>
+                {selectedAnswers[index] === question.correctAnswer
+                  ? `Правильно!`
+                  : `Неправильный ответ!`}
+              </div>
+            )}
           </li>
         ))}
       </ul>
-      {isAnswered && (
-        <div>
-          {isCorrectAnswer
-            ? `Правильно, ${question.points} очков уже у тебя в кармане!`
-            : "Неправильный ответ!"}
-        </div>
+      {allAnswered && (
+        <button onClick={handleSubmit}>
+          Завершить викторину и получить очки
+        </button>
       )}
-      <button className="submit-button" onClick={handleSubmit}>
-        Завершить викторину и получить очки
-      </button>
-      <button className="close-button" onClick={onClose}>
-        Закрыть
-      </button>
+      <button onClick={onClose}>Закрыть</button>
     </div>
   );
 };

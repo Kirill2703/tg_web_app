@@ -71,8 +71,11 @@ export const updateUserPoints = createAsyncThunk(
   export const updateUserPointsQuiz = createAsyncThunk(
     "user/updatePointsQuiz",
     async ({ chatId, correctAnswers, quizId }, thunkAPI) => {
+      
       try {
-        const response = await fetch(`${API_URL}/${chatId}/updatepointsquiz`, {
+        console.log("Updating user points...");
+        console.log("Request data:", { chatId, correctAnswers, quizId });
+        const response = await fetch(`${API_URL}/updatepointsquiz/${chatId}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -85,8 +88,10 @@ export const updateUserPoints = createAsyncThunk(
         }
 
         const data = await response.json();
+         console.log("Points updated successfully:", data.points);
         return data; // Возвращаем обновленные данные
       } catch (error) {
+        console.error("Error updating points:", error.message);
         return thunkAPI.rejectWithValue(error.message);
       }
     }
