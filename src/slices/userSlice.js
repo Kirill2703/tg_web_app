@@ -3,8 +3,8 @@ import {
   createUser,
   fetchUserNameByChatId,
   fetchAllUsers,
+  updateUserPointsQuiz,
 } from "../thunks/userThunk";
-
 
 const userSlice = createSlice({
   name: "user",
@@ -18,7 +18,7 @@ const userSlice = createSlice({
   reducers: {
     updateUserPoints: (state, action) => {
       if (state.currentUser) {
-        state.currentUser.points = action.payload; 
+        state.currentUser.points = action.payload;
       }
     },
   },
@@ -55,11 +55,18 @@ const userSlice = createSlice({
       })
       .addCase(fetchAllUsers.fulfilled, (state, action) => {
         state.loading = false;
-        state.user = action.payload; 
+        state.user = action.payload;
       })
       .addCase(fetchAllUsers.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
+      })
+      //
+      .addCase(updateUserPointsQuiz.fulfilled, (state, action) => {
+        state.points = action.payload.points; // Обновляем очки пользователя
+      })
+      .addCase(updateUserPointsQuiz.rejected, (state, action) => {
+        state.error = action.payload; // Обработка ошибок
       });
   },
 });

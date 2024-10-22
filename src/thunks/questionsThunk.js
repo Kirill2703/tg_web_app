@@ -1,12 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-const API_URL = "http://localhost:4000/api/quiz";
+const API_URL = "http://localhost:4000/api/question";
 
-const fetchAllQuizes = createAsyncThunk(
-  "quiz/fetchAll",
-  async (_, thunkAPI) => {
+const fetchAllQuestionsByQuizId = createAsyncThunk(
+  "prediction/fetchAllByQuizId",
+  async (quizId, thunkAPI) => {
     try {
-      const response = await fetch(`${API_URL}`);
+      const response = await fetch(`${API_URL}/${quizId}`);
       if (!response.ok) {
         throw new Error("Ошибка при загрузке предсказаний");
       }
@@ -17,6 +17,4 @@ const fetchAllQuizes = createAsyncThunk(
     }
   }
 );
-
-
-export default fetchAllQuizes
+export default fetchAllQuestionsByQuizId;

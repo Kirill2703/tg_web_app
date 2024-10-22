@@ -66,4 +66,28 @@ export const updateUserPoints = createAsyncThunk(
     const data = await response.json();
     return data;
   }
-);
+)
+//
+  export const updateUserPointsQuiz = createAsyncThunk(
+    "user/updatePointsQuiz",
+    async ({ chatId, correctAnswers, quizId }, thunkAPI) => {
+      try {
+        const response = await fetch(`${API_URL}/${chatId}/updatepointsquiz`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ userId, correctAnswers, quizId }),
+        });
+
+        if (!response.ok) {
+          throw new Error("Ошибка при обновлении очков пользователя");
+        }
+
+        const data = await response.json();
+        return data; // Возвращаем обновленные данные
+      } catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
+      }
+    }
+  );
