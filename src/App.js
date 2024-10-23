@@ -46,6 +46,7 @@ function App() {
               <Route path="/prediction/italy" element={<Italy />} />
               <Route path="/prediction/france" element={<France />} />
               <Route path="/history" element={<History />} />
+              <Route path="/leadears" element={<TableStat />} />
             </Route>
           </Routes>
         </div>

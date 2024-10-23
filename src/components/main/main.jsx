@@ -103,6 +103,10 @@ const Main = ({ setLoading }) => {
       <button>
         <Link to="/history">История</Link>
       </button>
+
+      <button>
+        <Link to="/leadres">Таблица лидеров</Link>
+      </button>
     </div>
   );
 };

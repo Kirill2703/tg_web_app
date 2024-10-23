@@ -219,3 +219,16 @@ body {
   background-color: #4caf50; /* Зеленый цвет для кнопки отправки */
   color: white;
 }
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
