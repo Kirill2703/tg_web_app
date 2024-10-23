@@ -66,33 +66,34 @@ export const updateUserPoints = createAsyncThunk(
     const data = await response.json();
     return data;
   }
-)
+);
 //
-  export const updateUserPointsQuiz = createAsyncThunk(
-    "user/updatePointsQuiz",
-    async ({ chatId, correctAnswers, quizId }, thunkAPI) => {
-      
-      try {
-        console.log("Updating user points...");
-        console.log("Request data:", { chatId, correctAnswers, quizId });
-        const response = await fetch(`${API_URL}/updatepointsquiz/${chatId}`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ chatId, correctAnswers, quizId }),
-        });
+export const updateUserPointsQuiz = createAsyncThunk(
+  "user/updatePointsQuiz",
+  async ({ chatId, correctAnswers, quizId }, thunkAPI) => {
+    try {
+      console.log("Updating user points...");
+      console.log("Request data:", { chatId, correctAnswers, quizId });
+      const response = await fetch(`${API_URL}/updatepointsquiz/${chatId}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ chatId, correctAnswers, quizId }),
+      });
 
-        if (!response.ok) {
-          throw new Error("Ошибка при обновлении очков пользователя");
-        }
-
-        const data = await response.json();
-         console.log("Points updated successfully:", data.points);
-        return data; // Возвращаем обновленные данные
-      } catch (error) {
-        console.error("Error updating points:", error.message);
-        return thunkAPI.rejectWithValue(error.message);
+      if (!response.ok) {
+        throw new Error("Ошибка при обновлении очков пользователя");
       }
+
+      const data = await response.json();
+      console.log("Points updated successfully:", data.points);
+      return data; // Возвращаем обновленные данные
+    } catch (error) {
+      console.error("Error updating points:", error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
-  );
+  }
+);
+
+
