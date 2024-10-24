@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserNameByChatId } from "../../thunks/userThunk";
-import { IoExitOutline } from "react-icons/io5";
+import { ImExit } from "react-icons/im";
+import { RiUserFill } from "react-icons/ri";
 
 const Header = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
@@ -24,7 +25,11 @@ const Header = () => {
       {currentUser ? (
         <>
           {/* <div>Твои очки: {currentUser.points}</div> */}
-          <div className="header-username">{currentUser.username}</div>
+
+          <div className="header-username">
+            <RiUserFill />
+            {currentUser.username}
+          </div>
         </>
       ) : (
         <p
@@ -32,16 +37,16 @@ const Header = () => {
             color: "whitesmoke",
             fontSize: "16px",
             display: "flex",
-            alignItems: "center",
             justifyContent: "center",
             fontFamily: "ActayWide",
           }}
         >
+          <RiUserFill />
           Пользователь не найден
         </p>
       )}
       <button onClick={onClose} className="button-exit-header">
-        <IoExitOutline />
+        <ImExit />
       </button>
     </div>
   );

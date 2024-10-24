@@ -55,11 +55,8 @@ body {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  /* border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px; */
-  /* box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
-  border-bottom: 2px solid #f0c040; */
+  justify-content: space-between;
+  padding: 0 12px;
 }
 
 .header-username {
@@ -85,6 +82,8 @@ body {
   flex-grow: 1;
 }
 
+
+
 .footer {
   background-color: #052278; /* #568628 */
   height: 60px;
@@ -96,6 +95,8 @@ body {
   border-top-right-radius: 8px;
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
   border-top: 2px solid #f0c040;
+  position: absolute;
+  bottom: 0;
 }
 
 .icon-text-container {
