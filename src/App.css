@@ -66,7 +66,7 @@ body {
 .header-username {
   font-family: var(--font-primary);
   color: var(--font-color-primary);
-  font-size: var(--font-size-main);
+  font-size: 10px;
   display: flex;
   text-transform: uppercase;
 }
@@ -75,7 +75,7 @@ body {
   background: none;
   font-family: var(--font-primary);
   color: var(--font-color-primary);
-  font-size: var(--font-size-main);
+  font-size: 16px;
   font-weight: 400;
   border: none;
   cursor: pointer;
@@ -96,7 +96,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 12px;
+  padding: 0 14px;
   position: absolute;
   bottom: 0;
 }
@@ -107,7 +107,7 @@ body {
   align-items: center;
   font-family: var(--font-primary);
   color: var(--font-color-primary);
-  font-size: var(--font-size-main);
+  font-size: 6px;
   text-transform: uppercase;
 }
 
