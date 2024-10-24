@@ -28,7 +28,9 @@ const Header = () => {
 
           <div className="header-username">
             <RiUserFill />
-            {currentUser.username}
+            <span style={{
+              paddingLeft: "6px"
+            }}>{currentUser.username}</span>
           </div>
         </>
       ) : (
