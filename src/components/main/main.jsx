@@ -69,12 +69,12 @@ const Main = ({ setLoading }) => {
     const loadingTimer = setTimeout(() => {
       setIsLoading(false);
       setLoading(false);
-    }, 2000);
+    }, 3000);
 
     if (chatId) {
       const fetchUserTimer = setTimeout(() => {
         dispatch(fetchUserNameByChatId(chatId));
-      }, 2000);
+      }, 3000);
 
       return () => clearTimeout(fetchUserTimer);
     }

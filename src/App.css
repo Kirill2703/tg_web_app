@@ -1,5 +1,5 @@
 :root {
-  --font-primary: "Montserrat", sans-serif;
+  --font-primary: "Actay Wide", sans-serif;
   --font-secondary: "Poppins", sans-serif;
   --font-size-main: 16px;
   --font-size-heading: 24px;
@@ -19,14 +19,30 @@ body {
   color: var(--font-color-primary);
 }
 
-.main-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+.loading-screen {
+  height: 100vh;
+  /* display: flex;
+  background: var(--tg-theme-bg-color);
+  color: var(--tg-theme-text-color); */
+  background: radial-gradient(
+    circle,
+    rgba(123, 49, 143, 1) 0%,
+    rgba(118, 42, 135, 1) 17%,
+    rgba(95, 31, 117, 1) 37%,
+    rgba(89, 27, 112, 1) 46%,
+    rgba(75, 17, 101, 1) 60%,
+    rgba(59, 14, 83, 1) 70%,
+    rgba(40, 7, 62, 1) 85%,
+    rgba(23, 4, 49, 1) 90%
+  );
+}
+
+.main-text-loading-screen{
+  font-family: var(--font-primary)
 }
 
 .content {
-  flex-grow: 1; /* Контент занимает все оставшееся пространство */
+  flex-grow: 1; 
 }
 
 .header {
@@ -102,53 +118,6 @@ body {
   margin-left: auto;
 }
 
-.loading-screen {
-  height: 100vh;
-  /* display: flex;
-  background: var(--tg-theme-bg-color);
-  color: var(--tg-theme-text-color); */
-  background: radial-gradient(
-    circle,
-    rgba(123, 49, 143, 1) 0%,
-    rgba(118, 42, 135, 1) 17%,
-    rgba(95, 31, 117, 1) 37%,
-    rgba(89, 27, 112, 1) 46%,
-    rgba(75, 17, 101, 1) 60%,
-    rgba(59, 14, 83, 1) 70%,
-    rgba(40, 7, 62, 1) 85%,
-    rgba(23, 4, 49, 1) 90%
-  );
-}
-
-.loading-screen img {
-  width: 100vh;
-  height: 100vh;
-  position: relative;
-}
-.text-loading-screen {
-  position: absolute;
-  left: 50%;
-  bottom: 50%;
-  z-index: 1000;
-  color: whitesmoke;
-  opacity: 0.3;
-  font-family: var(--font-primary);
-  font-weight: 400;
-  font-size: var(--font-size-heading);
-  transform: translate(-50%, 50%);
-}
-
-.loading-text-secondary {
-  font-family: var(--font-secondary);
-  font-weight: 400;
-  font-size: var(--font-size-main);
-  color: whitesmoke;
-  position: absolute;
-  opacity: 0.8;
-  left: 50%;
-  bottom: 30%;
-  transform: translateX(-50%);
-}
 
 .history-item {
   padding: 15px;
