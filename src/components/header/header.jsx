@@ -24,7 +24,7 @@ const Header = () => {
       {currentUser ? (
         <>
           <div>Твои очки: {currentUser.points}</div>
-          <div>{currentUser.username}</div>
+          <div className="header-username">{currentUser.username}</div>
         </>
       ) : (
         <p
@@ -36,7 +36,7 @@ const Header = () => {
             justifyContent: "center",
           }}
         >
-          Пользователь не найден
+            Пользователь не найден
         </p>
       )}
       <button onClick={onClose} className="button">
