@@ -9,8 +9,8 @@
 :root {
   --font-primary: "ActayWide", sans-serif;
   --font-secondary: "Poppins", sans-serif;
-  --font-size-main: 16px;
-  --font-size-heading: 24px;
+  --font-size-main: 12px;
+  --font-size-heading: 16px;
   --font-color-primary: whitesmoke;
 }
 
@@ -68,6 +68,7 @@ body {
   color: var(--font-color-primary);
   font-size: var(--font-size-main);
   display: flex;
+  text-transform: uppercase;
 }
 
 .button-exit-header {
@@ -107,12 +108,14 @@ body {
   font-family: var(--font-primary);
   color: var(--font-color-primary);
   font-size: var(--font-size-main);
+  text-transform: uppercase;
 }
 
 .icon {
-  font-size: 14px;
+  font-size: 24px;
   margin-bottom: 4px;
   color: var(--font-color-primary);
+  font-family: var(--font-primary);
 }
 
 .link-nav-menu {
