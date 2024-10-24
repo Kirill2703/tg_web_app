@@ -23,7 +23,7 @@ const Header = () => {
     <div className="header">
       {currentUser ? (
         <>
-          <div>Твои очки: {currentUser.points}</div>
+          {/* <div>Твои очки: {currentUser.points}</div> */}
           <div className="header-username">{currentUser.username}</div>
         </>
       ) : (
@@ -34,12 +34,13 @@ const Header = () => {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            fontFamily: "ActayWide",
           }}
         >
-            Пользователь не найден
+          Пользователь не найден
         </p>
       )}
-      <button onClick={onClose} className="button">
+      <button onClick={onClose} className="button-exit-header">
         <IoExitOutline />
       </button>
     </div>

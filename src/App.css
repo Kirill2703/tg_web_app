@@ -46,30 +46,8 @@ body {
   );
 }
 
-.header-username{
-  font-family: var(--font-primary);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.content {
-  flex-grow: 1; 
-}
-
 .header {
-  background-color: #052278; /* #568628 */
+  background-color: #052278; 
   height: 40px;
   width: 100%;
   display: flex;
@@ -81,18 +59,41 @@ body {
   border-bottom: 2px solid #f0c040;
 }
 
-.header-info {
+.header-username{
+  font-family: var(--font-primary);
+  color: var(--font-color-primary);
+  font-size: var(--font-size-main);
+}
+
+.button-exit-header {
+  background: none;
+  font-family: var(--font-primary);
+  color: var(--font-color-primary);
+  font-size: var(--font-size-main);
+  font-weight: 400;
+  border: none;
+  cursor: pointer;
+  outline: none;
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
-.header-info p {
-  color: var(--font-color-primary);
-  font-family: var(--font-primary);
-  font-weight: 400;
-  font-size: 12px;
+.content {
+  flex-grow: 1; 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .footer {
   background-color: #052278; /* #568628 */
@@ -125,17 +126,6 @@ body {
   color: var(--font-color-primary);
 }
 
-.button {
-  background: none;
-  color: var(--font-color-primary);
-  font-size: var(--font-size-main);
-  font-weight: 400;
-  border: none;
-  cursor: pointer;
-  outline: none;
-  display: flex;
-  align-items: center;
-}
 
 .username {
   margin-left: auto;
