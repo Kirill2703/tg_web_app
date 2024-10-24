@@ -103,9 +103,11 @@ body {
 }
 
 .loading-screen {
-  display: flex;
+  height: 100vh;
+  /* display: flex;
   background: var(--tg-theme-bg-color);
-  color: var(--tg-theme-text-color);
+  color: var(--tg-theme-text-color); */
+  background: linear-gradient(90deg, rgba(76,49,254,1) 0%, rgba(183,111,218,1) 60%);
 }
 
 .loading-screen img {
