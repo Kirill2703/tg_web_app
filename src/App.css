@@ -56,10 +56,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
-  border-bottom: 2px solid #f0c040;
+  /* border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px; */
+  /* box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+  border-bottom: 2px solid #f0c040; */
 }
 
 .header-username {
