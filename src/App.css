@@ -107,7 +107,17 @@ body {
   /* display: flex;
   background: var(--tg-theme-bg-color);
   color: var(--tg-theme-text-color); */
-  background: linear-gradient(90deg, rgba(76,49,254,1) 0%, rgba(183,111,218,1) 60%);
+  background: radial-gradient(
+    circle,
+    rgba(123, 49, 143, 1) 0%,
+    rgba(118, 42, 135, 1) 17%,
+    rgba(95, 31, 117, 1) 37%,
+    rgba(89, 27, 112, 1) 46%,
+    rgba(75, 17, 101, 1) 60%,
+    rgba(59, 14, 83, 1) 70%,
+    rgba(40, 7, 62, 1) 85%,
+    rgba(23, 4, 49, 1) 90%
+  );
 }
 
 .loading-screen img {
@@ -222,15 +232,14 @@ body {
   color: white;
 }
 
-
 table {
   width: 100%;
   border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
   padding: 10px;
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
-
