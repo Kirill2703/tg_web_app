@@ -49,9 +49,7 @@ body {
   flex-grow: 1;
 }
 
-.container{
-  margin: 0 28px;
-}
+
 
 /* #region header */
 
@@ -66,7 +64,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* padding: 0 12px; */
+  padding: 0 40px;
 }
 
 .header-username {
@@ -106,7 +104,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* padding: 0 14px; */
+  padding: 0 40px;
   position: absolute;
   bottom: 0;
 }
