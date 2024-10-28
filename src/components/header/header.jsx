@@ -29,7 +29,7 @@ const Header = () => {
           <div className="header-username">
             <RiUserFill />
             <span style={{
-              paddingLeft: "6px"
+              paddingLeft: "8px"
             }}>{currentUser.username}</span>
           </div>
         </>

@@ -70,7 +70,7 @@ body {
 .header-username {
   font-family: var(--font-primary);
   color: var(--font-color-primary);
-  font-size: 10px;
+  font-size: 16px;
   display: flex;
   text-transform: uppercase;
 }
@@ -99,7 +99,7 @@ body {
     rgba(36, 37, 67, 1) 0%,
     rgba(26, 27, 51, 1) 100%
   );
-  height: 60px;
+  height: 80px;
   width: 100%;
   display: flex;
   align-items: center;
