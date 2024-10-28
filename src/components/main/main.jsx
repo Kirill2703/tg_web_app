@@ -96,9 +96,10 @@ const Main = ({ setLoading }) => {
 
   return (
     <div>
-      <h1>Добро пожаловать, {currentUser.username}!</h1>
+      <h1 className="username-main-page">Привет, <br></br>{currentUser.username}&#128075;</h1>
+      {/* <h1>Добро пожаловать, {currentUser.username}!</h1>
       <p>Общее количество очков: {currentUser.points || 0}</p>
-      <p>Количество пройденных квизов: {completedQuizzesCount}</p>
+      <p>Количество пройденных квизов: {completedQuizzesCount}</p> */}
 
       <button>
         <Link to="/history">История</Link>
