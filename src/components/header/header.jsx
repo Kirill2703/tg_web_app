@@ -30,7 +30,7 @@ const Header = () => {
             <RiUserFill />
             <span style={{
               paddingLeft: "8px"
-            }}>{currentUser.username}</span>
+            }}>Footwise</span>
           </div>
         </>
       ) : (
