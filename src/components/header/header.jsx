@@ -22,31 +22,17 @@ const Header = () => {
   };
   return (
     <div className="header">
-      {currentUser ? (
-        <>
-          {/* <div>Твои очки: {currentUser.points}</div> */}
-
-          <div className="header-username">
-            <RiUserFill />
-            <span style={{
-              paddingLeft: "8px"
-            }}>Footwise</span>
-          </div>
-        </>
-      ) : (
-        <p
+      
+      <div className="header-username">
+        <RiUserFill />
+        <span
           style={{
-            color: "whitesmoke",
-            fontSize: "16px",
-            display: "flex",
-            justifyContent: "center",
-            fontFamily: "ActayWide",
+            paddingLeft: "8px",
           }}
         >
-          <RiUserFill />
-          Пользователь не найден
-        </p>
-      )}
+          Footwise
+        </span>
+      </div>
       <button onClick={onClose} className="button-exit-header">
         <ImExit />
       </button>
@@ -55,3 +41,35 @@ const Header = () => {
 };
 
 export default Header;
+
+// {
+//   currentUser ? (
+//     <>
+//       {/* <div>Твои очки: {currentUser.points}</div> */}
+
+//       <div className="header-username">
+//         <RiUserFill />
+//         <span
+//           style={{
+//             paddingLeft: "8px",
+//           }}
+//         >
+//           Footwise
+//         </span>
+//       </div>
+//     </>
+//   ) : (
+//     <p
+//       style={{
+//         color: "whitesmoke",
+//         fontSize: "16px",
+//         display: "flex",
+//         justifyContent: "center",
+//         fontFamily: "ActayWide",
+//       }}
+//     >
+//       <RiUserFill />
+//       Пользователь не найден
+//     </p>
+//   );
+// }
