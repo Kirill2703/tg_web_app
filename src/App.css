@@ -49,6 +49,10 @@ body {
   flex-grow: 1;
 }
 
+.container{
+  margin: 0 28px;
+}
+
 /* #region header */
 
 .header {
@@ -57,12 +61,12 @@ body {
     rgba(36, 37, 67, 1) 0%,
     rgba(26, 27, 51, 1) 100%
   );
-  height: 40px;
+  height: 60px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 12px;
+  /* padding: 0 12px; */
 }
 
 .header-username {
@@ -102,7 +106,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 14px;
+  /* padding: 0 14px; */
   position: absolute;
   bottom: 0;
 }
