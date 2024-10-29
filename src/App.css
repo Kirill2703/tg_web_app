@@ -165,6 +165,12 @@ body {
   font-size: 16px;            
   color: var(--font-color-primary);                
  }
+ 
+ .btn-link-main-page{
+  text-decoration: none;
+  background: none;
+  border: none;
+ }
 
  /* #endregion */
 

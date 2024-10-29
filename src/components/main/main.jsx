@@ -124,13 +124,13 @@ const Main = ({ setLoading }) => {
       </div>
 
       <div style={{display: "flex", flexDirection: "column", gap: "20px", justifyContent: "center"}}>
-        <button>
+        <button className="btn-link-main-page">
           <Link to="/rules">Правила</Link>
         </button>
-        <button>
+        <button className="btn-link-main-page">
           <Link to="/history">История</Link>
         </button>
-        <button>
+        <button className="btn-link-main-page">
           <Link to="/leadres">Таблица лидеров</Link>
         </button>
       </div>
