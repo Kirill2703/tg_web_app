@@ -47,7 +47,6 @@
 
 // export default Main;
 
-
 import React, { useEffect, useState } from "react";
 import { fetchUserNameByChatId } from "../../thunks/userThunk";
 import { useDispatch, useSelector } from "react-redux";
@@ -133,38 +132,17 @@ const Main = ({ setLoading }) => {
         }}
       >
         <button className="btn-link-main-page">
-          <Link
-            to="/rules"
-            style={{
-              textDecoration: "none",
-              fontSize: "24px",
-              color: "whitesmoke",
-            }}
-          >
+          <Link to="/rules" className="link-list-mp">
             Правила
           </Link>
         </button>
         <button className="btn-link-main-page">
-          <Link
-            to="/history"
-            style={{
-              textDecoration: "none",
-              fontSize: "24px",
-              color: "whitesmoke",
-            }}
-          >
+          <Link to="/history" className="link-list-mp">
             История
           </Link>
         </button>
         <button className="btn-link-main-page">
-          <Link
-            to="/leadres"
-            style={{
-              textDecoration: "none",
-              fontSize: "24px",
-              color: "whitesmoke",
-            }}
-          >
+          <Link to="/leadres" className="link-list-mp">
             Таблица лидеров
           </Link>
         </button>

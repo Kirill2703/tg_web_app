@@ -151,7 +151,8 @@ body {
   align-items: center;        
   justify-content: center;     
   font-size: 24px;            
-  color: var(--font-color-primary);                
+  color: var(--font-color-primary);
+  font-family: var(--font-primary);                
  }
 
  .current-quiz-main-page{
@@ -163,12 +164,20 @@ body {
   align-items: center;        
   justify-content: center;     
   font-size: 16px;            
-  color: var(--font-color-primary);                
+  color: var(--font-color-primary);
+  font-family: var(--font-primary);                
  }
  
  .btn-link-main-page{
   background: none;
   border: none;
+ }
+
+ .link-list-mp{
+  text-decoration: none;
+  font-size: 24px;
+  color: var(--font-color-primary);
+  font-family: var(--font-primary);
  }
 
  /* #endregion */
