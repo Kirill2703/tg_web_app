@@ -143,25 +143,27 @@ body {
  }
 
  .points-main-page{
-  border: 1px solid violet;
-  border-radius: 50%;
-  padding: 16px;
-  color: var(--font-color-primary);
-  font-size: 24px;
-  background-color: violet;
+  width: 80px;      /* Диаметр круга */
+  height: 80px;     /* Диаметр круга */
+  background-color: purple;  /* Цвет фона круга */
+  border-radius: 50%;         /* Скругление для круга */
+  display: flex;
+  align-items: center;        /* Центрирование по вертикали */
+  justify-content: center;     /* Центрирование по горизонтали */
+  font-size: 24px;            /* Размер шрифта для "1" */
+  color: var(--font-color-primary);                /* Цвет текста */
  }
 
  .current-quiz-main-page{
   width: 40px;      /* Диаметр круга */
   height: 40px;     /* Диаметр круга */
-  background-color: #f0f0f0;  /* Цвет фона круга */
+  background-color: purple;  /* Цвет фона круга */
   border-radius: 50%;         /* Скругление для круга */
   display: flex;
   align-items: center;        /* Центрирование по вертикали */
   justify-content: center;     /* Центрирование по горизонтали */
   font-size: 16px;            /* Размер шрифта для "1" */
-  font-weight: bold;
-  color: #333;                /* Цвет текста */
+  color: var(--font-color-primary);                /* Цвет текста */
  }
 
  /* #endregion */
