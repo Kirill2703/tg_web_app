@@ -129,6 +129,7 @@ const Main = ({ setLoading }) => {
           flexDirection: "column",
           gap: "20px",
           justifyContent: "center",
+          marginTop: "20px",
         }}
       >
         <button className="btn-link-main-page">
