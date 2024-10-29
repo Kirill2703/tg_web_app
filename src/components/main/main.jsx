@@ -123,15 +123,49 @@ const Main = ({ setLoading }) => {
         </div>
       </div>
 
-      <div style={{display: "flex", flexDirection: "column", gap: "20px", justifyContent: "center"}}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "20px",
+          justifyContent: "center",
+        }}
+      >
         <button className="btn-link-main-page">
-          <Link to="/rules">Правила</Link>
+          <Link
+            to="/rules"
+            style={{
+              textDecoration: "none",
+              fontSize: "24px",
+              color: "whitesmoke",
+            }}
+          >
+            Правила
+          </Link>
         </button>
         <button className="btn-link-main-page">
-          <Link to="/history">История</Link>
+          <Link
+            to="/history"
+            style={{
+              textDecoration: "none",
+              fontSize: "24px",
+              color: "whitesmoke",
+            }}
+          >
+            История
+          </Link>
         </button>
         <button className="btn-link-main-page">
-          <Link to="/leadres">Таблица лидеров</Link>
+          <Link
+            to="/leadres"
+            style={{
+              textDecoration: "none",
+              fontSize: "24px",
+              color: "whitesmoke",
+            }}
+          >
+            Таблица лидеров
+          </Link>
         </button>
       </div>
     </div>
