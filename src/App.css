@@ -54,11 +54,11 @@ body {
 /* #region header */
 
 .header {
-  background: linear-gradient(
+  /* background: linear-gradient(
     90deg,
     rgba(36, 37, 67, 1) 0%,
     rgba(26, 27, 51, 1) 100%
-  );
+  ); */
   height: 60px;
   width: 100%;
   display: flex;
@@ -94,11 +94,11 @@ body {
 /* #region footer */
 
 .footer {
-  background: linear-gradient(
+  /* background: linear-gradient(
     90deg,
     rgba(36, 37, 67, 1) 0%,
     rgba(26, 27, 51, 1) 100%
-  );
+  ); */
   height: 80px;
   width: 100%;
   display: flex;

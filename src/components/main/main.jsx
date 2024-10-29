@@ -101,13 +101,15 @@ const Main = ({ setLoading }) => {
       <p>Общее количество очков: {currentUser.points || 0}</p>
       <p>Количество пройденных квизов: {completedQuizzesCount}</p> */}
 
-      <button>
+      
+
+      {/* <button>
         <Link to="/history">История</Link>
       </button>
 
       <button>
         <Link to="/leadres">Таблица лидеров</Link>
-      </button>
+      </button> */}
     </div>
   );
 };
