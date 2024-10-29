@@ -103,12 +103,11 @@ const Main = ({ setLoading }) => {
       <p>Общее количество очков: {currentUser.points || 0}</p>
       <p>Количество пройденных квизов: {completedQuizzesCount}</p> */}
 
-      <div style={{ display: "flex", flexDirection: "row" }}>
+      <div style={{ display: "flex", flexDirection: "row", marginTop: "12px" }}>
         <div
           style={{
             display: "flex",
             alignItems: "center",
-            margin: "12px 0px 12px 28px",
           }}
         >
           <p className="points-main-page">{currentUser.points}</p>
