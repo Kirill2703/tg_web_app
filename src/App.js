@@ -14,6 +14,7 @@ import Italy from "./components/leagues/Italy";
 import France from "./components/leagues/France";
 import History from "./components/historyPrediction/history";
 import Question from "./components/quiz/questionsForQuiz/question";
+import Rules from "./components/rules/rules";
 
 const tg = window.Telegram.WebApp;
 
@@ -47,6 +48,7 @@ function App() {
               <Route path="/prediction/france" element={<France />} />
               <Route path="/history" element={<History />} />
               <Route path="/leadears" element={<TableStat />} />
+              <Route path="/rules" element={<Rules />} />
             </Route>
           </Routes>
         </div>

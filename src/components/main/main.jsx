@@ -103,7 +103,7 @@ const Main = ({ setLoading }) => {
       <p>Общее количество очков: {currentUser.points || 0}</p>
       <p>Количество пройденных квизов: {completedQuizzesCount}</p> */}
 
-      <div style={{ display: "flex", flexDirection: "row", marginTop: "12px" }}>
+      <div style={{ display: "flex", flexDirection: "row", marginTop: "20px" }}>
         <div
           style={{
             display: "flex",
@@ -123,13 +123,17 @@ const Main = ({ setLoading }) => {
         </div>
       </div>
 
-      {/* <button>
-        <Link to="/history">История</Link>
-      </button>
-
-      <button>
-        <Link to="/leadres">Таблица лидеров</Link>
-      </button> */}
+      <div style={{display: "flex", flexDirection: "column", gap: "20px", justifyContent: "center"}}>
+        <button>
+          <Link to="/rules">Правила</Link>
+        </button>
+        <button>
+          <Link to="/history">История</Link>
+        </button>
+        <button>
+          <Link to="/leadres">Таблица лидеров</Link>
+        </button>
+      </div>
     </div>
   );
 };
