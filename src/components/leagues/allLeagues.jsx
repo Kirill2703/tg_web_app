@@ -1,8 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const AllLeagues = () => {
-    return (
+  return (
+    <>
       <div>
         <Link to="/prediction/england">England</Link>
         <Link to="/prediction/germany">Germany</Link>
@@ -10,7 +11,9 @@ const AllLeagues = () => {
         <Link to="/prediction/italy">Italy</Link>
         <Link to="/prediction/france">France</Link>
       </div>
-    );
-}
+      
+    </>
+  );
+};
 
 export default AllLeagues;

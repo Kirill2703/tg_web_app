@@ -142,6 +142,29 @@ body {
   font-size: 36px;
  }
 
+ .points-main-page{
+  border: 1px solid violet;
+  border-radius: 50%;
+  padding: 16px;
+  color: var(--font-color-primary);
+  font-size: 24px;
+  background-color: violet;
+ }
+
+ .current-quiz-main-page{
+  border: 1px solid violet;
+  border-radius: 50%;
+  padding: 8px;
+  color: var(--font-color-primary);
+  font-size: 20px;
+  background-color: violet;
+ }
+
+ /* #endregion */
+
+
+
+
 /* .username {
   margin-left: auto;
 } */
