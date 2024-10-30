@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-const API_URL = "https://footwise.onrender.com/api/quiz";
+const API_URL = "https://footwise.onrender.com/quiz";
 
 const fetchAllQuizes = createAsyncThunk(
   "quiz/fetchAll",

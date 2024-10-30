@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 
-const API_URL = "https://footwise.onrender.com/api/prediction";
+const API_URL = "https://footwise.onrender.com/prediction";
 
 const fetchAllPredictions = createAsyncThunk(
   "prediction/fetchAll", 

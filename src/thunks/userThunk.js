@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-const API_URL = "https://footwise.onrender.com/api/user";
+const API_URL = "https://footwise.onrender.com/user";
 
 export const createUser = createAsyncThunk(
   "user/createUser",
