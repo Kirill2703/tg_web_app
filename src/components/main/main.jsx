@@ -60,6 +60,7 @@ const Main = ({ setLoading }) => {
           flexDirection: "row",
           justifyContent: "center",
           margin: "20px, 28px, 0, 28px",
+          gap: "10px"
         }}
       >
         <button className="btn-link-main-page">
