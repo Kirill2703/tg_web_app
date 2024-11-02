@@ -153,6 +153,13 @@ body {
   font-size: 24px;
   color: var(--font-color-primary);
   font-family: var(--font-primary);
+  position: absolute;
+  bottom: -140px;
+  justify-content: center;
+  display: flex;
+  width: 120px;
+  height: 120px;
+  left: 20px;
 }
 
 .current-quiz-main-page {

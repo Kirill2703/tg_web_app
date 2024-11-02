@@ -45,7 +45,7 @@ const Main = ({ setLoading }) => {
   const completedQuizzesCount = currentUser.completedQuizzes.length; // Количество пройденных квизов
 
   return (
-    <div style={{ margin: "12px 20px", position: "relative" }}>
+    <div style={{ margin: "20px 20px", position: "relative" }}>
       <h1 className="username-main-page">
         Привет, {currentUser.username}&#128075;
       </h1>
@@ -59,7 +59,7 @@ const Main = ({ setLoading }) => {
           flexDirection: "row",
           justifyContent: "center",
           gap: "10px",
-          marginTop: "20px",
+          margin: "20px, 20px, 0, 20px",
         }}
       >
         <button className="btn-link-main-page">
@@ -82,12 +82,20 @@ const Main = ({ setLoading }) => {
       <div style={{ display: "flex", flexDirection: "row", marginTop: "20px" }}>
         <div
           style={{
+            position: "ablosute",
             display: "flex",
             justifyContent: "center",
-            position: "absolute",
             bottom: "100px",
-            width: "140px",
-            height: "140px"
+            width: "160px",
+            height: "160px",
+          }}
+        >
+          <img s src="/border-points.png" alt="" />
+        </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center"
           }}
         >
           <p className="points-main-page">{currentUser.points}</p>
@@ -101,19 +109,6 @@ const Main = ({ setLoading }) => {
         >
           <p className="current-quiz-main-page">{completedQuizzesCount}</p>
         </div> */}
-      </div>
-
-      <div
-        style={{
-          position: "ablosute",
-          display: "flex",
-          justifyContent: "center",
-          bottom: "100px",
-          width: "160px",
-          height: "160px",
-        }}
-      >
-        <img s src="/border-points.png" alt="" />
       </div>
 
       {/* <img style={{position: "absolute", left: "-100px", bottom: "200px"}} src="/ball-bckg.png" alt="" /> */}
