@@ -179,6 +179,14 @@ body {
   font-family: var(--font-primary);
 }
 
+.bckg-ball-img{
+  background-image: url(/public/ball-bckg.png);
+  width: 240px;
+  position: absolute;
+  bottom: -200px;
+  top: -100px;
+}
+
 /* #endregion */
 
 /* .username {
