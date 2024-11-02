@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { fetchUserNameByChatId } from "../../thunks/userThunk";
 import { useDispatch, useSelector } from "react-redux";
@@ -59,8 +58,8 @@ const Main = ({ setLoading }) => {
           display: "flex",
           flexDirection: "row",
           justifyContent: "center",
-          margin: "20px, 28px, 0, 28px",
-          gap: "10px"
+          gap: "10px",
+          marginTop: "20px",
         }}
       >
         <button className="btn-link-main-page">
@@ -98,6 +97,19 @@ const Main = ({ setLoading }) => {
         >
           <p className="current-quiz-main-page">{completedQuizzesCount}</p>
         </div>
+      </div>
+
+      <div
+        style={{
+          position: "ablosute",
+          display: "flex",
+          justifyContent: "center",
+          bottom: "100px",
+          with: "80px",
+          height: "80px",
+        }}
+      >
+        <img s src="/border-points.png" alt="" />
       </div>
 
       {/* <img style={{position: "absolute", left: "-100px", bottom: "200px"}} src="/ball-bckg.png" alt="" /> */}
