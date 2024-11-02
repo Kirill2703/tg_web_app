@@ -79,7 +79,7 @@ const Main = ({ setLoading }) => {
         </button>
       </div>
 
-      <div style={{ display: "flex", flexDirection: "row", marginTop: "20px" }}>
+      <div style={{ display: "flex", flexDirection: "row", marginTop: "20px", justifyContent: "center" }}>
         <div
           style={{
             position: "ablosute",
