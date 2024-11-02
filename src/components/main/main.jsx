@@ -60,7 +60,7 @@ const Main = ({ setLoading }) => {
           flexDirection: "row",
           gap: "20px",
           justifyContent: "center",
-          marginTop: "20px",
+          margin: "20px, 28px, 0, 28px",
         }}
       >
         <button className="btn-link-main-page">
@@ -70,7 +70,7 @@ const Main = ({ setLoading }) => {
         </button>
         <button className="btn-link-main-page">
           <Link to="/history" className="link-list-mp">
-            История
+            История прогнозов
           </Link>
         </button>
         <button className="btn-link-main-page">
