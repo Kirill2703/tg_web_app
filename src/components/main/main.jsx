@@ -147,6 +147,8 @@ const Main = ({ setLoading }) => {
           </Link>
         </button>
       </div>
+
+      <img src="/ball-bckg.png" alt="" />
     </div>
   );
 };

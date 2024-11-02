@@ -4,7 +4,7 @@ const LoadingScreen = () => {
   return (
     <div className="loading-screen">
       <h1 className="main-text-loading-screen">Гол - и ты в игре!</h1>
-      
+
       {/* <div>
         <img src="/loading-screen.jpg" alt="Loading" />
         <h2 className="text-loading-screen">Загрузка...</h2>
