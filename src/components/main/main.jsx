@@ -148,7 +148,7 @@ const Main = ({ setLoading }) => {
         </button>
       </div>
 
-      <img src="/ball-bckg.png" alt="" />
+      <img style={{position: "absolute", left: "-100px", bottom: "200px"}} src="/ball-bckg.png" alt="" />
     </div>
   );
 };
