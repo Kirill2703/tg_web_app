@@ -142,7 +142,7 @@ const Main = ({ setLoading }) => {
           </Link>
         </button>
         <button className="btn-link-main-page">
-          <Link to="/leadres" className="link-list-mp">
+          <Link to="/leaders" className="link-list-mp">
             Таблица лидеров
           </Link>
         </button>

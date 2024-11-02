@@ -21,9 +21,12 @@
 }
 
 body {
-  background: var(--tg-theme-bg-color);
   color: var(--tg-theme-text-color);
-  background-color: #010101df;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(16, 47, 49, 1) 100%
+  );
   color: var(--font-color-primary);
 }
 
@@ -48,8 +51,6 @@ body {
 .content {
   flex-grow: 1;
 }
-
-
 
 /* #region header */
 
@@ -89,7 +90,6 @@ body {
 }
 
 /* #endregion */
-
 
 /* #region footer */
 
@@ -134,56 +134,52 @@ body {
 
 /* #endregion */
 
-
 /* #region main-page */
- .username-main-page{
+.username-main-page {
   font-family: var(--font-primary);
   color: var(--font-color-primary);
   font-size: 36px;
- }
+}
 
- .points-main-page{
-  width: 80px;      
-  height: 80px;     
-  background-color: purple;  
-  border-radius: 50%;         
+.points-main-page {
+  width: 80px;
+  height: 80px;
+  background-color: purple;
+  border-radius: 50%;
   display: flex;
-  align-items: center;        
-  justify-content: center;     
-  font-size: 24px;            
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
   color: var(--font-color-primary);
-  font-family: var(--font-primary);                
- }
+  font-family: var(--font-primary);
+}
 
- .current-quiz-main-page{
-  width: 60px;     
-  height: 60px;     
-  background-color: purple;  
-  border-radius: 50%;         
+.current-quiz-main-page {
+  width: 60px;
+  height: 60px;
+  background-color: purple;
+  border-radius: 50%;
   display: flex;
-  align-items: center;        
-  justify-content: center;     
-  font-size: 16px;            
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
   color: var(--font-color-primary);
-  font-family: var(--font-primary);                
- }
- 
- .btn-link-main-page{
+  font-family: var(--font-primary);
+}
+
+.btn-link-main-page {
   background: none;
   border: none;
- }
+}
 
- .link-list-mp{
+.link-list-mp {
   text-decoration: none;
   font-size: 24px;
   color: var(--font-color-primary);
   font-family: var(--font-primary);
- }
+}
 
- /* #endregion */
-
-
-
+/* #endregion */
 
 /* .username {
   margin-left: auto;
