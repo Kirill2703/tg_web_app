@@ -83,12 +83,16 @@ const Main = ({ setLoading }) => {
         <div
           style={{
             display: "flex",
-            alignItems: "center",
+            justifyContent: "center",
+            position: "absolute",
+            bottom: "100px",
+            width: "140px",
+            height: "140px"
           }}
         >
           <p className="points-main-page">{currentUser.points}</p>
         </div>
-        <div
+        {/* <div
           style={{
             display: "flex",
             alignItems: "center",
@@ -96,7 +100,7 @@ const Main = ({ setLoading }) => {
           }}
         >
           <p className="current-quiz-main-page">{completedQuizzesCount}</p>
-        </div>
+        </div> */}
       </div>
 
       <div
@@ -105,8 +109,8 @@ const Main = ({ setLoading }) => {
           display: "flex",
           justifyContent: "center",
           bottom: "100px",
-          with: "80px",
-          height: "80px",
+          width: "160px",
+          height: "160px",
         }}
       >
         <img s src="/border-points.png" alt="" />
