@@ -179,6 +179,8 @@ body {
   font-size: 20px;
   color: var(--font-color-primary);
   font-family: var(--font-primary);
+  border: 1px solid #23443b;
+  padding: 10px;
   background-color: #23443b;
   border-radius: 20px;
 }
