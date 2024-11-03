@@ -22,9 +22,8 @@
 
 body {
   color: var(--tg-theme-text-color);
-  background: rgb(0, 0, 0);
   background: linear-gradient(
-    180deg,
+    45deg,
     rgba(0, 0, 0, 1) 0%,
     rgba(16, 47, 49, 1) 100%
   );
@@ -157,7 +156,7 @@ body {
   position: absolute;
   width: 120px;
   height: 120px;
-  left: 118px;
+  left: 117px;
   bottom: 20px;
 }
 
