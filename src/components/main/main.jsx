@@ -45,7 +45,7 @@ const Main = ({ setLoading }) => {
   const completedQuizzesCount = currentUser.completedQuizzes.length; // Количество пройденных квизов
 
   return (
-    <div style={{ margin: "20px 20px", position: "relative" }}>
+    <div style={{ margin: "20px 20px 0 20px", position: "relative" }}>
       <h1 className="username-main-page">
         Привет, {currentUser.username}&#128075;
       </h1>
