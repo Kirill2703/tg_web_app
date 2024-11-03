@@ -59,7 +59,7 @@ const Main = ({ setLoading }) => {
           flexDirection: "row",
           justifyContent: "center",
           gap: "10px",
-          marginTop: "20px"
+          marginTop: "20px",
         }}
       >
         <button className="btn-link-main-page">
@@ -79,7 +79,14 @@ const Main = ({ setLoading }) => {
         </button>
       </div>
 
-      <div style={{ display: "flex", flexDirection: "row", marginTop: "20px", justifyContent: "center" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          marginTop: "20px",
+          justifyContent: "center",
+        }}
+      >
         <div
           style={{
             position: "ablosute",
@@ -95,13 +102,12 @@ const Main = ({ setLoading }) => {
         <div
           style={{
             display: "flex",
-            justifyContent: "center"
+            justifyContent: "center",
           }}
         >
           <p className="points-main-page">{currentUser.points}</p>
         </div>
 
-        <p>dfsdfsf</p>
         {/* <div
           style={{
             display: "flex",
@@ -112,6 +118,7 @@ const Main = ({ setLoading }) => {
           <p className="current-quiz-main-page">{completedQuizzesCount}</p>
         </div> */}
       </div>
+      <p>dfsdfsf</p>
 
       {/* <img style={{position: "absolute", left: "-100px", bottom: "200px"}} src="/ball-bckg.png" alt="" /> */}
     </div>
