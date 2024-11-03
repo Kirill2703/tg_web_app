@@ -100,6 +100,8 @@ const Main = ({ setLoading }) => {
         >
           <p className="points-main-page">{currentUser.points}</p>
         </div>
+
+        <p>dfsdfsf</p>
         {/* <div
           style={{
             display: "flex",
