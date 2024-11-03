@@ -24,7 +24,7 @@ body {
   color: var(--tg-theme-text-color);
   background: rgb(0, 0, 0);
   background: linear-gradient(
-    0deg,
+    359deg,
     rgba(0, 0, 0, 1) 0%,
     rgba(16, 47, 49, 1) 100%
   );
