@@ -59,7 +59,7 @@ const Main = ({ setLoading }) => {
             flexDirection: "row",
             justifyContent: "center",
             gap: "10px",
-            marginTop: "20px",
+            marginTop: "28px",
           }}
         >
           <button className="btn-link-main-page">
@@ -82,7 +82,7 @@ const Main = ({ setLoading }) => {
           style={{
             display: "flex",
             flexDirection: "row",
-            marginTop: "20px",
+            marginTop: "28px",
             justifyContent: "center",
           }}
         >
@@ -92,8 +92,8 @@ const Main = ({ setLoading }) => {
               display: "flex",
               justifyContent: "center",
               bottom: "100px",
-              width: "160px",
-              height: "160px",
+              width: "200px",
+              height: "200px",
             }}
           >
             <img s src="/border-points.png" alt="" />
