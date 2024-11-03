@@ -64,7 +64,7 @@ const Main = ({ setLoading }) => {
       >
         <button className="btn-link-main-page">
           <Link to="/rules" className="link-list-mp">
-            Правила
+            Правила Footwise
           </Link>
         </button>
         <button className="btn-link-main-page">

@@ -143,9 +143,11 @@ body {
 }
 
 .points-main-page {
-  /* width: 80px;
-  height: 80px; */
-  background-color: purple;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -175,7 +177,7 @@ body {
 
 .btn-link-main-page {
   border: 1px solid #23443b;
-  padding: 12px;
+  padding: 4px;
   background-color: #23443b;
   border-radius: 20px;
 }
@@ -183,7 +185,7 @@ body {
 .link-list-mp {
   text-decoration: none;
   text-transform: uppercase;
-  font-size: 16px;
+  font-size: 12px;
   color: var(--font-color-primary);
   font-family: var(--font-primary);
 }
