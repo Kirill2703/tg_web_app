@@ -13,28 +13,28 @@ const Main = ({ setLoading }) => {
   const tg = window.Telegram.WebApp;
   const chatId = tg.initDataUnsafe?.user?.id;
 
-  useEffect(() => {
-    setLoading(true);
+  // useEffect(() => {
+  //   setLoading(true);
 
-    const loadingTimer = setTimeout(() => {
-      setIsLoading(false);
-      setLoading(false);
-    }, 3000);
+  //   const loadingTimer = setTimeout(() => {
+  //     setIsLoading(false);
+  //     setLoading(false);
+  //   }, 3000);
 
-    if (chatId) {
-      const fetchUserTimer = setTimeout(() => {
-        dispatch(fetchUserNameByChatId(chatId));
-      }, 3000);
+  //   if (chatId) {
+  //     const fetchUserTimer = setTimeout(() => {
+  //       dispatch(fetchUserNameByChatId(chatId));
+  //     }, 3000);
 
-      return () => clearTimeout(fetchUserTimer);
-    }
+  //     return () => clearTimeout(fetchUserTimer);
+  //   }
 
-    return () => clearTimeout(loadingTimer);
-  }, [dispatch, chatId]);
+  //   return () => clearTimeout(loadingTimer);
+  // }, [dispatch, chatId]);
 
-  if (isLoading) {
-    return <LoadingScreen />;
-  }
+  // if (isLoading) {
+  //   return <LoadingScreen />;
+  // }
 
   // Проверка, есть ли текущий пользователь
   if (!currentUser) {
