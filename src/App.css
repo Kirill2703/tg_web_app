@@ -22,11 +22,15 @@
 
 body {
   color: var(--tg-theme-text-color);
-  background: radial-gradient(
+  /* background: radial-gradient(
     circle,
     rgba(0, 0, 0, 1) 0%,
     rgba(16, 47, 49, 0.9) 100%
-  );
+  ); */
+  background-image: url("/public/bckg-img.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: var(--font-color-primary);
 }
 
@@ -176,9 +180,9 @@ body {
 }
 
 .btn-link-main-page {
-  border: 1px solid #FFB6C1;
+  border: 1px solid #8b7e66;
   padding: 4px;
-  background-color: #FFB6C1;
+  background-color: #8b7e66;
   border-radius: 20px;
 }
 
