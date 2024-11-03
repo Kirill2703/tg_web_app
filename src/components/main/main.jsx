@@ -82,7 +82,7 @@ const Main = ({ setLoading }) => {
           style={{
             display: "flex",
             flexDirection: "row",
-            marginTop: "28px",
+            marginTop: "40px",
             justifyContent: "center",
           }}
         >
