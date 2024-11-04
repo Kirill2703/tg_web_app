@@ -18,7 +18,7 @@ const Footer = () => {
         <Link to="/quiz" className="link-nav-menu">
           <div className="icon-text-container">
             <FaRegLightbulb className="icon" />
-            <span>Викторина</span>
+            <span>Квиз</span>
           </div>
         </Link>
       </div>
