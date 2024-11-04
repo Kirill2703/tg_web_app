@@ -20,9 +20,9 @@ const Main = ({ setLoading }) => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (currentUser.length > 0 && currentUser) {
+    if (users.length > 0 && currentUser) {
       // Сортируем пользователей и находим позицию текущего пользователя
-      const sortedUsers = [...currentUser].sort((a, b) => b.points - a.points);
+      const sortedUsers = [...users].sort((a, b) => b.points - a.points);
       const rank =
         sortedUsers.findIndex((user) => user.chatId === currentUser.chatId) + 1;
       setUserRank(rank);
