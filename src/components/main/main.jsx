@@ -21,7 +21,6 @@ const Main = ({ setLoading }) => {
 
   useEffect(() => {
     if (users.length > 0 && currentUser) {
-      // Сортируем пользователей и находим позицию текущего пользователя
       const sortedUsers = [...users].sort((a, b) => b.points - a.points);
       const rank =
         sortedUsers.findIndex((user) => user.chatId === currentUser.chatId) + 1;
@@ -52,7 +51,6 @@ const Main = ({ setLoading }) => {
     return <LoadingScreen />;
   }
 
-  // Проверка, есть ли текущий пользователь
   if (!currentUser) {
     return <div>Пользователь не найден</div>;
   }
@@ -74,11 +72,9 @@ const Main = ({ setLoading }) => {
             Привет, <br />
             {currentUser.username}&#128075;
           </h1>
-          <h2>{userRank ? `#${userRank}` : "неизвестно"}</h2>
+          <h2 style={{ display: "flex", alignItems: "center" }}>{userRank ? `#${userRank}` : "неизвестно"} {users.username }</h2>
         </div>
-        {/* <h1>Добро пожаловать, {currentUser.username}!</h1>
-        <p>Общее количество очков: {currentUser.points || 0}</p>
-        <p>Количество пройденных квизов: {completedQuizzesCount}</p> */}
+        
         <div
           style={{
             display: "flex",
