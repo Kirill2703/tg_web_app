@@ -48,7 +48,8 @@ const Main = ({ setLoading }) => {
     <>
       <div style={{ margin: "20px 20px 0 20px", position: "relative" }}>
         <h1 className="username-main-page">
-          Привет, <br />{currentUser.username}&#128075;
+          Привет, <br />
+          {currentUser.username}&#128075;
         </h1>
         {/* <h1>Добро пожаловать, {currentUser.username}!</h1>
         <p>Общее количество очков: {currentUser.points || 0}</p>
@@ -78,26 +79,7 @@ const Main = ({ setLoading }) => {
             </Link>
           </button>
         </div>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            marginTop: "60px",
-            justifyContent: "center",
-          }}
-        >
-          <div
-            style={{
-              position: "ablosute",
-              display: "flex",
-              justifyContent: "center",
-              bottom: "100px",
-              width: "200px",
-              height: "200px",
-            }}
-          >
-            <img s src="/border-points.png" alt="" />
-          </div>
+        <div>
           <div
             style={{
               display: "flex",
