@@ -3,7 +3,7 @@ import { fetchUserNameByChatId } from "../../thunks/userThunk";
 import { useDispatch, useSelector } from "react-redux";
 import LoadingScreen from "../loadingScreen/loadingScreen";
 import "../../App.css";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Main = ({ setLoading }) => {
   const dispatch = useDispatch();
@@ -64,19 +64,34 @@ const Main = ({ setLoading }) => {
           }}
         >
           <button className="btn-link-main-page">
-            <Link to="/rules" className="link-list-mp">
+            <NavLink
+              to="/rules"
+              className={({ isActive }) =>
+                isActive ? "link-list-mp active" : "link-list-mp"
+              }
+            >
               Правила Footwise
-            </Link>
+            </NavLink>
           </button>
           <button className="btn-link-main-page">
-            <Link to="/history" className="link-list-mp">
+            <NavLink
+              to="/history"
+              className={({ isActive }) =>
+                isActive ? "link-list-mp active" : "link-list-mp"
+              }
+            >
               История прогнозов
-            </Link>
+            </NavLink>
           </button>
           <button className="btn-link-main-page">
-            <Link to="/leaders" className="link-list-mp">
+            <NavLink
+              to="/leaders"
+              className={({ isActive }) =>
+                isActive ? "link-list-mp active" : "link-list-mp"
+              }
+            >
               Таблица лидеров
-            </Link>
+            </NavLink>
           </button>
         </div>
         <div

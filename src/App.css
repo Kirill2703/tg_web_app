@@ -9,9 +9,7 @@
 :root {
   --font-primary: "ActayWide", sans-serif;
   --font-secondary: "Poppins", sans-serif;
-  --font-size-main: 12px;
-  --font-size-heading: 16px;
-  --font-color-primary: #7A3B3F;
+  --font-color-primary: #B0B0B0;
 }
 
 * {
@@ -22,24 +20,12 @@
 
 body {
   color: var(--tg-theme-text-color);
-  /* background: radial-gradient(
-    circle,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(16, 47, 49, 0.9) 100%
-  ); */
-  /* background-image: url("/public/bckg-img.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed; */
   background-color: #102f31;
   color: var(--font-color-primary);
 }
 
 .loading-screen {
   height: 100vh;
-  /* display: flex;
-  background: var(--tg-theme-bg-color);
-  color: var(--tg-theme-text-color); */
   background: radial-gradient(
     circle,
     rgba(123, 49, 143, 1) 0%,
@@ -60,11 +46,6 @@ body {
 /* #region header */
 
 .header {
-  /* background: linear-gradient(
-    90deg,
-    rgba(36, 37, 67, 1) 0%,
-    rgba(26, 27, 51, 1) 100%
-  ); */
   height: 60px;
   width: 100%;
   display: flex;
@@ -99,11 +80,6 @@ body {
 /* #region footer */
 
 .footer {
-  /* background: linear-gradient(
-    90deg,
-    rgba(36, 37, 67, 1) 0%,
-    rgba(26, 27, 51, 1) 100%
-  ); */
   height: 120px;
   width: 100%;
   display: flex;
@@ -186,12 +162,20 @@ body {
   border-radius: 20px;
 }
 
+.btn-link-main-page .active{
+  color: #f44336;
+}
+
 .link-list-mp {
   text-decoration: none;
   text-transform: uppercase;
   font-size: 12px;
   color: var(--font-color-primary);
   font-family: var(--font-primary);
+}
+
+.link-list-mp.active {
+  color: #f44336; 
 }
 
 /* .bckg-ball-img {
