@@ -11,9 +11,24 @@ const Main = ({ setLoading }) => {
   const users = useSelector((state) => state.user.user);
   const [isLoading, setIsLoading] = useState(true);
   const [userRank, setUserRank] = useState(null);
+  const [quote, setQuote] = useState("");
 
   const tg = window.Telegram.WebApp;
   const chatId = tg.initDataUnsafe?.user?.id;
+
+  const quotes = [
+    "Секрет успеха - это начать.",
+    "Каждый день - новая возможность.",
+    "Не останавливайся на достигнутом!",
+    "Твои усилия приведут к успеху.",
+    "Стремись к новым победам!",
+  ];
+
+  useEffect(() => {
+    // Выбираем случайную цитату
+    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+    setQuote(randomQuote);
+  }, []);
 
   useEffect(() => {
     dispatch(fetchAllUsers());
@@ -72,9 +87,14 @@ const Main = ({ setLoading }) => {
             Привет, <br />
             {currentUser.username}&#128075;
           </h1>
-          <h2 style={{ display: "flex", alignItems: "center" }} className="position-mp">{userRank ? `#${userRank}` : "неизвестно"} {currentUser.username}</h2>
+          <h2
+            style={{ display: "flex", alignItems: "center" }}
+            className="position-mp"
+          >
+            {userRank ? `#${userRank}` : "неизвестно"} {currentUser.username}
+          </h2>
         </div>
-        
+
         <div
           style={{
             display: "flex",
@@ -109,8 +129,9 @@ const Main = ({ setLoading }) => {
         >
           <p className="points-main-page">{currentUser.points}</p>
         </div>
+
+        <div className="motivational-quote">{quote}</div>
       </div>
-      <p>dsfs</p>
     </>
   );
 };
