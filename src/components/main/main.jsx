@@ -86,7 +86,7 @@ const Main = ({ setLoading }) => {
             justifyContent: "center",
           }}
         >
-          <p className="points-main-page">{currentUser.points} <br /> твои очки</p>
+          <p className="points-main-page">{currentUser.points}</p>
 
           {/* <div
             style={{
