@@ -27,10 +27,11 @@ body {
     rgba(0, 0, 0, 1) 0%,
     rgba(16, 47, 49, 0.9) 100%
   ); */
-  background-image: url("/public/bckg-img.jpg");
+  /* background-image: url("/public/bckg-img.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: fixed; */
+  background-color: #102f31;
   color: var(--font-color-primary);
 }
 
