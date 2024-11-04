@@ -48,7 +48,8 @@ const Main = ({ setLoading }) => {
     <>
       <div style={{ margin: "20px 20px 0 20px", position: "relative" }}>
         <h1 className="username-main-page">
-          Привет, <br />{currentUser.username}&#128075;
+          Привет, <br />
+          {currentUser.username}&#128075;
         </h1>
         {/* <h1>Добро пожаловать, {currentUser.username}!</h1>
         <p>Общее количество очков: {currentUser.points || 0}</p>
@@ -83,17 +84,10 @@ const Main = ({ setLoading }) => {
             display: "flex",
             marginTop: "60px",
             justifyContent: "center",
-            alignItems: "center"
           }}
         >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            <p className="points-main-page">{currentUser.points}</p>
-          </div>
+          <p className="points-main-page">{currentUser.points}</p>
+
           {/* <div
             style={{
               display: "flex",

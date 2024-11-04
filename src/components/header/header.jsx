@@ -22,15 +22,8 @@ const Header = () => {
   };
   return (
     <div className="header">
-      
       <div className="header-username">
-        <span
-          style={{
-            paddingLeft: "8px",
-          }}
-        >
-          Footwise
-        </span>
+        <span>Footwise</span>
       </div>
       <button onClick={onClose} className="button-exit-header">
         <ImExit />

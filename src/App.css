@@ -160,12 +160,8 @@ body {
   font-size: 24px;
   color: var(--font-color-primary);
   font-family: var(--font-primary);
-  position: absolute;
-  width: 160px;
-  height: 160px;
-  left: 98px;
-  bottom: 20px;
-  z-index: 999;
+  width: 200px;
+  height: 200px;
 }
 
 .current-quiz-main-page {
