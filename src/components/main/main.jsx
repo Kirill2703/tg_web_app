@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { fetchUserNameByChatId } from "../../thunks/userThunk";
+import { fetchAllUsers, fetchUserNameByChatId } from "../../thunks/userThunk";
 import { useDispatch, useSelector } from "react-redux";
 import LoadingScreen from "../loadingScreen/loadingScreen";
 import "../../App.css";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Main = ({ setLoading }) => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.user.currentUser);
+  const users = useSelector((state) => state.user.user);
   const [isLoading, setIsLoading] = useState(true);
   const [userRank, setUserRank] = useState(null);
 
@@ -62,7 +63,13 @@ const Main = ({ setLoading }) => {
   return (
     <>
       <div style={{ margin: "20px 20px 0 20px", position: "relative" }}>
-        <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
+        >
           <h1 className="username-main-page">
             Привет, <br />
             {currentUser.username}&#128075;
@@ -92,7 +99,7 @@ const Main = ({ setLoading }) => {
             </Link>
           </button>
           <button className="btn-link-main-page">
-            <Link to="/leaders" className="link-list-mp">
+            <Link to="/table" className="link-list-mp">
               Таблица лидеров
             </Link>
           </button>
