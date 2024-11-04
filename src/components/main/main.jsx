@@ -72,7 +72,7 @@ const Main = ({ setLoading }) => {
             Привет, <br />
             {currentUser.username}&#128075;
           </h1>
-          <h2 style={{ display: "flex", alignItems: "center" }}>{userRank ? `#${userRank}` : "неизвестно"} {users.username }</h2>
+          <h2 style={{ display: "flex", alignItems: "center" }} className="position-mp">{userRank ? `#${userRank}` : "неизвестно"} {currentUser.username}</h2>
         </div>
         
         <div

@@ -123,6 +123,13 @@ body {
   font-size: 20px;
 }
 
+.position-mp{
+  border: 1px solid #8B7E66;
+  background-color: #8B7E66;
+  padding: 8px;
+  border-radius: 20px;
+}
+
 .points-main-page {
   /* background: linear-gradient(
     120deg,
