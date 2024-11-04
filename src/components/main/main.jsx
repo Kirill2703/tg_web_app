@@ -9,9 +9,24 @@ const Main = ({ setLoading }) => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.user.currentUser);
   const [isLoading, setIsLoading] = useState(true);
+  const [userRank, setUserRank] = useState(null);
 
   const tg = window.Telegram.WebApp;
   const chatId = tg.initDataUnsafe?.user?.id;
+
+  useEffect(() => {
+    dispatch(fetchAllUsers());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (users.length > 0 && currentUser) {
+      // Сортируем пользователей и находим позицию текущего пользователя
+      const sortedUsers = [...users].sort((a, b) => b.points - a.points);
+      const rank =
+        sortedUsers.findIndex((user) => user.chatId === currentUser.chatId) + 1;
+      setUserRank(rank);
+    }
+  }, [users, currentUser]);
 
   useEffect(() => {
     setLoading(true);
@@ -47,10 +62,13 @@ const Main = ({ setLoading }) => {
   return (
     <>
       <div style={{ margin: "20px 20px 0 20px", position: "relative" }}>
-        <h1 className="username-main-page">
-          Привет, <br />
-          {currentUser.username}&#128075;
-        </h1>
+        <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
+          <h1 className="username-main-page">
+            Привет, <br />
+            {currentUser.username}&#128075;
+          </h1>
+          <h2>{userRank ? `#${userRank}` : "неизвестно"}</h2>
+        </div>
         {/* <h1>Добро пожаловать, {currentUser.username}!</h1>
         <p>Общее количество очков: {currentUser.points || 0}</p>
         <p>Количество пройденных квизов: {completedQuizzesCount}</p> */}
@@ -64,34 +82,19 @@ const Main = ({ setLoading }) => {
           }}
         >
           <button className="btn-link-main-page">
-            <NavLink
-              to="/rules"
-              className={({ isActive }) =>
-                isActive ? "link-list-mp active" : "link-list-mp"
-              }
-            >
+            <Link to="/rules" className="link-list-mp">
               Правила Footwise
-            </NavLink>
+            </Link>
           </button>
           <button className="btn-link-main-page">
-            <NavLink
-              to="/history"
-              className={({ isActive }) =>
-                isActive ? "link-list-mp active" : "link-list-mp"
-              }
-            >
+            <Link to="/history" className="link-list-mp">
               История прогнозов
-            </NavLink>
+            </Link>
           </button>
           <button className="btn-link-main-page">
-            <NavLink
-              to="/leaders"
-              className={({ isActive }) =>
-                isActive ? "link-list-mp active" : "link-list-mp"
-              }
-            >
+            <Link to="/leaders" className="link-list-mp">
               Таблица лидеров
-            </NavLink>
+            </Link>
           </button>
         </div>
         <div
@@ -102,22 +105,10 @@ const Main = ({ setLoading }) => {
           }}
         >
           <p className="points-main-page">{currentUser.points}</p>
-
-          {/* <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              margin: "24px 0px 12px -4px",
-            }}
-          >
-            <p className="current-quiz-main-page">{completedQuizzesCount}</p>
-          </div> */}
         </div>
-        {/* <img style={{position: "absolute", left: "-100px", bottom: "200px"}} src="/ball-bckg.png" alt="" /> */}
       </div>
       <p>dsfs</p>
     </>
-    // <div className="bckg-ball-img"></div>
   );
 };
 

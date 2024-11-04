@@ -174,24 +174,7 @@ body {
   font-family: var(--font-primary);
 }
 
-.link-list-mp.active {
-  color: #f44336; 
-}
 
-/* .bckg-ball-img {
-  background-image: url(/public/ball-bckg.png);
-  width: 240px;
-  position: absolute;
-  bottom: -160px;
-  left: -40px;
-  width: 100%;
-  height: 500px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  z-index: -1;
-  transform: scaleY(-1) rotate(45deg);
-  filter: brightness(1.2) blur(2px);
-} */
 
 /* #endregion */
 

@@ -16,6 +16,8 @@ const TableStat = () => {
         return <LoadingScreen />;
     }
 
+     const sortedUsers = [...users].sort((a, b) => b.points - a.points);
+
     return (
         <div>
             <h2>Турнирная таблица</h2>
