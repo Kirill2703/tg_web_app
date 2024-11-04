@@ -108,7 +108,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 20px;
   padding: 0 20px;
   position: absolute;
   bottom: 0;
@@ -120,7 +119,7 @@ body {
   align-items: center;
   font-family: var(--font-primary);
   color: var(--font-color-primary);
-  font-size: 12px;
+  font-size: 8px;
   text-transform: uppercase;
 }
 
