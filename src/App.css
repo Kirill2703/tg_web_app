@@ -158,11 +158,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
+  font-size: 36px;
   color: var(--font-color-primary);
   font-family: var(--font-primary);
   width: 200px;
   height: 200px;
+  text-transform: uppercase;
 }
 
 .current-quiz-main-page {
