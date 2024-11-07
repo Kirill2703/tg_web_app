@@ -3,9 +3,8 @@ import AllLeagues from '../leagues/allLeagues';
 
 const Prediction = () => {
     return (
-        <div>
-            <h1>Hello</h1>
-            <h2>Choose league:</h2>
+        <div style={{margin: "20px 20px 0 20px"}}>
+            <h2 className='title-prediction'>Choose league:</h2>
             <AllLeagues />
         </div>
     );
