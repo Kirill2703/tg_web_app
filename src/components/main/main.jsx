@@ -5,7 +5,7 @@ import LoadingScreen from "../loadingScreen/loadingScreen";
 import "../../App.css";
 import { Link } from "react-router-dom";
 import mottos from "../../mottos";
-import "animate.css"
+import "animate.css";
 
 const Main = ({ setLoading }) => {
   const dispatch = useDispatch();
@@ -13,6 +13,8 @@ const Main = ({ setLoading }) => {
   const users = useSelector((state) => state.user.user);
   const [isLoading, setIsLoading] = useState(true);
   const [userRank, setUserRank] = useState(null);
+  const [showQuizzes, setShowQuizzes] = useState(false);
+  const [flip, setFlip] = useState(false);
 
   const tg = window.Telegram.WebApp;
   const chatId = tg.initDataUnsafe?.user?.id;
@@ -21,7 +23,7 @@ const Main = ({ setLoading }) => {
 
   // useEffect(() => {
   //   // Выбираем случайную цитату
-    
+
   //   setQuote(randomQuote);
   // }, []);
 
@@ -67,6 +69,14 @@ const Main = ({ setLoading }) => {
 
   // Подсчет пройденных квизов
   const completedQuizzesCount = currentUser.completedQuizzes.length; // Количество пройденных квизов
+
+  const handleFlip = () => {
+    setFlip(true); // Запуск анимации
+    setTimeout(() => {
+      setShowQuizzes((prev) => !prev); // Переключение значения
+      setFlip(false); // Сброс анимации
+    }, 300);
+  };
 
   return (
     <>
@@ -121,8 +131,10 @@ const Main = ({ setLoading }) => {
             marginTop: "60px",
             justifyContent: "center",
           }}
+          className={`points-main-page ${flip ? "flip-animation" : ""}`} // Добавляем класс анимации при flip
+          onClick={handleFlip}
         >
-          <p className="points-main-page">{currentUser.points}</p>
+          <p>{showQuizzes ? completedQuizzesCount : currentUser.points}</p>
         </div>
 
         <div className="motivational-quote">{randomQuote}</div>
