@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import LoadingScreen from "../loadingScreen/loadingScreen";
 import "../../App.css";
 import { Link } from "react-router-dom";
+import mottos from "../../mottos";
 
 const Main = ({ setLoading }) => {
   const dispatch = useDispatch();
@@ -16,17 +17,9 @@ const Main = ({ setLoading }) => {
   const tg = window.Telegram.WebApp;
   const chatId = tg.initDataUnsafe?.user?.id;
 
-  const quotes = [
-    "Секрет успеха - это начать.",
-    "Каждый день - новая возможность.",
-    "Не останавливайся на достигнутом!",
-    "Твои усилия приведут к успеху.",
-    "Стремись к новым победам!",
-  ];
-
   useEffect(() => {
     // Выбираем случайную цитату
-    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+    const randomQuote = mottos[Math.floor(Math.random() * quotes.length)];
     setQuote(randomQuote);
   }, []);
 
