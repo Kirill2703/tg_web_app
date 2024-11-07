@@ -15,17 +15,15 @@ const Main = ({ setLoading }) => {
   const [userRank, setUserRank] = useState(null);
   const [showQuizzes, setShowQuizzes] = useState(false);
   const [flip, setFlip] = useState(false);
+  const [randomQuote, setRandomQuote] = useState(() => {
+    // Инициализируем девиз только один раз
+    return mottos[Math.floor(Math.random() * mottos.length)];
+  });
 
   const tg = window.Telegram.WebApp;
   const chatId = tg.initDataUnsafe?.user?.id;
 
-  const randomQuote = mottos[Math.floor(Math.random() * mottos.length)];
-
-  // useEffect(() => {
-  //   // Выбираем случайную цитату
-
-  //   setQuote(randomQuote);
-  // }, []);
+ 
 
   useEffect(() => {
     dispatch(fetchAllUsers());
