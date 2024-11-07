@@ -136,12 +136,12 @@ body {
 }
 
 .points-main-page {
-  background-color: #546a7b;
+  background-color: #708D7E;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 36px;
+  font-size: 48px;
   color: var(--font-color-primary);
   font-family: var(--font-primary);
   width: 200px;
@@ -199,7 +199,7 @@ body {
   font-size: 20px;
   color: var(--font-color-primary);
   text-align: center;
-  margin-top: 10px;
+  margin-top: 60px;
   animation: fadeIn 1.5s ease-in-out;
 }
 
@@ -241,28 +241,6 @@ body {
   100% {
     transform: scale(1);
     opacity: 1;
-  }
-}
-
-@keyframes changeColor {
-  0% {
-    background-color: #E0E5E4; /* Светлый нейтральный */
-  }
-  
-  25% {
-    background-color: #A7FFEB; /* Мятный зеленый (мягкий акцент) */
-  }
-
-  50% {
-    background-color: #2C6E73; /* Подчеркивающий холодный акцент */
-  }
-  
-  75% {
-    background-color: #556B2F; /* Оливковый (более глубокий, природный тон) */
-  }
-
-  100% {
-    background-color: #102f31; /* Основной глубокий зеленый */
   }
 }
 

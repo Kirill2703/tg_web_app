@@ -133,7 +133,7 @@ const Main = ({ setLoading }) => {
           onClick={handleFlip}
         >
           <p className={`points-main-page ${flip ? "flip-animation" : ""}`}>
-            {showQuizzes ? completedQuizzesCount : currentUser.points}
+            {showQuizzes ? completedQuizzesCount  : currentUser.points}
           </p>
         </div>
 
