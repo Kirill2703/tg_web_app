@@ -204,7 +204,7 @@ body {
 }
 
 .flip-animation {
-  animation: flip 5s forwards; 
+  animation: flip 1s forwards; 
 }
 
 /* #endregion */
