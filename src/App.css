@@ -250,19 +250,19 @@ body {
   }
   
   25% {
-    background-color: #F8F0E3; /* Теплый светлый акцент */
+    background-color: #A7FFEB; /* Мятный зеленый (мягкий акцент) */
   }
 
   50% {
-    background-color: #DAA520; /* Мягкий золотистый контраст */
+    background-color: #2C6E73; /* Подчеркивающий холодный акцент */
   }
   
   75% {
-    background-color: #2C6E73; /* Подчеркивающий холодный акцент */
+    background-color: #556B2F; /* Оливковый (более глубокий, природный тон) */
   }
 
   100% {
-    background-color: rebeccapurple; /* Конечный темно-фиолетовый */
+    background-color: #102f31; /* Основной глубокий зеленый */
   }
 }
 
