@@ -5,6 +5,7 @@ import LoadingScreen from "../loadingScreen/loadingScreen";
 import "../../App.css";
 import { Link } from "react-router-dom";
 import mottos from "../../mottos";
+import "animate.css"
 
 const Main = ({ setLoading }) => {
   const dispatch = useDispatch();
@@ -12,7 +13,6 @@ const Main = ({ setLoading }) => {
   const users = useSelector((state) => state.user.user);
   const [isLoading, setIsLoading] = useState(true);
   const [userRank, setUserRank] = useState(null);
-  const [quote, setQuote] = useState("");
 
   const tg = window.Telegram.WebApp;
   const chatId = tg.initDataUnsafe?.user?.id;
@@ -62,7 +62,7 @@ const Main = ({ setLoading }) => {
   }
 
   if (!currentUser) {
-    return <div>Пользователь не найден</div>;
+    return <div>User undefined</div>;
   }
 
   // Подсчет пройденных квизов
@@ -99,17 +99,17 @@ const Main = ({ setLoading }) => {
             marginTop: "28px",
           }}
         >
-          <button className="btn-link-main-page">
+          <button className="btn-link-main-page animate__fadeInUp">
             <Link to="/rules" className="link-list-mp">
               Правила Footwise
             </Link>
           </button>
-          <button className="btn-link-main-page">
+          <button className="btn-link-main-page animate__fadeInBottomLeft">
             <Link to="/history" className="link-list-mp">
               История прогнозов
             </Link>
           </button>
-          <button className="btn-link-main-page">
+          <button className="btn-link-main-page animate__fadeInBottomRight">
             <Link to="/table" className="link-list-mp">
               Таблица лидеров
             </Link>

@@ -169,10 +169,10 @@ body {
   background-color: #036465;
   border-radius: 20px;
   opacity: 0;
-  animation: pop 1s forwards;
+  /* animation: pop 1s forwards; */
 }
 
-.btn-link-main-page:nth-child(1) {
+/* .btn-link-main-page:nth-child(1) {
   animation-delay: 1s; 
 }
 
@@ -182,7 +182,7 @@ body {
 
 .btn-link-main-page:nth-child(3) {
   animation-delay: 2s; 
-}
+} */
 
 
 .link-list-mp {
