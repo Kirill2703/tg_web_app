@@ -131,10 +131,12 @@ const Main = ({ setLoading }) => {
             marginTop: "60px",
             justifyContent: "center",
           }}
-          className={`points-main-page ${flip ? "flip-animation" : ""}`} // Добавляем класс анимации при flip
+          
           onClick={handleFlip}
         >
-          <p>{showQuizzes ? completedQuizzesCount : currentUser.points}</p>
+          <p className={`points-main-page ${flip ? "flip-animation" : ""}`}>
+            {showQuizzes ? completedQuizzesCount : currentUser.points}
+          </p>
         </div>
 
         <div className="motivational-quote">{randomQuote}</div>
