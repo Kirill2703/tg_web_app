@@ -17,11 +17,13 @@ const Main = ({ setLoading }) => {
   const tg = window.Telegram.WebApp;
   const chatId = tg.initDataUnsafe?.user?.id;
 
-  useEffect(() => {
-    // Выбираем случайную цитату
-    const randomQuote = mottos[Math.floor(Math.random() * quotes.length)];
-    setQuote(randomQuote);
-  }, []);
+  const randomQuote = mottos[Math.floor(Math.random() * mottos.length)];
+
+  // useEffect(() => {
+  //   // Выбираем случайную цитату
+    
+  //   setQuote(randomQuote);
+  // }, []);
 
   useEffect(() => {
     dispatch(fetchAllUsers());
@@ -123,7 +125,7 @@ const Main = ({ setLoading }) => {
           <p className="points-main-page">{currentUser.points}</p>
         </div>
 
-        <div className="motivational-quote">{quote}</div>
+        <div className="motivational-quote">{randomQuote}</div>
       </div>
     </>
   );
