@@ -203,6 +203,7 @@ body {
   text-align: center;
   margin-top: 60px;
   padding: 12px;
+  border-radius: 20px;
   animation: gradientMove 3s linear infinite;
 }
 
