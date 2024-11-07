@@ -198,9 +198,12 @@ body {
   font-family: var(--font-primary);
   font-size: 20px;
   color: var(--font-color-primary);
+  background: linear-gradient(90deg, #036465, #102f31);
+  background-size: 200% auto;
   text-align: center;
   margin-top: 60px;
-  animation: scroll-left 10s linear infinite;
+  padding: 12px;
+  animation: gradientMove 3s linear infinite;
 }
 
 .flip-animation {
@@ -258,12 +261,20 @@ body {
   }
 }
 
-@keyframes scroll-left {
+/* @keyframes scroll-left {
   from {
     transform: translateX(100%);
   }
   to {
     transform: translateX(-100%);
+  }
+} */
+ @keyframes gradientMove {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
   }
 }
 
