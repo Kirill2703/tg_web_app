@@ -147,7 +147,8 @@ body {
   width: 200px;
   height: 200px;
   text-transform: uppercase;
-  animation: bounce 2s infinite;
+  animation: changeColor 2s ease-out infinite;
+  animation-composition: add;
 }
 
 .current-quiz-main-page {
@@ -168,11 +169,11 @@ body {
   padding: 4px;
   background-color: #036465;
   border-radius: 20px;
-  /* opacity: 0; */
-  /* animation: pop 1s forwards; */
+  opacity: 0;
+  animation: pop 1s forwards;
 }
 
-/* .btn-link-main-page:nth-child(1) {
+.btn-link-main-page:nth-child(1) {
   animation-delay: 1s; 
 }
 
@@ -182,7 +183,7 @@ body {
 
 .btn-link-main-page:nth-child(3) {
   animation-delay: 2s; 
-} */
+}
 
 
 .link-list-mp {
@@ -224,7 +225,7 @@ body {
   }
 }
 
-@keyframes bounce {
+/* @keyframes bounce {
   0%,
   100% {
     transform: translateY(0);
@@ -232,7 +233,7 @@ body {
   50% {
     transform: translateY(-10px);
   }
-}
+} */
 
 @keyframes pop {
   0% {
@@ -247,6 +248,17 @@ body {
     transform: scale(1);
     opacity: 1;
   }
+}
+
+@keyframes changeColor {
+  0% {
+    background-color: #28a745;
+  }
+
+  100% {
+    background-color: rebeccapurple;
+  }
+  
 }
 
 /* .username {

@@ -99,17 +99,17 @@ const Main = ({ setLoading }) => {
             marginTop: "28px",
           }}
         >
-          <button className="btn-link-main-page animate__animated animate__fadeInUp">
+          <button className="btn-link-main-page">
             <Link to="/rules" className="link-list-mp">
               Правила Footwise
             </Link>
           </button>
-          <button className="btn-link-main-page animate__animated animate__fadeInBottomLeft">
+          <button className="btn-link-main-page">
             <Link to="/history" className="link-list-mp">
               История прогнозов
             </Link>
           </button>
-          <button className="btn-link-main-page animate__animated animate__fadeInBottomRight">
+          <button className="btn-link-main-page">
             <Link to="/table" className="link-list-mp">
               Таблица лидеров
             </Link>
