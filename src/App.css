@@ -136,7 +136,7 @@ body {
 }
 
 .points-main-page {
-  background-color: #708D7E;
+  background-color: #C97A4D;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -200,7 +200,7 @@ body {
   color: var(--font-color-primary);
   text-align: center;
   margin-top: 60px;
-  animation: fadeIn 1.5s ease-in-out;
+  animation: scroll-left 10s linear infinite;
 }
 
 .flip-animation {
@@ -255,6 +255,15 @@ body {
   100% {
     transform: perspective(200px) rotateY(0deg);
     opacity: 1;
+  }
+}
+
+@keyframes scroll-left {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
   }
 }
 
