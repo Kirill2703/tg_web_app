@@ -168,7 +168,7 @@ body {
   padding: 4px;
   background-color: #036465;
   border-radius: 20px;
-  opacity: 0;
+  /* opacity: 0; */
   /* animation: pop 1s forwards; */
 }
 
