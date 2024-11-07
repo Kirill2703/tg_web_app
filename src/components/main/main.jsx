@@ -94,7 +94,7 @@ const Main = ({ setLoading }) => {
             style={{ display: "flex", alignItems: "center" }}
             className="position-mp"
           >
-            {userRank ? `#${userRank}` : "неизвестно"} {currentUser.username}
+            {userRank ? `#${userRank} Твоя позиция` : "неизвестно"} 
           </h2>
         </div>
 
