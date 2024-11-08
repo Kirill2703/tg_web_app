@@ -398,7 +398,7 @@ body {
 .container-card-quiz{
   display: flex;
   flex-direction: row;
-  gap: 20px;
+  justify-content: space-between;
   
 }
 
@@ -410,7 +410,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 120px;
+  width: 160px;
   opacity: 0;
   animation: pop 1s forwards;
 }
