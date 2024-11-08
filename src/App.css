@@ -399,34 +399,36 @@ body {
   display: flex;
   flex-direction: row;
   gap: 20px;
+  
 }
 
 .card-quiz{
-  border: 1px solid red;
+  border: 1px solid #036465;
+  background-color: (139, 126, 102, 0.3);
   border-radius: 20px;
   padding: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 120px;
+  animation: pop 1s forwards;
 }
 
-.quantity-quiz{
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
+@keyframes pop {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
-.quantity-points{
-  font-size: 12px;
-  font-family: var(--font-primary);
-  color: var(--font-color-primary);
-}
-
-.quantity-questions{
-  font-size: 12px;
-  font-family: var(--font-primary);
-  color: var(--font-color-primary);
-}
 /* #endregion */
 
 .history-item {

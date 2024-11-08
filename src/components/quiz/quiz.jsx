@@ -25,14 +25,17 @@ const Quiz = () => {
     <>
       <div style={{ margin: "0 20px" }}>
         <h1 className="header-quizes">Квизы</h1>
-        {quizes.map((quiz) => (
-          <div className="container-card-quiz">
+        <div className="container-card-quiz">
+          {quizes.map((quiz) => (
             <Link
               to={`/quiz/${quiz._id}`}
               key={quiz._id}
               style={{ textDecoration: "none" }}
             >
-              <div className="card-quiz">
+              <div
+                className="card-quiz"
+                style={{ animationDelay: `${index * 0.5}s` }}
+              >
                 <img
                   src={require("../../icons/england.svg").default}
                   alt="England"
@@ -40,38 +43,10 @@ const Quiz = () => {
                   height={40}
                 />
                 <p className="quiz-title">{quiz.title}</p>
-                <div className="quantity-quiz">
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <p className="quantity-points">Награда:</p>
-                    <p className="quantity-points">{quiz.quantityPoints}</p>
-                  </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <p className="quantity-questions">
-                      Кол-во вопросов:
-                    </p>
-                    <p className="quantity-questions">
-                      {quiz.quantityQuestions}
-                    </p>
-                  </div>
-                </div>
               </div>
             </Link>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </>
   );
