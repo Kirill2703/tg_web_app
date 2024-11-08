@@ -41,7 +41,7 @@ const Quiz = () => {
                 <div
                   className="card-quiz"
                   style={{
-                    backgroundColor: isCompleted ? "red" : "#036465",
+                    backgroundColor: isCompleted ? "#b34a4a" : "#e6f2f2",
                     animationDelay: `${index * 0.5}s`,
                   }}
                 >

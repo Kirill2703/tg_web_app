@@ -395,14 +395,14 @@ body {
   font-size: 16px;
 }
 
-.container-card-quiz{
+.container-card-quiz {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  
+  margin-top: 40px;
 }
 
-.card-quiz{
+.card-quiz {
   border: 1px solid #036465;
   background-color: (139, 126, 102, 0.3);
   border-radius: 20px;
