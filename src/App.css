@@ -411,6 +411,7 @@ body {
   flex-direction: column;
   align-items: center;
   width: 120px;
+  opacity: 0;
   animation: pop 1s forwards;
 }
 

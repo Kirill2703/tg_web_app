@@ -26,7 +26,7 @@ const Quiz = () => {
       <div style={{ margin: "0 20px" }}>
         <h1 className="header-quizes">Квизы</h1>
         <div className="container-card-quiz">
-          {quizes.map((quiz) => (
+          {quizes.map((quiz, index) => (
             <Link
               to={`/quiz/${quiz._id}`}
               key={quiz._id}
