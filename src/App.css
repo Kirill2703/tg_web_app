@@ -289,17 +289,16 @@ body {
 
 /* #endregion */
 
-
 /* #region page-prediction */
 
-.title-prediction{
+.title-prediction {
   font-family: var(--font-primary);
   text-align: center;
   font-size: 36px;
   color: var(--font-color-primary);
 }
 
-.container-leagues{
+.container-leagues {
   display: flex;
   flex-direction: column;
   margin-top: 40px;
@@ -307,14 +306,13 @@ body {
   gap: 20px;
 }
 
-.league{
+.league {
   border: 1px solid #036465;
   border-radius: 20px;
-  padding: 6px 10px ;
+  padding: 6px 10px;
   background-color: rgba(139, 126, 102, 0.3);
   opacity: 0;
   animation: pop 1s forwards;
-  
 }
 
 .league:nth-child(1) {
@@ -337,7 +335,7 @@ body {
   animation-delay: 3s;
 }
 
-.league-title{
+.league-title {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -348,20 +346,20 @@ body {
 }
 
 .league-title img {
-  transform-origin: top center; 
-  opacity: 0; 
-  transform: scaleY(0); 
-  animation: unfoldFlag 1s forwards; 
+  transform-origin: top center;
+  opacity: 0;
+  transform: scaleY(0);
+  animation: unfoldFlag 1s forwards;
 }
 
 @keyframes unfoldFlag {
   0% {
     opacity: 0;
-    transform: scaleY(0); 
+    transform: scaleY(0);
   }
   100% {
-    opacity: 1; 
-    transform: scaleY(1); 
+    opacity: 1;
+    transform: scaleY(1);
   }
 }
 
@@ -380,7 +378,55 @@ body {
   }
 }
 
+/* #endregion */
 
+/* #region page-quizes */
+
+.header-quizes {
+  color: var(--font-color-primary);
+  font-family: var(--font-primary);
+  font-size: 36px;
+  text-align: center;
+}
+
+.quiz-title {
+  color: var(--font-color-primary);
+  font-family: var(--font-primary);
+  font-size: 16px;
+}
+
+.container-card-quiz{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.card-quiz{
+  border: 1px solid red;
+  border-radius: 20px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.quantity-quiz{
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.quantity-points{
+  font-size: 12px;
+  font-family: var(--font-primary);
+  color: var(--font-color-primary);
+}
+
+.quantity-questions{
+  font-size: 12px;
+  font-family: var(--font-primary);
+  color: var(--font-color-primary);
+}
 /* #endregion */
 
 .history-item {
