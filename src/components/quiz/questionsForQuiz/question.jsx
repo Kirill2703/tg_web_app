@@ -13,6 +13,7 @@ const Question = () => {
   const error = useSelector((state) => state.questions.error);
   const [isModalOpen, setIsModalOpen] = useState(false); // Отслеживаем, открыто ли модальное окно
   const currentUser = useSelector((state) => state.user.currentUser);
+  const quizes = useSelector((state) => state.quiz.quizes);
 
   useEffect(() => {
     dispatch(fetchAllQuestionsByQuizId(quizId));
@@ -34,17 +35,20 @@ const Question = () => {
     return <div>Ошибка: {error}</div>;
   }
 
-  return (
-    <div>
-      <h2>Квиз</h2>
-      <button onClick={handleOpenModal}>Начать квиз</button>
+  const currentQuiz = quizes.find((quiz) => quiz._id === quizId);
 
-      {isModalOpen && (
-        <ModalOptions
-          onClose={handleCloseModal}
-          chatId={currentUser.chatId} // Передаем chatId из currentUser
-        />
-      )}
+  return (
+    <div style={{margin: "0 20px"}}>
+      <div style={{display: "flex", flexDirection: "column", justifyContent: "space-between", gap: "300px"}}>
+        {currentQuiz ? <h2 className="title-quiz-questions-page">{currentQuiz.title}</h2> : <h2>Квиз не найден</h2>}
+        <button onClick={handleOpenModal} className="btn-start-quiz">Начать</button>
+        {isModalOpen && (
+          <ModalOptions
+            onClose={handleCloseModal}
+            chatId={currentUser.chatId}
+          />
+        )}
+      </div>
     </div>
   );
 };
