@@ -29,26 +29,54 @@ const ModalOptions = ({ onClose, chatId }) => {
     adaptiveHeight: true,
   };
 
-  useEffect(() => {
-    // Проверка на то, завершил ли пользователь квиз
-    const checkIfQuizCompleted = async () => {
-      const response = await fetch(
-        `http://https://footwise.onrender.com/user/${chatId}`
-      );
-      if (response.ok) {
-        const data = await response.json();
-        const user = data.user;
+  // useEffect(() => {
+  //   // Проверка на то, завершил ли пользователь квиз
+  //   const checkIfQuizCompleted = async () => {
+  //     const response = await fetch(
+  //       `http://https://footwise.onrender.com/user/${chatId}`
+  //     );
+  //     if (response.ok) {
+  //       const data = await response.json();
+  //       const user = data.user;
 
-        if (user.completedQuizzes.includes(questions[0].quizId)) {
-          setQuizCompleted(true); // Устанавливаем состояние, если квиз уже пройден
+  //       if (user.completedQuizzes.includes(questions[0].quizId)) {
+  //         setQuizCompleted(true); // Устанавливаем состояние, если квиз уже пройден
+  //       }
+  //     }
+  //   };
+
+  //   if (chatId) {
+  //     checkIfQuizCompleted();
+  //   }
+  // }, [chatId, questions]); // Проверка при изменении chatId и questions
+
+  useEffect(() => {
+    const checkIfQuizCompleted = async () => {
+      if (!chatId || questions.length === 0) return;
+
+      try {
+        const response = await fetch(
+          `http://https://footwise.onrender.com/user/${chatId}`
+        );
+        if (response.ok) {
+          const data = await response.json();
+          const userCompletedQuizzes = data.user?.completedQuizzes || [];
+          const quizId = questions[0].quizId;
+
+          // Установка quizCompleted в true, если квиз уже пройден
+          if (userCompletedQuizzes.includes(quizId)) {
+            setQuizCompleted(true);
+          }
+        } else {
+          console.error("Ошибка загрузки данных пользователя.");
         }
+      } catch (error) {
+        console.error("Ошибка при проверке завершения квиза:", error);
       }
     };
 
-    if (chatId) {
-      checkIfQuizCompleted();
-    }
-  }, [chatId, questions]); // Проверка при изменении chatId и questions
+    checkIfQuizCompleted();
+  }, [chatId, questions]);
 
   const handleAnswerSelect = (index, answer) => {
     if (isAnswered[index]) return; // Если на вопрос уже ответили, не обрабатываем клик
