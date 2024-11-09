@@ -56,7 +56,7 @@ const ModalOptions = ({ onClose, chatId }) => {
 
       try {
         const response = await fetch(
-          `http://https://footwise.onrender.com/user/${chatId}`
+          `https://footwise.onrender.com/user/${chatId}`
         );
         if (response.ok) {
           const data = await response.json();
