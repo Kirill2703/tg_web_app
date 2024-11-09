@@ -32,7 +32,9 @@ const ModalOptions = ({ onClose, chatId }) => {
   useEffect(() => {
     // Проверка на то, завершил ли пользователь квиз
     const checkIfQuizCompleted = async () => {
-      const response = await fetch(`http://localhost:4000/api/user/${chatId}`);
+      const response = await fetch(
+        `http://https://footwise.onrender.com/user/${chatId}`
+      );
       if (response.ok) {
         const data = await response.json();
         const user = data.user;
