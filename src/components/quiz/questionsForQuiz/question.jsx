@@ -38,17 +38,27 @@ const Question = () => {
   const currentQuiz = quizes.find((quiz) => quiz._id === quizId);
 
   return (
-    <div style={{margin: "0 20px"}}>
-      <div style={{display: "flex", flexDirection: "column", justifyContent: "space-between", gap: "300px"}}>
-        {currentQuiz ? <h2 className="title-quiz-questions-page">{currentQuiz.title}</h2> : <h2>Квиз не найден</h2>}
-        <button onClick={handleOpenModal} className="btn-start-quiz">Начать</button>
-        {isModalOpen && (
-          <ModalOptions
-            onClose={handleCloseModal}
-            chatId={currentUser.chatId}
-          />
+    <div style={{ margin: "0 20px" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          gap: "300px",
+        }}
+      >
+        {currentQuiz ? (
+          <h2 className="title-quiz-questions-page">{currentQuiz.title}</h2>
+        ) : (
+          <h2>Квиз не найден</h2>
         )}
+        <button onClick={handleOpenModal} className="btn-start-quiz">
+          Начать
+        </button>
       </div>
+      {isModalOpen && (
+        <ModalOptions onClose={handleCloseModal} chatId={currentUser.chatId} />
+      )}
     </div>
   );
 };

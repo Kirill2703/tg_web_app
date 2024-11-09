@@ -87,53 +87,105 @@ const ModalOptions = ({ onClose, chatId }) => {
   const allAnswered = isAnswered.every(Boolean); // Проверяем, ответили ли на все вопросы
 
   return (
+    // <div className="modal">
+    //   <h2>Вопросы викторины</h2>
+    //   {quizCompleted ? ( // Проверка на завершение квиза
+    //     <p>Квиз пройден! Вы не можете пройти его повторно.</p>
+    //   ) : (
+    //     <Slider {...settings}>
+    //       {questions.map((question, index) => (
+    //         <div key={index}>
+    //           <h3>{question.questionText}</h3>
+    //           <ul>
+    //             {question.options.map((option, optionIndex) => (
+    //               <li key={optionIndex}>
+    //                 <button
+    //                   onClick={() => handleAnswerSelect(index, option)}
+    //                   style={{
+    //                     backgroundColor:
+    //                       selectedAnswers[index] === option
+    //                         ? option === question.correctAnswer
+    //                           ? "green"
+    //                           : "red"
+    //                         : "white",
+    //                   }}
+    //                   disabled={isAnswered[index]} // Делаем кнопку неактивной после выбора
+    //                 >
+    //                   {option}
+    //                 </button>
+    //               </li>
+    //             ))}
+    //           </ul>
+    //           {isAnswered[index] && (
+    //             <div>
+    //               {selectedAnswers[index] === question.correctAnswer
+    //                 ? `Правильно!`
+    //                 : `Неправильный ответ!`}
+    //             </div>
+    //           )}
+    //         </div>
+    //       ))}
+    //     </Slider>
+    //   )}
+    //   {allAnswered &&
+    //     !quizCompleted && ( // Кнопка отправки отображается только если квиз не пройден
+    //       <button onClick={handleSubmit}>
+    //         Завершить викторину и получить очки
+    //       </button>
+    //     )}
+    //   <button onClick={onClose}>Закрыть</button>
+    // </div>
     <div className="modal">
-      <h2>Вопросы викторины</h2>
-      {quizCompleted ? ( // Проверка на завершение квиза
-        <p>Квиз пройден! Вы не можете пройти его повторно.</p>
-      ) : (
-        <Slider {...settings}>
-          {questions.map((question, index) => (
-            <div key={index}>
-              <h3>{question.questionText}</h3>
-              <ul>
-                {question.options.map((option, optionIndex) => (
-                  <li key={optionIndex}>
-                    <button
-                      onClick={() => handleAnswerSelect(index, option)}
-                      style={{
-                        backgroundColor:
-                          selectedAnswers[index] === option
-                            ? option === question.correctAnswer
-                              ? "green"
-                              : "red"
-                            : "white",
-                      }}
-                      disabled={isAnswered[index]} // Делаем кнопку неактивной после выбора
-                    >
-                      {option}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-              {isAnswered[index] && (
-                <div>
-                  {selectedAnswers[index] === question.correctAnswer
-                    ? `Правильно!`
-                    : `Неправильный ответ!`}
-                </div>
-              )}
-            </div>
-          ))}
-        </Slider>
-      )}
-      {allAnswered &&
-        !quizCompleted && ( // Кнопка отправки отображается только если квиз не пройден
-          <button onClick={handleSubmit}>
+      <div className="modal-content">
+        <h2>Вопросы викторины</h2>
+        {quizCompleted ? (
+          <p>Квиз пройден! Вы не можете пройти его повторно.</p>
+        ) : (
+          <Slider {...settings}>
+            {questions.map((question, index) => (
+              <div key={index}>
+                <h3>{question.questionText}</h3>
+                <ul>
+                  {question.options.map((option, optionIndex) => (
+                    <li key={optionIndex}>
+                      <button
+                        onClick={() => handleAnswerSelect(index, option)}
+                        style={{
+                          backgroundColor:
+                            selectedAnswers[index] === option
+                              ? option === question.correctAnswer
+                                ? "green"
+                                : "red"
+                              : "white",
+                        }}
+                        disabled={isAnswered[index]}
+                        className="btn-modal"
+                      >
+                        {option}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+                {isAnswered[index] && (
+                  <div>
+                    {selectedAnswers[index] === question.correctAnswer
+                      ? `Правильно!`
+                      : `Неправильный ответ!`}
+                  </div>
+                )}
+              </div>
+            ))}
+          </Slider>
+        )}
+        {allAnswered && !quizCompleted && (
+          <button onClick={handleSubmit} className="complete-button">
             Завершить викторину и получить очки
           </button>
         )}
-      <button onClick={onClose}>Закрыть</button>
+        <button onClick={onClose} className="close-button">
+          Закрыть
+        </button>
+      </div>
     </div>
   );
 };
