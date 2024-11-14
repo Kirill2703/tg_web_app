@@ -29,27 +29,6 @@ const ModalOptions = ({ onClose, chatId }) => {
     adaptiveHeight: true,
   };
 
-  // useEffect(() => {
-  //   // Проверка на то, завершил ли пользователь квиз
-  //   const checkIfQuizCompleted = async () => {
-  //     const response = await fetch(
-  //       `http://https://footwise.onrender.com/user/${chatId}`
-  //     );
-  //     if (response.ok) {
-  //       const data = await response.json();
-  //       const user = data.user;
-
-  //       if (user.completedQuizzes.includes(questions[0].quizId)) {
-  //         setQuizCompleted(true); // Устанавливаем состояние, если квиз уже пройден
-  //       }
-  //     }
-  //   };
-
-  //   if (chatId) {
-  //     checkIfQuizCompleted();
-  //   }
-  // }, [chatId, questions]); // Проверка при изменении chatId и questions
-
   useEffect(() => {
     const checkIfQuizCompleted = async () => {
       if (!chatId || questions.length === 0) return;
@@ -117,65 +96,18 @@ const ModalOptions = ({ onClose, chatId }) => {
   const allAnswered = isAnswered.every(Boolean); // Проверяем, ответили ли на все вопросы
 
   return (
-    // <div className="modal">
-    //   <h2>Вопросы викторины</h2>
-    //   {quizCompleted ? ( // Проверка на завершение квиза
-    //     <p>Квиз пройден! Вы не можете пройти его повторно.</p>
-    //   ) : (
-    //     <Slider {...settings}>
-    //       {questions.map((question, index) => (
-    //         <div key={index}>
-    //           <h3>{question.questionText}</h3>
-    //           <ul>
-    //             {question.options.map((option, optionIndex) => (
-    //               <li key={optionIndex}>
-    //                 <button
-    //                   onClick={() => handleAnswerSelect(index, option)}
-    //                   style={{
-    //                     backgroundColor:
-    //                       selectedAnswers[index] === option
-    //                         ? option === question.correctAnswer
-    //                           ? "green"
-    //                           : "red"
-    //                         : "white",
-    //                   }}
-    //                   disabled={isAnswered[index]} // Делаем кнопку неактивной после выбора
-    //                 >
-    //                   {option}
-    //                 </button>
-    //               </li>
-    //             ))}
-    //           </ul>
-    //           {isAnswered[index] && (
-    //             <div>
-    //               {selectedAnswers[index] === question.correctAnswer
-    //                 ? `Правильно!`
-    //                 : `Неправильный ответ!`}
-    //             </div>
-    //           )}
-    //         </div>
-    //       ))}
-    //     </Slider>
-    //   )}
-    //   {allAnswered &&
-    //     !quizCompleted && ( // Кнопка отправки отображается только если квиз не пройден
-    //       <button onClick={handleSubmit}>
-    //         Завершить викторину и получить очки
-    //       </button>
-    //     )}
-    //   <button onClick={onClose}>Закрыть</button>
-    // </div>
     <div className="modal">
       <div className="modal-content">
-        <h2>Вопросы викторины</h2>
         {quizCompleted ? (
           <p>Квиз пройден! Вы не можете пройти его повторно.</p>
         ) : (
           <Slider {...settings}>
             {questions.map((question, index) => (
               <div key={index}>
-                <h3>{question.questionText}</h3>
-                <ul>
+                <h3 className="question-title-modal">
+                  {question.questionText}
+                </h3>
+                <ul style={{ listStyle: "none", padding: "0", margin: "0" }}>
                   {question.options.map((option, optionIndex) => (
                     <li key={optionIndex}>
                       <button
@@ -186,10 +118,10 @@ const ModalOptions = ({ onClose, chatId }) => {
                               ? option === question.correctAnswer
                                 ? "green"
                                 : "red"
-                              : "white",
+                              : "#8b7e66",
                         }}
                         disabled={isAnswered[index]}
-                        className="btn-modal"
+                        className="btn-modal list-questions"
                       >
                         {option}
                       </button>

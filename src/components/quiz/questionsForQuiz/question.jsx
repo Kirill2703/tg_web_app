@@ -20,11 +20,11 @@ const Question = () => {
   }, [dispatch, quizId]);
 
   const handleOpenModal = () => {
-    setIsModalOpen(true); // Открыть модальное окно
+    setIsModalOpen(true); 
   };
 
   const handleCloseModal = () => {
-    setIsModalOpen(false); // Закрыть модальное окно
+    setIsModalOpen(false); 
   };
 
   if (loading) {
@@ -55,6 +55,10 @@ const Question = () => {
         <button onClick={handleOpenModal} className="btn-start-quiz">
           Начать
         </button>
+
+        <div>
+          <p className="facts-quiz">Факты или подсказки. Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam deserunt nisi culpa nam et, perferendis veritatis quisquam illo omnis recusandae nobis possimus corporis. Debitis, doloribus! Nobis explicabo sapiente aut quae fuga ad voluptatum hic delectus, culpa vel pariatur repudiandae dolorem.</p>
+        </div>
       </div>
       {isModalOpen && (
         <ModalOptions onClose={handleCloseModal} chatId={currentUser.chatId} />
