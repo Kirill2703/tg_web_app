@@ -44,6 +44,7 @@ const Question = () => {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
+          gap: "120px"
         }}
       >
         {currentQuiz ? (

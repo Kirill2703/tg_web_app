@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Slider from "react-slick";
@@ -131,29 +130,21 @@ const ModalOptions = ({ onClose, chatId }) => {
                     </li>
                   ))}
                 </ul>
-                {isAnswered[index] && (
-                  <div>
-                    {selectedAnswers[index] === question.correctAnswer
-                      ? `Правильно!`
-                      : `Неправильный ответ!`}
-                  </div>
-                )}
               </div>
             ))}
           </Slider>
         )}
-        {allAnswered && !quizCompleted && (
-          <button onClick={handleSubmit} className="complete-button">
-            Завершить викторину и получить очки
-          </button>
-        )}
         <button onClick={onClose} className="close-button">
           Закрыть
         </button>
+        {allAnswered && !quizCompleted && (
+          <button onClick={handleSubmit} className="complete-button">
+            Получить очки
+          </button>
+        )}
       </div>
     </div>
   );
 };
 
 export default ModalOptions;
-
