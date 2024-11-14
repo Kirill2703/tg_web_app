@@ -109,7 +109,10 @@ const ModalOptions = ({ onClose, chatId }) => {
                 </h3>
                 <ul style={{ listStyle: "none", padding: "0", margin: "0" }}>
                   {question.options.map((option, optionIndex) => (
-                    <li key={optionIndex}>
+                    <li
+                      key={optionIndex}
+                      style={{ listStyle: "none", padding: "0", margin: "0" }}
+                    >
                       <button
                         onClick={() => handleAnswerSelect(index, option)}
                         style={{
