@@ -577,6 +577,102 @@ body {
 
 /* #endregion */
 
+/* #region pages-league */
+
+.header-league-page{
+  color: var(--font-color-primary);
+  font-family: var(--font-primary);
+  font-size: 20px;
+  text-align: center;
+}
+
+.predict-item{
+  margin: 20px 20px 0 20px;
+  border-radius: 20px;
+  border: 1px solid #036465;
+  padding: 10px 10px;
+  background-color: rgba(139, 126, 102, 0.3);  
+}
+
+.team{
+  color: var(--font-color-primary);
+  font-family: var(--font-primary);
+  font-size: 16px;
+  transition: 0.3s all
+}
+
+.team:hover{
+  color:#8E7A6B;
+}
+
+.vs{
+  color: var(--font-color-primary);
+  font-family: var(--font-primary);
+  font-size: 16px;
+}
+
+.modal-prediction{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(45, 62, 61, 0.8);
+  z-index: 1000;
+}
+
+.accept-choice{
+  color: var(--font-color-primary);
+  font-family: var(--font-primary);
+  font-size: 16px;
+  text-align: center;
+}
+
+input::placeholder{
+  font-family: var(--font-primary);
+  font-size: 14px;
+  padding: 10px;
+  text-align: center;
+}
+
+.input-points{
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: 20px;
+  font-family: var(--font-primary);
+  font-size: 14px;
+  text-align: center;
+}
+
+.input-points:focus{
+  border: 1px solid #8E7A6B;
+}
+
+.btn-yes{
+  font-family: var(--font-primary);
+  font-size: 16px;
+  padding: 8px;
+  margin: 0 12px 0 0;
+  background-color: #3C8D87;
+  border-radius: 8px;
+  border: none;
+}
+
+.btn-no{
+  font-family: var(--font-primary);
+  font-size: 16px;
+  padding: 8px;
+  background-color: #A6534D;
+  border-radius: 8px;
+  border: none;
+}
+
+/* #endregion */
+
 .history-item {
   padding: 15px;
   margin-bottom: 10px;

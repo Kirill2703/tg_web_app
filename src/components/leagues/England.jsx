@@ -75,12 +75,7 @@ const England = () => {
 
   return (
     <div>
-      <h1>Матчи Англии</h1>
-      {currentUser ? (
-        <div>Текущий пользователь: {currentUser.username}</div>
-      ) : (
-        <div>Пользователь не загружен.</div>
-      )}
+      <h1 className="header-league-page">England League</h1>
       <ul>
         {englandPredictions.map((prediction) => (
           <li key={prediction._id}>
