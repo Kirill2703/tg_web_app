@@ -4,6 +4,7 @@ import fetchAllPredictions from "../../thunks/predictionThunk";
 import LoadingScreen from "../loadingScreen/loadingScreen";
 import { fetchUserNameByChatId } from "../../thunks/userThunk";
 import { createUserPrediction } from "../../thunks/userPredictionThunk";
+import { FaCheck, FaTimes } from "react-icons/fa";
 
 const Spain = () => {
   const dispatch = useDispatch();
@@ -123,10 +124,10 @@ const Spain = () => {
             </div>
             <div style={{ margin: "20px 0" }}>
               <button onClick={handleSubmitPrediction} className="btn-yes">
-                Да
+                <FaCheck />
               </button>
               <button onClick={() => setShowModal(false)} className="btn-no">
-                Нет
+                <FaTimes />
               </button>
             </div>
           </div>

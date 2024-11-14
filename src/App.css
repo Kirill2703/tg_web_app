@@ -655,7 +655,7 @@ input::placeholder{
 .btn-yes{
   font-family: var(--font-primary);
   font-size: 16px;
-  padding: 8px;
+  padding: 8px 12px;
   margin: 0 12px 0 0;
   background-color: #3C8D87;
   border-radius: 8px;
@@ -665,7 +665,7 @@ input::placeholder{
 .btn-no{
   font-family: var(--font-primary);
   font-size: 16px;
-  padding: 8px;
+  padding: 8px 12px;
   background-color: #A6534D;
   border-radius: 8px;
   border: none;
