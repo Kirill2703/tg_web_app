@@ -11,8 +11,8 @@ const AllLeagues = () => {
             <img
               src={require("../../icons/europe.svg").default}
               alt="Champions League"
-              width={40}
-              height={40}
+              width={30}
+              height={30}
             />
           </Link>
         </div>
@@ -22,8 +22,8 @@ const AllLeagues = () => {
             <img
               src={require("../../icons/europe.svg").default}
               alt="Europa League"
-              width={40}
-              height={40}
+              width={30}
+              height={30}
             />
           </Link>
         </div>
@@ -33,8 +33,8 @@ const AllLeagues = () => {
             <img
               src={require("../../icons/europe.svg").default}
               alt="Conference League"
-              width={40}
-              height={40}
+              width={30}
+              height={30}
             />
           </Link>
         </div>
@@ -44,8 +44,8 @@ const AllLeagues = () => {
             <img
               src={require("../../icons/england.svg").default}
               alt="England"
-              width={40}
-              height={40}
+              width={30}
+              height={30}
             />
           </Link>
         </div>
@@ -55,8 +55,8 @@ const AllLeagues = () => {
             <img
               src={require("../../icons/germany.svg").default}
               alt="Germany"
-              width={40}
-              height={40}
+              width={30}
+              height={30}
             />
           </Link>
         </div>
@@ -66,8 +66,8 @@ const AllLeagues = () => {
             <img
               src={require("../../icons/spain.svg").default}
               alt="Spain"
-              width={40}
-              height={40}
+              width={30}
+              height={30}
             />
           </Link>
         </div>
@@ -77,8 +77,8 @@ const AllLeagues = () => {
             <img
               src={require("../../icons/italy.svg").default}
               alt="Italy"
-              width={40}
-              height={40}
+              width={30}
+              height={30}
             />
           </Link>
         </div>
@@ -88,8 +88,8 @@ const AllLeagues = () => {
             <img
               src={require("../../icons/france.svg").default}
               alt="France"
-              width={40}
-              height={40}
+              width={30}
+              height={30}
             />
           </Link>
         </div>
