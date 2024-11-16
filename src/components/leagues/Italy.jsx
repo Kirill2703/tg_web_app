@@ -4,6 +4,7 @@ import fetchAllPredictions from "../../thunks/predictionThunk";
 import LoadingScreen from "../loadingScreen/loadingScreen";
 import { fetchUserNameByChatId } from "../../thunks/userThunk";
 import { createUserPrediction } from "../../thunks/userPredictionThunk";
+import { FaCheck, FaTimes } from "react-icons/fa";
 
 const Italy = () => {
   const dispatch = useDispatch();

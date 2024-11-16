@@ -4,6 +4,7 @@ import LoadingScreen from "../loadingScreen/loadingScreen";
 import { createUserPrediction } from "../../thunks/userPredictionThunk";
 import fetchAllPredictions from "../../thunks/predictionThunk";
 import { fetchUserNameByChatId } from "../../thunks/userThunk";
+import { FaCheck, FaTimes } from "react-icons/fa";
 
 const England = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
