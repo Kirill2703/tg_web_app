@@ -335,13 +335,13 @@ body {
   animation-delay: 2.5s;
 }
 .league:nth-child(6) {
-  animation-delay: 2.5s;
+  animation-delay: 3s;
 }
 .league:nth-child(7) {
-  animation-delay: 2.5s;
+  animation-delay: 3.5s;
 }
 .league:nth-child(8) {
-  animation-delay: 2.5s;
+  animation-delay: 4s;
 }
 
 .league-title {
