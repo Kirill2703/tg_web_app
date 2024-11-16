@@ -88,6 +88,7 @@ const Germany = () => {
       <h1 className="header-league-page">Germany league</h1>
       {germanyPredictions.map((prediction) => (
         <div key={prediction._id} className="predict-item">
+          <p className="time-predict">{prediction.time}</p>
           <div style={{ display: "flex", justifyContent: "space-around" }}>
             <div onClick={() => handleTeamClick(prediction, prediction.team1)}>
               <p className="team">{prediction.team1}</p>

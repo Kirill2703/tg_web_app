@@ -450,7 +450,7 @@ body {
   text-align: center;
 }
 
-.btn-start-quiz{
+.btn-start-quiz {
   color: var(--font-color-primary);
   font-family: var(--font-primary);
   padding: 12px;
@@ -459,7 +459,7 @@ body {
   border: 1px solid #036465;
 }
 
-.facts-quiz{
+.facts-quiz {
   font-family: var(--font-primary);
   color: var(--font-color-primary);
   font-size: 16px;
@@ -490,7 +490,7 @@ body {
   text-align: center;
 }
 
-.btn-modal{
+.btn-modal {
   margin: 20px 0;
   padding: 10px 10px;
   width: 200px;
@@ -501,7 +501,7 @@ body {
   text-transform: uppercase;
 }
 
-.btn-modal:disabled{
+.btn-modal:disabled {
   background-color: #ccc;
 }
 
@@ -517,7 +517,7 @@ body {
 }
 
 .close-button {
-  background-color: #5A4B3A;
+  background-color: #5a4b3a;
   border-radius: 20px;
   color: var(--font-color-primary);
   font-family: var(--font-primary);
@@ -527,22 +527,22 @@ body {
   border: none;
 }
 
-.slick-dots{
+.slick-dots {
   display: none !important;
 }
 
-.slick-next{
+.slick-next {
   border-radius: 50%;
-  background-color: #708D7E  !important;
+  background-color: #708d7e !important;
   top: 60% !important;
   right: 0 !important;
-  border: #708D7E  1px solid !important;
+  border: #708d7e 1px solid !important;
   right: 0 !important;
   z-index: 999;
   width: 40px !important;
   height: 40px !important;
 }
-.slick-next:before{
+.slick-next:before {
   font-family: var(--font-primary) !important;
   font-size: 20px !important;
   color: var(--font-color-primary) !important;
@@ -551,18 +551,18 @@ body {
   justify-content: center !important;
 }
 
-.slick-prev{
+.slick-prev {
   border-radius: 50%;
-  background-color: #708D7E  !important;
+  background-color: #708d7e !important;
   top: 60% !important;
   right: 0 !important;
-  border: #708D7E  1px solid !important;
+  border: #708d7e 1px solid !important;
   left: 0 !important;
   z-index: 999;
   width: 40px !important;
   height: 40px !important;
 }
-.slick-prev:before{
+.slick-prev:before {
   font-family: var(--font-primary) !important;
   font-size: 20px !important;
   color: var(--font-color-primary) !important;
@@ -571,13 +571,13 @@ body {
   justify-content: center !important;
 }
 
-.question-title-modal{
+.question-title-modal {
   color: var(--font-color-primary);
   font-family: var(--font-primary);
   font-size: 16px;
 }
 
-.list-questions{
+.list-questions {
   list-style: none;
   color: var(--font-color-primary);
   font-size: 12px;
@@ -588,39 +588,39 @@ body {
 
 /* #region pages-league */
 
-.header-league-page{
+.header-league-page {
   color: var(--font-color-primary);
   font-family: var(--font-primary);
   font-size: 20px;
   text-align: center;
 }
 
-.predict-item{
+.predict-item {
   margin: 20px 20px 0 20px;
   border-radius: 20px;
   border: 1px solid #036465;
   padding: 10px 10px;
-  background-color: rgba(139, 126, 102, 0.3);  
+  background-color: rgba(139, 126, 102, 0.3);
 }
 
-.team{
+.team {
   color: var(--font-color-primary);
   font-family: var(--font-primary);
   font-size: 16px;
-  transition: 0.3s all
+  transition: 0.3s all;
 }
 
-.team:hover{
-  color:#8E7A6B;
+.team:hover {
+  color: #8e7a6b;
 }
 
-.vs{
+.vs {
   color: var(--font-color-primary);
   font-family: var(--font-primary);
   font-size: 16px;
 }
 
-.modal-prediction{
+.modal-prediction {
   position: fixed;
   top: 0;
   left: 0;
@@ -633,21 +633,21 @@ body {
   z-index: 1000;
 }
 
-.accept-choice{
+.accept-choice {
   color: var(--font-color-primary);
   font-family: var(--font-primary);
   font-size: 16px;
   text-align: center;
 }
 
-input::placeholder{
+input::placeholder {
   font-family: var(--font-primary);
   font-size: 14px;
   padding: 10px;
   text-align: center;
 }
 
-.input-points{
+.input-points {
   width: 100%;
   height: 40px;
   border: none;
@@ -657,38 +657,45 @@ input::placeholder{
   text-align: center;
 }
 
-.input-points:focus{
-  border: 1px solid #8E7A6B;
+.input-points:focus {
+  border: 1px solid #8e7a6b;
 }
 
-.btn-yes{
+.btn-yes {
   font-family: var(--font-primary);
   font-size: 16px;
   padding: 8px 12px;
   margin: 0 12px 0 0;
-  background-color: #3C8D87;
+  background-color: #3c8d87;
   border-radius: 8px;
   border: none;
   color: var(--font-color-primary);
 }
 
-.btn-no{
+.btn-no {
   font-family: var(--font-primary);
   font-size: 16px;
   padding: 8px 12px;
-  background-color: #A6534D;
+  background-color: #a6534d;
   border-radius: 8px;
   border: none;
   color: var(--font-color-primary);
 }
 
-.date-predict{
+.date-predict {
   text-align: center;
   color: var(--font-color-primary);
   font-family: var(--font-primary);
-  font-size: 16px;
-  margin-top: 12px;
+  font-size: 12px;
+  margin-top: 8px;
+}
 
+.time-predict{
+  text-align: center;
+  color: var(--font-color-primary);
+  font-family: var(--font-primary);
+  font-size: 12px;
+  
 }
 
 /* #endregion */
