@@ -4,80 +4,81 @@ import fetchAllPredictions from "../../thunks/predictionThunk";
 import LoadingScreen from "../loadingScreen/loadingScreen";
 import { fetchUserNameByChatId } from "../../thunks/userThunk";
 import { createUserPrediction } from "../../thunks/userPredictionThunk";
+import { FaCheck, FaTimes } from "react-icons/fa";
 
-const Germany = () => {
-  const dispatch = useDispatch();
-  const currentUser = useSelector((state) => state.user.currentUser);
-  const { predictions, loading, error } = useSelector(
-    (state) => state.predictions
-  );
-  const [selectedPrediction, setSelectedPrediction] = useState(null);
-  const [betPoints, setBetPoints] = useState(0);
-  const [showModal, setShowModal] = useState(false);
+const dispatch = useDispatch();
+const currentUser = useSelector((state) => state.user.currentUser);
+const { predictions, loading, error } = useSelector(
+  (state) => state.predictions
+);
 
-  const tg = window.Telegram.WebApp;
-  const chatId = tg.initDataUnsafe?.user?.id;
+const [selectedPrediction, setSelectedPrediction] = useState(null);
+const [betPoints, setBetPoints] = useState(0);
+const [showModal, setShowModal] = useState(false);
 
-  useEffect(() => {
-    if (chatId) {
-      dispatch(fetchUserNameByChatId(chatId));
-    }
-  }, [dispatch, chatId]);
+const tg = window.Telegram.WebApp;
+const chatId = tg.initDataUnsafe?.user?.id;
 
-  useEffect(() => {
-    dispatch(fetchAllPredictions());
-  }, [dispatch]);
+useEffect(() => {
+  if (chatId) {
+    dispatch(fetchUserNameByChatId(chatId));
+  }
+}, [dispatch, chatId]);
 
-  if (loading) {
-    return <LoadingScreen />;
+useEffect(() => {
+  dispatch(fetchAllPredictions());
+}, [dispatch]);
+if (loading) {
+  return <LoadingScreen />;
+}
+
+if (error) {
+  return <div>Ошибка: {error}</div>;
+}
+
+const ConferenceLeagueLPredictions = predictions.filter(
+  (predict) => predict.country == "Conference League"
+);
+const handleTeamClick = (prediction, team) => {
+  setSelectedPrediction({ ...prediction, selectedTeam: team });
+  setShowModal(true);
+};
+
+const handleSubmitPrediction = async () => {
+  if (
+    !currentUser ||
+    !currentUser.username ||
+    !selectedPrediction ||
+    betPoints <= 0
+  ) {
+    return;
   }
 
-  if (error) {
-    return <div>Ошибка: {error}</div>;
-  }
-
-  const germanyPredictions = predictions.filter(
-    (predict) => predict.country == "Germany"
+  const resultAction = await dispatch(
+    createUserPrediction({
+      username: currentUser.username,
+      predictionId: selectedPrediction._id,
+      selectedTeam: selectedPrediction.selectedTeam,
+      betPoints,
+    })
   );
 
-  const handleTeamClick = (prediction, team) => {
-    setSelectedPrediction({ ...prediction, selectedTeam: team });
-    setShowModal(true);
-  };
-
-  const handleSubmitPrediction = async () => {
-    if (
-      !currentUser ||
-      !currentUser.username ||
-      !selectedPrediction ||
-      betPoints <= 0
-    ) {
-      return;
+  if (createUserPrediction.fulfilled.match(resultAction)) {
+    const { updatedUser } = resultAction.payload;
+    if (updatedUser) {
+      dispatch(fetchUserNameByChatId(currentUser.chatId));
     }
+  }
 
-    const resultAction = await dispatch(
-      createUserPrediction({
-        username: currentUser.username,
-        predictionId: selectedPrediction._id,
-        selectedTeam: selectedPrediction.selectedTeam,
-        betPoints,
-      })
-    );
+  setShowModal(false);
+};
 
-    if (createUserPrediction.fulfilled.match(resultAction)) {
-      const { updatedUser } = resultAction.payload;
-      if (updatedUser) {
-        dispatch(fetchUserNameByChatId(currentUser.chatId));
-      } else {
-      }
-    }
-
-    setShowModal(false);
-  };
+const UCL = () => {
   return (
     <div>
-      <h1 className="header-league-page">Germany league</h1>
-      {germanyPredictions.map((prediction) => (
+      <h1 className="header-league-page">Spain league</h1>
+
+      {ConferenceLeagueLPredictions.map((prediction) => (
         <div key={prediction._id} className="predict-item">
           <div style={{ display: "flex", justifyContent: "space-around" }}>
             <div onClick={() => handleTeamClick(prediction, prediction.team1)}>
@@ -137,4 +138,4 @@ const Germany = () => {
   );
 };
 
-export default Germany;
+export default UCL;

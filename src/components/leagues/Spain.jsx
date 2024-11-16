@@ -73,6 +73,15 @@ const Spain = () => {
 
     setShowModal(false);
   };
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString); 
+    const day = String(date.getDate()).padStart(2, "0"); 
+    const month = String(date.getMonth() + 1).padStart(2, "0"); 
+    const year = String(date.getFullYear()).slice(2); 
+
+    return `${day}.${month}.${year}`; 
+  };
   return (
     <div>
       <h1 className="header-league-page">Spain league</h1>
@@ -88,6 +97,7 @@ const Spain = () => {
               <p className="team">{prediction.team2}</p>
             </div>
           </div>
+          <p className="date-predict">{formatDate(prediction.date)}</p>
         </div>
       ))}
 

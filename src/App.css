@@ -294,7 +294,7 @@ body {
 .title-prediction {
   font-family: var(--font-primary);
   text-align: center;
-  font-size: 36px;
+  font-size: 20px;
   color: var(--font-color-primary);
 }
 
@@ -332,6 +332,15 @@ body {
 }
 
 .league:nth-child(5) {
+  animation-delay: 2.5s;
+}
+.league:nth-child(6) {
+  animation-delay: 2.5s;
+}
+.league:nth-child(7) {
+  animation-delay: 2.5s;
+}
+.league:nth-child(8) {
   animation-delay: 2.5s;
 }
 
@@ -671,6 +680,15 @@ input::placeholder{
   border-radius: 8px;
   border: none;
   color: var(--font-color-primary);
+}
+
+.date-predict{
+  text-align: center;
+  color: var(--font-color-primary);
+  font-family: var(--font-primary);
+  font-size: 16px;
+  margin-top: 12px;
+
 }
 
 /* #endregion */

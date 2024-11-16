@@ -6,6 +6,39 @@ const AllLeagues = () => {
     <>
       <div className="container-leagues">
         <div className="league">
+          <Link to="/prediction/ucl" className="league-title">
+            <p>Champions League</p>
+            <img
+              src={require("../../icons/europe.svg").default}
+              alt="Champions League"
+              width={40}
+              height={40}
+            />
+          </Link>
+        </div>
+        <div className="league">
+          <Link to="/prediction/uel" className="league-title">
+            <p>Europa League</p>
+            <img
+              src={require("../../icons/europe.svg").default}
+              alt="Europa League"
+              width={40}
+              height={40}
+            />
+          </Link>
+        </div>
+        <div className="league">
+          <Link to="/prediction/england" className="league-title">
+            <p>Conference League</p>
+            <img
+              src={require("../../icons/europe.svg").default}
+              alt="Conference League"
+              width={40}
+              height={40}
+            />
+          </Link>
+        </div>
+        <div className="league">
           <Link to="/prediction/england" className="league-title">
             <p>England</p>
             <img

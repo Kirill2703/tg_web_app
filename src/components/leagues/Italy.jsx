@@ -75,42 +75,61 @@ const Italy = () => {
   };
   return (
     <div>
-      <h1>Italy matches</h1>
-      {currentUser ? (
-        <div>Текущий пользователь: {currentUser.username}</div>
-      ) : (
-        <div>Пользователь не загружен.</div>
-      )}
-      <ul>
-        {italyPredictions.map((prediction) => (
-          <li key={prediction._id}>
-            <span onClick={() => handleTeamClick(prediction, prediction.team1)}>
-              {prediction.team1}
-            </span>
-            vs
-            <span onClick={() => handleTeamClick(prediction, prediction.team2)}>
-              {prediction.team2}
-            </span>
-          </li>
-        ))}
-      </ul>
+      <h1 className="header-league-page">Italy league</h1>
+      {italyPredictions.map((prediction) => (
+        <div key={prediction._id} className="predict-item">
+          <div style={{ display: "flex", justifyContent: "space-around" }}>
+            <div onClick={() => handleTeamClick(prediction, prediction.team1)}>
+              <p className="team">{prediction.team1}</p>
+            </div>
+            <span className="vs">vs</span>
+            <div onClick={() => handleTeamClick(prediction, prediction.team2)}>
+              <p className="team">{prediction.team2}</p>
+            </div>
+          </div>
+        </div>
+      ))}
 
       {showModal && (
-        <div className="modal">
-          <p>
-            Вы уверены, что хотите выбрать {selectedPrediction.selectedTeam} и
-            поставить {betPoints} очков?
-          </p>
-          <input
-            type="number"
-            value={betPoints}
-            onChange={(e) => {
-              setBetPoints(Number(e.target.value));
+        <div className="modal-prediction">
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              backgroundColor: " rgb(16, 47, 49)",
+              borderRadius: "20px",
+              margin: "0 20px",
+              padding: "10px",
             }}
-            placeholder="Введите количество очков"
-          />
-          <button onClick={handleSubmitPrediction}>Да</button>
-          <button onClick={() => setShowModal(false)}>Нет</button>
+          >
+            <div style={{ marginTop: "20px" }}>
+              <p className="accept-choice">
+                Вы уверены, что хотите выбрать{" "}
+                <span style={{ color: "#8e7a6b" }}>
+                  {selectedPrediction.selectedTeam}
+                </span>{" "}
+                и поставить {betPoints} очков?
+              </p>
+            </div>
+            <div style={{ width: "80%", marginTop: "20px" }}>
+              <input
+                onChange={(e) => {
+                  setBetPoints(Number(e.target.value));
+                }}
+                placeholder="Введите количество очков"
+                className="input-points"
+              />
+            </div>
+            <div style={{ margin: "20px 0" }}>
+              <button onClick={handleSubmitPrediction} className="btn-yes">
+                <FaCheck />
+              </button>
+              <button onClick={() => setShowModal(false)} className="btn-no">
+                <FaTimes />
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </div>
