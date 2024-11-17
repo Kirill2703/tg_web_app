@@ -41,7 +41,7 @@ const History = () => {
               className={`history-item ${getOutcomeClass(item.outcome)}`}
             >
               <div
-                style={{ display: "flex", flexDirection: "column", gap: "6px" }}
+                style={{ display: "flex", flexDirection: "column", gap: "6px", width: "100%" }}
               >
                 <p className="history-teams">{item.match}</p>
                 <div
@@ -49,8 +49,7 @@ const History = () => {
                     display: "flex",
                     flexDirection: "row",
                     justifyContent: "space-between",
-                    margin: "8px 8px",
-                    width: "100%"
+                    margin: "8px 8px"
                   }}
                 >
                   <div
