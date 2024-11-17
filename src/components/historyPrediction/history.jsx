@@ -50,6 +50,7 @@ const History = () => {
                     flexDirection: "row",
                     justifyContent: "space-between",
                     margin: "8px 8px",
+                    width: "100%"
                   }}
                 >
                   <div
@@ -74,13 +75,13 @@ const History = () => {
                       gap: "6px",
                     }}
                   >
-                    <div>Bet points</div>
-                    <div>Total</div>
+                    <div className="bet-points-history">Bet points</div>
+                    <div className="total-points-history">Total</div>
                   </div>
                 </div>
-                <div>
+                {/* <div>
                   <span className="result-text">{item.outcome}</span>
-                </div>
+                </div> */}
               </div>
             </div>
           ))}

@@ -751,6 +751,18 @@ input::placeholder {
   color: var(--font-color-primary);
 }
 
+.bet-points-history{
+  font-size: 12px;
+  font-family: var(--font-primary);
+  color: var(--font-color-primary);
+}
+
+.total-points-history{
+  font-size: 12px;
+  font-family: var(--font-primary);
+  color: var(--font-color-primary);
+}
+
 .win {
   background-color: #3c8d87;
   border: 1px solid #28a745;
