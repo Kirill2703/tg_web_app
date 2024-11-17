@@ -732,6 +732,20 @@ input::placeholder {
 }
 
 .history-teams{
+  font-size: 16px;
+  font-family: var(--font-primary);
+  color: var(--font-color-primary);
+  margin-top: 8px;
+  text-align: center;
+}
+
+.choise-user-history{
+  font-size: 12px;
+  font-family: var(--font-primary);
+  color: var(--font-color-primary);
+}
+
+.result-history-con{
   font-size: 12px;
   font-family: var(--font-primary);
   color: var(--font-color-primary);
