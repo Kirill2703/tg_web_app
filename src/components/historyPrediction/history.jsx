@@ -7,9 +7,6 @@ import { fetchUserNameByChatId } from "../../thunks/userThunk";
 const History = () => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.user.currentUser);
-  //   const [loading, setLoading] = useState(true);
-  //   const [error, setError] = useState(null);
-  //   const [history, setHistory] = useState([]);
   const { history, loading, error } = useSelector((state) => state.history);
 
   useEffect(() => {
@@ -30,27 +27,32 @@ const History = () => {
 
   return (
     <div>
-      {currentUser.username}
-      <h1>История прогнозов</h1>
+      <h1 className="history-prediction">History prediction</h1>
       {history.length === 0 ? (
-        <p>У вас ещё не было прогнозов</p>
+        <p className="make-prediction">
+          You haven`t prediction. Make your first prediction!
+        </p>
       ) : (
-        <ul>
+        <div className="history-container">
           {history.map((item) => (
-            <li
+            <div
               key={item._id}
               className={`history-item ${getOutcomeClass(item.outcome)}`}
             >
-              <div>
-                <p>
-                  {item.match} - Твой прогноз: {item.selectedTeam} | Результат:
-                  {item.result ? item.result : "Матч ещё не закончен"}
-                </p>
-                <span className="result-text">{item.outcome}</span>
+              <div style={{display: "flex", flexDirection: "column", gap: "6px"}}>
+                <div>
+                  <div>{item.match}</div>
+                  <div>Your choice: {item.selectedTeam}</div>
+                  <div>
+                    Result:
+                    {item.result ? item.result : "Match is not finish"}
+                  </div>
+                </div>
+                <div><span className="result-text">{item.outcome}</span></div>
               </div>
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );

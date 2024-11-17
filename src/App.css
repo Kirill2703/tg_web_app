@@ -700,24 +700,46 @@ input::placeholder {
 
 /* #endregion */
 
+.history-prediction{
+  font-size: 20px;
+  font-family: var(--font-primary);
+  color: var(--font-color-primary);
+  text-align: center;
+  margin-top: 20px;
+}
+
+.make-prediction{
+  font-size: 16px;
+  font-family: var(--font-primary);
+  color: var(--font-color-primary);
+  text-align: center;
+  margin-top: 20px;
+}
+
+.history-container{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .history-item {
-  padding: 15px;
-  margin-bottom: 10px;
+  margin: 0 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .win {
-  background-color: #d4edda;
-  border: 2px solid #28a745;
+  background-color: #3c8d87;
+  border: 1px solid #28a745;
 }
 
 .lose {
-  background-color: #f8d7da;
-  border: 2px solid #dc3545;
+  color: var(--font-color-primary);
+  background-color: #a6534d;
+  border: 1px solid #dc3545;
 }
 
 .draw {
