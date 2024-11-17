@@ -40,8 +40,8 @@ const History = () => {
               className={`history-item ${getOutcomeClass(item.outcome)}`}
             >
               <div style={{display: "flex", flexDirection: "column", gap: "6px"}}>
-                <div>
-                  <div>{item.match}</div>
+                <div style={{margin: "0 8px"}}>
+                  <div className="history-teams">{item.match}</div>
                   <div>Your choice: {item.selectedTeam}</div>
                   <div>
                     Result:
