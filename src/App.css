@@ -739,7 +739,7 @@ input::placeholder {
   text-align: center;
 }
 
-.choise-user-history{
+.choice-user-history{
   font-size: 12px;
   font-family: var(--font-primary);
   color: var(--font-color-primary);
