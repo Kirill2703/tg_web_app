@@ -8,12 +8,14 @@ const History = () => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.user.currentUser);
   const { history, loading, error } = useSelector((state) => state.history);
-  const userPrediction = useSelector((state)=> state.userprediction.userprediction)
+  const userPrediction = useSelector(
+    (state) => state.userPrediction.predictions
+  );
 
   useEffect(() => {
     if (currentUser) {
       dispatch(fetchUserHistory(currentUser.username));
-      dispatch(fetchAllUserPredictions())
+      dispatch(fetchAllUserPredictions());
     }
   }, [dispatch, currentUser]);
 
@@ -42,7 +44,12 @@ const History = () => {
               className={`history-item ${getOutcomeClass(item.outcome)}`}
             >
               <div
-                style={{ display: "flex", flexDirection: "column", gap: "6px", width: "100%" }}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "6px",
+                  width: "100%",
+                }}
               >
                 <p className="history-teams">{item.match}</p>
                 <div
@@ -50,7 +57,7 @@ const History = () => {
                     display: "flex",
                     flexDirection: "row",
                     justifyContent: "space-between",
-                    margin: "8px 8px"
+                    margin: "8px 8px",
                   }}
                 >
                   <div
@@ -68,16 +75,24 @@ const History = () => {
                       {item.result ? item.result : "Match is not finish"}
                     </div>
                   </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: "6px",
-                    }}
-                  >
-                    <div className="bet-points-history">Bet points: {userPrediction.betPoints}</div>
-                    <div className="total-points-history">Total: {`${userPrediction.betPoints * 2}`}</div>
-                  </div>
+                  {prediction ? (
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "6px",
+                      }}
+                    >
+                      <div className="bet-points-history">
+                        Bet points: {prediction.betPoints}
+                      </div>
+                      <div className="total-points-history">
+                        Total: {prediction.betPoints * 2}
+                      </div>
+                    </div>
+                  ) : (
+                    <div>No prediction found for this match</div>
+                  )}
                 </div>
                 {/* <div>
                   <span className="result-text">{item.outcome}</span>
