@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { createUserPrediction, fetchAllUserPredictions } from "../thunks/userPredictionThunk";
 
 const initialState = {
+  userPredictions: [],
   predictions: [],
   loading: false,
   error: null,
@@ -31,7 +32,7 @@ const userPredictionSlice = createSlice({
       })
       .addCase(fetchAllUserPredictions.fulfilled, (state, action) => {
         state.loading = false;
-        state.predictions = action.payload; 
+        state.userPredictions = action.payload; 
       })
       .addCase(fetchAllUserPredictions.rejected, (state, action) => {
         state.loading = false;
