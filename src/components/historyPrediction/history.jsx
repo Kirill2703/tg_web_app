@@ -110,6 +110,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchUserHistory } from "../../thunks/historyPredictionThunk";
 import LoadingScreen from "../loadingScreen/loadingScreen";
 import { fetchAllUserPredictions } from "../../thunks/userPredictionThunk";
+import fetchAllPredictions from "../../thunks/predictionThunk";
 
 const History = () => {
   const dispatch = useDispatch();
@@ -121,6 +122,9 @@ const History = () => {
     loading: historyLoading,
     error: historyError,
   } = useSelector((state) => state.history);
+  const { predictions, loading, error } = useSelector(
+    (state) => state.predictions
+  );
   const {
     userPredictions = [],
     loading: predictionsLoading,
@@ -131,6 +135,7 @@ const History = () => {
     if (currentUser) {
       dispatch(fetchUserHistory(currentUser.username));
       dispatch(fetchAllUserPredictions());
+      dispatch(fetchAllPredictions())
     }
   }, [dispatch, currentUser]);
 
@@ -163,19 +168,19 @@ const History = () => {
             console.log(
               "Checking match:",
               item._id,
-              "with predictions:",
+              "with userPredictions:",
               userPredictions
             );
 
             // Найдем соответствующее предсказание для текущего элемента истории
-            const prediction = userPredictions.find((pred) => {
+            const prediction = userPredictions.find((userPrediction) => {
               console.log(
-                "Checking match:",
+                "Checking predictionId:",
                 item.predictionId,
-                "with prediction:",
-                pred._id
+                "with predictions _id:",
+                predictions.find((pred) => pred._id === item.predictionId)?._id
               );
-              return pred._id === item.predictionId; // Исправлено сравнение: item.predictionId с pred._id
+              return predictions.some((pred) => pred._id === item.predictionId); // Ищем соответствие
             });
 
             return (
