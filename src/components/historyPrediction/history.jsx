@@ -8,6 +8,7 @@ const History = () => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.user.currentUser);
   const { history, loading, error } = useSelector((state) => state.history);
+  const userPrediction = useSelector((state)=> state.userPrediction.userPrediction)
 
   useEffect(() => {
     if (currentUser) {
@@ -74,8 +75,8 @@ const History = () => {
                       gap: "6px",
                     }}
                   >
-                    <div className="bet-points-history">Bet points</div>
-                    <div className="total-points-history">Total</div>
+                    <div className="bet-points-history">Bet points: {userPrediction.betPoints}</div>
+                    <div className="total-points-history">Total: {`${userPrediction.betPoints * 2}`}</div>
                   </div>
                 </div>
                 {/* <div>
