@@ -154,13 +154,18 @@ const History = () => {
   
   history.map((item) => {
     // Добавляем console.log для диагностики
-    console.log("Checking match:", item._id, "with predictionId:", userPredictions);
+     console.log(
+       "Checking match:",
+       item._id,
+       "with predictions:",
+       userPredictions
+     );
 
-    // Найдем соответствующее предсказание для текущего элемента истории
-    const prediction = userPredictions.find((pred) => {
-      console.log("Checking match:", item._id, "with prediction:", pred.predictionId);
-      return pred.predictionId === item._id;
-    })
+     // Найдем соответствующее предсказание для текущего элемента истории
+     const prediction = userPredictions.find((pred) => {
+       console.log("Checking match:", item._id, "with prediction:", pred._id);
+       return pred._id === item.predictionId;
+     });
   });
   return (
     <div>
