@@ -8,9 +8,19 @@ import fetchAllPredictions from "../../thunks/predictionThunk";
 const History = () => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.user.currentUser);
-  const history = useSelector((state) => state.history);
-  const predictions = useSelector((state) => state.predictions);
-  const userPredictions = useSelector((state) => state.userPrediction);
+  const {
+    history,
+    loading: historyLoading,
+    error: historyError,
+  } = useSelector((state) => state.history);
+  const { predictions, loading, error } = useSelector(
+    (state) => state.predictions
+  );
+  const {
+    userPredictions = [],
+    loading: predictionsLoading,
+    error: predictionsError,
+  } = useSelector((state) => state.userPrediction);
 
   useEffect(() => {
     if (currentUser) {
@@ -27,7 +37,11 @@ const History = () => {
     return "pending";
   };
 
-  if (loading) return <LoadingScreen />;
+  if (historyLoading || predictionsLoading || loading) return <LoadingScreen />;
+  if (historyError)
+    return <div>Ошибка при загрузке истории: {historyError}</div>;
+  if (predictionsError)
+    return <div>Ошибка при загрузке предсказаний: {predictionsError}</div>;
 
   return (
     <div>
