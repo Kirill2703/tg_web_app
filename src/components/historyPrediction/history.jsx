@@ -27,7 +27,7 @@ const History = () => {
     return "pending";
   };
 
-  if (historyLoading || predictionsLoading || loading) return <LoadingScreen />;
+  if (loading) return <LoadingScreen />;
 
   return (
     <div>
