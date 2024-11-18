@@ -108,12 +108,6 @@
 
 // export default History;
 
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchUserHistory } from "../../thunks/historyPredictionThunk";
-import LoadingScreen from "../loadingScreen/loadingScreen";
-import { fetchAllUserPredictions } from "../../thunks/userPredictionThunk";
-
 const History = () => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.user.currentUser);
@@ -149,10 +143,12 @@ const History = () => {
       ) : (
         <div className="history-container">
           {history.map((item) => {
-            // Поиск соответствующего предсказания
+            console.log("Item:", item); // Отладка
+            console.log("Predictions:", userPredictions); // Отладка
             const prediction = userPredictions.find(
-              (p) => p.predictionId === item._id
+              (p) => String(p.predictionId) === String(item._id)
             );
+            console.log("Matched Prediction:", prediction); // Отладка
 
             return (
               <div
@@ -220,5 +216,4 @@ const History = () => {
   );
 };
 
-export default History;
 
