@@ -171,11 +171,11 @@ const History = () => {
             const prediction = userPredictions.find((pred) => {
               console.log(
                 "Checking match:",
-                item._id,
+                item.predictionId,
                 "with prediction:",
                 pred._id
               );
-              return pred.predictionId === item._id; // Сравниваем predictionId из истории с _id из предсказания
+              return pred._id === item.predictionId; // Исправлено сравнение: item.predictionId с pred._id
             });
 
             return (
