@@ -8,7 +8,7 @@ const History = () => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.user.currentUser);
   const { history, loading, error } = useSelector((state) => state.history);
-  const userPrediction = useSelector((state)=> state.userPrediction.userPrediction)
+  const userPrediction = useSelector((state)=> state.userprediction.userprediction)
 
   useEffect(() => {
     if (currentUser) {
