@@ -141,6 +141,7 @@ const History = () => {
     if (outcome === "Draw") return "draw";
     return "pending";
   };
+  
 
   // Состояние загрузки или ошибки
   if (historyLoading || predictionsLoading) return <LoadingScreen />;
@@ -150,6 +151,17 @@ const History = () => {
     return <div>Ошибка при загрузке предсказаний: {predictionsError}</div>;
 
   // Отображение истории предсказаний
+  
+  history.map((item) => {
+    // Добавляем console.log для диагностики
+    console.log("Checking match:", item._id, "with predictionId:", userPredictions);
+
+    // Найдем соответствующее предсказание для текущего элемента истории
+    const prediction = userPredictions.find((pred) => {
+      console.log("Checking match:", item._id, "with prediction:", pred.predictionId);
+      return pred.predictionId === item._id;
+    })
+  });
   return (
     <div>
       <h1 className="history-prediction">History Prediction</h1>
