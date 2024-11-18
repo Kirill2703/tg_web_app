@@ -197,27 +197,27 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserHistory } from "../../thunks/historyPredictionThunk";
+import LoadingScreen from "../loadingScreen/loadingScreen";
 import { fetchAllUserPredictions } from "../../thunks/userPredictionThunk";
 import fetchAllPredictions from "../../thunks/predictionThunk";
-import LoadingScreen from "../loadingScreen/loadingScreen";
 
 const History = () => {
   const dispatch = useDispatch();
+
+  // Получение данных из Redux
   const currentUser = useSelector((state) => state.user.currentUser);
   const {
     history,
     loading: historyLoading,
     error: historyError,
   } = useSelector((state) => state.history);
+  const { predictions, loading, error } = useSelector(
+    (state) => state.predictions
+  );
   const {
-    predictions,
+    userPredictions = [],
     loading: predictionsLoading,
     error: predictionsError,
-  } = useSelector((state) => state.predictions);
-  const {
-    userPredictions,
-    loading: userPredictionsLoading,
-    error: userPredictionsError,
   } = useSelector((state) => state.userPrediction);
 
   useEffect(() => {
@@ -228,6 +228,7 @@ const History = () => {
     }
   }, [dispatch, currentUser]);
 
+  // Функция для определения CSS-класса на основе результата
   const getOutcomeClass = (outcome) => {
     if (outcome === "Win") return "win";
     if (outcome === "Lose") return "lose";
@@ -235,70 +236,107 @@ const History = () => {
     return "pending";
   };
 
-  if (historyLoading || predictionsLoading || userPredictionsLoading) {
-    return <LoadingScreen />;
-  }
-
-  if (historyError || predictionsError || userPredictionsError) {
-    return (
-      <div>
-        Error: {historyError || predictionsError || userPredictionsError}
-      </div>
-    );
-  }
+  // Состояние загрузки или ошибки
+  if (historyLoading || predictionsLoading || loading) return <LoadingScreen />;
+  if (historyError)
+    return <div>Ошибка при загрузке истории: {historyError}</div>;
+  if (predictionsError)
+    return <div>Ошибка при загрузке предсказаний: {predictionsError}</div>;
 
   return (
-    <div className="history-container">
+    <div>
       <h1 className="history-prediction">History Prediction</h1>
       {history.length === 0 ? (
         <p className="make-prediction">
-          You haven’t made any predictions yet. Make your first prediction!
+          You haven`t made any predictions yet. Make your first prediction!
         </p>
       ) : (
-        history.map((item) => {
-          // Find corresponding prediction from all predictions
-          const prediction = predictions.find(
-            (pred) => pred._id === item.predictionId
-          );
-          const userPrediction = userPredictions.find(
-            (pred) => pred._id === item.predictionId
-          );
+        <div className="history-container">
+          {history.map((item) => {
+            // Добавляем console.log для диагностики
+            console.log(
+              "Checking match:",
+              item._id,
+              "with userPredictions:",
+              userPredictions
+            );
 
-          return (
-            <div
-              key={item._id}
-              className={`history-item ${getOutcomeClass(item.outcome)}`}
-            >
-              <div className="history-item-details">
-                <p className="history-teams">{item.match}</p>
-                <div className="history-item-content">
-                  <div className="choice-user-history">
-                    Your choice: {item.selectedTeam}
-                  </div>
-                  <div className="result-history-con">
-                    Result: {item.result || "Match is not finished"}
-                  </div>
-                  {userPrediction ? (
-                    <div className="prediction-info">
-                      <div className="bet-points-history">
-                        Bet points: {userPrediction.betPoints}
+            // Найдем соответствующее предсказание для текущего элемента истории
+            const prediction = userPredictions.find((userPrediction) => {
+              console.log(
+                "Checking predictionId:",
+                item.predictionId,
+                "with predictions _id:",
+                predictions.find((pred) => pred._id === item.predictionId)?._id
+              );
+              return predictions.some((pred) => pred._id === item.predictionId); // Ищем соответствие
+            });
+
+            return (
+              <div
+                key={item._id}
+                className={`history-item ${getOutcomeClass(item.outcome)}`}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "6px",
+                    width: "100%",
+                  }}
+                >
+                  <p className="history-teams">{item.match}</p>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                      margin: "8px 8px",
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "6px",
+                      }}
+                    >
+                      <div className="choice-user-history">
+                        Your choice: {item.selectedTeam}
                       </div>
-                      <div className="total-points-history">
-                        Total: {userPrediction.betPoints * 2}
+                      <div className="result-history-con">
+                        Result: {item.result || "Match is not finished"}
                       </div>
                     </div>
-                  ) : (
-                    <div>No prediction data found for this match</div>
-                  )}
+                    {prediction ? (
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          gap: "6px",
+                        }}
+                      >
+                        <div className="bet-points-history">
+                          Bet points: {prediction.betPoints}
+                        </div>
+                        <div className="total-points-history">
+                          Total: {prediction.betPoints * 2}
+                        </div>
+                      </div>
+                    ) : (
+                      <div>No prediction data found for this match</div>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })
+            );
+          })}
+        </div>
       )}
     </div>
   );
 };
 
 export default History;
+
 
