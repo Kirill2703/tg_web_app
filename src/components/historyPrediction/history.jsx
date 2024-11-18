@@ -109,7 +109,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserHistory } from "../../thunks/historyPredictionThunk";
 import { fetchAllUserPredictions } from "../../thunks/userPredictionThunk";
-import { fetchAllPredictions } from "../../thunks/predictionThunk";
+import {fetchAllUserPredictions} from "../../thunks/predictionThunk"
+
 import LoadingScreen from "../loadingScreen/loadingScreen";
 
 const History = () => {
@@ -127,7 +128,7 @@ const History = () => {
     if (currentUser) {
       dispatch(fetchUserHistory(currentUser.username));
       dispatch(fetchAllUserPredictions());
-      dispatch(fetchAllPredictions());
+      dispatch(fetchAllUserPredictions());
     }
   }, [dispatch, currentUser]);
 
@@ -137,8 +138,6 @@ const History = () => {
     if (outcome === "Draw") return "draw";
     return "pending";
   };
-
-  // Если данные не загружены, показываем индикатор загрузки
   if (!history || !predictions || !userPredictions) {
     return <LoadingScreen />;
   }
@@ -152,7 +151,6 @@ const History = () => {
         </p>
       ) : (
         history.map((item) => {
-          // Найдем соответствующее предсказание из всех предсказаний
           const prediction = predictions.find(
             (pred) => pred._id === item.predictionId
           );
