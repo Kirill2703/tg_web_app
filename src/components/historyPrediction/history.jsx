@@ -180,7 +180,7 @@ const History = () => {
                         Bet points: {userPrediction.betPoints}
                       </div>
                       <div className="total-points-history">
-                        Total: {userPrediction.betPoints * 2}
+                        Availabel Total: {userPrediction.betPoints * 2}
                       </div>
                     </div>
                   )}
