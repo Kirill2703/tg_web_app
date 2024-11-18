@@ -198,7 +198,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserHistory } from "../../thunks/historyPredictionThunk";
 import { fetchAllUserPredictions } from "../../thunks/userPredictionThunk";
-import { fetchAllPredictions } from "../../thunks/predictionThunk";
+import fetchAllPredictions from "../../thunks/predictionThunk";
 import LoadingScreen from "../loadingScreen/loadingScreen";
 
 const History = () => {
