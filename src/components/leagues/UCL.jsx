@@ -6,6 +6,8 @@ import { fetchUserNameByChatId } from "../../thunks/userThunk";
 import { createUserPrediction } from "../../thunks/userPredictionThunk";
 import { FaCheck, FaTimes } from "react-icons/fa";
 
+const pageSize = 4;
+
 const UCL = () => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.user.currentUser);
@@ -37,11 +39,16 @@ const UCL = () => {
     return <div>Ошибка: {error}</div>;
   }
 
-  console.log("All predictions:", predictions);
-  const UCLPredictions = predictions.filter(
-    (predict) => predict.country == "UCL"
+  
+  const UCLPredictions = predictions
+    .filter((predict) => predict.country == "UCL")
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  const currentPredictions = UCLPredictions.slice(
+    (currentPage - 1) * pageSize,
+    currentPage * pageSize
   );
-  console.log("Filtered UCL Predictions:", UCLPredictions);
+  
 
   const handleTeamClick = (prediction, team) => {
     setSelectedPrediction({ ...prediction, selectedTeam: team });
@@ -89,7 +96,7 @@ const UCL = () => {
     <div>
       <h1 className="header-league-page">Champions League</h1>
 
-      {UCLPredictions.map((prediction) => (
+      {currentPredictions.map((prediction) => (
         <div key={prediction._id} className="predict-item">
           <div style={{ display: "flex", justifyContent: "space-around" }}>
             <div onClick={() => handleTeamClick(prediction, prediction.team1)}>
@@ -155,6 +162,14 @@ const UCL = () => {
           </div>
         </div>
       )}
+      <Pagination
+        align="center"
+        style={{ marginTop: "20px", textAlign: "center" }}
+        current={currentPage}
+        total={UCLPredictions.length}
+        pageSize={pageSize}
+        onChange={(page) => setCurrentPage(page)}
+      />
     </div>
   );
 };

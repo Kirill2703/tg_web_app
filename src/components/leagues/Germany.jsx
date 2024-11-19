@@ -6,6 +6,8 @@ import { fetchUserNameByChatId } from "../../thunks/userThunk";
 import { createUserPrediction } from "../../thunks/userPredictionThunk";
 import { FaCheck, FaTimes } from "react-icons/fa";
 
+const pageSize = 4;
+
 const Germany = () => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.user.currentUser);
@@ -37,8 +39,13 @@ const Germany = () => {
     return <div>Ошибка: {error}</div>;
   }
 
-  const germanyPredictions = predictions.filter(
-    (predict) => predict.country == "Germany"
+  const germanyPredictions = predictions
+    .filter((predict) => predict.country == "Germany")
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
+  
+  const currentPredictions = germanyPredictions.slice(
+    (currentPage - 1) * pageSize,
+    currentPage * pageSize
   );
 
   const handleTeamClick = (prediction, team) => {
@@ -87,7 +94,7 @@ const Germany = () => {
   return (
     <div>
       <h1 className="header-league-page">Germany league</h1>
-      {germanyPredictions.map((prediction) => (
+      {currentPredictions.map((prediction) => (
         <div key={prediction._id} className="predict-item">
           <p className="time-predict">{prediction.time}</p>
           <div style={{ display: "flex", justifyContent: "space-around" }}>
@@ -154,6 +161,14 @@ const Germany = () => {
           </div>
         </div>
       )}
+      <Pagination
+        align="center"
+        style={{ marginTop: "20px", textAlign: "center" }}
+        current={currentPage}
+        total={germanyPredictions.length}
+        pageSize={pageSize}
+        onChange={(page) => setCurrentPage(page)}
+      />
     </div>
   );
 };

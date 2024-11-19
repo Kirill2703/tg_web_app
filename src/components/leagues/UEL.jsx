@@ -6,6 +6,8 @@ import { fetchUserNameByChatId } from "../../thunks/userThunk";
 import { createUserPrediction } from "../../thunks/userPredictionThunk";
 import { FaCheck, FaTimes } from "react-icons/fa";
 
+const pageSize = 4;
+
 const UEL = () => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.user.currentUser);
@@ -37,9 +39,15 @@ const UEL = () => {
     return <div>Ошибка: {error}</div>;
   }
 
-  const UELPredictions = predictions.filter(
-    (predict) => predict.country == "UEL"
+  const UELPredictions = predictions
+    .filter((predict) => predict.country == "UEL")
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  const currentPredictions = UELPredictions.slice(
+    (currentPage - 1) * pageSize,
+    currentPage * pageSize
   );
+
   const handleTeamClick = (prediction, team) => {
     setSelectedPrediction({ ...prediction, selectedTeam: team });
     setShowModal(true);
@@ -86,13 +94,19 @@ const UEL = () => {
     <div>
       <h1 className="header-league-page">Europa league</h1>
 
-      {UELPredictions.map((prediction) => (
+      {currentPredictions.map((prediction) => (
         <div key={prediction._id} className="predict-item">
           <div style={{ display: "flex", justifyContent: "space-around" }}>
             <div onClick={() => handleTeamClick(prediction, prediction.team1)}>
               <p className="team">{prediction.team1}</p>
             </div>
-            <div style={{display: "flex", alignItems: "center", flexDirection: "column"}}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                flexDirection: "column",
+              }}
+            >
               <span className="vs">vs</span>
               <p className="date-predict">{formatDate(prediction.date)}</p>
             </div>
@@ -145,6 +159,14 @@ const UEL = () => {
           </div>
         </div>
       )}
+      <Pagination
+        align="center"
+        style={{ marginTop: "20px", textAlign: "center" }}
+        current={currentPage}
+        total={UELPredictions.length}
+        pageSize={pageSize}
+        onChange={(page) => setCurrentPage(page)}
+      />
     </div>
   );
 };

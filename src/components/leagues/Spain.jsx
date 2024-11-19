@@ -6,6 +6,8 @@ import { fetchUserNameByChatId } from "../../thunks/userThunk";
 import { createUserPrediction } from "../../thunks/userPredictionThunk";
 import { FaCheck, FaTimes } from "react-icons/fa";
 
+const pageSize = 4;
+
 const Spain = () => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.user.currentUser);
@@ -37,9 +39,15 @@ const Spain = () => {
     return <div>Ошибка: {error}</div>;
   }
 
-  const spainPredictions = predictions.filter(
-    (predict) => predict.country == "Spain"
+  const spainPredictions = predictions
+    .filter((predict) => predict.country == "Spain")
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  const currentPredictions = spainPredictions.slice(
+    (currentPage - 1) * pageSize,
+    currentPage * pageSize
   );
+
   const handleTeamClick = (prediction, team) => {
     setSelectedPrediction({ ...prediction, selectedTeam: team });
     setShowModal(true);
@@ -86,7 +94,7 @@ const Spain = () => {
     <div>
       <h1 className="header-league-page">Spain league</h1>
 
-      {spainPredictions.map((prediction) => (
+      {currentPredictions.map((prediction) => (
         <div key={prediction._id} className="predict-item">
           <div style={{ display: "flex", justifyContent: "space-around" }}>
             <div onClick={() => handleTeamClick(prediction, prediction.team1)}>
@@ -152,6 +160,14 @@ const Spain = () => {
           </div>
         </div>
       )}
+      <Pagination
+        align="center"
+        style={{ marginTop: "20px", textAlign: "center" }}
+        current={currentPage}
+        total={spainPredictions.length}
+        pageSize={pageSize}
+        onChange={(page) => setCurrentPage(page)}
+      />
     </div>
   );
 };
