@@ -41,22 +41,27 @@ const History = () => {
     return "pending";
   };
 
-   const getOutcomeText = (outcome, selectedTeam, result, betPoints) => {
-     if (result) {
-       const [team1Goals, team2Goals] = result.split("-").map(Number);
-       if (team1Goals > team2Goals && selectedTeam === "team1") {
-         return `Victory: ${betPoints * 2}`; // Победа команды 1
-       } else if (team2Goals > team1Goals && selectedTeam === "team2") {
-         return `Victory: ${betPoints * 2}`; // Победа команды 2
-       } else if (team1Goals === team2Goals) {
-         return `Refund: ${betPoints}`; // Ничья
-       } else {
-         return `Unfortunately: 0`; // Проигрыш
-       }
-     } else {
-       return `Possible victory: ${betPoints * 2}`; // Если матч не завершён
-     }
-   };
+  const getOutcomeText = (outcome, selectedTeam, result, betPoints) => {
+    if (result) {
+      const [team1Goals, team2Goals] = result.split("-").map(Number);
+      // Логика для выигрыша выбранной команды
+      if (selectedTeam === "team1" && team1Goals > team2Goals) {
+        return `Victory: ${betPoints * 2}`; // Победа для team1
+      } else if (selectedTeam === "team2" && team2Goals > team1Goals) {
+        return `Victory: ${betPoints * 2}`; // Победа для team2
+      }
+      // Логика для ничьей
+      else if (team1Goals === team2Goals) {
+        return `Refund: ${betPoints}`; // Ничья
+      }
+      // Логика для проигрыша
+      else {
+        return `Unfortunately: 0`; // Проигрыш
+      }
+    } else {
+      return `Possible victory: ${betPoints * 2}`; // Если матч не завершён
+    }
+  };
 
   const currentItems = history.slice(
     (currentPage - 1) * pageSize,
@@ -129,6 +134,9 @@ const History = () => {
                           gap: "6px",
                         }}
                       >
+                        <div className="bet-points-history">
+                          Bet points: {prediction.betPoints}
+                        </div>
                         <div className="total-points-history">
                           {getOutcomeText(
                             item.outcome,
