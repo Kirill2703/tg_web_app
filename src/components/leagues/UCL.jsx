@@ -41,7 +41,7 @@ const UCL = () => {
 
   console.log("All predictions:", predictions);
   const UCLPredictions = predictions.filter(
-    (predict) => predict.country == "Champions League"
+    (predict) => predict.country == "UCL"
   );
   console.log("Filtered UCL Predictions:", UCLPredictions);
   

@@ -28,7 +28,7 @@ const AllLeagues = () => {
           </Link>
         </div>
         <div className="league">
-          <Link to="/prediction/england" className="league-title">
+          <Link to="/prediction/conferenceleague" className="league-title">
             <p>Conference League</p>
             <img
               src={require("../../icons/europe.svg").default}
