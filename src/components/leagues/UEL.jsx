@@ -18,6 +18,7 @@ const UEL = () => {
   const [selectedPrediction, setSelectedPrediction] = useState(null);
   const [betPoints, setBetPoints] = useState(0);
   const [showModal, setShowModal] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const tg = window.Telegram.WebApp;
   const chatId = tg.initDataUnsafe?.user?.id;
