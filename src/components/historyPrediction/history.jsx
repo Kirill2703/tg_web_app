@@ -59,11 +59,12 @@ const History = () => {
     }
   };
 
-  const sortedHistory = history.sort((a, b) => {
-    const dateA = new Date(a.createdAt); 
-    const dateB = new Date(b.createdAt); 
-    return dateB - dateA; 
+  const sortedHistory = [...history].sort((a, b) => {
+    const dateA = new Date(a.createdAt); // Замените на актуальное поле даты
+    const dateB = new Date(b.createdAt); // Замените на актуальное поле даты
+    return dateB - dateA; // Сортировка от новых к старым
   });
+
 
   const currentItems = history.slice(
     (currentPage - 1) * pageSize,
