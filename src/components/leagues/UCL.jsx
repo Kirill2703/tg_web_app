@@ -39,9 +39,11 @@ const UCL = () => {
     return <div>Ошибка: {error}</div>;
   }
 
+  console.log("All predictions:", predictions);
   const UCLPredictions = predictions.filter(
-    (predict) => predict.country == "UCL"
+    (predict) => predict.country == "Champions League"
   );
+  console.log("Filtered UCL Predictions:", UCLPredictions);
   
 
   const handleTeamClick = (prediction, team) => {
