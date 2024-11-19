@@ -62,7 +62,7 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
-  background-color: #081a1b;
+  background-color: rgba(8, 26, 27, 0.6);
   border-radius: 0px 0px 8px 8px
 }
 
@@ -101,7 +101,7 @@ body {
   position: fixed;
   bottom: 0;
   z-index: 10;
-  background-color: #081a1b;
+  background-color: rgba(8, 26, 27, 0.6);
   border-radius: 8px 8px 0px 0px;
 }
 
