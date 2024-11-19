@@ -83,7 +83,7 @@ const History = () => {
           {currentItems.map((item) => {
             const prediction = userPredictions.find((userPrediction) => {
                return predictions.some(
-                 (pred) => pred._id === userPrediction.predictionId
+                 (pred) => userPrediction.predictionId === item.predictionId
                );
             });
             console.log(prediction);
