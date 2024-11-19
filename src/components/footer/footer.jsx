@@ -7,6 +7,14 @@ const Footer = () => {
   return (
     <div className="footer">
       <div className="nav-menu">
+        <Link to="/" className="link-nav-menu">
+          <div className="icon-text-container">
+            <FaHome className="icon" />
+            <span>Дом</span>
+          </div>
+        </Link>
+      </div>
+      <div className="nav-menu">
         <Link to="/prediction" className="link-nav-menu">
           <div className="icon-text-container">
             <FaBullseye className="icon" />
@@ -19,14 +27,6 @@ const Footer = () => {
           <div className="icon-text-container">
             <FaRegLightbulb className="icon" />
             <span>Квиз</span>
-          </div>
-        </Link>
-      </div>
-      <div className="nav-menu">
-        <Link to="/" className="link-nav-menu">
-          <div className="icon-text-container">
-            <FaHome className="icon" />
-            <span>Дом</span>
           </div>
         </Link>
       </div>
