@@ -47,23 +47,21 @@ const History = () => {
       const [team1Goals, team2Goals] = result.split("-").map(Number);
 
       // Логика для выигрыша
-      if (selectedTeam === "team1" && team1Goals > team2Goals && outcome === "Win") {
-        return `Victory: ${betPoints * 2}`; // Победа для team1
-      } else if (selectedTeam === "team2" && team2Goals > team1Goals) {
-        return `Victory: ${betPoints * 2}`; // Победа для team2
-      }
-
-      // Логика для ничьей
-      else if (team1Goals === team2Goals) {
-        return `Refund: ${betPoints}`; // Ничья
-      }
-
-      // Логика для проигрыша
-      else {
-        return `Unfortunately: 0`; // Проигрыш
+      if (
+        selectedTeam === team1 &&
+        team1Goals > team2Goals &&
+        outcome === "Win"
+      ) {
+        return `Victory: ${betPoints * 2}`; 
+      } else if (selectedTeam === team2 && team2Goals > team1Goals) {
+        return `Victory: ${betPoints * 2}`; 
+      } else if (team1Goals === team2Goals) {
+        return `Refund: ${betPoints}`;
+      } else {
+        return `Unfortunately: 0`;
       }
     } else {
-      return `Possible victory: ${betPoints * 2}`; // Если матч не завершён
+      return `Possible victory: ${betPoints * 2}`;
     }
   };
 
