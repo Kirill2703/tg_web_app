@@ -56,13 +56,13 @@ const History = () => {
   return (
     <div>
       <h1 className="history-prediction">History Prediction</h1>
-      {currentItems.length === 0 ? (
+      {history.length === 0 ? (
         <p className="make-prediction">
           You haven`t made any predictions yet. Make your first prediction!
         </p>
       ) : (
         <div className="history-container">
-          {history.map((item) => {
+          {currentItems.map((item) => {
             const prediction = userPredictions.find((userPrediction) => {
               return predictions.some((pred) => pred._id === item.predictionId);
             });
