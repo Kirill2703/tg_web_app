@@ -772,8 +772,8 @@ input::placeholder {
   opacity: 0.5;
 }
 
-.ant-pagination-item-active{
-  background-color: #102f31;
+.ant-pagination .ant-pagination-item-active{
+  border-color: #28a745;
 }
 
 .ant-pagination .ant-pagination-item a {
