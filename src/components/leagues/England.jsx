@@ -22,12 +22,12 @@ const England = () => {
 
   useEffect(() => {
     if (chatId) {
-      dispatch(fetchUserNameByChatId(chatId))
+      dispatch(fetchUserNameByChatId(chatId));
     }
   }, [dispatch, chatId]);
 
   useEffect(() => {
-    dispatch(fetchAllPredictions())
+    dispatch(fetchAllPredictions());
   }, [dispatch]);
 
   if (loading) {
@@ -58,7 +58,7 @@ const England = () => {
     }
     const resultAction = await dispatch(
       createUserPrediction({
-        username: currentUser.username, 
+        username: currentUser.username,
         predictionId: selectedPrediction._id,
         selectedTeam: selectedPrediction.selectedTeam,
         betPoints,
@@ -66,12 +66,12 @@ const England = () => {
     );
 
     if (createUserPrediction.fulfilled.match(resultAction)) {
-      const { updatedUser } = resultAction.payload; 
+      const { updatedUser } = resultAction.payload;
       if (updatedUser) {
-        dispatch(fetchUserNameByChatId(currentUser.chatId)); 
+        dispatch(fetchUserNameByChatId(currentUser.chatId));
       }
     }
-    setShowModal(false); 
+    setShowModal(false);
   };
 
   const formatDate = (dateString) => {
@@ -92,12 +92,20 @@ const England = () => {
             <div onClick={() => handleTeamClick(prediction, prediction.team1)}>
               <p className="team">{prediction.team1}</p>
             </div>
-            <span className="vs">vs</span>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                flexDirection: "column",
+              }}
+            >
+              <span className="vs">vs</span>
+              <p className="date-predict">{formatDate(prediction.date)}</p>
+            </div>
             <div onClick={() => handleTeamClick(prediction, prediction.team2)}>
               <p className="team">{prediction.team2}</p>
             </div>
           </div>
-          <p className="date-predict">{formatDate(prediction.date)}</p>
         </div>
       ))}
 

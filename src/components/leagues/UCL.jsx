@@ -6,8 +6,6 @@ import { fetchUserNameByChatId } from "../../thunks/userThunk";
 import { createUserPrediction } from "../../thunks/userPredictionThunk";
 import { FaCheck, FaTimes } from "react-icons/fa";
 
-
-
 const UCL = () => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.user.currentUser);
@@ -44,7 +42,6 @@ const UCL = () => {
     (predict) => predict.country == "UCL"
   );
   console.log("Filtered UCL Predictions:", UCLPredictions);
-  
 
   const handleTeamClick = (prediction, team) => {
     setSelectedPrediction({ ...prediction, selectedTeam: team });
@@ -88,73 +85,78 @@ const UCL = () => {
 
     return `${day}.${month}.${year}`;
   };
-    return (
-      <div>
-        <h1 className="header-league-page">Champions League</h1>
+  return (
+    <div>
+      <h1 className="header-league-page">Champions League</h1>
 
-        {UCLPredictions.map((prediction) => (
-          <div key={prediction._id} className="predict-item">
-            <div style={{ display: "flex", justifyContent: "space-around" }}>
-              <div
-                onClick={() => handleTeamClick(prediction, prediction.team1)}
-              >
-                <p className="team">{prediction.team1}</p>
-              </div>
-              <span className="vs">vs</span>
-              <div
-                onClick={() => handleTeamClick(prediction, prediction.team2)}
-              >
-                <p className="team">{prediction.team2}</p>
-              </div>
+      {UCLPredictions.map((prediction) => (
+        <div key={prediction._id} className="predict-item">
+          <div style={{ display: "flex", justifyContent: "space-around" }}>
+            <div onClick={() => handleTeamClick(prediction, prediction.team1)}>
+              <p className="team">{prediction.team1}</p>
             </div>
-            <p className="date-predict">{formatDate(prediction.date)}</p>
-          </div>
-        ))}
-
-        {showModal && (
-          <div className="modal-prediction">
             <div
               style={{
                 display: "flex",
-                flexDirection: "column",
                 alignItems: "center",
-                backgroundColor: " rgb(16, 47, 49)",
-                borderRadius: "20px",
-                margin: "0 20px",
-                padding: "10px",
+                flexDirection: "column",
               }}
             >
-              <div style={{ marginTop: "20px" }}>
-                <p className="accept-choice">
-                  Вы уверены, что хотите выбрать{" "}
-                  <span style={{ color: "#8e7a6b" }}>
-                    {selectedPrediction.selectedTeam}
-                  </span>{" "}
-                  и поставить {betPoints} очков?
-                </p>
-              </div>
-              <div style={{ width: "80%", marginTop: "20px" }}>
-                <input
-                  onChange={(e) => {
-                    setBetPoints(Number(e.target.value));
-                  }}
-                  placeholder="Введите количество очков"
-                  className="input-points"
-                />
-              </div>
-              <div style={{ margin: "20px 0" }}>
-                <button onClick={handleSubmitPrediction} className="btn-yes">
-                  <FaCheck />
-                </button>
-                <button onClick={() => setShowModal(false)} className="btn-no">
-                  <FaTimes />
-                </button>
-              </div>
+              <span className="vs">vs</span>
+              <p className="date-predict">{formatDate(prediction.date)}</p>
+            </div>
+
+            <div onClick={() => handleTeamClick(prediction, prediction.team2)}>
+              <p className="team">{prediction.team2}</p>
             </div>
           </div>
-        )}
-      </div>
-    );
+        </div>
+      ))}
+
+      {showModal && (
+        <div className="modal-prediction">
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              backgroundColor: " rgb(16, 47, 49)",
+              borderRadius: "20px",
+              margin: "0 20px",
+              padding: "10px",
+            }}
+          >
+            <div style={{ marginTop: "20px" }}>
+              <p className="accept-choice">
+                Вы уверены, что хотите выбрать{" "}
+                <span style={{ color: "#8e7a6b" }}>
+                  {selectedPrediction.selectedTeam}
+                </span>{" "}
+                и поставить {betPoints} очков?
+              </p>
+            </div>
+            <div style={{ width: "80%", marginTop: "20px" }}>
+              <input
+                onChange={(e) => {
+                  setBetPoints(Number(e.target.value));
+                }}
+                placeholder="Введите количество очков"
+                className="input-points"
+              />
+            </div>
+            <div style={{ margin: "20px 0" }}>
+              <button onClick={handleSubmitPrediction} className="btn-yes">
+                <FaCheck />
+              </button>
+              <button onClick={() => setShowModal(false)} className="btn-no">
+                <FaTimes />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default UCL;

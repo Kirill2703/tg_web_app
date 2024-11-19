@@ -6,8 +6,6 @@ import { fetchUserNameByChatId } from "../../thunks/userThunk";
 import { createUserPrediction } from "../../thunks/userPredictionThunk";
 import { FaCheck, FaTimes } from "react-icons/fa";
 
-
-
 const UConference = () => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.user.currentUser);
@@ -86,7 +84,7 @@ const UConference = () => {
   };
   return (
     <div>
-      <h1 className="header-league-page">Spain league</h1>
+      <h1 className="header-league-page">Conference league</h1>
 
       {ConferenceLeagueLPredictions.map((prediction) => (
         <div key={prediction._id} className="predict-item">
@@ -94,12 +92,20 @@ const UConference = () => {
             <div onClick={() => handleTeamClick(prediction, prediction.team1)}>
               <p className="team">{prediction.team1}</p>
             </div>
-            <span className="vs">vs</span>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                flexDirection: "column",
+              }}
+            >
+              <span className="vs">vs</span>
+              <p className="date-predict">{formatDate(prediction.date)}</p>
+            </div>
             <div onClick={() => handleTeamClick(prediction, prediction.team2)}>
               <p className="team">{prediction.team2}</p>
             </div>
           </div>
-          <p className="date-predict">{formatDate(prediction.date)}</p>
         </div>
       ))}
 

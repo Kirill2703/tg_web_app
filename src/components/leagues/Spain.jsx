@@ -75,12 +75,12 @@ const Spain = () => {
   };
 
   const formatDate = (dateString) => {
-    const date = new Date(dateString); 
-    const day = String(date.getDate()).padStart(2, "0"); 
-    const month = String(date.getMonth() + 1).padStart(2, "0"); 
-    const year = String(date.getFullYear()).slice(2); 
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const year = String(date.getFullYear()).slice(2);
 
-    return `${day}.${month}.${year}`; 
+    return `${day}.${month}.${year}`;
   };
   return (
     <div>
@@ -92,12 +92,21 @@ const Spain = () => {
             <div onClick={() => handleTeamClick(prediction, prediction.team1)}>
               <p className="team">{prediction.team1}</p>
             </div>
-            <span className="vs">vs</span>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                flexDirection: "column",
+              }}
+            >
+              <span className="vs">vs</span>
+              <p className="date-predict">{formatDate(prediction.date)}</p>
+            </div>
+
             <div onClick={() => handleTeamClick(prediction, prediction.team2)}>
               <p className="team">{prediction.team2}</p>
             </div>
           </div>
-          <p className="date-predict">{formatDate(prediction.date)}</p>
         </div>
       ))}
 

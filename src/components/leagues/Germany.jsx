@@ -94,12 +94,21 @@ const Germany = () => {
             <div onClick={() => handleTeamClick(prediction, prediction.team1)}>
               <p className="team">{prediction.team1}</p>
             </div>
-            <span className="vs">vs</span>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                flexDirection: "column",
+              }}
+            >
+              <span className="vs">vs</span>
+              <p className="date-predict">{formatDate(prediction.date)}</p>
+            </div>
+
             <div onClick={() => handleTeamClick(prediction, prediction.team2)}>
               <p className="team">{prediction.team2}</p>
             </div>
           </div>
-          <p className="date-predict">{formatDate(prediction.date)}</p>
         </div>
       ))}
 
