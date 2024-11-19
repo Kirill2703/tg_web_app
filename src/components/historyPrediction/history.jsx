@@ -4,6 +4,7 @@ import { fetchUserHistory } from "../../thunks/historyPredictionThunk";
 import LoadingScreen from "../loadingScreen/loadingScreen";
 import { fetchAllUserPredictions } from "../../thunks/userPredictionThunk";
 import fetchAllPredictions from "../../thunks/predictionThunk";
+import { Pagination } from "antd";
 
 const History = () => {
   const dispatch = useDispatch();
@@ -37,6 +38,14 @@ const History = () => {
     return "pending";
   };
 
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const paginatedHistory = history.slice(startIndex, endIndex);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
   if (historyLoading || predictionsLoading || loading) return <LoadingScreen />;
   if (historyError)
     return <div>Ошибка при загрузке истории: {historyError}</div>;
@@ -46,7 +55,7 @@ const History = () => {
   return (
     <div>
       <h1 className="history-prediction">History Prediction</h1>
-      {history.length === 0 ? (
+      {paginatedHistory.length === 0 ? (
         <p className="make-prediction">
           You haven`t made any predictions yet. Make your first prediction!
         </p>
@@ -54,7 +63,7 @@ const History = () => {
         <div className="history-container">
           {history.map((item) => {
             const prediction = userPredictions.find((userPrediction) => {
-              return predictions.some((pred) => pred._id === item.predictionId); 
+              return predictions.some((pred) => pred._id === item.predictionId);
             });
 
             return (
@@ -118,6 +127,13 @@ const History = () => {
           })}
         </div>
       )}
+      <Pagination
+        style={{ marginTop: "20px", textAlign: "center" }}
+        current={currentPage}
+        total={history.length}
+        pageSize={itemsPerPage}
+        onChange={handlePageChange}
+      />
     </div>
   );
 };
