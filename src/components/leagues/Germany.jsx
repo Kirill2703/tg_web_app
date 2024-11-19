@@ -7,7 +7,7 @@ import { createUserPrediction } from "../../thunks/userPredictionThunk";
 import { FaCheck, FaTimes } from "react-icons/fa";
 import { Pagination } from "antd";
 
-const pageSize = 4;
+const pageSize = 5;
 
 const Germany = () => {
   const dispatch = useDispatch();
