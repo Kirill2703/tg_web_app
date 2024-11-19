@@ -793,12 +793,12 @@ input::placeholder {
 }
 
 .draw {
-  background-color: #f7dc6f;
-  border: 2px solid #f39c12;
+  background-color: #8b4513;
+  border: 1px solid #5c3d21;
 }
 .pending {
   background-color: #dfe6e9;
-  border: 2px solid #b0bec5;
+  border: 1px solid #b0bec5;
 }
 
 .result-text {
