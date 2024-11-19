@@ -44,7 +44,7 @@ const Main = ({ setLoading }) => {
     const loadingTimer = setTimeout(() => {
       setIsLoading(false);
       setLoading(false);
-    }, 50000);
+    }, 3000);
 
     if (chatId) {
       const fetchUserTimer = setTimeout(() => {
@@ -65,14 +65,14 @@ const Main = ({ setLoading }) => {
     return <div>User undefined</div>;
   }
 
-  // Подсчет пройденных квизов
-  const completedQuizzesCount = currentUser.completedQuizzes.length; // Количество пройденных квизов
+  
+  const completedQuizzesCount = currentUser.completedQuizzes.length; 
 
   const handleFlip = () => {
-    setFlip(true); // Запуск анимации
+    setFlip(true); 
     setTimeout(() => {
-      setShowQuizzes((prev) => !prev); // Переключение значения
-      setFlip(false); // Сброс анимации
+      setShowQuizzes((prev) => !prev); 
+      setFlip(false); 
     }, 300);
   };
 
