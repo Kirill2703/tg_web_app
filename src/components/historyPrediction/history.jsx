@@ -68,10 +68,10 @@ const History = () => {
 
     // Если даты некорректные, то можно обработать ошибку
     if (isNaN(dateA) || isNaN(dateB)) {
-      console.error("Invalid date:", a.createdAt, b.createdAt);
+      console.error("Invalid date:", a.date, b.date);
     }
 
-    return dateB - dateA; // Сортировка от новых к старым
+    return dateA - dateB; // Сортировка от новых к старым
   });
 
 
