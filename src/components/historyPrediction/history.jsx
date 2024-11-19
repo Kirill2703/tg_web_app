@@ -6,7 +6,7 @@ import { fetchAllUserPredictions } from "../../thunks/userPredictionThunk";
 import fetchAllPredictions from "../../thunks/predictionThunk";
 import { Pagination } from "antd";
 
-const pageSize = 5;
+const pageSize = 4;
 
 const History = () => {
   const dispatch = useDispatch();
