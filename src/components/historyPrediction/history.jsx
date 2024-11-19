@@ -6,6 +6,8 @@ import { fetchAllUserPredictions } from "../../thunks/userPredictionThunk";
 import fetchAllPredictions from "../../thunks/predictionThunk";
 import { Pagination } from "antd";
 
+const pageSize = 5;
+
 const History = () => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.user.currentUser);
@@ -22,6 +24,7 @@ const History = () => {
     loading: predictionsLoading,
     error: predictionsError,
   } = useSelector((state) => state.userPrediction);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     if (currentUser) {
@@ -38,13 +41,11 @@ const History = () => {
     return "pending";
   };
 
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const paginatedHistory = history.slice(startIndex, endIndex);
+  const currentItems = history.slice(
+    (currentPage - 1) * pageSize,
+    currentPage * pageSize
+  );
 
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-  };
 
   if (historyLoading || predictionsLoading || loading) return <LoadingScreen />;
   if (historyError)
@@ -55,7 +56,7 @@ const History = () => {
   return (
     <div>
       <h1 className="history-prediction">History Prediction</h1>
-      {paginatedHistory.length === 0 ? (
+      {currentItems.length === 0 ? (
         <p className="make-prediction">
           You haven`t made any predictions yet. Make your first prediction!
         </p>
@@ -131,8 +132,8 @@ const History = () => {
         style={{ marginTop: "20px", textAlign: "center" }}
         current={currentPage}
         total={history.length}
-        pageSize={itemsPerPage}
-        onChange={handlePageChange}
+        pageSize={pageSize}
+        onChange={(page) => setCurrentPage(page)}
       />
     </div>
   );
