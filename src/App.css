@@ -826,6 +826,10 @@ td {
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
+
+.highlight-row{
+  background-color: #8b7e66;
+}
 /* #region table */
 
 /* #endregion */
