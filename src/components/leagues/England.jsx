@@ -46,7 +46,7 @@ const England = () => {
     .filter((predict) => predict.country === "England")
     .sort((a, b) => new Date(b.date) - new Date(a.date));
   
-  const currentPredictions = sortedPredictions.slice(
+  const currentPredictions = englandPredictions.slice(
     (currentPage - 1) * pageSize,
     currentPage * pageSize
   );
