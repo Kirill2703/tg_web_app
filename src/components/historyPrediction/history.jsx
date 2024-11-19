@@ -49,9 +49,9 @@ const History = () => {
       // Логика для выигрыша
       if (outcome === "Win") {
         return `Victory: ${betPoints * 2}`;
-      } else if (team1Goals === team2Goals) {
+      } else if (outcome === "draw") {
         return `Refund: ${betPoints}`;
-      } else {
+      } else if (outcome === "Lose") {
         return `Unfortunately: 0`;
       }
     } else {
