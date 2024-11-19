@@ -59,9 +59,9 @@ const History = () => {
     }
   };
 
-  const sortedHistory = [...history].sort((a, b) => {
-    const dateA = new Date(a.createdAt);
-    const dateB = new Date(b.createdAt);
+  const sortedHistory = [...predictions].sort((a, b) => {
+    const dateA = new Date(a.date);
+    const dateB = new Date(b.date);
 
     // Логирование дат для проверки
     console.log("dateA:", dateA, "dateB:", dateB);
