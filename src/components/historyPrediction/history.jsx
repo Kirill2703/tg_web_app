@@ -35,6 +35,7 @@ const History = () => {
   }, [dispatch, currentUser]);
 
   const getOutcomeClass = (outcome) => {
+    console.log(outcome);
     if (outcome === "Win") return "win";
     if (outcome === "Lose") return "lose";
     if (outcome === "Draw") return "draw";
