@@ -82,6 +82,8 @@ const History = () => {
             const prediction = userPredictions.find((userPrediction) => {
               return predictions.some((pred) => pred._id === item.predictionId);
             });
+            const result = item.result;
+            const betPoints = prediction ? prediction.betPoints : 0;
 
             return (
               <div
