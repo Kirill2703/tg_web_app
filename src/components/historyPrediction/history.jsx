@@ -47,7 +47,6 @@ const History = () => {
     if (result) {
       const [team1Goals, team2Goals] = result.split("-").map(Number);
 
-      // Логика для выигрыша
       if (outcome === "Win") {
         return `Victory: ${betPoints * 2}`;
       } else if (outcome === "draw") {
@@ -59,6 +58,12 @@ const History = () => {
       return `Possible victory: ${betPoints * 2}`;
     }
   };
+
+  const sortedHistory = history.sort((a, b) => {
+    const dateA = new Date(a.createdAt); 
+    const dateB = new Date(b.createdAt); 
+    return dateB - dateA; 
+  });
 
   const currentItems = history.slice(
     (currentPage - 1) * pageSize,
@@ -82,9 +87,9 @@ const History = () => {
         <div className="history-container">
           {currentItems.map((item) => {
             const prediction = userPredictions.find((userPrediction) => {
-               return predictions.some(
-                 (pred) => userPrediction.predictionId === item.predictionId
-               );
+              return predictions.some(
+                (pred) => userPrediction.predictionId === item.predictionId
+              );
             });
             console.log(prediction);
             const result = item.result;
@@ -160,7 +165,7 @@ const History = () => {
         align="center"
         style={{ marginTop: "20px", textAlign: "center" }}
         current={currentPage}
-        total={history.length}
+        total={sortedHistory.length}
         pageSize={pageSize}
         onChange={(page) => setCurrentPage(page)}
       />
