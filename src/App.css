@@ -26,18 +26,21 @@ body {
 
 .loading-screen {
   height: 100vh;
-  background: radial-gradient(
-    circle,
-    rgba(123, 49, 143, 1) 0%,
-    rgba(118, 42, 135, 1) 17%,
-    rgba(95, 31, 117, 1) 37%,
-    rgba(89, 27, 112, 1) 46%,
-    rgba(75, 17, 101, 1) 60%,
-    rgba(59, 14, 83, 1) 70%,
-    rgba(40, 7, 62, 1) 85%,
-    rgba(23, 4, 49, 1) 90%
-  );
+  background-color: #102f31;
 }
+
+.img-loading-screen{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.img-loading-screen img{
+  width: 80px;
+  height: 80px;
+}
+
 
 .content {
   flex-grow: 1;

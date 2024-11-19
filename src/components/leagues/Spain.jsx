@@ -5,6 +5,7 @@ import LoadingScreen from "../loadingScreen/loadingScreen";
 import { fetchUserNameByChatId } from "../../thunks/userThunk";
 import { createUserPrediction } from "../../thunks/userPredictionThunk";
 import { FaCheck, FaTimes } from "react-icons/fa";
+import { Pagination } from "antd";
 
 const pageSize = 4;
 

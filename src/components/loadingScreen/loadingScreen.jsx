@@ -3,7 +3,9 @@ import React from "react";
 const LoadingScreen = () => {
   return (
     <div className="loading-screen">
-      <h1 className="main-text-loading-screen">Гол - и ты в игре!</h1>
+      <div className="img-loading-screen">
+        <img src="/FW_logo.png" alt="FOOTWISE" />
+      </div>
 
       {/* <div>
         <img src="/loading-screen.jpg" alt="Loading" />

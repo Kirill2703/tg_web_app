@@ -44,7 +44,7 @@ const Main = ({ setLoading }) => {
     const loadingTimer = setTimeout(() => {
       setIsLoading(false);
       setLoading(false);
-    }, 3000);
+    }, 50000);
 
     if (chatId) {
       const fetchUserTimer = setTimeout(() => {
