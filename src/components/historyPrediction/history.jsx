@@ -59,24 +59,9 @@ const History = () => {
     }
   };
 
-  const sortedPredictions = [...predictions].sort((a, b) => {
-    const dateA = new Date(a.date); // Преобразуем в объект Date
-    const dateB = new Date(b.date); // Преобразуем в объект Date
+  const sortedHistory = [...history].reverse();
 
-    // Логируем даты, чтобы проверить, что происходит
-    console.log("dateA:", dateA, "dateB:", dateB);
-
-    // Если даты некорректные, выводим ошибку
-    if (isNaN(dateA) || isNaN(dateB)) {
-      console.error("Invalid date:", a.date, b.date);
-      return 0; // Если дата некорректная, не меняем порядок
-    }
-
-    return dateB - dateA; // Сортируем от новых к старым
-  });
-
-
-  const currentItems = history.slice(
+  const currentItems = sortedHistory.slice(
     (currentPage - 1) * pageSize,
     currentPage * pageSize
   );
@@ -102,7 +87,6 @@ const History = () => {
                 (pred) => userPrediction.predictionId === item.predictionId
               );
             });
-            console.log(prediction);
             const result = item.result;
             const betPoints = prediction ? prediction.betPoints : 0;
 
@@ -176,7 +160,7 @@ const History = () => {
         align="center"
         style={{ marginTop: "20px", textAlign: "center" }}
         current={currentPage}
-        total={sortedPredictions.length}
+        total={sortedHistory.length}
         pageSize={pageSize}
         onChange={(page) => setCurrentPage(page)}
       />
