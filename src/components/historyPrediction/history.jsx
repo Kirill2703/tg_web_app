@@ -82,7 +82,7 @@ const History = () => {
         <div className="history-container">
           {currentItems.map((item) => {
             const prediction = userPredictions.find((userPrediction) => {
-               predictions.some((pred) => pred._id === item.predictionId);
+               return predictions.some((pred) => pred._id === item.predictionId);
             });
             console.log(prediction);
             const result = item.result;
