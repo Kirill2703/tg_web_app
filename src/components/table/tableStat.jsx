@@ -7,11 +7,6 @@ const TableStat = () => {
     const dispatch = useDispatch();
     const users = useSelector((state) => state.user.user);
     const loading = useSelector((state) => state.user.loading);
-    const mockUsers = Array.from({ length: 50 }, (_, i) => ({
-      username: `User_${i + 1}`,
-      points: Math.floor(Math.random() * 1000), // Случайное количество очков
-      completedQuizzes: Array.from({ length: Math.floor(Math.random() * 10) }), // Случайное число викторин
-    }));
 
     useEffect(() => {
         dispatch(fetchAllUsers());
@@ -21,7 +16,7 @@ const TableStat = () => {
         return <LoadingScreen />;
     }
 
-     const sortedUsers = [...mockUsers].sort((a, b) => b.points - a.points);
+     const sortedUsers = [...users].sort((a, b) => b.points - a.points);
 
     return (
         <div style={{margin: "0 20px"}}>
