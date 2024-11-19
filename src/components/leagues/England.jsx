@@ -5,6 +5,7 @@ import { createUserPrediction } from "../../thunks/userPredictionThunk";
 import fetchAllPredictions from "../../thunks/predictionThunk";
 import { fetchUserNameByChatId } from "../../thunks/userThunk";
 import { FaCheck, FaTimes } from "react-icons/fa";
+import { Pagination } from "antd";
 
 const pageSize = 4;
 
@@ -94,7 +95,7 @@ const England = () => {
   return (
     <div>
       <h1 className="header-league-page">England League</h1>
-      {englandPredictions.map((prediction) => (
+      {currentPredictions.map((prediction) => (
         <div key={prediction._id} className="predict-item">
           <div style={{ display: "flex", justifyContent: "space-around" }}>
             <div onClick={() => handleTeamClick(prediction, prediction.team1)}>
@@ -163,9 +164,9 @@ const England = () => {
         align="center"
         style={{ marginTop: "20px", textAlign: "center" }}
         current={currentPage}
-        total={sortedPredictions.length} 
-        pageSize={pageSize} 
-        onChange={(page) => setCurrentPage(page)} 
+        total={englandPredictions.length}
+        pageSize={pageSize}
+        onChange={(page) => setCurrentPage(page)}
       />
     </div>
   );
