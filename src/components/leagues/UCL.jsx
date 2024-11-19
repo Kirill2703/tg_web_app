@@ -37,7 +37,7 @@ if (error) {
 }
 
 const UCLPredictions = predictions.filter(
-  (predict) => predict.country == "UCL"
+  (predict) => predict.country == "Champions League"
 );
 const handleTeamClick = (prediction, team) => {
   setSelectedPrediction({ ...prediction, selectedTeam: team });
