@@ -33,6 +33,7 @@ const History = () => {
       dispatch(fetchAllPredictions());
     }
   }, [dispatch, currentUser]);
+  console.log(userPredictions);
 
   const getOutcomeClass = (outcome) => {
     console.log(outcome);
