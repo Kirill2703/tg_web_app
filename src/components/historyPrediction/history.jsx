@@ -60,8 +60,17 @@ const History = () => {
   };
 
   const sortedHistory = [...history].sort((a, b) => {
-    const dateA = new Date(a.createdAt); // Замените на актуальное поле даты
-    const dateB = new Date(b.createdAt); // Замените на актуальное поле даты
+    const dateA = new Date(a.createdAt);
+    const dateB = new Date(b.createdAt);
+
+    // Логирование дат для проверки
+    console.log("dateA:", dateA, "dateB:", dateB);
+
+    // Если даты некорректные, то можно обработать ошибку
+    if (isNaN(dateA) || isNaN(dateB)) {
+      console.error("Invalid date:", a.createdAt, b.createdAt);
+    }
+
     return dateB - dateA; // Сортировка от новых к старым
   });
 
