@@ -7,6 +7,11 @@ const TableStat = () => {
     const dispatch = useDispatch();
     const users = useSelector((state) => state.user.user);
     const loading = useSelector((state) => state.user.loading);
+    const mockUsers = Array.from({ length: 50 }, (_, i) => ({
+      username: `User_${i + 1}`,
+      points: Math.floor(Math.random() * 1000), // Случайное количество очков
+      completedQuizzes: Array.from({ length: Math.floor(Math.random() * 10) }), // Случайное число викторин
+    }));
 
     useEffect(() => {
         dispatch(fetchAllUsers());
@@ -16,21 +21,21 @@ const TableStat = () => {
         return <LoadingScreen />;
     }
 
-     const sortedUsers = [...users].sort((a, b) => b.points - a.points);
+     const sortedUsers = [...mockUsers].sort((a, b) => b.points - a.points);
 
     return (
-        <div>
-            <h2>Турнирная таблица</h2>
+        <div style={{margin: "0 20px"}}>
+            <h2 className='header-table'>Table leaders</h2>
             <table>
                 <thead>
                     <tr>
-                        <th>Имя пользователя</th>
-                        <th>Очки</th>
-                        <th>Пройденные квизы</th>
+                        <th>Username</th>
+                        <th>Points</th>
+                        <th>Quizes</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {users.map((user) => (
+                    {sortedUsers.map((user) => (
                         <tr key={user.chatId}>
                             <td>{user.username}</td>
                             <td>{user.points}</td>

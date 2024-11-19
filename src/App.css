@@ -689,6 +689,8 @@ input::placeholder {
 
 /* #endregion */
 
+/* #region history */
+
 .history-prediction {
   font-size: 20px;
   font-family: var(--font-primary);
@@ -795,58 +797,29 @@ input::placeholder {
   font-weight: bold;
 }
 
-/* .modal {
-  top: 0;
-  left: 20%;
+/*#endregion */
 
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  padding: 20px;
-  z-index: 1000; 
-  max-width: 200px;
-
-  width: 100%;
+.header-table{
+  font-size: 20px;
+  color: var(--font-color-primary);
+  font-family: var(--font-primary);
+  text-align: center;
+  margin-top: 20px;
 }
 
-.modal h2 {
-  margin: 0 0 20px;
+.table-container{
+  margin: 0 20px;
+  overflow-x: auto;
+  max-height: 70vh;
+  overflow-y: auto;
 }
-
-.modal ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.modal li {
-  margin-bottom: 10px;
-}
-
-.modal button {
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.modal button:hover {
-  opacity: 0.8;
-}
-
-.modal .close-button {
-  background-color: #f44336; 
-  color: white;
-}
-
-.modal .submit-button {
-  background-color: #4caf50; 
-  color: white;
-} */
 
 table {
   width: 100%;
   border-collapse: collapse;
+  color: var(--font-color-primary);
+  font-size: 12px;
+  font-family: var(--font-primary);
 }
 
 th,
@@ -855,3 +828,10 @@ td {
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
+/* #region table */
+
+/* #endregion */
+
+
+
+
