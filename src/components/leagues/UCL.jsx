@@ -36,9 +36,11 @@ if (error) {
   return <div>Ошибка: {error}</div>;
 }
 
+console.log("All predictions:", predictions);
 const UCLPredictions = predictions.filter(
   (predict) => predict.country == "Champions League"
 );
+console.log("Filtered UCL Predictions:", UCLPredictions);
 const handleTeamClick = (prediction, team) => {
   setSelectedPrediction({ ...prediction, selectedTeam: team });
   setShowModal(true);
@@ -85,7 +87,7 @@ const formatDate = (dateString) => {
 const UCL = () => {
     return (
       <div>
-        <h1 className="header-league-page">Spain league</h1>
+        <h1 className="header-league-page">Champions League league</h1>
 
         {UCLPredictions.map((prediction) => (
           <div key={prediction._id} className="predict-item">
