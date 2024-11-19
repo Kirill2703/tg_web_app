@@ -38,7 +38,7 @@ const History = () => {
     console.log(outcome);
     if (outcome === "Win") return "win";
     if (outcome === "Lose") return "lose";
-    if (outcome === "Draw") return "draw";
+    if (outcome === "draw") return "draw";
     return "pending";
   };
 
