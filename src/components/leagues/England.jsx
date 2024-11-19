@@ -6,6 +6,8 @@ import fetchAllPredictions from "../../thunks/predictionThunk";
 import { fetchUserNameByChatId } from "../../thunks/userThunk";
 import { FaCheck, FaTimes } from "react-icons/fa";
 
+const pageSize = 4;
+
 const England = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
   const dispatch = useDispatch();
@@ -16,6 +18,7 @@ const England = () => {
   const [selectedPrediction, setSelectedPrediction] = useState(null);
   const [betPoints, setBetPoints] = useState(0);
   const [showModal, setShowModal] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const tg = window.Telegram.WebApp;
   const chatId = tg.initDataUnsafe?.user?.id;
@@ -38,8 +41,13 @@ const England = () => {
     return <div>Ошибка: {error}</div>;
   }
 
-  const englandPredictions = predictions.filter(
-    (predict) => predict.country === "England"
+  const englandPredictions = predictions
+    .filter((predict) => predict.country === "England")
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
+  
+  const currentPredictions = sortedPredictions.slice(
+    (currentPage - 1) * pageSize,
+    currentPage * pageSize
   );
 
   const handleTeamClick = (prediction, team) => {
@@ -151,6 +159,14 @@ const England = () => {
           </div>
         </div>
       )}
+      <Pagination
+        align="center"
+        style={{ marginTop: "20px", textAlign: "center" }}
+        current={currentPage}
+        total={sortedPredictions.length} 
+        pageSize={pageSize} 
+        onChange={(page) => setCurrentPage(page)} 
+      />
     </div>
   );
 };
