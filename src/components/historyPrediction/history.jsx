@@ -47,7 +47,7 @@ const History = () => {
       const [team1Goals, team2Goals] = result.split("-").map(Number);
 
       // Логика для выигрыша
-      if (selectedTeam === "team1" && team1Goals > team2Goals) {
+      if (selectedTeam === "team1" && team1Goals > team2Goals && outcome === "Win") {
         return `Victory: ${betPoints * 2}`; // Победа для team1
       } else if (selectedTeam === "team2" && team2Goals > team1Goals) {
         return `Victory: ${betPoints * 2}`; // Победа для team2
