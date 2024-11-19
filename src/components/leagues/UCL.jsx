@@ -6,88 +6,89 @@ import { fetchUserNameByChatId } from "../../thunks/userThunk";
 import { createUserPrediction } from "../../thunks/userPredictionThunk";
 import { FaCheck, FaTimes } from "react-icons/fa";
 
-const dispatch = useDispatch();
-const currentUser = useSelector((state) => state.user.currentUser);
-const { predictions, loading, error } = useSelector(
-  (state) => state.predictions
-);
 
-const [selectedPrediction, setSelectedPrediction] = useState(null);
-const [betPoints, setBetPoints] = useState(0);
-const [showModal, setShowModal] = useState(false);
-
-const tg = window.Telegram.WebApp;
-const chatId = tg.initDataUnsafe?.user?.id;
-
-useEffect(() => {
-  if (chatId) {
-    dispatch(fetchUserNameByChatId(chatId));
-  }
-}, [dispatch, chatId]);
-
-useEffect(() => {
-  dispatch(fetchAllPredictions());
-}, [dispatch]);
-if (loading) {
-  return <LoadingScreen />;
-}
-
-if (error) {
-  return <div>Ошибка: {error}</div>;
-}
-
-console.log("All predictions:", predictions);
-const UCLPredictions = predictions.filter(
-  (predict) => predict.country == "Champions League"
-);
-console.log("Filtered UCL Predictions:", UCLPredictions);
-const handleTeamClick = (prediction, team) => {
-  setSelectedPrediction({ ...prediction, selectedTeam: team });
-  setShowModal(true);
-};
-
-const handleSubmitPrediction = async () => {
-  if (
-    !currentUser ||
-    !currentUser.username ||
-    !selectedPrediction ||
-    betPoints <= 0
-  ) {
-    return;
-  }
-
-  const resultAction = await dispatch(
-    createUserPrediction({
-      username: currentUser.username,
-      predictionId: selectedPrediction._id,
-      selectedTeam: selectedPrediction.selectedTeam,
-      betPoints,
-    })
-  );
-
-  if (createUserPrediction.fulfilled.match(resultAction)) {
-    const { updatedUser } = resultAction.payload;
-    if (updatedUser) {
-      dispatch(fetchUserNameByChatId(currentUser.chatId));
-    }
-  }
-
-  setShowModal(false);
-};
-
-const formatDate = (dateString) => {
-  const date = new Date(dateString);
-  const day = String(date.getDate()).padStart(2, "0");
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const year = String(date.getFullYear()).slice(2);
-
-  return `${day}.${month}.${year}`;
-};
 
 const UCL = () => {
+  const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state.user.currentUser);
+  const { predictions, loading, error } = useSelector(
+    (state) => state.predictions
+  );
+  const [selectedPrediction, setSelectedPrediction] = useState(null);
+  const [betPoints, setBetPoints] = useState(0);
+  const [showModal, setShowModal] = useState(false);
+
+  const tg = window.Telegram.WebApp;
+  const chatId = tg.initDataUnsafe?.user?.id;
+
+  useEffect(() => {
+    if (chatId) {
+      dispatch(fetchUserNameByChatId(chatId));
+    }
+  }, [dispatch, chatId]);
+
+  useEffect(() => {
+    dispatch(fetchAllPredictions());
+  }, [dispatch]);
+
+  if (loading) {
+    return <LoadingScreen />;
+  }
+
+  if (error) {
+    return <div>Ошибка: {error}</div>;
+  }
+
+  const UCLPredictions = predictions.filter(
+    (predict) => predict.country == "UCL"
+  );
+  
+
+  const handleTeamClick = (prediction, team) => {
+    setSelectedPrediction({ ...prediction, selectedTeam: team });
+    setShowModal(true);
+  };
+
+  const handleSubmitPrediction = async () => {
+    if (
+      !currentUser ||
+      !currentUser.username ||
+      !selectedPrediction ||
+      betPoints <= 0
+    ) {
+      return;
+    }
+
+    const resultAction = await dispatch(
+      createUserPrediction({
+        username: currentUser.username,
+        predictionId: selectedPrediction._id,
+        selectedTeam: selectedPrediction.selectedTeam,
+        betPoints,
+      })
+    );
+
+    if (createUserPrediction.fulfilled.match(resultAction)) {
+      const { updatedUser } = resultAction.payload;
+      if (updatedUser) {
+        dispatch(fetchUserNameByChatId(currentUser.chatId));
+      }
+    }
+
+    setShowModal(false);
+  };
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const year = String(date.getFullYear()).slice(2);
+
+    return `${day}.${month}.${year}`;
+  };
     return (
       <div>
-        <h1 className="header-league-page">Champions League league</h1>
+        <h1 className="header-league-page">Champions League</h1>
 
         {UCLPredictions.map((prediction) => (
           <div key={prediction._id} className="predict-item">
