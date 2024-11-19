@@ -37,9 +37,8 @@ body {
 }
 
 .img-loading-screen img{
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
+  width: 160px;
+  height: 160px;
 }
 
 
