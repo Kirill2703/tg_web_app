@@ -384,7 +384,7 @@ body {
 .header-quizes {
   color: var(--font-color-primary);
   font-family: var(--font-primary);
-  font-size: 36px;
+  font-size: 20px;
   text-align: center;
 }
 
@@ -403,7 +403,7 @@ body {
 
 .card-quiz {
   border: 1px solid #036465;
-  background-color: (139, 126, 102, 0.3);
+  background-color: #036465;
   border-radius: 20px;
   padding: 12px;
   display: flex;

@@ -16,14 +16,11 @@ const Main = ({ setLoading }) => {
   const [showQuizzes, setShowQuizzes] = useState(false);
   const [flip, setFlip] = useState(false);
   const [randomQuote, setRandomQuote] = useState(() => {
-    // Инициализируем девиз только один раз
     return mottos[Math.floor(Math.random() * mottos.length)];
   });
 
   const tg = window.Telegram.WebApp;
   const chatId = tg.initDataUnsafe?.user?.id;
-
- 
 
   useEffect(() => {
     dispatch(fetchAllUsers());
@@ -65,14 +62,13 @@ const Main = ({ setLoading }) => {
     return <div>User undefined</div>;
   }
 
-  
-  const completedQuizzesCount = currentUser.completedQuizzes.length; 
+  const completedQuizzesCount = currentUser.completedQuizzes.length;
 
   const handleFlip = () => {
-    setFlip(true); 
+    setFlip(true);
     setTimeout(() => {
-      setShowQuizzes((prev) => !prev); 
-      setFlip(false); 
+      setShowQuizzes((prev) => !prev);
+      setFlip(false);
     }, 300);
   };
 
@@ -94,7 +90,7 @@ const Main = ({ setLoading }) => {
             style={{ display: "flex", alignItems: "center" }}
             className="position-mp"
           >
-            {userRank ? `#${userRank}` : "неизвестно"} 
+            {userRank ? `#${userRank}` : "неизвестно"}
           </h2>
         </div>
 
@@ -129,11 +125,10 @@ const Main = ({ setLoading }) => {
             marginTop: "60px",
             justifyContent: "center",
           }}
-          
           onClick={handleFlip}
         >
           <p className={`points-main-page ${flip ? "flip-animation" : ""}`}>
-            {showQuizzes ? completedQuizzesCount  : currentUser.points}
+            {showQuizzes ? completedQuizzesCount : currentUser.points}
           </p>
         </div>
 
