@@ -796,7 +796,7 @@ input::placeholder {
   background-color: #f7dc6f;
   border: 2px solid #f39c12;
 }
-.history-item .pending {
+.pending {
   background-color: #dfe6e9;
   border: 2px solid #b0bec5;
 }
