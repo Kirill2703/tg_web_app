@@ -41,11 +41,27 @@ const History = () => {
     return "pending";
   };
 
+   const getOutcomeText = (outcome, selectedTeam, result, betPoints) => {
+     if (result) {
+       const [team1Goals, team2Goals] = result.split("-").map(Number);
+       if (team1Goals > team2Goals && selectedTeam === "team1") {
+         return `Victory: ${betPoints * 2}`; // Победа команды 1
+       } else if (team2Goals > team1Goals && selectedTeam === "team2") {
+         return `Victory: ${betPoints * 2}`; // Победа команды 2
+       } else if (team1Goals === team2Goals) {
+         return `Refund: ${betPoints}`; // Ничья
+       } else {
+         return `Unfortunately: 0`; // Проигрыш
+       }
+     } else {
+       return `Possible victory: ${betPoints * 2}`; // Если матч не завершён
+     }
+   };
+
   const currentItems = history.slice(
     (currentPage - 1) * pageSize,
     currentPage * pageSize
   );
-
 
   if (historyLoading || predictionsLoading || loading) return <LoadingScreen />;
   if (historyError)
@@ -111,11 +127,13 @@ const History = () => {
                           gap: "6px",
                         }}
                       >
-                        <div className="bet-points-history">
-                          Bet points: {prediction.betPoints}
-                        </div>
                         <div className="total-points-history">
-                          Total: {prediction.betPoints * 2}
+                          {getOutcomeText(
+                            item.outcome,
+                            item.selectedTeam,
+                            result,
+                            betPoints
+                          )}
                         </div>
                       </div>
                     ) : (

@@ -783,22 +783,22 @@ input::placeholder {
 
 .win {
   background-color: #3c8d87;
-  border: 1px solid #28a745;
+  border: 1px solid #102f31;
 }
 
 .lose {
   color: var(--font-color-primary);
-  background-color: #a6534d;
-  border: 1px solid #dc3545;
+  background-color: #e74c3c;
+  border: 1px solid #c0392b;
 }
 
 .draw {
-  background-color: #fff3cd;
-  border: 2px solid #ffc107;
+  background-color: #f7dc6f;
+  border: 2px solid #f39c12;
 }
 .history-item.pending {
-  background-color: #d3d3d3;
-  border: 2px solid #ffc107;
+  background-color: #dfe6e9;
+  border: 2px solid #b0bec5;
 }
 
 .result-text {
