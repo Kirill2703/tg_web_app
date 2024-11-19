@@ -129,6 +129,7 @@ const History = () => {
         </div>
       )}
       <Pagination
+        align="center"
         style={{ marginTop: "20px", textAlign: "center" }}
         current={currentPage}
         total={history.length}

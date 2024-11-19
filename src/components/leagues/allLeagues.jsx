@@ -1,3 +1,4 @@
+import { Pagination } from "antd";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -93,6 +94,10 @@ const AllLeagues = () => {
             />
           </Link>
         </div>
+        <Pagination
+          align="center"
+          style={{ marginTop: "20px", textAlign: "center" }}
+        />
       </div>
     </>
   );

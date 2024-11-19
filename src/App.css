@@ -315,7 +315,6 @@ body {
   animation: pop 1s forwards;
 }
 
-
 .league:nth-child(1) {
   animation-delay: 0.5s;
 }
@@ -691,17 +690,16 @@ input::placeholder {
   margin-top: 8px;
 }
 
-.time-predict{
+.time-predict {
   text-align: center;
   color: var(--font-color-primary);
   font-family: var(--font-primary);
   font-size: 12px;
-  
 }
 
 /* #endregion */
 
-.history-prediction{
+.history-prediction {
   font-size: 20px;
   font-family: var(--font-primary);
   color: var(--font-color-primary);
@@ -709,7 +707,7 @@ input::placeholder {
   margin-top: 20px;
 }
 
-.make-prediction{
+.make-prediction {
   font-size: 16px;
   font-family: var(--font-primary);
   color: var(--font-color-primary);
@@ -717,7 +715,7 @@ input::placeholder {
   margin-top: 20px;
 }
 
-.history-container{
+.history-container {
   margin-top: 20px;
   display: flex;
   flex-direction: column;
@@ -732,7 +730,7 @@ input::placeholder {
   align-items: center;
 }
 
-.history-teams{
+.history-teams {
   font-size: 16px;
   font-family: var(--font-primary);
   color: var(--font-color-primary);
@@ -740,28 +738,47 @@ input::placeholder {
   text-align: center;
 }
 
-.choice-user-history{
+.choice-user-history {
   font-size: 12px;
   font-family: var(--font-primary);
   color: var(--font-color-primary);
 }
 
-.result-history-con{
+.result-history-con {
   font-size: 12px;
   font-family: var(--font-primary);
   color: var(--font-color-primary);
 }
 
-.bet-points-history{
+.bet-points-history {
   font-size: 12px;
   font-family: var(--font-primary);
   color: var(--font-color-primary);
 }
 
-.total-points-history{
+.total-points-history {
   font-size: 12px;
   font-family: var(--font-primary);
   color: var(--font-color-primary);
+}
+
+.ant-pagination .ant-pagination-item-link {
+  color: var(--font-color-primary) !important;
+  opacity: 0.5;
+}
+
+.ant-pagination .ant-pagination-item {
+  background-color: #3c8d87;
+  opacity: 0.5;
+}
+
+.ant-pagination-item-active{
+  background-color: #102f31;
+}
+
+.ant-pagination .ant-pagination-item a {
+  color: var(--font-color-primary);
+  font-family: var(--font-primary);
 }
 
 .win {
