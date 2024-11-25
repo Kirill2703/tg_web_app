@@ -26,8 +26,8 @@ const Quiz = () => {
 
   return (
     <>
-      <div style={{ margin: "0 20px" }}>
-        <h1 className="header-quizes">Квизы</h1>
+      <div style={{ margin: "20px 20px 0 20px" }}>
+        <h1 className="header-quizes">Quizes</h1>
         <div className="container-card-quiz">
           {quizes.map((quiz, index) => {
             const isCompleted = completedQuizzes.includes(quiz._id);
