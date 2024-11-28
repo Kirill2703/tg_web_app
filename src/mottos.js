@@ -2,11 +2,11 @@
 
 
 const mottos = [
-  "Секрет успеха - это начать.",
-  "Каждый день - новая возможность.",
-  "Не останавливайся на достигнутом!",
-  "Твои усилия приведут к успеху.",
-  "Стремись к новым победам!",
+  "The secret to success is to get started",
+  "Every day is a new opportunity.",
+  "Don't stop there!",
+  "Your efforts will lead to success",
+  "Strive for new victories!",
 ];
 
 export default mottos
