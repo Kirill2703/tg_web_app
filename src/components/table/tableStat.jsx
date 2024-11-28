@@ -34,7 +34,7 @@ const TableStat = () => {
   return (
     <div style={{ margin: "0 20px" }}>
       <h2 className="header-table">Leaderboard</h2>
-      <table>
+      <table style={{marginTop: "20px"}}>
         <thead>
           <tr>
             <th>Username</th>
