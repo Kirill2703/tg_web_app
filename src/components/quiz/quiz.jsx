@@ -27,7 +27,7 @@ const Quiz = () => {
   return (
     <>
       <div style={{ margin: "20px 20px 0 20px" }}>
-        <h1 className="header-quizes">Quizes</h1>
+        <h1 className="header-quizes">Quizzes</h1>
         <div className="container-card-quiz">
           {quizes.map((quiz, index) => {
             const isCompleted = completedQuizzes.includes(quiz._id);
@@ -46,7 +46,7 @@ const Quiz = () => {
                   }}
                 >
                   <img
-                    src={require("../../icons/england.svg").default}
+                    src={require("../../icons/quiz.svg").default}
                     alt="England"
                     width={40}
                     height={40}
