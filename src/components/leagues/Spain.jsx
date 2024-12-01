@@ -19,6 +19,7 @@ const Spain = () => {
   const [selectedPrediction, setSelectedPrediction] = useState(null);
   const [betPoints, setBetPoints] = useState(0);
   const [showModal, setShowModal] = useState(false);
+  const [showEndedModal, setShowEndedModal] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
 
   const tg = window.Telegram.WebApp;
@@ -51,6 +52,10 @@ const Spain = () => {
   );
 
   const handleTeamClick = (prediction, team) => {
+    if (prediction.status === "finished") {
+      setShowEndedModal(true);
+      return;
+    }
     setSelectedPrediction({ ...prediction, selectedTeam: team });
     setShowModal(true);
   };
@@ -162,6 +167,29 @@ const Spain = () => {
           </div>
         </div>
       )}
+      {showEndedModal && (
+        <div className="modal-ended">
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              backgroundColor: " rgb(16, 47, 49)",
+              borderRadius: "20px",
+              margin: "0 20px",
+              padding: "10px",
+            }}
+          >
+            <div style={{ marginTop: "20px" }}>
+              <p className="ended-event">The event has already ended</p>
+            </div>
+            <button onClick={() => setShowEndedModal(false)} className="btn-no">
+              <FaTimes />
+            </button>
+          </div>
+        </div>
+      )}
+      
       <Pagination
         align="center"
         style={{ marginTop: "20px", textAlign: "center" }}

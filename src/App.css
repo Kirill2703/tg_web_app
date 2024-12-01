@@ -612,6 +612,19 @@ body {
   font-size: 16px;
 }
 
+.modal-ended{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(45, 62, 61, 0.8);
+  z-index: 1000;
+}
+
 .modal-prediction {
   position: fixed;
   top: 0;
@@ -860,12 +873,12 @@ td {
 
 .heading {
   font-weight: bold;
-  color: #ff6347; /* теплый красный */
+  color: #ff6347; 
 }
 
 .important-text {
   font-weight: bold;
-  color: #32cd32; /* зелёный для важного текста */
+  color: #32cd32; 
 }
 
 .section-header {
@@ -877,7 +890,7 @@ td {
 }
 
 .points {
-  color: #32cd32; /* ярко-зеленый */
+  color: #32cd32; 
   font-weight: bold;
 }
 
