@@ -625,6 +625,13 @@ body {
   z-index: 1000;
 }
 
+.ended-event{
+  font-family: var(--font-primary);
+  color: var(--font-color-primary);
+  tab-size: 16px;
+  margin-bottom: 20px;
+}
+
 .modal-prediction {
   position: fixed;
   top: 0;
