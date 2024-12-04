@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import fetchAllQuestionsByQuizId from "../../../thunks/questionsThunk";
 import ModalOptions from "../questionModal/modalOptions";
+import fetchAllQuizes from "../../../thunks/quizThunk";
 
 const Question = () => {
   const { quizId } = useParams();
@@ -11,13 +12,17 @@ const Question = () => {
   const questions = useSelector((state) => state.questions.questions);
   const loading = useSelector((state) => state.questions.loading);
   const error = useSelector((state) => state.questions.error);
-  const [isModalOpen, setIsModalOpen] = useState(false); // Отслеживаем, открыто ли модальное окно
+  const [isModalOpen, setIsModalOpen] = useState(false); 
   const currentUser = useSelector((state) => state.user.currentUser);
   const quizes = useSelector((state) => state.quiz.quizes);
 
   useEffect(() => {
     dispatch(fetchAllQuestionsByQuizId(quizId));
   }, [dispatch, quizId]);
+
+  useEffect(() => {
+    dispatch(fetchAllQuizes())
+  }, [])
 
   const handleOpenModal = () => {
     setIsModalOpen(true); 
