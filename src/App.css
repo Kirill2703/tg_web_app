@@ -458,6 +458,12 @@ body {
   padding: 20px 0;
 }
 
+.facts-quiz:nth-child(1){
+  font-size: 12px;
+  text-align: justify;
+  padding-bottom: 20px;
+}
+
 .modal {
   position: fixed;
   top: 0;
