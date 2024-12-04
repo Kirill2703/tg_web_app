@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -67,9 +66,9 @@ const Question = () => {
             <strong>+5 баллов</strong>. Покажи, на что ты способен, и будь
             лучшим!
           </p>
-          <p>Quiz complexity: {quiz.complexity}</p>
-          <p>Quantity points for quiz: {quiz.quantityPoints}</p>
-          <p>Quantity quiestions in quiz: {quiz.quantityQuestions}</p>
+          <p>Quiz complexity: {currentQuiz.complexity}</p>
+          <p>Quantity points for quiz: {currentQuiz.quantityPoints}</p>
+          <p>Quantity quiestions in quiz: {currentQuiz.quantityQuestions}</p>
         </div>
       </div>
       {isModalOpen && (
