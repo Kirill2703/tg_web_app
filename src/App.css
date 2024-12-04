@@ -390,13 +390,14 @@ body {
 .quiz-title {
   color: var(--font-color-primary);
   font-family: var(--font-primary);
-  font-size: 8px;
+  font-size: 10px;
   text-align: center;
 }
 
 .container-card-quiz {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
   justify-content: space-between;
   margin-top: 40px;
 }
@@ -409,7 +410,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 160px;
+  width: 45%;
   opacity: 0;
   animation: pop 1s forwards;
 }

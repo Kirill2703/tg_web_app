@@ -47,7 +47,7 @@ const Quiz = () => {
                   >
                     <img
                       src={require("../../icons/quiz.svg").default}
-                      alt="England"
+                      alt="Quiz"
                       width={40}
                       height={40}
                     />
