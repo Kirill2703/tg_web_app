@@ -11,7 +11,7 @@ const Question = () => {
   const questions = useSelector((state) => state.questions.questions);
   const loading = useSelector((state) => state.questions.loading);
   const error = useSelector((state) => state.questions.error);
-  const [isModalOpen, setIsModalOpen] = useState(false); 
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const currentUser = useSelector((state) => state.user.currentUser);
   const quizes = useSelector((state) => state.quiz.quizes);
 
@@ -20,15 +20,15 @@ const Question = () => {
   }, [dispatch, quizId]);
 
   useEffect(() => {
-    dispatch(fetchAllQuizes())
-  }, [])
+    dispatch(fetchAllQuizes());
+  }, []);
 
   const handleOpenModal = () => {
-    setIsModalOpen(true); 
+    setIsModalOpen(true);
   };
 
   const handleCloseModal = () => {
-    setIsModalOpen(false); 
+    setIsModalOpen(false);
   };
 
   if (loading) {
@@ -56,8 +56,21 @@ const Question = () => {
         ) : (
           <h2>Квиз не найден</h2>
         )}
+
+        <div>
+          <p className="description-quiz">
+            Quiz complexity: {currentQuiz.complexity}
+          </p>
+          <p className="description-quiz">
+            Quantity points for quiz: {currentQuiz.quantityPoints}
+          </p>
+          <p className="description-quiz">
+            Quantity quiestions in quiz: {currentQuiz.quantityQuestions}
+          </p>
+        </div>
+
         <button onClick={handleOpenModal} className="btn-start-quiz">
-          Начать
+          Start
         </button>
 
         <div>
@@ -65,15 +78,6 @@ const Question = () => {
             Проверь свои знания и набери очки! За каждый правильный ответ —{" "}
             <strong>+5 баллов</strong>. Покажи, на что ты способен, и будь
             лучшим!
-          </p>
-          <p className="facts-quiz">
-            Quiz complexity: {currentQuiz.complexity}
-          </p>
-          <p className="facts-quiz">
-            Quantity points for quiz: {currentQuiz.quantityPoints}
-          </p>
-          <p className="facts-quiz">
-            Quantity quiestions in quiz: {currentQuiz.quantityQuestions}
           </p>
         </div>
       </div>
@@ -85,4 +89,3 @@ const Question = () => {
 };
 
 export default Question;
-

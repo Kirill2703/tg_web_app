@@ -452,16 +452,16 @@ body {
 .facts-quiz {
   font-family: var(--font-primary);
   color: var(--font-color-primary);
-  font-size: 16px;
+  font-size: 12px;
   text-align: justify;
   font-style: italic;
   padding: 20px 0;
 }
 
-.facts-quiz:nth-child(1){
+.description-quiz{
+  font-family: var(--font-primary);
+  color: var(--font-color-primary);
   font-size: 12px;
-  text-align: justify;
-  padding-bottom: 20px;
 }
 
 .modal {
@@ -615,8 +615,9 @@ body {
 .team {
   color: var(--font-color-primary);
   font-family: var(--font-primary);
-  font-size: 16px;
+  font-size: 12px;
   transition: 0.3s all;
+  width: 100px;
 }
 
 .team:hover {
