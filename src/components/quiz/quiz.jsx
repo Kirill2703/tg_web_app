@@ -28,34 +28,35 @@ const Quiz = () => {
     <>
       <div style={{ margin: "20px 20px 0 20px" }}>
         <h1 className="header-quizes">Quizzes</h1>
-        <div className="container-card-quiz">
-          {quizes.map((quiz, index) => {
-            const isCompleted = completedQuizzes.includes(quiz._id);
-
-            return (
-              <Link
-                to={`/quiz/${quiz._id}`}
-                key={quiz._id}
-                style={{ textDecoration: "none" }}
-              >
-                <div
-                  className="card-quiz"
-                  style={{
-                    backgroundColor: isCompleted ? "#b34a4a" : "#e6f2f2",
-                    animationDelay: `${index * 0.5}s`,
-                  }}
+        <div>
+          <div className="container-card-quiz">
+            {quizes.map((quiz, index) => {
+              const isCompleted = completedQuizzes.includes(quiz._id);
+              return (
+                <Link
+                  to={`/quiz/${quiz._id}`}
+                  key={quiz._id}
+                  style={{ textDecoration: "none" }}
                 >
-                  <img
-                    src={require("../../icons/quiz.svg").default}
-                    alt="England"
-                    width={40}
-                    height={40}
-                  />
-                  <p className="quiz-title">{quiz.title}</p>
-                </div>
-              </Link>
-            );
-          })}
+                  <div
+                    className="card-quiz"
+                    style={{
+                      backgroundColor: isCompleted ? "#b34a4a" : "#e6f2f2",
+                      animationDelay: `${index * 0.5}s`,
+                    }}
+                  >
+                    <img
+                      src={require("../../icons/quiz.svg").default}
+                      alt="England"
+                      width={40}
+                      height={40}
+                    />
+                    <p className="quiz-title">{quiz.title}</p>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
         </div>
       </div>
     </>
