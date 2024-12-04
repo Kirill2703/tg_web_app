@@ -455,6 +455,7 @@ body {
   font-size: 16px;
   text-align: justify;
   font-style: italic;
+  padding: 20px 0;
 }
 
 .modal {

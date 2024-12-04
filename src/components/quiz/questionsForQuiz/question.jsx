@@ -66,9 +66,15 @@ const Question = () => {
             <strong>+5 баллов</strong>. Покажи, на что ты способен, и будь
             лучшим!
           </p>
-          <p>Quiz complexity: {currentQuiz.complexity}</p>
-          <p>Quantity points for quiz: {currentQuiz.quantityPoints}</p>
-          <p>Quantity quiestions in quiz: {currentQuiz.quantityQuestions}</p>
+          <p className="facts-quiz">
+            Quiz complexity: {currentQuiz.complexity}
+          </p>
+          <p className="facts-quiz">
+            Quantity points for quiz: {currentQuiz.quantityPoints}
+          </p>
+          <p className="facts-quiz">
+            Quantity quiestions in quiz: {currentQuiz.quantityQuestions}
+          </p>
         </div>
       </div>
       {isModalOpen && (
