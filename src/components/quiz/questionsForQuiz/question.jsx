@@ -75,9 +75,8 @@ const Question = () => {
 
         <div>
           <p className="facts-quiz">
-            Проверь свои знания и набери очки! За каждый правильный ответ —{" "}
-            <strong>+5 баллов</strong>. Покажи, на что ты способен, и будь
-            лучшим!
+            Test your knowledge and score points! For each correct answer —{" "}
+            <strong>+5 points</strong>. Show what you can do and be The best!
           </p>
         </div>
       </div>
