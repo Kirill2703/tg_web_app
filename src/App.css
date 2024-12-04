@@ -594,6 +594,16 @@ body {
   border: 1px solid #036465;
   padding: 10px 10px;
   background-color: rgba(139, 126, 102, 0.3);
+  display: flex;
+  justify-content: center;
+}
+
+.predict-item > div {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  flex: 1; 
+  text-align: center;
 }
 
 .team {
@@ -720,7 +730,7 @@ input::placeholder {
   color: var(--font-color-primary);
   font-family: var(--font-primary);
   font-size: 12px;
-  margin-top: 8px;
+  margin-top: 5px;
 }
 
 .time-predict {
