@@ -462,6 +462,7 @@ body {
   font-family: var(--font-primary);
   color: var(--font-color-primary);
   font-size: 12px;
+  text-align: center;
 }
 
 .modal {
@@ -627,7 +628,7 @@ body {
 .vs {
   color: var(--font-color-primary);
   font-family: var(--font-primary);
-  font-size: 16px;
+  font-size: 12px;
 }
 
 .modal-ended{
