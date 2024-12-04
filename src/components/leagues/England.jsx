@@ -59,15 +59,17 @@ const England = () => {
     const [hours, minutes] = eventTime.split(":").map(Number);
     eventDate.setHours(hours, minutes, 0, 0);
     const currentTime = new Date();
+    
+    if (prediction.status === "finished") {
+      setShowEndedModal(true);
+      return;
+    }
 
     if (currentTime > eventDate) {
       setShowStartedModal(true);
       return;
     }
-    if (prediction.status === "finished") {
-      setShowEndedModal(true);
-      return;
-    }
+
     setSelectedPrediction({ ...prediction, selectedTeam: team });
     setShowModal(true);
   };

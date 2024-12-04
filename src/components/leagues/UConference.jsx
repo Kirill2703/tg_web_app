@@ -59,12 +59,13 @@ const UConference = () => {
     eventDate.setHours(hours, minutes, 0, 0);
     const currentTime = new Date();
 
-    if (currentTime > eventDate) {
-      setShowStartedModal(true);
-      return;
-    }
     if (prediction.status === "finished") {
       setShowEndedModal(true);
+      return;
+    }
+    
+    if (currentTime > eventDate) {
+      setShowStartedModal(true);
       return;
     }
     setSelectedPrediction({ ...prediction, selectedTeam: team });

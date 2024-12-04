@@ -46,7 +46,7 @@ const France = () => {
   const francePredictions = predictions
     .filter((predict) => predict.country == "France")
     .sort((a, b) => new Date(b.date) - new Date(a.date));
-  
+
   const currentPredictions = francePredictions.slice(
     (currentPage - 1) * pageSize,
     currentPage * pageSize
@@ -59,14 +59,16 @@ const France = () => {
     eventDate.setHours(hours, minutes, 0, 0);
     const currentTime = new Date();
 
-    if (currentTime > eventDate) {
-      setShowStartedModal(true);
-      return;
-    }
     if (prediction.status === "finished") {
       setShowEndedModal(true);
       return;
     }
+    
+    if (currentTime > eventDate) {
+      setShowStartedModal(true);
+      return;
+    }
+
     setSelectedPrediction({ ...prediction, selectedTeam: team });
     setShowModal(true);
   };
