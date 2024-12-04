@@ -44,7 +44,7 @@ const Question = () => {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          gap: "120px"
+          gap: "40px",
         }}
       >
         {currentQuiz ? (
@@ -57,7 +57,14 @@ const Question = () => {
         </button>
 
         <div>
-          <p className="facts-quiz">Факты или подсказки. Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam deserunt nisi culpa nam et, perferendis veritatis quisquam illo omnis recusandae nobis possimus corporis. Debitis, doloribus! Nobis explicabo sapiente aut quae fuga ad voluptatum hic delectus, culpa vel pariatur repudiandae dolorem.</p>
+          <p className="facts-quiz">
+            Проверь свои знания и набери очки! За каждый правильный ответ —{" "}
+            <strong>+5 баллов</strong>. Покажи, на что ты способен, и будь
+            лучшим!
+          </p>
+          <p>Quiz complexity: {quiz.complexity}</p>
+          <p>Quantity points for quiz: {quiz.quantityPoints}</p>
+          <p>Quantity quiestions in quiz: {quiz.quantityQuestions}</p>
         </div>
       </div>
       {isModalOpen && (
