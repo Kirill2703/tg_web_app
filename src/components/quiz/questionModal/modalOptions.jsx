@@ -178,7 +178,7 @@ const ModalOptions = ({ onClose, chatId }) => {
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [quizCompleted, setQuizCompleted] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [timers, setTimers] = useState(Array(questions.length).fill(30)); // Сохраняем таймеры для каждого слайда
+  const [timers, setTimers] = useState(Array(questions.length).fill(30)); // Таймеры для каждого слайда
   const sliderRef = useRef(null);
 
   const settings = {
@@ -190,7 +190,7 @@ const ModalOptions = ({ onClose, chatId }) => {
     swipe: false, // Отключаем свайп
     adaptiveHeight: true,
     afterChange: (current) => {
-      setCurrentQuestionIndex(current); // Обновляем текущий индекс слайда
+      setCurrentQuestionIndex(current); // Обновляем индекс текущего слайда
     },
   };
 
@@ -198,8 +198,8 @@ const ModalOptions = ({ onClose, chatId }) => {
   useEffect(() => {
     const timer = setInterval(() => {
       setTimers((prevTimers) => {
-        // Обновляем только таймер для текущего слайда
         const newTimers = [...prevTimers];
+        // Обновляем только таймер для текущего слайда
         if (newTimers[currentQuestionIndex] > 0) {
           newTimers[currentQuestionIndex] -= 1;
         }
