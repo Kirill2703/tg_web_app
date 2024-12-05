@@ -41,6 +41,13 @@ const England = () => {
     dispatch(fetchAllPredictions());
   }, [dispatch]);
 
+  useEffect(() => {
+    if (currentUser?.username) {
+      dispatch(fetchAllUserPredictions(currentUser.username)); 
+      
+    }
+  }, [dispatch, currentUser?.username]);
+
   if (loading) {
     return <LoadingScreen />;
   }
