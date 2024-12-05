@@ -17,8 +17,6 @@ const ModalOptions = ({ onClose, chatId }) => {
   );
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [quizCompleted, setQuizCompleted] = useState(false);
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(30);
 
   const settings = {
     dots: true,
@@ -27,32 +25,8 @@ const ModalOptions = ({ onClose, chatId }) => {
     slidesToShow: 1,
     slidesToScroll: 1,
     swipeToSlide: true,
-    afterChange: (current) => {
-      setCurrentQuestionIndex(current); // Следим за текущим слайдом
-    },
-    beforeChange: (current, next) => {
-      if (next <= current) return false; // Запрещаем возврат назад
-    },
     adaptiveHeight: true,
   };
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft((prev) => {
-        if (prev <= 1) {
-          handleTimeOut();
-          return 30; // Сбрасываем таймер на 30 секунд
-        }
-        return prev - 1;
-      });
-    }, 1000);
-
-    return () => clearInterval(timer); // Очищаем таймер при смене вопроса
-  }, [currentQuestionIndex]);
-
-  useEffect(() => {
-    setTimeLeft(30); // Сбрасываем таймер при загрузке нового вопроса
-  }, [currentQuestionIndex]);
 
   useEffect(() => {
     const checkIfQuizCompleted = async () => {
@@ -107,7 +81,7 @@ const ModalOptions = ({ onClose, chatId }) => {
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex((prev) => prev + 1);
     } else {
-      setQuizCompleted(true); // Завершаем квиз на последнем вопросе
+      setQuizCompleted(true);
     }
   };
 
@@ -141,12 +115,6 @@ const ModalOptions = ({ onClose, chatId }) => {
                 <h3 className="question-title-modal">
                   {question.questionText}
                 </h3>
-                <div className="timer" style={{ margin: "10px 0" }}>
-                  <p>
-                    Time left: {index === currentQuestionIndex ? timeLeft : "—"}{" "}
-                    s
-                  </p>
-                </div>
                 <ul style={{ listStyle: "none", padding: "0", margin: "0" }}>
                   {question.options.map((option, optionIndex) => (
                     <li
