@@ -416,6 +416,12 @@ body {
   animation: pop 1s forwards;
 }
 
+.timer{
+  color: var(--font-color-primary);
+  font-family: var(--font-primary);
+  font-size: 12px;
+}
+
 @keyframes pop {
   0% {
     transform: scale(0);

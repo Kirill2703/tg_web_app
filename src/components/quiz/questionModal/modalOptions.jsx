@@ -11,12 +11,14 @@ const ModalOptions = ({ onClose, chatId }) => {
 
   const [selectedAnswers, setSelectedAnswers] = useState(
     Array(questions.length).fill(null)
-  ); 
+  );
   const [isAnswered, setIsAnswered] = useState(
     Array(questions.length).fill(false)
-  ); 
+  );
   const [correctAnswers, setCorrectAnswers] = useState(0);
-  const [quizCompleted, setQuizCompleted] = useState(false); 
+  const [quizCompleted, setQuizCompleted] = useState(false);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [timeLeft, setTimeLeft] = useState(30);
 
   const settings = {
     dots: true,
@@ -27,6 +29,24 @@ const ModalOptions = ({ onClose, chatId }) => {
     swipeToSlide: true,
     adaptiveHeight: true,
   };
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => {
+        if (prev <= 1) {
+          handleTimeOut();
+          return 30; // Сбрасываем таймер на 30 секунд
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(timer); // Очищаем таймер при смене вопроса
+  }, [currentQuestionIndex]);
+
+  useEffect(() => {
+    setTimeLeft(30); // Сбрасываем таймер при загрузке нового вопроса
+  }, [currentQuestionIndex]);
 
   useEffect(() => {
     const checkIfQuizCompleted = async () => {
@@ -41,7 +61,6 @@ const ModalOptions = ({ onClose, chatId }) => {
           const userCompletedQuizzes = data.user?.completedQuizzes || [];
           const quizId = questions[0].quizId;
 
-          
           if (userCompletedQuizzes.includes(quizId)) {
             setQuizCompleted(true);
           }
@@ -57,42 +76,52 @@ const ModalOptions = ({ onClose, chatId }) => {
   }, [chatId, questions]);
 
   const handleAnswerSelect = (index, answer) => {
-    if (isAnswered[index]) return; 
+    if (isAnswered[index]) return;
 
     const newAnswers = [...selectedAnswers];
-    newAnswers[index] = answer; 
+    newAnswers[index] = answer;
     setSelectedAnswers(newAnswers);
 
-    
     if (answer === questions[index].correctAnswer) {
-      setCorrectAnswers((prev) => prev + 1); 
+      setCorrectAnswers((prev) => prev + 1);
     }
 
-    
     const newAnsweredStatus = [...isAnswered];
     newAnsweredStatus[index] = true;
     setIsAnswered(newAnsweredStatus);
   };
 
+  const handleTimeOut = () => {
+    if (isAnswered[currentQuestionIndex]) return;
+
+    const newAnsweredStatus = [...isAnswered];
+    newAnsweredStatus[currentQuestionIndex] = true;
+    setIsAnswered(newAnsweredStatus);
+
+    if (currentQuestionIndex < questions.length - 1) {
+      setCurrentQuestionIndex((prev) => prev + 1);
+    } else {
+      setQuizCompleted(true); // Завершаем квиз на последнем вопросе
+    }
+  };
+
   const handleSubmit = () => {
     if (!chatId) {
       console.error("Chat ID is undefined!");
-      return; 
+      return;
     }
 
-    
     dispatch(
       updateUserPointsQuiz({
         chatId,
         correctAnswers,
         quizId: questions[0].quizId,
-      }) 
+      })
     );
     onClose();
   };
 
-  
-  const allAnswered = isAnswered.every(Boolean); 
+  const allAnswered = isAnswered.every(Boolean);
 
   return (
     <div className="modal">
@@ -106,6 +135,12 @@ const ModalOptions = ({ onClose, chatId }) => {
                 <h3 className="question-title-modal">
                   {question.questionText}
                 </h3>
+                <div className="timer" style={{ margin: "10px 0" }}>
+                  <p>
+                    Time left: {index === currentQuestionIndex ? timeLeft : "—"}{" "}
+                    seconds
+                  </p>
+                </div>
                 <ul style={{ listStyle: "none", padding: "0", margin: "0" }}>
                   {question.options.map((option, optionIndex) => (
                     <li
