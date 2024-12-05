@@ -148,7 +148,7 @@ const ModalOptions = ({ onClose, chatId }) => {
         </button>
         {allAnswered && !quizCompleted && (
           <button onClick={handleSubmit} className="complete-button">
-            Get points
+            Get {correctAnswers * 5} points
           </button>
         )}
       </div>
