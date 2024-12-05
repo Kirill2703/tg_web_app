@@ -59,7 +59,7 @@ const Main = ({ setLoading }) => {
   }
 
   if (!currentUser) {
-    return <div>User undefined</div>;
+    return <LoadingScreen />;
   }
 
   const completedQuizzesCount = currentUser.completedQuizzes.length;

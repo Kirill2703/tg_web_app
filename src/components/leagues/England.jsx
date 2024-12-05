@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import LoadingScreen from "../loadingScreen/loadingScreen";
 import { createUserPrediction } from "../../thunks/userPredictionThunk";
 import fetchAllPredictions from "../../thunks/predictionThunk";
+import { fetchAllUserPredictions } from "../../thunks/userPredictionThunk";
 import { fetchUserNameByChatId } from "../../thunks/userThunk";
 import { FaCheck, FaTimes } from "react-icons/fa";
 import { Pagination } from "antd";
@@ -15,12 +16,16 @@ const England = () => {
   const { predictions, loading, error } = useSelector(
     (state) => state.predictions
   );
-
+  const userPredictions = useSelector(
+    (state) => state.userPredictions.predictions
+  );
   const [selectedPrediction, setSelectedPrediction] = useState(null);
   const [betPoints, setBetPoints] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const [showEndedModal, setShowEndedModal] = useState(false);
   const [showStartedModal, setShowStartedModal] = useState(false);
+  const [showAlreadyPredictedModal, setShowAlreadyPredictedModal] =
+    useState(false);
   const [currentPage, setCurrentPage] = useState(1);
 
   const tg = window.Telegram.WebApp;
@@ -43,6 +48,7 @@ const England = () => {
   if (error) {
     return <div>Ошибка: {error}</div>;
   }
+  
 
   const englandPredictions = predictions
     .filter((predict) => predict.country === "England")
@@ -67,6 +73,15 @@ const England = () => {
 
     if (currentTime > eventDate) {
       setShowStartedModal(true);
+      return;
+    }
+
+    const userPrediction = userPredictions.find(
+      (userPred) => userPred.predictionId === prediction._id
+    );
+
+    if (userPrediction) {
+      setShowAlreadyPredictedModal(true);
       return;
     }
 
@@ -128,6 +143,7 @@ const England = () => {
             >
               <span className="vs">vs</span>
               <p className="date-predict">{formatDate(prediction.date)}</p>
+              <p className="date-predict">{prediction.time}</p>
             </div>
             <div onClick={() => handleTeamClick(prediction, prediction.team2)}>
               <p className="team">{prediction.team2}</p>
@@ -219,6 +235,33 @@ const England = () => {
             </div>
             <button
               onClick={() => setShowStartedModal(false)}
+              className="btn-no"
+            >
+              <FaTimes />
+            </button>
+          </div>
+        </div>
+      )}
+      {showAlreadyPredictedModal && (
+        <div className="modal-already-predicted">
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              backgroundColor: " rgb(16, 47, 49)",
+              borderRadius: "20px",
+              margin: "0 20px",
+              padding: "10px",
+            }}
+          >
+            <div style={{ marginTop: "20px" }}>
+              <p className="already-predicted">
+                Вы уже сделали прогноз на этот матч.
+              </p>
+            </div>
+            <button
+              onClick={() => setShowAlreadyPredictedModal(false)}
               className="btn-no"
             >
               <FaTimes />
