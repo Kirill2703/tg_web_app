@@ -17,7 +17,7 @@ const England = () => {
     (state) => state.predictions
   );
   const userPredictions = useSelector(
-    (state) => state.userPredictions.predictions
+    (state) => state.userpredictions.userpredictions
   );
   const [selectedPrediction, setSelectedPrediction] = useState(null);
   const [betPoints, setBetPoints] = useState(0);
