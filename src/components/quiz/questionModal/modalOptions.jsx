@@ -178,9 +178,8 @@ const ModalOptions = ({ onClose, chatId }) => {
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [quizCompleted, setQuizCompleted] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(30);
-
-  const sliderRef = useRef(null); // Реф для управления слайдами
+  const [timers, setTimers] = useState(Array(questions.length).fill(30)); // Сохраняем таймеры для каждого слайда
+  const sliderRef = useRef(null);
 
   const settings = {
     dots: true,
@@ -195,22 +194,20 @@ const ModalOptions = ({ onClose, chatId }) => {
     },
   };
 
+  // Таймер отсчета времени для каждого вопроса
   useEffect(() => {
     const timer = setInterval(() => {
-      setTimeLeft((prev) => {
-        if (prev <= 1) {
-          handleTimeOut();
-          return 30; // Сбрасываем таймер на следующем вопросе
+      setTimers((prevTimers) => {
+        // Обновляем только таймер для текущего слайда
+        const newTimers = [...prevTimers];
+        if (newTimers[currentQuestionIndex] > 0) {
+          newTimers[currentQuestionIndex] -= 1;
         }
-        return prev - 1;
+        return newTimers;
       });
     }, 1000);
 
     return () => clearInterval(timer); // Очищаем таймер при смене слайда
-  }, [currentQuestionIndex]);
-
-  useEffect(() => {
-    setTimeLeft(30); // Сбрасываем таймер при смене слайда
   }, [currentQuestionIndex]);
 
   useEffect(() => {
@@ -308,8 +305,7 @@ const ModalOptions = ({ onClose, chatId }) => {
                 </h3>
                 <div className="timer" style={{ margin: "10px 0" }}>
                   <p>
-                    Time left: {index === currentQuestionIndex ? timeLeft : "—"}{" "}
-                    seconds
+                    Time left: {timers[index] > 0 ? timers[index] : "—"} seconds
                   </p>
                 </div>
                 <ul style={{ listStyle: "none", padding: "0", margin: "0" }}>
