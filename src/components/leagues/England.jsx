@@ -16,9 +16,6 @@ const England = () => {
   const { predictions, loading, error } = useSelector(
     (state) => state.predictions
   );
-  const userPredictions = useSelector(
-    (state) => state.userPredictions.predictions
-  );
   const [selectedPrediction, setSelectedPrediction] = useState(null);
   const [betPoints, setBetPoints] = useState(0);
   const [showModal, setShowModal] = useState(false);
