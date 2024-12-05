@@ -17,15 +17,13 @@ const England = () => {
     (state) => state.predictions
   );
   const userPredictions = useSelector(
-    (state) => state.userPredictions.userPredictions
+    (state) => state.userPredictions.predictions
   );
   const [selectedPrediction, setSelectedPrediction] = useState(null);
   const [betPoints, setBetPoints] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const [showEndedModal, setShowEndedModal] = useState(false);
   const [showStartedModal, setShowStartedModal] = useState(false);
-  const [showAlreadyPredictedModal, setShowAlreadyPredictedModal] =
-    useState(false);
   const [currentPage, setCurrentPage] = useState(1);
 
   const tg = window.Telegram.WebApp;
@@ -41,13 +39,6 @@ const England = () => {
     dispatch(fetchAllPredictions());
   }, [dispatch]);
 
-  useEffect(() => {
-    if (currentUser?.username) {
-      dispatch(fetchAllUserPredictions(currentUser.username)); 
-      
-    }
-  }, [dispatch, currentUser?.username]);
-
   if (loading) {
     return <LoadingScreen />;
   }
@@ -55,7 +46,6 @@ const England = () => {
   if (error) {
     return <div>Ошибка: {error}</div>;
   }
-  
 
   const englandPredictions = predictions
     .filter((predict) => predict.country === "England")
@@ -72,7 +62,7 @@ const England = () => {
     const [hours, minutes] = eventTime.split(":").map(Number);
     eventDate.setHours(hours, minutes, 0, 0);
     const currentTime = new Date();
-    
+
     if (prediction.status === "finished") {
       setShowEndedModal(true);
       return;
@@ -80,15 +70,6 @@ const England = () => {
 
     if (currentTime > eventDate) {
       setShowStartedModal(true);
-      return;
-    }
-
-    const userPrediction = userPredictions.find(
-      (userPred) => userPred.predictionId === prediction._id
-    );
-
-    if (userPrediction) {
-      setShowAlreadyPredictedModal(true);
       return;
     }
 
@@ -242,33 +223,6 @@ const England = () => {
             </div>
             <button
               onClick={() => setShowStartedModal(false)}
-              className="btn-no"
-            >
-              <FaTimes />
-            </button>
-          </div>
-        </div>
-      )}
-      {showAlreadyPredictedModal && (
-        <div className="modal-already-predicted">
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              backgroundColor: " rgb(16, 47, 49)",
-              borderRadius: "20px",
-              margin: "0 20px",
-              padding: "10px",
-            }}
-          >
-            <div style={{ marginTop: "20px" }}>
-              <p className="already-predicted">
-                Вы уже сделали прогноз на этот матч.
-              </p>
-            </div>
-            <button
-              onClick={() => setShowAlreadyPredictedModal(false)}
               className="btn-no"
             >
               <FaTimes />
