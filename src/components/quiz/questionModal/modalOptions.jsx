@@ -27,6 +27,12 @@ const ModalOptions = ({ onClose, chatId }) => {
     slidesToShow: 1,
     slidesToScroll: 1,
     swipeToSlide: true,
+    afterChange: (current) => {
+      setCurrentQuestionIndex(current); // Следим за текущим слайдом
+    },
+    beforeChange: (current, next) => {
+      if (next <= current) return false; // Запрещаем возврат назад
+    },
     adaptiveHeight: true,
   };
 
@@ -138,7 +144,7 @@ const ModalOptions = ({ onClose, chatId }) => {
                 <div className="timer" style={{ margin: "10px 0" }}>
                   <p>
                     Time left: {index === currentQuestionIndex ? timeLeft : "—"}{" "}
-                    seconds
+                    s
                   </p>
                 </div>
                 <ul style={{ listStyle: "none", padding: "0", margin: "0" }}>

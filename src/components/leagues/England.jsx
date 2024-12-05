@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import LoadingScreen from "../loadingScreen/loadingScreen";
 import { createUserPrediction } from "../../thunks/userPredictionThunk";
 import fetchAllPredictions from "../../thunks/predictionThunk";
-import { fetchAllUserPredictions } from "../../thunks/userPredictionThunk";
+
 import { fetchUserNameByChatId } from "../../thunks/userThunk";
 import { FaCheck, FaTimes } from "react-icons/fa";
 import { Pagination } from "antd";
