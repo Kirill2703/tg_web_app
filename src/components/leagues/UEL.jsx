@@ -68,7 +68,7 @@ const UEL = () => {
       setShowStartedModal(true);
       return;
     }
-    
+
     setSelectedPrediction({ ...prediction, selectedTeam: team });
     setShowModal(true);
   };
@@ -127,9 +127,11 @@ const UEL = () => {
                 flexDirection: "column",
               }}
             >
-              <span className="vs">vs</span>
               <p className="date-predict">{formatDate(prediction.date)}</p>
+              <span className="vs">vs</span>
+              <p className="date-predict">{prediction.time}</p>
             </div>
+
             <div onClick={() => handleTeamClick(prediction, prediction.team2)}>
               <p className="team">{prediction.team2}</p>
             </div>

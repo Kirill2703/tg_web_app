@@ -126,8 +126,9 @@ const UConference = () => {
                 flexDirection: "column",
               }}
             >
-              <span className="vs">vs</span>
               <p className="date-predict">{formatDate(prediction.date)}</p>
+              <span className="vs">vs</span>
+              <p className="date-predict">{prediction.time}</p>
             </div>
             <div onClick={() => handleTeamClick(prediction, prediction.team2)}>
               <p className="team">{prediction.team2}</p>
@@ -225,7 +226,7 @@ const UConference = () => {
           </div>
         </div>
       )}
-      
+
       <Pagination
         align="center"
         style={{ marginTop: "20px", textAlign: "center" }}
