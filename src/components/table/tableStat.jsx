@@ -38,15 +38,15 @@ const TableStat = () => {
         <thead>
           <tr>
             <th>Username</th>
-            <th>Points</th>
-            <th>Quizes</th>
+            <th>Очки</th>
+            <th>Квизы</th>
           </tr>
         </thead>
         <tbody>
           {sortedUsers.map((user) => (
             <tr
               key={user.chatId}
-              ref={user.chatId === currentUser?.chatId ? currentUserRef : null} // Устанавливаем ссылку
+              ref={user.chatId === currentUser?.chatId ? currentUserRef : null} 
               className={
                 user.chatId === currentUser?.chatId ? "highlight-row" : ""
               }

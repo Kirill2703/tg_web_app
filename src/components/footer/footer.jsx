@@ -10,7 +10,7 @@ const Footer = () => {
         <Link to="/" className="link-nav-menu">
           <div className="icon-text-container">
             <FaHome className="icon" />
-            <span>Home</span>
+            <span>Главная</span>
           </div>
         </Link>
       </div>
@@ -18,7 +18,7 @@ const Footer = () => {
         <Link to="/prediction" className="link-nav-menu">
           <div className="icon-text-container">
             <FaBullseye className="icon" />
-            <span>Predictions</span>
+            <span>Прогнозы</span>
           </div>
         </Link>
       </div>
@@ -26,7 +26,7 @@ const Footer = () => {
         <Link to="/quiz" className="link-nav-menu">
           <div className="icon-text-container">
             <FaRegLightbulb className="icon" />
-            <span>Quiz</span>
+            <span>Квизы</span>
           </div>
         </Link>
       </div>
@@ -34,7 +34,7 @@ const Footer = () => {
         <Link to="/table" className="link-nav-menu">
           <div className="icon-text-container">
             <FaTrophy className="icon" />
-            <span>Table</span>
+            <span>Таблица</span>
           </div>
         </Link>
       </div>

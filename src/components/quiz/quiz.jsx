@@ -27,7 +27,7 @@ const Quiz = () => {
   return (
     <>
       <div style={{ margin: "20px 20px 0 20px" }}>
-        <h1 className="header-quizes">Quizzes</h1>
+        <h1 className="header-quizes">Квизы</h1>
         <div>
           <div className="container-card-quiz">
             {quizes.map((quiz, index) => {

@@ -83,7 +83,7 @@ const Main = ({ setLoading }) => {
           }}
         >
           <h1 className="username-main-page">
-            Hello, <br />
+            Привет, <br />
             {currentUser.username}&#128075;
           </h1>
           <h2
@@ -105,17 +105,17 @@ const Main = ({ setLoading }) => {
         >
           <button className="btn-link-main-page">
             <Link to="/rules" className="link-list-mp">
-              Footwise Rules
+              Правила FootWise
             </Link>
           </button>
           <button className="btn-link-main-page">
             <Link to="/history" className="link-list-mp">
-              Prediction History
+              История прогнозов
             </Link>
           </button>
           <button className="btn-link-main-page">
             <Link to="/table" className="link-list-mp">
-              Table of leaders
+              Таблица лидеров
             </Link>
           </button>
         </div>

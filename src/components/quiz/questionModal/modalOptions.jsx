@@ -107,7 +107,7 @@ const ModalOptions = ({ onClose, chatId }) => {
     <div className="modal">
       <div className="modal-content">
         {quizCompleted ? (
-          <p>The quiz has been completed! You can't go through it again.</p>
+          <p>Квиз уже был пройден! Ты не можешь пройти его ещё раз!</p>
         ) : (
           <Slider {...settings}>
             {questions.map((question, index) => (
@@ -144,11 +144,11 @@ const ModalOptions = ({ onClose, chatId }) => {
           </Slider>
         )}
         <button onClick={onClose} className="close-button">
-          Close
+          Закрыть
         </button>
         {allAnswered && !quizCompleted && (
           <button onClick={handleSubmit} className="complete-button">
-            Get {correctAnswers * 5} points
+            Get {correctAnswers * 5} очков
           </button>
         )}
       </div>

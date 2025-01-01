@@ -194,7 +194,7 @@ const England = () => {
             }}
           >
             <div style={{ marginTop: "20px" }}>
-              <p className="ended-event">The event has already ended</p>
+              <p className="ended-event">Событие уже закончено</p>
             </div>
             <button onClick={() => setShowEndedModal(false)} className="btn-no">
               <FaTimes />
@@ -216,7 +216,7 @@ const England = () => {
             }}
           >
             <div style={{ marginTop: "20px" }}>
-              <p className="started-event">The event has already started</p>
+              <p className="started-event">Событие уже началось</p>
             </div>
             <button
               onClick={() => setShowStartedModal(false)}

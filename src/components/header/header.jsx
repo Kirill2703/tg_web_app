@@ -33,35 +33,3 @@ const Header = () => {
 };
 
 export default Header;
-
-// {
-//   currentUser ? (
-//     <>
-//       {/* <div>Твои очки: {currentUser.points}</div> */}
-
-//       <div className="header-username">
-//         <RiUserFill />
-//         <span
-//           style={{
-//             paddingLeft: "8px",
-//           }}
-//         >
-//           Footwise
-//         </span>
-//       </div>
-//     </>
-//   ) : (
-//     <p
-//       style={{
-//         color: "whitesmoke",
-//         fontSize: "16px",
-//         display: "flex",
-//         justifyContent: "center",
-//         fontFamily: "ActayWide",
-//       }}
-//     >
-//       <RiUserFill />
-//       Пользователь не найден
-//     </p>
-//   );
-// }

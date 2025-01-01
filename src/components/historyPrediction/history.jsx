@@ -52,10 +52,10 @@ const History = () => {
       } else if (outcome === "draw") {
         return `Refund: ${betPoints}`;
       } else if (outcome === "Lose") {
-        return `Unfortunately: 0`;
+        return `Не в этот раз: 0`;
       }
     } else {
-      return `Possible victory: ${betPoints * 2}`;
+      return `Возможная награда: ${betPoints * 2}`;
     }
   };
 
@@ -74,10 +74,10 @@ const History = () => {
 
   return (
     <div>
-      <h1 className="history-prediction">History Prediction</h1>
+      <h1 className="history-prediction">История</h1>
       {history.length === 0 ? (
         <p className="make-prediction">
-          You haven`t made any predictions yet. Make your first prediction!
+          У тебя ещё нет прогнозов. Сделай первый прогноз!
         </p>
       ) : (
         <div className="history-container">
@@ -120,10 +120,10 @@ const History = () => {
                       }}
                     >
                       <div className="choice-user-history">
-                        Your choice: {item.selectedTeam}
+                        Твой выбор: {item.selectedTeam}
                       </div>
                       <div className="result-history-con">
-                        Result: {item.result || "Match is not finished"}
+                        Результат: {item.result || "Match is not finished"}
                       </div>
                     </div>
                     {prediction ? (
@@ -135,7 +135,7 @@ const History = () => {
                         }}
                       >
                         <div className="bet-points-history">
-                          Bet points: {prediction.betPoints}
+                          Поставлено: {prediction.betPoints}
                         </div>
                         <div className="total-points-history">
                           {getOutcomeText(
@@ -147,7 +147,7 @@ const History = () => {
                         </div>
                       </div>
                     ) : (
-                      <div>No prediction data found for this match</div>
+                      <div>Данные для этого прогноза не найдены</div>
                     )}
                   </div>
                 </div>

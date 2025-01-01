@@ -59,24 +59,25 @@ const Question = () => {
 
         <div>
           <p className="description-quiz">
-            Quiz complexity: {currentQuiz.complexity}
+            Сложность квиза: {currentQuiz.complexity}
           </p>
           <p className="description-quiz">
-            Quantity points for quiz: {currentQuiz.quantityPoints}
+            Очки за квиз: {currentQuiz.quantityPoints}
           </p>
           <p className="description-quiz">
-            Quantity quiestions in quiz: {currentQuiz.quantityQuestions}
+            Количество вопросов: {currentQuiz.quantityQuestions}
           </p>
         </div>
 
         <button onClick={handleOpenModal} className="btn-start-quiz">
-          Start
+          Начать
         </button>
 
         <div>
           <p className="facts-quiz">
-            Test your knowledge and score points! For each correct answer —{" "}
-            <strong>+5 points</strong>. Show what you can do and be The best!
+            Проверь свои знания и набери очки! За каждый правильный ответ —{" "}
+            <strong>+5 очков</strong>. Покажи, на что ты способен, и стань
+            лучшим!
           </p>
         </div>
       </div>
