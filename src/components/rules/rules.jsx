@@ -80,7 +80,7 @@ const Rules = () => {
         <br />
         Победитель недели получает:
         <br />
-        <span className="points">+10 очков</span> для следующего сезона.
+        <span className="points">+10 очков</span>.
         <br />
         Публичное признание и похвалу в нашем Telegram-канале.
       </p>
